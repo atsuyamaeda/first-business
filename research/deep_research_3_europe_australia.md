@@ -11,7 +11,7 @@
 **本社：** ロンドン（英国）  
 **創業：** 2021年、Marisa Poster、Teddie Levenfiche、Levi Levenficheの3名が£250Kの個人貯蓄と£125Kの家族ローンで設立  
 **実績：** 2年間のCAGR **532%**（FEBE Growth 100で英国1位）、2024年売上高**£820万**、評価額**£1.4億**（約$2億）、累計販売数**1,000万個以上**  
-**資金調達：** Kickstarter（2021年、1日以内に目標達成）→ BBC Dragons' Den（2023年2月、Steven Bartlettから£50K出資、全5名のDragonからオファー獲得は番組初）→ Flight Fund（2024年8月、£100万追加）→ Felix Capital（2025年、£800万調達）  
+**資金調達：** Kickstarter（2021年、1日以内に目標達成）→ BBC Dragons' Den（2023年2月、Steven BartlettとPeter Jonesが共同で£50K出資を提案（Jonesの取引は番組後に不成立、Bartlettが唯一の投資家となり後に£1M追加投資））→ Flight Fund（2024年8月、£100万追加）→ Felix Capital（2025年、£800万調達）  
 **原料：** 宇治産オーガニック・セレモニアルグレード抹茶
 
 ### 製品カタログ（全SKU・GBP価格）
@@ -168,7 +168,8 @@ RRP単缶価格はTescoで**£1.75**、4缶パックは£6.00。
 
 ### 販売チャネル
 
-**オンライン：** 自社EC（英国GBP版shop.matchaeologist.com＋米国USD版www.matchaeologist.com）、Amazon UK（Meiko 100gが**£18.99**、Amazon's Choice取得、評価数**約22,900件**、月間2,000個以上販売、Subscribe & Save £17.09）、Amazon US（一部商品）  
+**オンライン：** 自社EC（英国GBP版shop.matchaeologist.com＋米国USD版www.matchaeologist.com）、Amazon UK（Meiko 100gが**£18.99**、Amazon's Choice取得、月間2,000個以上販売、Subscribe & Save £17.09）
+> ⚠️ 評価数について：当初「約22,900件」と記載されていたが、Judge.meでは844件のみ確認。Amazon UK固有の数値は未検証のため削除。、Amazon US（一部商品）  
 **第三者小売：** The Roasters Pack（カナダ）、The Miyamoto Division、Tea Soul（欧州）  
 **実店舗：** **伊勢丹新宿本店1階 ISETAN Seed**（2024年2月〜）— 東京の最高級百貨店での取り扱い  
 **国際配送：** UK 48時間無料配送、EU 5-14営業日£6〜、US Economy $6-$16（5-8日）、$100以上で米国送料無料  
@@ -204,7 +205,8 @@ RRP単缶価格はTescoで**£1.75**、4缶パックは£6.00。
 ### 会社概要
 
 **本社：** パリ75009区（登記はペルピニャン66000）  
-**創業：** 2019年、**Camille Becerra**が単独創業。2016年に香港で抹茶に出会い、2018年に24歳で単身日本に渡航し高品質有機抹茶の農家を開拓  
+**創業：** 2019年、**Camille**が単独創業。2016年に香港で抹茶に出会い、2018年に24歳で単身日本に渡航し高品質有機抹茶の農家を開拓
+> ⚠️ 訂正：当初「Camille Becerra」と記載されていたが、Camille Becerraは別人（NYCのシェフ）。Anatae創業者の姓は公開情報では確認できず。  
 **ブランド名：** 「Anatae」は日本語で「あなたのために」を意味  
 **受賞歴：** Meilleur Produit BIO 2022（最優秀オーガニック製品賞）、Prix Épicures d'Or 2023  
 **顧客数：** オンライン顧客**60,000人以上**（2024年中頃時点、LinkedIn投稿より）、2025年初頭にはウェブサイトで「**+150,000人の愛好者**」を標榜  
@@ -534,7 +536,7 @@ Amazon AU Subscribe & Saveで約10%オフ。自社ECでも定期購入（recurri
 
 **規模追求型（Volume × Accessibility）：** PerfectTedは**RTD缶＋Nespressoポッド＋大手スーパー1,200店舗**という圧倒的な流通網で、抹茶を「エナジードリンクカテゴリーの破壊者」として再定義。フードサービスが売上の60%を占め、Caffè Nero・Joe & The Juiceへの原料供給がB2Bの柱。**年間売上£820万、評価額£1.4億**は5社中最大。
 
-**デザイン・ソムリエ型（Design × Ultra-Premium）：** Matchaeologistは**ワインのソムリエ文化を抹茶に移植**するコンセプトで、スモークガラス包装、ハンドブロウンのクラウドガラス茶碗、伊勢丹新宿本店での取扱いなど、**美学とクラフトマンシップ**で差別化。Instagram **141,000フォロワー**は5社中最多。Amazon UK評価数**22,900件**が示す通り、ウルトラプレミアムながら意外な販売ボリュームを持つ。
+**デザイン・ソムリエ型（Design × Ultra-Premium）：** Matchaeologistは**ワインのソムリエ文化を抹茶に移植**するコンセプトで、スモークガラス包装、ハンドブロウンのクラウドガラス茶碗、伊勢丹新宿本店での取扱いなど、**美学とクラフトマンシップ**で差別化。Instagram **141,000フォロワー**は5社中最多。Amazon UKでの高い販売実績が示す通り、ウルトラプレミアムながら意外な販売ボリュームを持つ。
 
 **フレッシュネス・テロワール型（Freshness × Direct-from-Origin）：** Matcha Botanicalsは**2週間ごとの石臼挽き、畑からカップまで30日以内、冷蔵保管出荷**という鮮度へのこだわりと、ワインのミレジム表記、シングルカルティバー指定で「テロワール抹茶」を確立。40gのガラス瓶（業界標準30gより25%増量）、Amazonを使わない選択的流通など、品質コントロールに妥協なし。ただし、2023年の所有権変更（英国企業への売却）が今後のブランド方針に影響する可能性がある。
 

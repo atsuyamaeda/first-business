@@ -22,7 +22,7 @@ Okusa's Japanese heritage is not merely biographical — it is the core brand DN
 | Key funding round | $8M pre-Series A (Nov 2024), led by **Shiseido LIFT Ventures** |
 | Other investors | Strand Equity, Trousdale Ventures, Stella Capital, Andy Dunn (Bonobos), Anne Mahlum (Solidcore) |
 | Debt facility | $6M (Walden Mutual Bank) |
-| 2024 revenue | **$35M+** (50% YoY growth) |
+| 2024 revenue | **$35M+**（累計売上の可能性あり。2024年目標は$30M、50% YoY成長） |
 | Profitability | Reported profitable as of 2025 |
 | Revenue trajectory | ~$5M (2021) → doubled annually → $35M+ (2024) |
 
