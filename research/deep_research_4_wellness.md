@@ -8,6 +8,9 @@ Apothékary ($35M+ revenue, 2024) is actively discontinuing its matcha products 
 
 ## Apothékary: matcha's role is shrinking as tinctures take over
 
+> **📊 推定売上高: $35M+（2024年）** | 模倣可能性: 22/50（★★★★★ 困難） | 信頼度: 高（公開データ。~$5M(2021)→$35M+(2024)）
+> 抹茶製品は廃止方向（チンキ剤に移行）。反面教師：抹茶が「通過点の成分」になりうることを示す事例
+
 ### Company profile and founder
 
 Apothékary was founded in 2018 (products launched 2020) by **Shizu Okusa**, a Japanese-American entrepreneur who left Goldman Sachs at age 22 after two years in the FICC division trading distressed assets. Her post-Wall Street journey took her to the World Bank in Mozambique, a 500-hour yoga certification in Bali, and a cold-pressed juice company (JRINK) in Washington, D.C. that she sold in 2019. Apothékary is headquartered in Falls Church, Virginia, and its tagline — "Nature is Medicine™" — draws from **Japanese Kampo, Traditional Chinese Medicine, Ayurveda, and American Herbalism**.
@@ -94,6 +97,9 @@ The primary customer is a **25-to-45-year-old health-conscious woman** — colle
 ---
 
 ## Pique Life: matcha as technological crown jewel
+
+> **📊 推定売上高: ~$9.4M（推定）** | 模倣可能性: 27/50（★★★★） | 信頼度: 中（Growjo推定。18件の特許+Khosla Ventures出資）
+> 特許技術（Cold Extraction）×4重毒素スクリーニングで$2+/杯の超プレミアム価格を正当化。技術モートの構築が参考になる
 
 ### Company profile and founder
 
@@ -205,6 +211,9 @@ The primary customer is a **health-conscious woman aged 25–45** interested in 
 ---
 
 ## Blume: matcha as the caffeinated anchor of a superfood latte world
+
+> **📊 推定売上高: ~$7-10M（8桁CAD・2024年初達成）** | 模倣可能性: 38/50（★★ 模倣しやすい） | 信頼度: 中（公開データ。5年間ブートストラップ→$2M CAD調達）
+> $1/杯のラテブレンド×4,000+小売店。学ぶべき企業TOP5の4位。カリナリーグレード×ブレンドで低コスト×高マージンを実現
 
 ### Company profile and founder
 
