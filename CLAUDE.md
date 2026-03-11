@@ -42,7 +42,7 @@
 | E: アジア（3社） | Osulloc、Matchaya、Niko Neko |
 | F: カフェ（2社） | Blank Street、Junbi Matcha |
 | G: スペシャルティティー（1社） | Kettl |
-| H: 健康・美容（3社） | Apothékary、Pique Tea、Blume |
+| H: ウェルネス（3社） | Apothékary、Pique Tea、Blume |
 
 ### Step 2: サービスのグルーピング・ラベリング
 - [ ] 抽出したサービスを分類・ラベリング
