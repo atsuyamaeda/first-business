@@ -1,396 +1,396 @@
-# Three matcha wellness brands: from flagship to fading ingredient
+# 抹茶ウェルネスブランド3社：主力製品から衰退する原材料まで
 
-**Matcha occupies fundamentally different strategic roles at Apothékary, Pique Life, and Blume** — ranging from being phased out entirely (Apothékary) to serving as the absolute cornerstone product (Pique Life) to anchoring a broader superfood latte portfolio (Blume). Despite all three companies marketing matcha in a wellness/supplement context, their approaches to product format, pricing, sourcing, and health claims diverge sharply, reflecting three distinct visions of how a Japanese ingredient translates into the North American wellness market.
+**Apothékary、Pique Life、Blumeの3社において、抹茶は根本的に異なる戦略的役割を担っている** — 完全に廃止される方向（Apothékary）から、絶対的な中核製品として位置づけられるもの（Pique Life）、さらにはスーパーフードラテのポートフォリオの軸として機能するもの（Blume）まで幅広い。3社とも抹茶をウェルネス／サプリメントの文脈でマーケティングしているにもかかわらず、製品フォーマット、価格設定、調達、健康効果の訴求において大きく異なっており、日本の食材を北米のウェルネス市場にどう展開するかについて3つの異なるビジョンを反映している。
 
-Apothékary ($35M+ revenue, 2024) is actively discontinuing its matcha products as part of a strategic pivot from powders to liquid herbal tinctures. Pique Life (~$9.4M estimated revenue) has built its entire brand identity around Sun Goddess Matcha as a premium, technology-differentiated hero SKU at **$2.14–$2.43 per serving**. Blume (8-figure CAD revenue, 2024) positions its Matcha Coconut blend as the bestselling entry product in a colorful superfood latte lineup at roughly **$1.00 per serving** — roughly one-fifth of Pique's per-serving cost.
+Apothékary（2024年売上$35M+）は、パウダーからリキッドハーブチンキ剤への戦略的ピボットの一環として、抹茶製品を積極的に廃止している。Pique Life（推定売上〜$9.4M）は、**1杯あたり$2.14〜$2.43**の超プレミアム価格で、技術差別化されたヒーロー SKU「Sun Goddess Matcha」を中心にブランドアイデンティティ全体を構築している。Blume（2024年に8桁CAD売上を達成）は、Matcha Coconutブレンドをカラフルなスーパーフードラテラインナップのベストセラー入門製品として、約**$1.00/杯**で展開している — Piqueの1杯あたりコストの約5分の1である。
 
 ---
 
-## Apothékary: matcha's role is shrinking as tinctures take over
+## Apothékary：チンキ剤の台頭とともに縮小する抹茶の役割
 
 > **📊 推定売上高: $35M+（2024年）** | 模倣可能性: 22/50（★★★★★ 困難） | 信頼度: 高（公開データ。~$5M(2021)→$35M+(2024)）
 > 抹茶製品は廃止方向（チンキ剤に移行）。反面教師：抹茶が「通過点の成分」になりうることを示す事例
 
-### Company profile and founder
+### 会社概要と創業者
 
-Apothékary was founded in 2018 (products launched 2020) by **Shizu Okusa**, a Japanese-American entrepreneur who left Goldman Sachs at age 22 after two years in the FICC division trading distressed assets. Her post-Wall Street journey took her to the World Bank in Mozambique, a 500-hour yoga certification in Bali, and a cold-pressed juice company (JRINK) in Washington, D.C. that she sold in 2019. Apothékary is headquartered in Falls Church, Virginia, and its tagline — "Nature is Medicine™" — draws from **Japanese Kampo, Traditional Chinese Medicine, Ayurveda, and American Herbalism**.
+Apothékaryは2018年に設立（2020年に製品発売）、創業者は**奥佐シズ（Shizu Okusa）**。日系アメリカ人起業家で、ゴールドマン・サックスのFICC部門でディストレスト資産のトレーディングに2年間従事した後、22歳で退社。退社後はモザンビークの世界銀行、バリでの500時間ヨガ認定プログラム、ワシントンD.C.でのコールドプレスジュース会社（JRINK）を経て、2019年に同社を売却。Apothékaryはバージニア州フォールズチャーチに本社を置き、ブランドのタグライン「Nature is Medicine™」は**日本の漢方、中国伝統医学、アーユルヴェーダ、アメリカンハーバリズム**に由来する。
 
-Okusa's Japanese heritage is not merely biographical — it is the core brand DNA. Her childhood memories of a traditional Japanese mother brewing 48-to-72-hour herbal broths of reishi, cordyceps, and ashwagandha instead of Tylenol form a recurring marketing narrative. The brand hosted a **$10,000-per-person wellness retreat at Four Seasons Kyoto** in fall 2025 (13,540+ waitlist signups), and influencer trips to Japan accompany major retail launches.
+奥佐の日本のルーツは単なる経歴ではなく、ブランドの核となるDNAである。彼女の母親がタイレノールの代わりに霊芝、冬虫夏草、アシュワガンダの48〜72時間ハーブブロスを煮出していた幼少期の記憶は、繰り返し登場するマーケティングナラティブとなっている。2025年秋には**フォーシーズンズ京都で1人$10,000のウェルネスリトリート**を開催（ウェイトリスト13,540人以上）、大型リテール展開に合わせたインフルエンサーの日本旅行も実施している。
 
-### Funding and revenue
+### 資金調達と売上
 
-| Metric | Detail |
+| 指標 | 詳細 |
 |--------|--------|
-| Total equity raised | >$15M |
-| Key funding round | $8M pre-Series A (Nov 2024), led by **Shiseido LIFT Ventures** |
-| Other investors | Strand Equity, Trousdale Ventures, Stella Capital, Andy Dunn (Bonobos), Anne Mahlum (Solidcore) |
-| Debt facility | $6M (Walden Mutual Bank) |
-| 2024 revenue | **$35M+**（累計売上の可能性あり。2024年目標は$30M、50% YoY成長） |
-| Profitability | Reported profitable as of 2025 |
-| Revenue trajectory | ~$5M (2021) → doubled annually → $35M+ (2024) |
+| 合計エクイティ調達額 | $15M超 |
+| 主要ファンディングラウンド | $8Mプレシリーズ A（2024年11月）、リード：**資生堂 LIFT Ventures** |
+| その他投資家 | Strand Equity、Trousdale Ventures、Stella Capital、Andy Dunn（Bonobos）、Anne Mahlum（Solidcore） |
+| デット・ファシリティ | $6M（Walden Mutual Bank） |
+| 2024年売上 | **$35M+**（累計売上の可能性あり。2024年目標は$30M、50% YoY成長） |
+| 収益性 | 2025年時点で黒字化と報告 |
+| 売上推移 | 〜$5M（2021年）→ 毎年倍増 → $35M+（2024年） |
 
-Shiseido's LIFT Ventures investment is strategically significant: Shiseido (founded 1872) is pursuing a "SHIFT 2025 AND BEYOND" vision to become a "personal beauty wellness company" by 2030, and Okusa's Japanese cultural credentials created a natural alignment.
+資生堂のLIFT Venturesによる投資は戦略的に重要である。資生堂（1872年創業）は「SHIFT 2025 AND BEYOND」ビジョンのもと、2030年までに「パーソナルビューティウェルネスカンパニー」への変革を目指しており、奥佐の日本文化的クレデンシャルとの親和性が高い。
 
-### Full product catalog
+### 全製品カタログ
 
-Apothékary's product line has undergone a **fundamental format shift from powders to liquid herbal tinctures**. The brand's current primary format is 1 fl oz (30mL) tincture bottles at **$39.00 one-time / $33.15 subscription** (15% off), each containing 30 servings.
+Apothékaryの製品ラインは**パウダーからリキッドハーブチンキ剤への根本的なフォーマット転換**を遂げている。現在の主力フォーマットは1 fl oz（30mL）のチンキ剤ボトルで、価格は**$39.00（通常）/ $33.15（サブスクリプション）**（15%オフ）、各30回分。
 
-**Current tincture lineup (primary products):**
+**現行チンキ剤ラインナップ（主力製品）：**
 
-| Product | Category | Key Ingredients | Price |
+| 製品名 | カテゴリ | 主要成分 | 価格 |
 |---------|----------|-----------------|-------|
-| Blue Burn® | Metabolic/weight support | Oregon grape root (berberine), ashwagandha, maca, blue spirulina, gymnema | $39.00 |
-| Wine Down™ | Sleep (red wine alternative) | California poppy, blue vervain, tart cherry | $39.00 |
-| Take the Edge Off® | Stress (white wine alternative) | Lemon peel, adaptogens | $39.00 |
-| Rosé-Tinted Glasses® | Mood + skin (rosé alternative) | Chrysanthemum, eleuthero, hibiscus | $39.00 |
-| Every Phase™ | Hormone balance | Shatavari, chaste tree berry, lemon balm | $44.00 |
-| Sugar Kick™ | Sugar craving support | Gymnema, related herbs | $39.00 |
-| Mindcraft™ | Cognition/longevity | Lion's mane, nootropics | $39.00 |
-| Never Been Bitter® | Gut/digestive support | Ginger root, digestive bitters | $39.00 |
-| The Honest Youth® | Collagen/skin | Skin-supporting herbs | $39.00 |
-| Your Wildest Greens® | Nutrient/immune (15 servings) | Chlorella, lemon peel | $39.00 |
-| Rescue Bloat™ | Fast-acting bloat relief | Lemon balm, digestive herbs | $39.00 |
+| Blue Burn® | 代謝・体重サポート | オレゴングレープルート（ベルベリン）、アシュワガンダ、マカ、ブルースピルリナ、ギムネマ | $39.00 |
+| Wine Down™ | 睡眠（赤ワイン代替） | カリフォルニアポピー、ブルーバーベイン、タートチェリー | $39.00 |
+| Take the Edge Off® | ストレス（白ワイン代替） | レモンピール、アダプトゲン | $39.00 |
+| Rosé-Tinted Glasses® | 気分＋肌（ロゼワイン代替） | 菊、エレウテロ、ハイビスカス | $39.00 |
+| Every Phase™ | ホルモンバランス | シャタバリ、チェストツリーベリー、レモンバーム | $44.00 |
+| Sugar Kick™ | 糖質欲求サポート | ギムネマ、関連ハーブ | $39.00 |
+| Mindcraft™ | 認知・長寿 | ライオンズメイン、ヌートロピクス | $39.00 |
+| Never Been Bitter® | 腸・消化サポート | ジンジャールート、消化ビターズ | $39.00 |
+| The Honest Youth® | コラーゲン・肌 | 肌サポートハーブ | $39.00 |
+| Your Wildest Greens® | 栄養・免疫（15回分） | クロレラ、レモンピール | $39.00 |
+| Rescue Bloat™ | 即効お腹張り解消 | レモンバーム、消化ハーブ | $39.00 |
 
-**Origin Extracts (new single-ingredient tinctures, launched 2026):** Ashwagandha, Lion's Mane, and Turmeric at **$25.00 each** (30 servings), or a Performance Trio bundle for $59.00 (vs. $75 individual).
+**Origin Extracts（新・単一成分チンキ剤、2026年発売）：** アシュワガンダ、ライオンズメイン、ターメリック各**$25.00**（30回分）、またはPerformance Trioバンドル$59.00（個別購入$75対比）。
 
-**Legacy powder blends (being discontinued — marked "Last Chance" at 50% off):**
+**レガシーパウダーブレンド（廃止中 — 「Last Chance」として50%オフで販売）：**
 
-| Product | Contains Matcha? | Original Price | Clearance Price | Servings |
+| 製品名 | 抹茶含有？ | 通常価格 | セール価格 | 回数 |
 |---------|-----------------|---------------|----------------|----------|
-| Slay All Day™ | **Yes — primary ingredient** | $39.00 | $19.50 | 20 |
-| Blue Me Away™ | **Yes — supporting ingredient** | $39.00 | $19.50 | 20 |
-| Mind Over Matter® | No | $39.00 | $19.50 | 20 |
-| Do Not Disturb™ | No | $39.00 | $19.50 | 20 |
-| Chill the F* Out™ | No | $39.00 | $19.50 | 20 |
+| Slay All Day™ | **あり — 主要成分** | $39.00 | $19.50 | 20 |
+| Blue Me Away™ | **あり — 補助成分** | $39.00 | $19.50 | 20 |
+| Mind Over Matter® | なし | $39.00 | $19.50 | 20 |
+| Do Not Disturb™ | なし | $39.00 | $19.50 | 20 |
+| Chill the F* Out™ | なし | $39.00 | $19.50 | 20 |
 
-**Bundles range from $39 to $97**, offering 21–33% savings. Notable sets include the AM to PM Duo ($65), Sober Curious Trio ($95), and Longevity Trio ($97).
+**バンドルは$39〜$97**で、21〜33%の割引。代表的なセットにはAM to PM Duo（$65）、Sober Curious Trio（$95）、Longevity Trio（$97）がある。
 
-### Matcha positioning: flagship-turned-legacy
+### 抹茶のポジショニング：主力製品からレガシーへ
 
-Matcha's role at Apothékary is a story of decline. **Slay All Day™**, the hero matcha product, contains a proprietary blend of Siberian ginseng root, matcha green tea leaf, and broken-cell-wall chlorella (2.1g total blend), mixed with pea protein, coconut milk powder, and acacia fiber. It is marketed as "organic Japanese matcha" providing "antioxidant-rich, L-theanine-driven, jitter-free energy." The matcha is described as sourced from Japan but specific regional sourcing and grade (ceremonial vs. culinary) are not prominently specified.
+Apothékaryにおける抹茶の役割は衰退の一途をたどっている。**Slay All Day™**は主力抹茶製品で、シベリア人参根、抹茶緑茶葉、破壁クロレラの独自ブレンド（合計2.1g）に、エンドウ豆プロテイン、ココナッツミルクパウダー、アカシアファイバーを配合。「オーガニック日本産抹茶」として「抗酸化物質豊富なL-テアニンによるジッターフリーエナジー」を訴求している。抹茶は日本産と記載されているが、具体的な産地や等級（セレモニアル vs カリナリー）は目立つ形では明記されていない。
 
-Health claims for matcha in Apothékary's marketing center on: jitter-free energy via L-theanine, EGCG antioxidants, cognitive clarity, gut health support, and stress adaptation when combined with adaptogenic herbs. However, **matcha is not the sole or even dominant ingredient** — it sits within proprietary blends alongside ginseng, chlorella, and other functional additions.
+Apothékaryのマーケティングにおける抹茶の健康効果訴求は、L-テアニンによるジッターフリーエナジー、EGCGの抗酸化作用、認知クリアリティ、腸内健康サポート、アダプトゲンハーブとの組み合わせによるストレス適応を中心とする。しかし、**抹茶は唯一の、あるいは主要な成分ですらなく**、人参やクロレラなどの機能性成分と並ぶ独自ブレンドの一部に位置づけられている。
 
-The strategic shift away from powders toward tinctures (which do not contain matcha) means matcha is being **actively de-emphasized**. The rationale: "liquid herbal drops are pre-absorbed, significantly improving effectiveness" versus powders requiring digestion. Higher margins and better retail shelf presence for tinctures also played a role. Going forward, Apothékary's product line will contain zero matcha.
+パウダーからチンキ剤（抹茶を含まない）への戦略的転換は、抹茶が**積極的に存在感を薄められている**ことを意味する。その理由：「リキッドハーブドロップは事前吸収されるため、パウダーの消化プロセスと比較して効果が大幅に向上する」。チンキ剤のマージン向上とリテール棚での存在感改善も要因。今後、Apothékaryの製品ラインに抹茶は含まれなくなる。
 
-### Sales channels and retail expansion
+### 販売チャネルとリテール展開
 
-Apothékary's retail footprint is expanding rapidly: **Sprouts Farmers Market** (400+ stores, launched September 2024), **Ulta Beauty** (online + expanding to stores, November 2024), **Whole Foods** (2025, expanding), with a projected **1,700+ retail doors by 2026**. The brand is also on Amazon (Subscribe & Save at $33.15), the Faire wholesale platform, and has growing international distribution through UK and Dutch retailers. Blue Burn became the **#1 product in Diet and Energy at Sprouts** shortly after launch, with 800+ units sold in the first week. Disney and Marvel co-branding partnerships have also been announced.
+Apothékaryのリテール展開は急速に拡大中：**Sprouts Farmers Market**（400店舗以上、2024年9月開始）、**Ulta Beauty**（オンライン＋店舗拡大中、2024年11月）、**Whole Foods**（2025年、拡大中）、**2026年までに1,700以上のリテール拠点**を予定。また、Amazon（Subscribe & Saveで$33.15）、Faire卸売プラットフォーム、英国・オランダの小売業者を通じた国際展開も進んでいる。Blue Burnは発売直後に**Sproutsのダイエット＆エナジーカテゴリで#1**を獲得、初週800ユニット以上を販売。DisneyおよびMarvelとのコブランディングパートナーシップも発表されている。
 
-### Subscription and loyalty
+### サブスクリプションとロイヤルティ
 
-Subscriptions offer **15% off** all products with free US shipping and flexible skip/cancel terms. A **Platinum Membership** ($40 one-time) provides 15% off all purchases plus free shipping. The referral program offers a give-$20/get-$20 structure. HSA/FSA eligibility was added recently, broadening the accessible customer base.
+サブスクリプションは全製品**15%オフ**、米国内送料無料、スキップ・キャンセル自由。**プラチナメンバーシップ**（$40の一括払い）で全購入15%オフ＋送料無料。紹介プログラムは$20贈呈/$20獲得の構造。最近HSA/FSA対応も追加され、対象顧客層が拡大している。
 
-### Social media and press
+### ソーシャルメディアとプレス
 
-| Platform | Handle | Followers |
+| プラットフォーム | ハンドル | フォロワー数 |
 |----------|--------|-----------|
 | Instagram | @apothekary | **334,000** |
 | TikTok | @apothekaryco | **46,400** |
 
-Press coverage includes CNBC, Inc. Magazine, Forbes, BeautyMatter (Future50 2026), FoodNavigator-USA, Women's Health, BevNET, and a Goldman Sachs alumni spotlight. The brand's influencer strategy emphasizes education-based marketing and experiential activations (Japan trips, onsen events) over celebrity endorsements. A collaboration with premium Japanese strawberry brand **Oishii** produced a limited-edition Rosé-Tinted Glasses variant.
+メディア掲載はCNBC、Inc. Magazine、Forbes、BeautyMatter（Future50 2026）、FoodNavigator-USA、Women's Health、BevNET、ゴールドマン・サックスの卒業生特集など。インフルエンサー戦略はセレブリティ起用よりも教育ベースのマーケティングと体験型イベント（日本旅行、温泉イベント）を重視。プレミアム日本産いちごブランド**Oishii**とのコラボで限定版Rosé-Tinted Glassesも展開。
 
-### Target demographics
+### ターゲット顧客層
 
-The primary customer is a **25-to-45-year-old health-conscious woman** — college-educated, middle-to-upper-middle income ($60K+), interested in holistic/natural remedies, "sober-curious," and open to Eastern medicine. Key pain points: stress and burnout, sleep issues, alcohol reduction, metabolic support, hormonal imbalance, digestive health, and energy without jitters.
+主要顧客は**25〜45歳の健康意識の高い女性** — 大卒、中〜上位中所得層（$60K+）、ホリスティック／自然療法に関心あり、「ソバーキュリアス（お酒控えめ志向）」、東洋医学にオープン。主要ペインポイント：ストレスとバーンアウト、睡眠問題、飲酒量削減、代謝サポート、ホルモンバランス、消化器系の健康、ジッターのないエナジー。
 
 ---
 
-## Pique Life: matcha as technological crown jewel
+## Pique Life：テクノロジーの結晶としての抹茶
 
 > **📊 推定売上高: ~$9.4M（推定）** | 模倣可能性: 27/50（★★★★） | 信頼度: 中（Growjo推定。18件の特許+Khosla Ventures出資）
 > 特許技術（Cold Extraction）×4重毒素スクリーニングで$2+/杯の超プレミアム価格を正当化。技術モートの構築が参考になる
 
-### Company profile and founder
+### 会社概要と創業者
 
-Pique (formerly Pique Tea) was founded in 2014 and commercially launched in January 2016 by **Simon Cheng**, a Harvard BA/Stanford MBA graduate originally from Hong Kong. Cheng's founder narrative centers on a decade of serious health crises in his 20s — including multiple surgeries, staples in both lungs, a screw in his jaw, and celebrating his 30th birthday with an IV antibiotics tube connected to his heart valve. His subsequent 10-year global health quest studying with healers in Tibet, Indonesia, and the Pacific Northwest led him to tea as medicine. He is an educated Daoist healer and qi gong/tai chi practitioner. The company is headquartered in Malibu, California, with approximately 37–47 employees.
+Pique（旧Pique Tea）は2014年に設立、2016年1月に正式発売。創業者は**サイモン・チェン（Simon Cheng）**、ハーバード大学BA／スタンフォード大学MBA卒、香港出身。チェンの創業ストーリーは、20代に経験した深刻な健康危機に根ざしている — 複数の手術、両肺へのステープル、顎へのスクリュー、そして30歳の誕生日を心臓弁に繋がれた静脈内抗生物質のチューブとともに迎えた。その後のチベット、インドネシア、太平洋岸北西部のヒーラーとの10年にわたるグローバルヘルスの探求が、「お茶は薬である」という信念に至った。道教のヒーラーであり、気功／太極拳の実践者でもある。本社はカリフォルニア州マリブ、従業員約37〜47名。
 
-### Funding and revenue
+### 資金調達と売上
 
-| Metric | Detail |
+| 指標 | 詳細 |
 |--------|--------|
-| Total raised | ~$2.43M |
-| Key investors | **Khosla Ventures**, First Round Capital, Blueberry Ventures, Zynik Capital |
-| Accelerators | Chobani Food Incubator, Target Take-Off, Stanford StartX, Amazon Launchpad |
-| Patents held | **18** |
-| Estimated annual revenue | ~$9.4M (Growjo); ~$1.5M/month in coffee & tea category (Particl tracking) |
-| Customer claims | 12,000+ 5-star reviews; 58,600+ fasting protocol customers |
+| 合計調達額 | 〜$2.43M |
+| 主要投資家 | **Khosla Ventures**、First Round Capital、Blueberry Ventures、Zynik Capital |
+| アクセラレーター | Chobaniフードインキュベーター、Target Take-Off、Stanford StartX、Amazon Launchpad |
+| 保有特許数 | **18件** |
+| 推定年間売上 | 〜$9.4M（Growjo推定）; コーヒー＆ティーカテゴリで〜$1.5M/月（Particlトラッキング） |
+| 顧客実績 | 12,000件以上の5つ星レビュー、58,600人以上の断食プロトコル顧客 |
 
-Notably, Pique raised a relatively modest amount of venture capital compared to Apothékary, but holds **18 patents** on its extraction technology — a significant IP moat.
+注目すべきは、PiqueがApothékaryに比べ比較的少額のVC資金しか調達していないが、**18件の特許**を抽出技術で保有しており、これが重要なIP（知的財産）のモートとなっている点である。
 
-### Sun Goddess Matcha: the deep dive
+### Sun Goddess Matcha：詳細分析
 
-Sun Goddess Matcha is named after **Amaterasu**, the Japanese Sun Goddess, who according to legend appeared at a volcano within sight of the tea gardens. Cheng reportedly spent two years testing hundreds of ceremonial matchas from Uji (Kyoto), Yame (Fukuoka), and Zhejiang (China) before developing his own from scratch.
+Sun Goddess Matchaの名前は日本の太陽の女神**天照大御神**に由来する。伝説によれば、茶園の見える火山に降臨したとされる。チェンは宇治（京都）、八女（福岡）、浙江省（中国）から数百のセレモニアルグレード抹茶を2年間テストした後、独自の抹茶をゼロから開発した。
 
-**Two formats available:**
+**2つのフォーマット：**
 
-| Format | Size | Servings | One-Time | Subscription (10% off) | Per-Serving (Sub) | Reviews |
+| フォーマット | サイズ | 回数 | 通常価格 | サブスク（10%オフ） | 1杯あたり（サブスク） | レビュー数 |
 |--------|------|----------|----------|----------------------|-------------------|---------|
-| Sachets (single-serve sticks) | 56g (28 × 2g) | 28 | $68.00 | $61.20 | **$2.19** | 3,638 (4.9★) |
-| Tin (loose powder) | 70g (2.5 oz) | ~35 | $75.00 | $67.50 | **$1.93** | 1,404 (5.0★) |
+| サシェ（個包装スティック） | 56g（28本×2g） | 28 | $68.00 | $61.20 | **$2.19** | 3,638件（4.9★） |
+| 缶（ルースパウダー） | 70g（2.5 oz） | 約35 | $75.00 | $67.50 | **$1.93** | 1,404件（5.0★） |
 
-**Ingredient:** 100% organic ceremonial grade matcha — single ingredient, no blends, no additives.
+**原材料：** 100%オーガニックセレモニアルグレード抹茶 — 単一原料、ブレンドなし、添加物なし。
 
-**Sourcing:** Kagoshima, Japan — "situated in a lush valley at the southernmost tip of the Japanese archipelago," near Okinawa (longevity messaging). Volcanic soil, spring water, clean air. Tea farm located at high elevation. Made by **third-generation teamasters using 130-year-old techniques**. First harvest, USDA Organic certified. Tea trees shaded **35% longer than standard** to concentrate L-theanine levels. Caffeine content: **54–82mg per serving**.
+**調達先：** 鹿児島県 — 「日本列島の最南端に位置する緑豊かな谷」、沖縄に近い（長寿メッセージング）。火山性土壌、湧き水、清浄な空気。高標高の茶園。**三代続く茶匠が130年の技法で製造**。一番茶、USDA Organic認証取得。茶樹は**標準より35%長い被覆期間**でL-テアニン濃度を高める。カフェイン含有量：**1杯あたり54〜82mg**。
 
-**Quadruple Toxin Screening** (unique to matcha; standard teas get triple screening):
-1. Heavy metals (including fluoride)
-2. Pesticides
-3. Toxic mold/mycotoxins
-4. Radioactive isotopes
+**4重毒素スクリーニング**（抹茶専用；標準茶は3重スクリーニング）：
+1. 重金属（フッ化物を含む）
+2. 農薬
+3. 有毒カビ／マイコトキシン
+4. 放射性同位体
 
-**Key differentiation:** Pique's matcha is processed through its patented **Cold Extraction Technology (CET)™** — inspired by *Cha Gao*, a 1,300-year-old Chinese practice of converting tea into medicine. This process extracts bioactive compounds at low temperatures to preserve phytonutrient integrity, producing instantly dissolvable crystals. The company claims this delivers **3× the active ingredients of tea bags** and **up to 12× antioxidants** compared to regular teas.
+**主要差別化要素：** Piqueの抹茶は特許取得済みの**Cold Extraction Technology（CET）™**で処理される — 1,300年の歴史を持つ中国の*茶膏（Cha Gao）*にインスパイアされた技術。低温で生理活性化合物を抽出し、植物栄養素の完全性を保持、瞬時に溶けるクリスタルを生成する。同社はこの技術により**ティーバッグの3倍の有効成分**、通常のお茶と比較して**最大12倍の抗酸化物質**を実現すると主張している。
 
-**Health claims for Sun Goddess Matcha are extensive and specific:**
+**Sun Goddess Matchaの健康効果訴求は広範かつ具体的：**
 
-- **Skin:** EGCG firms and brightens skin; chlorophyll supports skin clarity
-- **Metabolism:** Caffeine + catechins support lipid metabolism; catechins curb sugar/hunger cravings
-- **Energy:** Calm, sustained energy from L-theanine + caffeine synergy (no jitters or crash)
-- **Cognitive:** Focus, clarity, "flow state performance," alpha brain waves
-- **Mood:** L-theanine promotes calm and balance
-- **Immune:** EGCG catechins support cellular defense against free radicals
-- **Longevity:** Positioned near Okinawan longevity traditions
+- **肌：** EGCGが肌を引き締め明るくする；クロロフィルが肌の透明感をサポート
+- **代謝：** カフェイン＋カテキンが脂質代謝をサポート；カテキンが糖質・空腹感の欲求を抑制
+- **エナジー：** L-テアニン＋カフェインのシナジーによる穏やかで持続的なエナジー（ジッターやクラッシュなし）
+- **認知：** 集中力、クリアリティ、「フロー状態パフォーマンス」、アルファ脳波
+- **気分：** L-テアニンが落ち着きとバランスを促進
+- **免疫：** EGCGカテキンがフリーラジカルに対する細胞防御をサポート
+- **長寿：** 沖縄の長寿伝統に関連付けたポジショニング
 
-### Additional matcha and matcha-adjacent products
+### その他の抹茶・抹茶関連製品
 
-| Product | Price (OTP/Sub) | Servings | Key Detail |
+| 製品名 | 価格（通常/サブスク） | 回数 | 主要詳細 |
 |---------|----------------|----------|------------|
-| Matcha Green Fasting Tea | $50.00 / $45.00 | 28 | Designed for intermittent fasting; 48–72mg caffeine |
-| Radiant Skin Duo Protocol | $136.00 / $108.80 (20% off) | 56 (28 each) | SGM + B•T Fountain beauty electrolyte |
-| SGM & Holi Hoji Bundle | Varies | — | "Morning to night" tea pairing |
+| Matcha Green Fasting Tea | $50.00 / $45.00 | 28 | 間欠断食向け；カフェイン48〜72mg |
+| Radiant Skin Duo Protocol | $136.00 / $108.80（20%オフ） | 56（各28回） | SGM + B•T Fountain美容電解質 |
+| SGM & Holi Hoji Bundle | 変動 | — | 「朝から夜まで」のティーペアリング |
 
-### Full non-matcha product catalog
+### 抹茶以外の全製品カタログ
 
-Pique has expanded from a tea-only company into a **wellness platform** spanning multiple categories:
+Piqueは茶専業から**複数カテゴリにまたがるウェルネスプラットフォーム**へと拡大している：
 
-**Tea crystals (botanicals):** Pu'er Green, Pu'er Black, Holi Hoji (hojicha), Miss Grey Black, Breakfast Black, White Peony, Jasmine Green, Sacred Lily Oolong, Mint Sencha, Passion Fruit Green, Japanese Sencha, and multiple fasting-specific teas (Ginger Green, Bergamot Black, Cinnamon Herbal). Herbal elixirs include Ginger Digestion, Hibiscus Beauty, and Rooibos Vitality.
+**ティークリスタル（ボタニカル）：** プーアール緑茶、プーアール黒茶、Holi Hoji（焙じ茶）、Miss Grey Black、Breakfast Black、白牡丹、ジャスミン緑茶、Sacred Lily Oolong、ミントセンチャ、パッションフルーツグリーン、日本煎茶、断食専用ティー各種（Ginger Green、Bergamot Black、Cinnamon Herbal）。ハーブエリクサーにはGinger Digestion、Hibiscus Beauty、Rooibos Vitalityがある。
 
-**Supplements and minerals:**
+**サプリメントとミネラル：**
 
-| Product | Category | Price (OTP/Sub) | Key Ingredients |
+| 製品名 | カテゴリ | 価格（通常/サブスク） | 主要成分 |
 |---------|----------|----------------|-----------------|
-| Nandaka | Longevity coffee alternative | $128 / $102 | Adaptogens; 82mg caffeine |
-| B•T Fountain | Beauty electrolyte | $68 / $61.20 | Calcium malate, magnesium glycinate, phytoceramides, sodium hyaluronate, coconut water |
-| R•E Fountain | Calming electrolyte | $68 / $61.20 | Triple Biomaxed™ Magnesium (L-threonate, glycinate, taurate); 100mg elemental Mg |
-| Daily Radiance | Liposomal Vitamin C | ~$68 est. | 1,000mg sodium ascorbate + elderberry complex |
-| Vesper | Wellness aperitif | New launch | Functional beverage / social drinking category |
+| Nandaka | 長寿コーヒー代替 | $128 / $102 | アダプトゲン；カフェイン82mg |
+| B•T Fountain | 美容電解質 | $68 / $61.20 | リンゴ酸カルシウム、グリシン酸マグネシウム、フィトセラミド、ヒアルロン酸ナトリウム、ココナッツウォーター |
+| R•E Fountain | リラクゼーション電解質 | $68 / $61.20 | Triple Biomaxed™マグネシウム（L-スレオネート、グリシネート、タウレート）；元素マグネシウム100mg |
+| Daily Radiance | リポソーマルビタミンC | 推定〜$68 | アスコルビン酸ナトリウム1,000mg + エルダーベリーコンプレックス |
+| Vesper | ウェルネスアペリティフ | 新発売 | 機能性飲料／ソーシャルドリンクカテゴリ |
 
-**Accessories:** The Codex Sachet Holder ($88), Jade Gua Sha tools.
+**アクセサリー：** The Codex Sachet Holder（$88）、翡翠カッサツール。
 
-### Matcha in overall strategy
+### 全体戦略における抹茶の位置づけ
 
-Sun Goddess Matcha is unambiguously the **cornerstone product** — the brand's bestseller (3,638+ reviews), the entry point for new customers, the anchor of bundle protocols, and the content/education driver. It establishes premium positioning that lifts the entire portfolio. The Matcha Green Fasting Tea extends matcha into the metabolism/fasting niche at a lower price point ($50 vs. $68). The broader product evolution — from tea crystals to electrolytes, supplements, and a wellness aperitif — uses matcha's credibility as a launchpad.
+Sun Goddess Matchaは明確に**中核製品**である — ブランドのベストセラー（3,638件以上のレビュー）、新規顧客の入り口、バンドルプロトコルの軸、コンテンツ・教育ドライバー。プレミアムポジショニングを確立し、ポートフォリオ全体を引き上げている。Matcha Green Fasting Teaは抹茶を代謝・断食ニッチにより低い価格帯（$68対比$50）で展開。ティークリスタルから電解質、サプリメント、ウェルネスアペリティフへの製品拡張は、抹茶の信頼性をローンチパッドとして活用している。
 
-### Sales channels
+### 販売チャネル
 
-The business is **primarily DTC** through piquelife.com with a subscription-first model. Amazon carries multiple SKUs with Subscribe & Save (5% off). Retail presence includes **Whole Foods** (Northern California since September 2016) and potential expanded retail via the Albertsons Innovation Launchpad (top 10 winner out of 700 applicants). Products are also available on Walmart.com and Instacart.
+ビジネスは**主にDTC**（piquelife.com）でサブスクリプションファーストモデル。AmazonではSubscribe & Save（5%オフ）で複数SKUを展開。リテールは**Whole Foods**（2016年9月以降、北カリフォルニア）、Albertsons Innovation Launchpad（応募700社中トップ10入賞）を通じた拡大の可能性あり。Walmart.comおよびInstacartでも販売中。
 
-### Subscription model
+### サブスクリプションモデル
 
-| Tier | Discount | Perks |
+| ティア | 割引率 | 特典 |
 |------|----------|-------|
-| Single product subscription | **10% off** | Free shipping, "locked-in for life" pricing |
-| Custom bundle (2+ products) | **20% off** | Exclusive gifts |
+| 単品サブスクリプション | **10%オフ** | 送料無料、「生涯ロック価格」 |
+| カスタムバンドル（2製品以上） | **20%オフ** | 限定ギフト |
 
-Additional perks: skip/reschedule via text, reminder emails 2 days before shipment, early access to limited teas. The **"Pique Rewards"** loyalty program offers 5 points per purchase. Referral program: **give 12 free samples, get $70 credit**.
+追加特典：テキストでスキップ・リスケジュール可能、出荷2日前のリマインダーメール、限定ティーへの先行アクセス。**Pique Rewards**ロイヤルティプログラムは購入につき5ポイント付与。紹介プログラム：**無料サンプル12個贈呈、$70クレジット獲得**。
 
-### Social media and endorsement strategy
+### ソーシャルメディアとエンドースメント戦略
 
-| Platform | Handle | Followers |
+| プラットフォーム | ハンドル | フォロワー数 |
 |----------|--------|-----------|
 | TikTok | @pique | **218,400** |
-| Instagram | @piquetea | Active (exact count not confirmed) |
+| Instagram | @piquetea | アクティブ（正確な数は未確認） |
 | LinkedIn | Pique | **4,823** |
 
-Pique's influencer approach is uniquely **practitioner-heavy**: Dr. Mark Hyman (15× NYT bestselling author), Dr. Will Cole (functional medicine), Dr. Shereene Idriss and Dr. Whitney Bowe (dermatologists), Kelly LeVeque (holistic nutritionist), Luke Storey, and Dr. Jen Ashton all endorse or partner with the brand. This medical/expert endorsement strategy differentiates Pique from the typical influencer-driven playbook and reinforces premium pricing credibility.
+Piqueのインフルエンサー戦略は独自の**プラクティショナー（専門家）重視型**：Dr. Mark Hyman（NYTベストセラー15冊の著者）、Dr. Will Cole（機能性医学）、Dr. Shereene IdrissとDr. Whitney Bowe（皮膚科医）、Kelly LeVeque（ホリスティック栄養士）、Luke Storey、Dr. Jen Ashtonらがブランドのエンドースまたはパートナーとして参加。この医療・専門家エンドースメント戦略は、典型的なインフルエンサー主導のプレイブックとは異なり、プレミアム価格の正当性を強化している。
 
-### Target demographics
+### ターゲット顧客層
 
-The primary customer is a **health-conscious woman aged 25–45** interested in beauty-from-within, skin health, and clean wellness. A strong secondary segment includes biohackers, intermittent fasting practitioners, and functional medicine adherents. The premium pricing ($1.93–$2.43/serving for matcha alone) targets consumers who prioritize purity, organic sourcing, and toxin screening — and who are willing to pay significantly more for those assurances.
+主要顧客は**25〜45歳の健康意識の高い女性**で、ビューティーフロムウィズイン、肌の健康、クリーンウェルネスに関心がある。有力なセカンダリーセグメントにはバイオハッカー、間欠断食実践者、機能性医学支持者が含まれる。プレミアム価格（抹茶だけで$1.93〜$2.43/杯）は、純度、オーガニック調達、毒素スクリーニングを重視し、そのために大幅なプレミアムを支払う意思のある消費者をターゲットとしている。
 
 ---
 
-## Blume: matcha as the caffeinated anchor of a superfood latte world
+## Blume：スーパーフードラテ世界におけるカフェイン入りの軸としての抹茶
 
 > **📊 推定売上高: ~$7-10M（8桁CAD・2024年初達成）** | 模倣可能性: 38/50（★★ 模倣しやすい） | 信頼度: 中（公開データ。5年間ブートストラップ→$2M CAD調達）
 > $1/杯のラテブレンド×4,000+小売店。学ぶべき企業TOP5の4位。カリナリーグレード×ブレンドで低コスト×高マージンを実現
 
-### Company profile and founder
+### 会社概要と創業者
 
-Blume was founded in 2017 in Vancouver, Canada by **Karen Danudjaja**, who left a career in commercial real estate after experiencing jitters, poor sleep, disrupted digestion, and hormonal issues from excessive coffee consumption during client meetings. Unable to find flavorful, healthy coffee alternatives, she launched Blume's first product — a turmeric latte blend — at a single smoothie shop on Hornby Street in Vancouver. She initially co-founded the company with a partner ("Ella") who handled design and branding, but bought out her co-founder in 2020 at the onset of the pandemic, investing all her personal savings as Blume's café business collapsed. Danudjaja's Indonesian heritage and her father's childhood introduction to superfoods inform the brand's wellness ethos.
+Blumeは2017年にカナダ・バンクーバーで**カレン・ダヌジャジャ（Karen Danudjaja）**によって設立された。商業不動産のキャリアを離れたきっかけは、顧客との打ち合わせ中の過剰なコーヒー摂取によるジッター、睡眠不良、消化不良、ホルモン異常の経験。美味しくて健康的なコーヒー代替品が見つからず、Blumeの最初の製品 — ターメリックラテブレンド — をバンクーバーのホーンビーストリートの1軒のスムージーショップで販売開始。当初はデザインとブランディング担当の共同創業者（「Ella」）と共に創業したが、パンデミック発生時の2020年にBlume のカフェ事業が崩壊する中、共同創業者の持分を買い取り、全私財を投入。ダヌジャジャのインドネシアの血統と、父親の幼少期のスーパーフード体験がブランドのウェルネス精神の基盤となっている。
 
-### Revenue and funding
+### 売上と資金調達
 
-| Metric | Detail |
+| 指標 | 詳細 |
 |--------|--------|
-| Funding raised | **$2M CAD** (July 2022; oversubscribed in 5 weeks) |
-| Lead investor | Fulmer & Company |
-| Notable angels | Judy Brooks (SmartSweets), Ethan Song (Frank & Oak), Mike Fata (Manitoba Harvest) |
-| 2022 revenue | ~$7.5M |
-| 2024 revenue | **First eight-figure year achieved** (CAD); 50% YoY growth |
-| Revenue split | ~50% DTC / ~50% wholesale |
-| Retail footprint | **4,000+ stores** across North America |
-| Growth trajectory | 300% sales growth in 2020 → 30% YoY (early 2024) → **50% YoY** (mid-2024) |
+| 調達額 | **$2M CAD**（2022年7月；5週間でオーバーサブスクライブ） |
+| リード投資家 | Fulmer & Company |
+| 著名エンジェル | Judy Brooks（SmartSweets）、Ethan Song（Frank & Oak）、Mike Fata（Manitoba Harvest） |
+| 2022年売上 | 〜$7.5M |
+| 2024年売上 | **初の8桁（CAD）達成**；50% YoY成長 |
+| 売上構成 | 〜50% DTC / 〜50% 卸売 |
+| リテール展開 | 北米**4,000店舗以上** |
+| 成長推移 | 2020年に売上300%成長 → 30% YoY（2024年初頭）→ **50% YoY**（2024年中期） |
 
-The company was bootstrapped for its first five years and was already cash-positive when it raised its $2M CAD round, which Danudjaja described as "strategic capital."
+同社は最初の5年間をブートストラップで運営し、$2M CADの調達時点で既にキャッシュポジティブだった。ダヌジャジャはこれを「戦略的資本」と表現している。
 
-### Matcha Coconut: the flagship product
+### Matcha Coconut：フラッグシップ製品
 
-| Attribute | Detail |
+| 属性 | 詳細 |
 |-----------|--------|
-| Format | 100g (3.5 oz) resealable pouch; micro-ground powder |
-| Servings | 25 per pouch |
-| One-time price (USD) | $25.00 |
-| Subscription price (USD) | $22.50 (10% off) |
-| Amazon price | $24.98 / $19.98 Subscribe & Save (20% off) |
-| Per-serving cost | **~$0.90–$1.00** |
-| Reviews | 1,164 (83% five-star) |
-| Position | **#1 bestseller** across the entire product range |
+| フォーマット | 100g（3.5 oz）再封可能パウチ；マイクログラウンドパウダー |
+| 回数 | 1パウチ25回分 |
+| 通常価格（USD） | $25.00 |
+| サブスク価格（USD） | $22.50（10%オフ） |
+| Amazon価格 | $24.98 / $19.98 Subscribe & Save（20%オフ） |
+| 1杯あたりコスト | **〜$0.90〜$1.00** |
+| レビュー数 | 1,164件（83%が5つ星） |
+| ポジション | 全製品ラインナップ中**#1ベストセラー** |
 
-**Ingredients (all organic):** Organic matcha powder, organic coconut milk powder (coconut milk, tapioca maltodextrin), organic moringa leaf powder. That's it — just three core ingredients.
+**原材料（すべてオーガニック）：** オーガニック抹茶パウダー、オーガニックココナッツミルクパウダー（ココナッツミルク、タピオカマルトデキストリン）、オーガニックモリンガリーフパウダー。以上 — たった3つのコア原材料。
 
-**Matcha sourcing:** **Culinary grade** matcha from the **Shizuoka region, Japan** (organically grown, stone-ground, hand-picked). Caffeine content: approximately **65mg per serving**. This is notably a culinary rather than ceremonial grade — a practical choice keeping costs down for a blended product where matcha flavor mingles with coconut and moringa.
+**抹茶の調達先：** 日本の**静岡県**産**カリナリーグレード**（オーガニック栽培、石臼挽き、手摘み）。カフェイン含有量：約**65mg/杯**。ブレンド製品でありココナッツやモリンガと風味が混ざるため、セレモニアルグレードではなくカリナリーグレードを選択しているのは、コスト削減の実用的な判断と言える。
 
-**Health claims for Matcha Coconut:** Sustained energy without jitters or crash; antioxidant-rich EGCG polyphenols; L-theanine for calm focus; moringa as "nature's multivitamin" (15× more potassium than bananas); coconut milk's magnesium for relaxation; anti-inflammatory properties; metabolism and immune support; **98% less sugar** than leading coffee shop brands.
+**Matcha Coconutの健康効果訴求：** ジッターやクラッシュのない持続的エナジー；抗酸化物質EGCGポリフェノール豊富；L-テアニンによる穏やかな集中力；モリンガは「自然のマルチビタミン」（バナナの15倍のカリウム）；ココナッツミルクのマグネシウムによるリラクゼーション；抗炎症作用；代謝・免疫サポート；大手コーヒーチェーンブランド比**糖分98%カット**。
 
-**Preparation:** Mix 1–2 teaspoons with a splash of boiling water, sweeten to taste, add 1 cup hot frothed milk (or iced). Also works in smoothies, oatmeal, yogurt, and baked goods.
+**作り方：** ティースプーン1〜2杯に沸騰したお湯を少量加え、お好みで甘みを足し、1カップの温かいフロスミルク（またはアイス）を加える。スムージー、オートミール、ヨーグルト、ベイキングにも使用可能。
 
-### Full product catalog
+### 全製品カタログ
 
-**Superfood latte blends (core line — all $25.00 USD / $22.50 subscription, 100g, 25 servings):**
+**スーパーフードラテブレンド（コアライン — すべてUSD $25.00 / サブスク$22.50、100g、25回分）：**
 
-| Blend | Benefit Tag | Key Ingredients | Caffeine |
+| ブレンド名 | 効能タグ | 主要成分 | カフェイン |
 |-------|-------------|-----------------|----------|
-| **Matcha Coconut** | Energize | Matcha, coconut milk, moringa | 65mg |
-| Reishi Hot Cacao | Chill | Cacao, reishi mushroom, cinnamon | Low |
-| Blue Lavender | Dream | Coconut milk, coconut sugar, lavender, blue spirulina | None |
-| Salted Caramel | Balance | Dandelion, maca root, mesquite, dates | Low/None |
-| Turmeric | Restore | Turmeric, cinnamon, ginger, black pepper | None |
-| Beetroot | Recover | Beetroot, cinnamon, ginger, cloves | None |
+| **Matcha Coconut** | エナジャイズ | 抹茶、ココナッツミルク、モリンガ | 65mg |
+| Reishi Hot Cacao | チル | カカオ、霊芝マッシュルーム、シナモン | 少量 |
+| Blue Lavender | ドリーム | ココナッツミルク、ココナッツシュガー、ラベンダー、ブルースピルリナ | なし |
+| Salted Caramel | バランス | ダンデライオン、マカルート、メスキート、デーツ | 少量/なし |
+| Turmeric | リストア | ターメリック、シナモン、ジンジャー、ブラックペッパー | なし |
+| Beetroot | リカバー | ビートルート、シナモン、ジンジャー、クローブ | なし |
 
-Limited editions and seasonal variants have included Birthday Cake, Oat Milk Chai, Rose London Fog, and Pumpkin Spice.
+限定版・季節限定バリエーションにはBirthday Cake、Oat Milk Chai、Rose London Fog、Pumpkin Spiceなどがある。
 
-**Latte bundles:**
+**ラテバンドル：**
 
-| Bundle | Contents | Price (USD) | Savings |
+| バンドル名 | 内容 | 価格（USD） | 割引率 |
 |--------|----------|-------------|---------|
-| Best(sellers) of Both Worlds | 2 blends | $65.60 | 20% off |
-| Bestsellers Bundle | 4 blends (Matcha Coconut, Blue Lavender, Salted Caramel, Reishi) | $80.00 | 20% off |
-| The All Day Bundle | 3 blends (Matcha, Beetroot, Blue Lavender) | $65.00 | ~13% off |
-| Caffeine-Free OG's | 3 blends + frother | $85.00 | 15% off |
+| Best(sellers) of Both Worlds | 2ブレンド | $65.60 | 20%オフ |
+| Bestsellers Bundle | 4ブレンド（Matcha Coconut、Blue Lavender、Salted Caramel、Reishi） | $80.00 | 20%オフ |
+| The All Day Bundle | 3ブレンド（Matcha、Beetroot、Blue Lavender） | $65.00 | 約13%オフ |
+| Caffeine-Free OG's | 3ブレンド + フローサー | $85.00 | 15%オフ |
 
-**SuperBelly line (gut health hydration — launched February 2024):** Single-serve sachets (4g), mixed with cold water. Four flavors: Strawberry Hibiscus, Açai Pomegranate, Lemon Ginger, Mango Passion Fruit — all at **$32.00 USD** per box. Key ingredients include prebiotics (inulin), apple cider vinegar, *Bacillus coagulans* GBI-30 6086® probiotic (1 billion CFU/serving), electrolytes, and trace minerals. The SuperBelly line **sold out twice** in early 2024 (3 months of inventory gone in under 2 weeks, 20,000+ units) and is growing at **110% YoY**.
+**SuperBellyライン（腸内健康ハイドレーション — 2024年2月発売）：** 個包装サシェ（4g）、冷水に混ぜて使用。4フレーバー：ストロベリーハイビスカス、アサイーポメグラネイト、レモンジンジャー、マンゴーパッションフルーツ — すべて**$32.00 USD/箱**。主要成分にはプレバイオティクス（イヌリン）、アップルサイダービネガー、*Bacillus coagulans* GBI-30 6086®プロバイオティクス（10億CFU/杯）、電解質、微量ミネラルを含む。SuperBellyラインは2024年初頭に**2度完売**（3ヶ月分の在庫が2週間以内に消化、20,000ユニット以上）し、**110% YoY**で成長中。
 
-**Accessories:** Handheld milk frother, glass mugs, gift cards.
+**アクセサリー：** ハンドヘルドミルクフローサー、グラスマグ、ギフトカード。
 
-### Matcha in Blume's product strategy
+### Blumeの製品戦略における抹茶の位置づけ
 
-Matcha Coconut is the **only meaningfully caffeinated product** in the core lineup (~65mg caffeine; all others are caffeine-free or negligible). This creates a natural "gateway product" dynamic: customers discover Blume through the matcha blend as a coffee replacement, then expand into caffeine-free blends for afternoon and evening. The brand explicitly markets an "All Day Bundle" framework: matcha for morning energy → beetroot for afternoon recovery → blue lavender for evening wind-down. Matcha Coconut appears in 3 of 4 latte bundles and was one of only two flavors selected for the Whole Foods launch (alongside Reishi Hot Chocolate) and one of four for Target.
+Matcha Coconutはコアラインナップ中**唯一の有意なカフェイン含有製品**（カフェイン約65mg；他は全てカフェインフリーまたは微量）。これにより自然な「ゲートウェイ製品」のダイナミクスが生まれる：顧客はコーヒー代替としてまず抹茶ブレンドでBlumeを発見し、その後午後・夜用のカフェインフリーブレンドへと広がる。ブランドは「All Day Bundle」フレームワークを明示的にマーケティング：朝のエナジーに抹茶 → 午後のリカバリーにビートルート → 夜のリラックスにブルーラベンダー。Matcha Coconutは4つのラテバンドル中3つに含まれ、Whole Foods展開（Reishi Hot Chocolateと並ぶ2フレーバーの1つ）およびTarget展開（4フレーバー中の1つ）にも選ばれている。
 
-### Sales channels
+### 販売チャネル
 
-**DTC (itsblume.com):** Shopify-based with CAD and USD regional storefronts. A separate wholesale portal exists at wholesale.itsblume.com. DTC represents approximately **50% of revenue**.
+**DTC（itsblume.com）：** ShopifyベースでCADとUSDのリージョナルストアフロントを運営。wholesale.itsblume.comに独立した卸売ポータルも存在。DTCは売上の約**50%**を占める。
 
-**Major retail partners (4,000+ doors):**
+**主要リテールパートナー（4,000店舗以上）：**
 
-| Retailer | Market | Launch | Details |
+| 小売業者 | 市場 | 開始時期 | 詳細 |
 |----------|--------|--------|---------|
-| **Target** | US | Feb 2024 | Nationwide; 4 core flavors + expanded online |
-| **Whole Foods** | US | June 2024 | 270 stores; Matcha Coconut + Reishi |
-| **Sprouts** | US | Summer 2024 | — |
-| **Loblaws** | Canada | May 2023 | 400 stores nationwide |
-| **Whole Foods Canada** | Canada | Earlier | 14 stores initially |
-| Erewhon, Anthropologie, Nordstrom, Grove | US | Various | Premium/lifestyle channels |
-| Indigo, Healthy Planet, Well.ca | Canada | Various | Online + retail |
+| **Target** | 米国 | 2024年2月 | 全国展開；コア4フレーバー + オンライン拡大 |
+| **Whole Foods** | 米国 | 2024年6月 | 270店舗；Matcha Coconut + Reishi |
+| **Sprouts** | 米国 | 2024年夏 | — |
+| **Loblaws** | カナダ | 2023年5月 | 全国400店舗 |
+| **Whole Foods Canada** | カナダ | より早期 | 初期14店舗 |
+| Erewhon、Anthropologie、Nordstrom、Grove | 米国 | 各時期 | プレミアム／ライフスタイルチャネル |
+| Indigo、Healthy Planet、Well.ca | カナダ | 各時期 | オンライン＋リテール |
 
-**Amazon US:** Available at $24.98 one-time / $19.98 Subscribe & Save (20% off). Multiple SKUs listed. Café partnerships include Fresh Kitchen & Juice Bar (8 locations in Ontario) which co-created a Blume-infused smoothie. The brand originated in café/smoothie shop wholesale before pivoting to DTC during the pandemic.
+**Amazon US：** $24.98（通常）/ $19.98 Subscribe & Save（20%オフ）で販売。複数SKUを展開。カフェパートナーシップにはFresh Kitchen & Juice Bar（オンタリオ州8店舗）があり、Blumeを使用したスムージーを共同開発。ブランドはパンデミック中にDTCへピボットする前、カフェ／スムージーショップの卸売が原点だった。
 
-### Subscription and loyalty
+### サブスクリプションとロイヤルティ
 
-Latte blends: **10% off** subscription ($22.50 vs. $25.00). SuperBelly: **20% off** via Starter Kit, with escalating gifts at 3rd, 5th, and 7th orders (valued at $70+), free shaker cup, free shipping, and a complimentary wellness/Pilates membership. Amazon Subscribe & Save offers 20% off. Referral: "Give $10, Get $10." Free shipping on orders $50+. 30-day "Perfect Sip Promise" money-back guarantee. US orders are tariff-free and duty-free.
+ラテブレンド：サブスクリプションで**10%オフ**（$22.50 vs $25.00）。SuperBelly：スターターキットで**20%オフ**、3回目・5回目・7回目の注文時にエスカレーティングギフト（合計$70+相当）、無料シェイカーカップ、送料無料、ウェルネス／ピラティスメンバーシップ無料。Amazon Subscribe & Saveは20%オフ。紹介：「$10贈呈、$10獲得」。$50以上で送料無料。30日間「Perfect Sip Promise」返金保証。米国注文は関税・通関税無料。
 
-### Social media and marketing
+### ソーシャルメディアとマーケティング
 
-| Platform | Handle | Followers |
+| プラットフォーム | ハンドル | フォロワー数 |
 |----------|--------|-----------|
 | Instagram | @itsblume | **159,000** |
 | TikTok | @itsblume | **10,600** |
 | LinkedIn | Blume | **12,118** |
 | Threads | @itsblume | **22,600** |
 
-Blume runs an Ambassador program and relies heavily on UGC-driven content ("Show Us How You Blume"). Influencer partners span health/wellness creators and registered holistic nutritionists. Press coverage includes Canadian Grocer, Canadian Business, Modern Retail, BevNET, Female Startup Club ("How to Bootstrap to $10M in Sales"), and Female Founder World. The brand claims **350,000+ customers**.
+Blumeはアンバサダープログラムを運営し、UGC主導のコンテンツ（「Show Us How You Blume」）に大きく依存。インフルエンサーパートナーはヘルス＆ウェルネスクリエイターや登録ホリスティック栄養士が中心。メディア掲載にはCanadian Grocer、Canadian Business、Modern Retail、BevNET、Female Startup Club（「ブートストラップで$10M売上を達成する方法」）、Female Founder Worldがある。ブランドは**350,000人以上の顧客**を有すると主張。
 
-### Target demographics
+### ターゲット顧客層
 
-The primary customer is a **woman aged 25–45**, health-conscious, active (yoga, Pilates, barre), plant-based or plant-curious, and seeking convenient at-home wellness beverages. Key pain points: caffeine sensitivity and jitters, sugar overload from coffee shop lattes, desire for convenient café-quality drinks at under $1/serving, pregnancy or breastfeeding-safe options, and a general preference for "progress over perfection" wellness. The brand aesthetic is colorful, playful, and deliberately inclusive — "no guilting, fad diets or shaming here."
+主要顧客は**25〜45歳の女性**で、健康意識が高く、アクティブ（ヨガ、ピラティス、バレ）、植物ベースまたは植物ベースに関心あり、便利な自宅用ウェルネス飲料を求めている。主要ペインポイント：カフェイン過敏とジッター、コーヒーショップラテの糖質過多、1杯$1以下でカフェクオリティのドリンクを自宅で楽しみたい、妊娠中・授乳中でも安心な選択肢、「完璧より進歩」のウェルネス志向。ブランドの美学はカラフル、遊び心があり、意図的にインクルーシブ — 「罪悪感、ダイエット流行、恥ずかしさはなし」。
 
-### Certifications
+### 認証
 
-USDA Organic, vegan, gluten-free, refined sugar-free, keto-friendly, plant-based, plastic neutral, women-owned, third-party tested, formulated with nutritional experts.
+USDA Organic、ヴィーガン、グルテンフリー、精製糖不使用、ケトフレンドリー、植物ベース、プラスチックニュートラル、女性オーナー、第三者機関テスト済み、栄養専門家が処方。
 
 ---
 
-## Comparative analysis across five dimensions
+## 5つの軸での比較分析
 
-### 1. Product format and matcha delivery
+### 1. 製品フォーマットと抹茶の提供方法
 
-| Dimension | Apothékary | Pique Life | Blume |
+| 次元 | Apothékary | Pique Life | Blume |
 |-----------|-----------|------------|-------|
-| Primary matcha format | Powder blend (being discontinued) | Crystallized single-serve sachets + loose tin | Powder blend (superfood latte) |
-| Matcha purity | Blended with ginseng, chlorella, pea protein | **100% pure ceremonial matcha** (single ingredient) | Blended with coconut milk, moringa |
-| Matcha grade | Organic Japanese (unspecified grade) | Organic ceremonial grade, first harvest | **Culinary grade**, Shizuoka |
-| Other product formats | Liquid tinctures (core), powders (legacy) | Tea crystals, electrolytes, supplements, accessories | Powder lattes, single-serve gut health sachets |
-| Technology differentiation | None for matcha | **Cold Crystallization (18 patents), quadruple toxin screening** | None — standard stone-ground |
+| 主要抹茶フォーマット | パウダーブレンド（廃止中） | クリスタル化個包装サシェ + ルース缶 | パウダーブレンド（スーパーフードラテ） |
+| 抹茶の純度 | 人参、クロレラ、ピープロテインとブレンド | **100%純セレモニアル抹茶**（単一原料） | ココナッツミルク、モリンガとブレンド |
+| 抹茶の等級 | オーガニック日本産（等級未特定） | オーガニックセレモニアルグレード、一番茶 | **カリナリーグレード**、静岡産 |
+| その他製品フォーマット | リキッドチンキ剤（主力）、パウダー（レガシー） | ティークリスタル、電解質、サプリメント、アクセサリー | パウダーラテ、個包装腸内健康サシェ |
+| 技術的差別化 | 抹茶に関してはなし | **Cold Crystallization（特許18件）、4重毒素スクリーニング** | なし — 標準的な石臼挽き |
 
-### 2. Sales channels and distribution
+### 2. 販売チャネルと流通
 
-| Channel | Apothékary | Pique Life | Blume |
+| チャネル | Apothékary | Pique Life | Blume |
 |---------|-----------|------------|-------|
-| Own EC (primary) | Yes | Yes (primary channel) | Yes (~50% of revenue) |
-| Amazon | Yes (Subscribe & Save) | Yes (Subscribe & Save) | Yes (20% S&S discount) |
-| Whole Foods | Yes (2025, expanding) | Yes (NorCal since 2016) | Yes (270 US stores, June 2024) |
-| Target | Not confirmed | Accelerator alumni | Yes (nationwide, Feb 2024) |
-| Sprouts | Yes (400+ stores) | Not confirmed | Yes (summer 2024) |
-| Ulta Beauty | Yes (first alcohol-alt brand) | No | No |
-| Loblaws (Canada) | No | No | Yes (400 stores) |
-| Total retail doors | Projecting 1,700+ (2026) | Limited retail | **4,000+** |
-| Wholesale platform | Faire marketplace | Affiliate program | Dedicated wholesale site |
-| B2B/wholesale | wholesale@apothekary.co | Pique Partner affiliate (10% commission) | wholesale.itsblume.com + café partnerships |
+| 自社EC（主力） | あり | あり（主力チャネル） | あり（売上の約50%） |
+| Amazon | あり（Subscribe & Save） | あり（Subscribe & Save） | あり（20% S&S割引） |
+| Whole Foods | あり（2025年、拡大中） | あり（2016年以降、北カリフォルニア） | あり（米国270店舗、2024年6月） |
+| Target | 未確認 | アクセラレーター卒業生 | あり（全国展開、2024年2月） |
+| Sprouts | あり（400店舗以上） | 未確認 | あり（2024年夏） |
+| Ulta Beauty | あり（初のアルコール代替ブランド） | なし | なし |
+| Loblaws（カナダ） | なし | なし | あり（400店舗） |
+| 合計リテール拠点 | 2026年に1,700+を予定 | 限定的 | **4,000+** |
+| 卸売プラットフォーム | Faireマーケットプレイス | アフィリエイトプログラム | 専用卸売サイト |
+| B2B/卸売 | wholesale@apothekary.co | Pique Partnerアフィリエイト（10%コミッション） | wholesale.itsblume.com + カフェパートナーシップ |
 
-### 3. Target customers and positioning
+### 3. ターゲット顧客とポジショニング
 
-| Dimension | Apothékary | Pique Life | Blume |
+| 次元 | Apothékary | Pique Life | Blume |
 |-----------|-----------|------------|-------|
-| Primary demographic | Women 25–45, sober-curious, burnout recovery | Women 25–45, beauty-from-within, purity-focused | Women 25–45, caffeine-sensitive, plant-curious |
-| Secondary segment | Gut health, hormonal balance seekers | Biohackers, intermittent fasters | Pregnant/nursing, convenience seekers |
-| Brand archetype | Japanese heritage × Wall Street credibility | Science × ancient wisdom × medical authority | Accessible, colorful, inclusive wellness |
-| Key differentiator | Cultural authenticity + alcohol alternatives | Toxin screening + patented technology + MD endorsements | Taste + affordability + fun branding |
-| Income targeting | Upper-middle ($39/bottle) | Premium ($68–$75/matcha unit) | Mid-range ($25/pouch) |
+| 主要デモグラフィック | 女性25〜45歳、ソバーキュリアス、バーンアウト回復 | 女性25〜45歳、ビューティーフロムウィズイン、純度重視 | 女性25〜45歳、カフェイン過敏、植物ベース志向 |
+| セカンダリーセグメント | 腸内健康、ホルモンバランス追求者 | バイオハッカー、間欠断食実践者 | 妊娠中・授乳中、利便性追求者 |
+| ブランドアーキタイプ | 日本の文化遺産 × ウォールストリートの信頼性 | 科学 × 古代の知恵 × 医療権威 | アクセシブル、カラフル、インクルーシブなウェルネス |
+| 主要差別化要素 | 文化的オーセンティシティ + アルコール代替 | 毒素スクリーニング + 特許技術 + 医師エンドースメント | 味 + 手頃な価格 + 楽しいブランディング |
+| 所得ターゲティング | 上位中（$39/本） | プレミアム（$68〜$75/抹茶ユニット） | ミドルレンジ（$25/パウチ） |
 
-### 4. Price ranges and per-serving economics
+### 4. 価格帯と1杯あたりの経済性
 
-| Product/Metric | Apothékary | Pique Life | Blume |
+| 製品・指標 | Apothékary | Pique Life | Blume |
 |----------------|-----------|------------|-------|
-| Matcha per-serving (subscription) | $0.98 (Slay All Day at clearance) | **$1.93–$2.19** | **$0.90** |
-| Matcha per-serving (one-time) | $1.95 (at clearance) / $1.95 (original) | $2.14–$2.43 | $1.00 |
-| Core product price range | $25–$44 (tinctures) | $45–$128 | $22.50–$32.00 |
-| Subscription discount | 15% | 10% (single) / 20% (bundles) | 10% (lattes) / 20% (SuperBelly) |
-| Bundle savings range | 21–33% | 20% | 13–20% |
-| Most expensive single SKU | $44.00 (Every Phase) | $128.00 (Nandaka) | $32.00 (SuperBelly) |
-| Price-per-serving premium vs. Blume | ~1× (at clearance) | **~2.2× more expensive** | Baseline |
+| 抹茶1杯あたり（サブスク） | $0.98（Slay All Day セール価格） | **$1.93〜$2.19** | **$0.90** |
+| 抹茶1杯あたり（通常） | $1.95（セール価格）/ $1.95（定価） | $2.14〜$2.43 | $1.00 |
+| コア製品価格帯 | $25〜$44（チンキ剤） | $45〜$128 | $22.50〜$32.00 |
+| サブスク割引率 | 15% | 10%（単品）/ 20%（バンドル） | 10%（ラテ）/ 20%（SuperBelly） |
+| バンドル割引率 | 21〜33% | 20% | 13〜20% |
+| 最高額単品SKU | $44.00（Every Phase） | $128.00（Nandaka） | $32.00（SuperBelly） |
+| Blume対比の1杯あたりプレミアム | 約1倍（セール価格時） | **約2.2倍高い** | ベースライン |
 
-### 5. Matcha positioning: flagship vs. ingredient vs. fading
+### 5. 抹茶のポジショニング：主力 vs 原材料 vs 衰退
 
-| Company | Matcha Role | Strategic Direction |
+| 企業 | 抹茶の役割 | 戦略的方向性 |
 |---------|------------|-------------------|
-| **Apothékary** | **Fading ingredient** — matcha products are being discontinued as the brand pivots entirely to tinctures | Matcha served its purpose as an early bridge between Japanese heritage and consumer-friendly energy products; the brand has moved on to liquid herbal drops with higher margins and better retail presence |
-| **Pique Life** | **Absolute flagship** — Sun Goddess Matcha is the brand's cornerstone, bestseller, entry-point product, and credibility anchor | Matcha IS the brand identity; all other products (electrolytes, supplements, coffee alternatives) radiate outward from matcha's premium positioning |
-| **Blume** | **Flagship within portfolio** — Matcha Coconut is the #1 SKU but one of six core blends, plus a separate gut health line | Matcha is the caffeinated "hook" that draws customers in, who then expand into the caffeine-free latte ecosystem and the newer SuperBelly line |
+| **Apothékary** | **衰退する原材料** — ブランド全体がチンキ剤にピボットする中、抹茶製品は廃止されつつある | 抹茶は日本の文化遺産と消費者向けエナジー製品をつなぐ初期の架け橋として機能した；ブランドはより高マージンでリテール棚への存在感が強いリキッドハーブドロップへ移行済み |
+| **Pique Life** | **絶対的主力** — Sun Goddess Matchaはブランドの中核、ベストセラー、入門製品、信頼性の軸 | 抹茶＝ブランドアイデンティティそのもの；他の全製品（電解質、サプリメント、コーヒー代替）は抹茶のプレミアムポジショニングから放射状に展開 |
+| **Blume** | **ポートフォリオ内の主力** — Matcha Coconutは#1 SKUだが、6つのコアブレンドの1つであり、別の腸内健康ラインも展開 | 抹茶はカフェイン入りの「フック」として顧客を引き込み、その後カフェインフリーのラテエコシステムや新しいSuperBellyラインへと広がる |
 
 ---
 
-## The matcha wellness market reflects three viable but divergent strategies
+## 抹茶ウェルネス市場は3つの実行可能だが分岐する戦略を示している
 
-These three companies illustrate that matcha's value in the North American wellness market is highly context-dependent. **Pique Life treats matcha as a premium, technology-differentiated hero product** worthy of $2+ per serving, using purity claims, patented extraction, quadruple toxin screening, and doctor endorsements to justify a price point roughly 2× higher than competitors. **Blume treats matcha as an accessible, everyday coffee replacement** at roughly $1 per serving, wrapped in playful branding and blended with complementary superfoods to lower the barrier to entry. **Apothékary treated matcha as a culturally authentic but ultimately replaceable ingredient** — useful for the brand's early powder era but now ceding ground to tinctures that better fit the company's evolving identity and margin structure.
+これら3社は、北米ウェルネス市場における抹茶の価値が極めてコンテキスト依存的であることを示している。**Pique Lifeは抹茶をプレミアムで技術差別化されたヒーロー製品**として$2+/杯に相応しいものと位置づけ、純度訴求、特許抽出技術、4重毒素スクリーニング、医師エンドースメントによって競合の約2倍の価格を正当化している。**Blumeは抹茶をアクセシブルな日常のコーヒー代替品**として約$1/杯で展開し、遊び心のあるブランディングと補完的スーパーフードとのブレンドで参入障壁を下げている。**Apothékaryは抹茶を文化的にオーセンティックだが最終的には代替可能な原材料**として扱った — ブランドの初期パウダー時代には有用だったが、現在は進化するアイデンティティとマージン構造により適合するチンキ剤にその座を譲っている。
 
-The most striking finding is that revenue scale does not correlate with matcha centrality. Apothékary, the highest-revenue company at **$35M+**, is the one abandoning matcha. Blume, which recently crossed eight figures, depends on matcha as its bestselling gateway product. And Pique, with the most matcha-centric identity, has the smallest estimated revenue at ~$9.4M — though its premium pricing and DTC-first model likely deliver stronger per-unit margins. For any company evaluating a matcha-based wellness strategy, these three trajectories suggest that matcha can serve as a permanent brand anchor, a portfolio entry point, or a transitional ingredient — but the choice must align tightly with product format, pricing architecture, and long-term brand vision.
+最も注目すべき発見は、**売上規模と抹茶の中心性が相関しないこと**である。最も売上の高いApothékary（**$35M+**）が抹茶を廃止している企業であり、直近で8桁に到達したBlumeはベストセラーのゲートウェイ製品として抹茶に依存している。そして最も抹茶中心のアイデンティティを持つPiqueは推定売上〜$9.4Mと最も小さい — ただし、プレミアム価格とDTCファーストモデルにより、1ユニットあたりのマージンはより強い可能性が高い。抹茶ベースのウェルネス戦略を評価する企業にとって、これら3つの軌跡は、抹茶が永続的なブランドの軸にも、ポートフォリオの入り口にも、過渡的な原材料にもなり得ることを示唆しているが、その選択は製品フォーマット、価格設計、長期的なブランドビジョンと緊密に整合する必要がある。
