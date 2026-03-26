@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>缶デザイン 3Dビューワー</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f2f0ed;
+      color: #333;
+      overflow: hidden;
+    }
+    #canvas-container { width: 100vw; height: 100vh; position: relative; }
+    canvas { display: block; }
+
+    #controls {
+      position: absolute; top: 20px; right: 20px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 16px; padding: 24px; width: 280px;
+      font-size: 13px; color: #333;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    }
+    #controls h2 { font-size: 15px; margin-bottom: 20px; font-weight: 600; letter-spacing: 0.3px; }
+    .control-group { margin-bottom: 16px; }
+    .control-group label {
+      display: block; margin-bottom: 6px; color: #999;
+      font-size: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 500;
+    }
+    .control-group input[type="color"] {
+      width: 100%; height: 36px; border: 1px solid #e0e0e0;
+      border-radius: 8px; cursor: pointer; background: transparent; padding: 2px;
+    }
+    .control-group input[type="range"] { width: 100%; accent-color: #2d5a3a; }
+    .control-group select {
+      width: 100%; padding: 8px 10px; background: #fff; color: #333;
+      border: 1px solid #e0e0e0; border-radius: 8px; font-size: 13px; cursor: pointer;
+    }
+    .btn-row { display: flex; gap: 8px; margin-top: 16px; }
+    .btn {
+      flex: 1; padding: 10px 12px; background: #fff; color: #555;
+      border: 1px solid #e0e0e0; border-radius: 8px; cursor: pointer;
+      font-size: 11px; font-weight: 500; text-align: center; transition: all 0.2s ease;
+    }
+    .btn:hover { background: #f5f5f5; border-color: #ccc; }
+    .btn.active { background: #2d5a3a; color: #fff; border-color: #2d5a3a; }
+
+    #dimensions {
+      position: absolute; bottom: 20px; left: 20px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 12px; padding: 14px 18px; font-size: 12px; color: #999;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+    #dimensions span { color: #333; font-weight: 600; }
+
+    #help {
+      position: absolute; bottom: 20px; right: 20px;
+      background: rgba(255,255,255,0.8);
+      border-radius: 8px; padding: 10px 14px; font-size: 11px; color: #bbb;
+    }
+
+    #structure-labels {
+      position: absolute; top: 20px; left: 20px; pointer-events: none;
+      transition: opacity 0.5s; opacity: 0;
+    }
+    #structure-labels.visible { opacity: 1; }
+    .struct-label {
+      background: rgba(255,255,255,0.92); backdrop-filter: blur(10px);
+      border: 1px solid rgba(0,0,0,0.08); border-radius: 8px;
+      padding: 8px 14px; margin-bottom: 8px; font-size: 11px; color: #555;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .struct-label strong { color: #2d5a3a; }
+
+    .text-input {
+      width: 100%; padding: 8px 10px; background: #fff; color: #333;
+      border: 1px solid #e0e0e0; border-radius: 8px; font-size: 13px;
+      outline: none; transition: border-color 0.2s;
+    }
+    .text-input:focus { border-color: #2d5a3a; }
+  </style>
+</head>
+<body>
+  <div id="canvas-container"></div>
+
+  <div id="structure-labels">
+    <div class="struct-label"><strong>外蓋</strong> — ブランドデザイン面（被せ式）</div>
+    <div class="struct-label"><strong>内蓋</strong> — パッキン密封 + 茶杓マグネットマウント</div>
+    <div class="struct-label"><strong>茶杓</strong> — ステンレス製 / 1すくい=2g</div>
+    <div class="struct-label"><strong>本体</strong> — 抹茶30g収納</div>
+  </div>
+
+  <div id="controls">
+    <h2>缶デザイン設定</h2>
+    <div class="control-group">
+      <label>缶の色</label>
+      <input type="color" id="canColor" value="#2d5a3a">
+    </div>
+    <div class="control-group">
+      <label>蓋の色</label>
+      <input type="color" id="lidColor" value="#2d5a3a">
+    </div>
+    <div class="control-group">
+      <label>仕上げ</label>
+      <select id="finish">
+        <option value="matte">マット</option>
+        <option value="glossy">グロス</option>
+        <option value="brushed">ヘアライン</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <label>缶の直径 (cm)</label>
+      <input type="range" id="diameter" min="8" max="9" step="0.1" value="8.5">
+      <span id="diameterVal" style="font-size:11px; color:#999;">8.5cm</span>
+    </div>
+    <div class="control-group">
+      <label>缶の高さ (cm)</label>
+      <input type="range" id="height" min="8" max="10" step="0.1" value="9">
+      <span id="heightVal" style="font-size:11px; color:#999;">9.0cm</span>
+    </div>
+    <div class="control-group">
+      <label>ラベルテキスト</label>
+      <input type="text" id="labelText" value="抹茶" class="text-input">
+    </div>
+    <div class="btn-row">
+      <button class="btn" id="btnExploded">分解表示</button>
+      <button class="btn" id="btnReset">リセット</button>
+    </div>
+    <div class="btn-row">
+      <button class="btn" id="presetBlack">黒</button>
+      <button class="btn" id="presetGreen">抹茶緑</button>
+      <button class="btn" id="presetGold">ウッド</button>
+      <button class="btn" id="presetPink">ピンク</button>
+    </div>
+  </div>
+
+  <div id="dimensions">
+    直径 <span id="dimDiameter">8.5</span>cm /
+    高さ <span id="dimHeight">9.0</span>cm /
+    容量 約<span id="dimVolume">30</span>g
+  </div>
+
+  <div id="help">ドラッグ: 回転 / スクロール: ズーム / 右ドラッグ: 移動</div>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.162.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.162.0/examples/jsm/"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+    // ============================================================
+    //  Scene
+    // ============================================================
+    const container = document.getElementById('canvas-container');
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xf2f0ed);
+
+    const camera = new THREE.PerspectiveCamera(32, window.innerWidth / window.innerHeight, 0.1, 100);
+    camera.position.set(4, 6, 12);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.0;
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    container.appendChild(renderer.domElement);
+
+    // ============================================================
+    //  OrbitControls
+    // ============================================================
+    const orbitControls = new OrbitControls(camera, renderer.domElement);
+    orbitControls.enableDamping = true;
+    orbitControls.dampingFactor = 0.06;
+    orbitControls.minDistance = 5;
+    orbitControls.maxDistance = 25;
+    orbitControls.target.set(0, 2, 0);
+    orbitControls.update();
+
+    // ============================================================
+    //  Procedural Studio Environment Map
+    // ============================================================
+    (function createStudioEnv() {
+      const pmrem = new THREE.PMREMGenerator(renderer);
+      pmrem.compileEquirectangularShader();
+      const envScene = new THREE.Scene();
+      envScene.background = new THREE.Color(0xf5f3f0);
+
+      const addPanel = (color, w, h, pos) => {
+        const m = new THREE.Mesh(
+          new THREE.PlaneGeometry(w, h),
+          new THREE.MeshBasicMaterial({ color, side: THREE.DoubleSide })
+        );
+        m.position.copy(pos);
+        m.lookAt(0, 0, 0);
+        envScene.add(m);
+      };
+      addPanel(0xfff8f0, 8, 8, new THREE.Vector3(4, 6, 4));
+      addPanel(0xf0f2ff, 8, 8, new THREE.Vector3(-5, 4, -2));
+      addPanel(0xffffff, 10, 6, new THREE.Vector3(0, 3, -6));
+      const bounce = new THREE.Mesh(
+        new THREE.PlaneGeometry(14, 14),
+        new THREE.MeshBasicMaterial({ color: 0xf5f0eb, side: THREE.DoubleSide })
+      );
+      bounce.position.set(0, -1, 0);
+      bounce.rotation.x = -Math.PI / 2;
+      envScene.add(bounce);
+
+      scene.environment = pmrem.fromScene(envScene, 0.04).texture;
+      pmrem.dispose();
+    })();
+
+    // ============================================================
+    //  Lighting
+    // ============================================================
+    scene.add(new THREE.AmbientLight(0xffffff, 0.3));
+
+    const mainLight = new THREE.DirectionalLight(0xfff8f0, 1.5);
+    mainLight.position.set(5, 10, 7);
+    mainLight.castShadow = true;
+    mainLight.shadow.mapSize.set(2048, 2048);
+    mainLight.shadow.camera.near = 1;
+    mainLight.shadow.camera.far = 30;
+    mainLight.shadow.camera.left = -6;
+    mainLight.shadow.camera.right = 6;
+    mainLight.shadow.camera.top = 10;
+    mainLight.shadow.camera.bottom = -2;
+    mainLight.shadow.bias = -0.0005;
+    mainLight.shadow.normalBias = 0.02;
+    mainLight.shadow.radius = 4;
+    scene.add(mainLight);
+
+    const fillLight = new THREE.DirectionalLight(0xf0f2ff, 0.4);
+    fillLight.position.set(-6, 5, -3);
+    scene.add(fillLight);
+
+    const rimLight = new THREE.SpotLight(0xffffff, 0.8, 30, Math.PI / 6, 0.5);
+    rimLight.position.set(-2, 6, -8);
+    rimLight.target.position.set(0, 2, 0);
+    scene.add(rimLight);
+    scene.add(rimLight.target);
+
+    // ============================================================
+    //  Ground
+    // ============================================================
+    const ground = new THREE.Mesh(
+      new THREE.CircleGeometry(14, 64),
+      new THREE.MeshStandardMaterial({ color: 0xf0ede8, roughness: 0.4, metalness: 0.0, envMapIntensity: 0.3 })
+    );
+    ground.rotation.x = -Math.PI / 2;
+    ground.position.y = -0.01;
+    ground.receiveShadow = true;
+    scene.add(ground);
+
+    // ============================================================
+    //  State
+    // ============================================================
+    let canDiameter = 8.5;
+    let canHeight = 9.0;
+    let isExploded = false;
+    const SCALE = 0.5;
+
+    const BRAND_GREEN = '#2d5a3a';
+    const BRAND_PINK  = '#e8b4b8';
+    const BRAND_WOOD  = '#c4a882';
+
+    // ============================================================
+    //  Materials
+    // ============================================================
+    function makeCanMat(color, finish) {
+      const r = { glossy: 0.08, brushed: 0.30, matte: 0.50 };
+      const cc = { glossy: 0.9, brushed: 0.4, matte: 0.15 };
+      return new THREE.MeshPhysicalMaterial({
+        color: new THREE.Color(color), metalness: 0.88,
+        roughness: r[finish] || 0.50, clearcoat: cc[finish] || 0.15,
+        clearcoatRoughness: 0.08, reflectivity: 0.9, envMapIntensity: 1.2,
+      });
+    }
+    let canMat = makeCanMat(BRAND_GREEN, 'matte');
+    let lidMat = makeCanMat(BRAND_GREEN, 'matte');
+
+    const scoopMat = new THREE.MeshPhysicalMaterial({
+      color: new THREE.Color(BRAND_WOOD), metalness: 0.3, roughness: 0.40,
+      clearcoat: 0.3, clearcoatRoughness: 0.15, envMapIntensity: 0.8,
+    });
+    const packingMat = new THREE.MeshPhysicalMaterial({ color: 0x3a3a3a, roughness: 0.9, metalness: 0 });
+    const powderMat = new THREE.MeshPhysicalMaterial({
+      color: 0x6b8f4e, roughness: 1.0, metalness: 0,
+      sheen: 0.3, sheenRoughness: 0.8, sheenColor: new THREE.Color(0x8ab060),
+    });
+    const magnetMat = new THREE.MeshPhysicalMaterial({ color: 0x888888, metalness: 0.95, roughness: 0.12, envMapIntensity: 1.5 });
+    const interiorMat = new THREE.MeshPhysicalMaterial({ color: 0x222222, roughness: 0.7, metalness: 0.5, side: THREE.BackSide });
+
+    // ============================================================
+    //  Rounded cylinder helper (correct LatheGeometry profile)
+    // ============================================================
+    function makeRoundedCylinder(radius, height, bevel, segs = 64) {
+      const br = Math.min(bevel, radius * 0.25, height * 0.25);
+      const pts = [];
+      const n = 10; // bevel subdivisions
+
+      // Close bottom: center → edge
+      pts.push(new THREE.Vector2(0, -height / 2));
+      pts.push(new THREE.Vector2(radius - br, -height / 2));
+
+      // Bottom-right bevel arc: (radius-br, -h/2) → (radius, -h/2+br)
+      for (let i = 0; i <= n; i++) {
+        const a = Math.PI * 1.5 + (Math.PI / 2) * (i / n); // 270° → 360°
+        pts.push(new THREE.Vector2(
+          radius - br + Math.cos(a) * br,
+          -height / 2 + br + Math.sin(a) * br
+        ));
+      }
+
+      // Straight wall
+      pts.push(new THREE.Vector2(radius, height / 2 - br));
+
+      // Top-right bevel arc: (radius, h/2-br) → (radius-br, h/2)
+      for (let i = 0; i <= n; i++) {
+        const a = 0 + (Math.PI / 2) * (i / n); // 0° → 90°
+        pts.push(new THREE.Vector2(
+          radius - br + Math.cos(a) * br,
+          height / 2 - br + Math.sin(a) * br
+        ));
+      }
+
+      // Close top: edge → center
+      pts.push(new THREE.Vector2(0, height / 2));
+
+      return new THREE.LatheGeometry(pts, segs);
+    }
+
+    // ============================================================
+    //  Can groups
+    // ============================================================
+    const canGroup = new THREE.Group();
+    scene.add(canGroup);
+    const bodyGroup = new THREE.Group();
+    const innerLidGroup = new THREE.Group();
+    const outerLidGroup = new THREE.Group();
+    canGroup.add(bodyGroup, innerLidGroup, outerLidGroup);
+
+    function clearGroup(g) {
+      while (g.children.length) {
+        const c = g.children[0];
+        if (c.geometry) c.geometry.dispose();
+        g.remove(c);
+      }
+    }
+
+    // ============================================================
+    //  Build can
+    // ============================================================
+    function buildCan() {
+      [bodyGroup, innerLidGroup, outerLidGroup].forEach(clearGroup);
+
+      const r = (canDiameter / 2) * SCALE;
+      const h = canHeight * SCALE;
+      const wall = 0.05;
+      const outerH = 0.22;
+      const innerH = 0.12;
+      const bodyH = h - outerH - innerH;
+      const bev = 0.05;
+
+      // ---- BODY ----
+      const bodyMesh = new THREE.Mesh(makeRoundedCylinder(r, bodyH, bev), canMat);
+      bodyMesh.castShadow = true;
+      bodyMesh.receiveShadow = true;
+      bodyGroup.add(bodyMesh);
+
+      // Interior
+      const intGeo = new THREE.CylinderGeometry(r - wall, r - wall, bodyH - 0.02, 64, 1, true);
+      bodyGroup.add(new THREE.Mesh(intGeo, interiorMat));
+
+      // Bottom disc (interior floor)
+      const floorGeo = new THREE.CircleGeometry(r - wall, 64);
+      const floor = new THREE.Mesh(floorGeo, interiorMat);
+      floor.rotation.x = Math.PI / 2;
+      floor.position.y = -bodyH / 2 + 0.02;
+      bodyGroup.add(floor);
+
+      // Matcha powder
+      const powH = bodyH * 0.42;
+      const powGeo = new THREE.CylinderGeometry(r - wall - 0.005, r - wall - 0.005, powH, 64);
+      const pow = new THREE.Mesh(powGeo, powderMat);
+      pow.position.y = -bodyH / 2 + 0.02 + powH / 2;
+      bodyGroup.add(pow);
+
+      // Powder top surface
+      const surfGeo = new THREE.CircleGeometry(r - wall - 0.005, 64);
+      const surf = new THREE.Mesh(surfGeo, new THREE.MeshPhysicalMaterial({
+        color: 0x7aa854, roughness: 1.0, metalness: 0,
+      }));
+      surf.rotation.x = -Math.PI / 2;
+      surf.position.y = -bodyH / 2 + 0.02 + powH;
+      bodyGroup.add(surf);
+
+      // Lip ring
+      const lip = new THREE.Mesh(new THREE.TorusGeometry(r, 0.015, 12, 64), canMat);
+      lip.rotation.x = Math.PI / 2;
+      lip.position.y = bodyH / 2;
+      bodyGroup.add(lip);
+
+      bodyGroup.position.y = bodyH / 2; // body bottom sits on y=0
+
+      // ---- INNER LID ----
+      const innerLidMesh = new THREE.Mesh(makeRoundedCylinder(r - 0.005, innerH, 0.025), lidMat);
+      innerLidMesh.castShadow = true;
+      innerLidGroup.add(innerLidMesh);
+
+      // Packing ring
+      const pack = new THREE.Mesh(new THREE.TorusGeometry(r - 0.03, 0.018, 12, 64), packingMat);
+      pack.rotation.x = Math.PI / 2;
+      pack.position.y = -innerH / 2 + 0.01;
+      innerLidGroup.add(pack);
+
+      // ---- TEA SCOOP (茶杓) ----
+      const scoop = new THREE.Group();
+
+      // Handle — tapered flat bar (must fit inside can diameter)
+      const hLen = r * 1.1;
+      const hShape = new THREE.Shape();
+      hShape.moveTo(-0.045, 0);
+      hShape.lineTo(0.045, 0);
+      hShape.lineTo(0.032, hLen);
+      hShape.lineTo(-0.032, hLen);
+      hShape.closePath();
+      const hGeo = new THREE.ExtrudeGeometry(hShape, {
+        depth: 0.02, bevelEnabled: true, bevelThickness: 0.006,
+        bevelSize: 0.006, bevelSegments: 3,
+      });
+      const hMesh = new THREE.Mesh(hGeo, scoopMat);
+      hMesh.rotation.x = -Math.PI / 2;
+      hMesh.position.set(0, -0.01, hLen / 2);
+      hMesh.castShadow = true;
+      scoop.add(hMesh);
+
+      // Bowl (spoon) — at one end of handle
+      const bowlPts = [];
+      for (let i = 0; i <= 24; i++) {
+        const t = i / 24;
+        const ang = t * Math.PI;
+        bowlPts.push(new THREE.Vector2(Math.sin(ang) * 0.13, -Math.cos(ang) * 0.055));
+      }
+      const bowlGeo = new THREE.LatheGeometry(bowlPts, 32);
+      const bowlMesh = new THREE.Mesh(bowlGeo, scoopMat);
+      bowlMesh.position.set(0, -0.02, -hLen * 0.35);
+      bowlMesh.castShadow = true;
+      scoop.add(bowlMesh);
+
+      scoop.position.y = -innerH / 2 - 0.05;
+      innerLidGroup.add(scoop);
+
+      // Magnets
+      for (const mz of [-0.12, 0.12]) {
+        const mag = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, 0.012, 16), magnetMat);
+        mag.position.set(0, -innerH / 2 - 0.006, mz);
+        innerLidGroup.add(mag);
+      }
+
+      innerLidGroup.position.y = bodyH + innerH / 2;
+
+      // ---- OUTER LID ----
+      const outerLidMesh = new THREE.Mesh(makeRoundedCylinder(r + 0.012, outerH, bev), lidMat);
+      outerLidMesh.castShadow = true;
+      outerLidGroup.add(outerLidMesh);
+
+      // Inner rim of outer lid
+      const oRimGeo = new THREE.CylinderGeometry(r + 0.005, r + 0.005, outerH - 0.04, 64, 1, true);
+      const oRim = new THREE.Mesh(oRimGeo, new THREE.MeshPhysicalMaterial({
+        color: 0x222222, roughness: 0.7, metalness: 0.5, side: THREE.BackSide,
+      }));
+      outerLidGroup.add(oRim);
+
+      outerLidGroup.position.y = bodyH + innerH + outerH / 2;
+
+      updateLabel();
+      setPositionTargets();
+      snapPositions();
+    }
+
+    // ============================================================
+    //  Label
+    // ============================================================
+    let labelMesh = null;
+
+    function updateLabel() {
+      if (labelMesh) {
+        if (labelMesh.material.map) labelMesh.material.map.dispose();
+        labelMesh.geometry.dispose();
+        bodyGroup.remove(labelMesh);
+      }
+      const text = document.getElementById('labelText').value || '抹茶';
+      const r = (canDiameter / 2) * SCALE;
+      const h = canHeight * SCALE;
+      const bodyH = h - 0.22 - 0.12;
+
+      const c = document.createElement('canvas');
+      c.width = 2048; c.height = 1024;
+      const ctx = c.getContext('2d');
+      ctx.clearRect(0, 0, 2048, 1024);
+
+      // Brand name — 桜ピンク
+      ctx.fillStyle = BRAND_PINK;
+      ctx.font = '600 200px "Hiragino Mincho ProN", "Yu Mincho", serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(text, 1024, 380);
+
+      // Line
+      ctx.strokeStyle = BRAND_PINK;
+      ctx.lineWidth = 3;
+      ctx.globalAlpha = 0.5;
+      ctx.beginPath();
+      ctx.moveTo(624, 520);
+      ctx.lineTo(1424, 520);
+      ctx.stroke();
+      ctx.globalAlpha = 1.0;
+
+      // Sub
+      ctx.fillStyle = BRAND_WOOD;
+      ctx.font = '300 64px "Helvetica Neue", sans-serif';
+      ctx.fillText('M A T C H A', 1024, 620);
+
+      const tex = new THREE.CanvasTexture(c);
+      tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+
+      const lGeo = new THREE.CylinderGeometry(r + 0.003, r + 0.003, bodyH * 0.6, 128, 1, true);
+      const lMat = new THREE.MeshPhysicalMaterial({
+        map: tex, transparent: true, metalness: 0.15, roughness: 0.35, clearcoat: 0.05,
+      });
+      labelMesh = new THREE.Mesh(lGeo, lMat);
+      // label is in bodyGroup which is already offset
+      labelMesh.position.y = 0;
+      bodyGroup.add(labelMesh);
+    }
+
+    // ============================================================
+    //  Exploded view — position targets (NO camera hijacking)
+    // ============================================================
+    const targets = { bodyY: 0, innerY: 0, outerY: 0 };
+
+    function setPositionTargets() {
+      const h = canHeight * SCALE;
+      const outerH = 0.22, innerH = 0.12;
+      const bodyH = h - outerH - innerH;
+
+      if (isExploded) {
+        targets.bodyY = bodyH / 2;
+        targets.innerY = bodyH + innerH / 2 + 3.0;
+        targets.outerY = bodyH + innerH + outerH / 2 + 6.5;
+      } else {
+        targets.bodyY = bodyH / 2;
+        targets.innerY = bodyH + innerH / 2;
+        targets.outerY = bodyH + innerH + outerH / 2;
+      }
+    }
+
+    function snapPositions() {
+      bodyGroup.position.y = targets.bodyY;
+      innerLidGroup.position.y = targets.innerY;
+      outerLidGroup.position.y = targets.outerY;
+    }
+
+    // ============================================================
+    //  Build
+    // ============================================================
+    buildCan();
+
+    // ============================================================
+    //  UI
+    // ============================================================
+    document.getElementById('canColor').addEventListener('input', e => canMat.color.set(e.target.value));
+    document.getElementById('lidColor').addEventListener('input', e => lidMat.color.set(e.target.value));
+    document.getElementById('finish').addEventListener('change', e => {
+      const f = e.target.value;
+      const rMap = { glossy: 0.08, brushed: 0.30, matte: 0.50 };
+      const cMap = { glossy: 0.9, brushed: 0.4, matte: 0.15 };
+      canMat.roughness = rMap[f]; canMat.clearcoat = cMap[f];
+      lidMat.roughness = rMap[f]; lidMat.clearcoat = cMap[f];
+    });
+    document.getElementById('diameter').addEventListener('input', e => {
+      canDiameter = parseFloat(e.target.value);
+      document.getElementById('diameterVal').textContent = canDiameter.toFixed(1) + 'cm';
+      document.getElementById('dimDiameter').textContent = canDiameter.toFixed(1);
+      buildCan();
+    });
+    document.getElementById('height').addEventListener('input', e => {
+      canHeight = parseFloat(e.target.value);
+      document.getElementById('heightVal').textContent = canHeight.toFixed(1) + 'cm';
+      document.getElementById('dimHeight').textContent = canHeight.toFixed(1);
+      buildCan();
+    });
+    document.getElementById('labelText').addEventListener('input', () => updateLabel());
+
+    const structLabels = document.getElementById('structure-labels');
+    document.getElementById('btnExploded').addEventListener('click', e => {
+      isExploded = !isExploded;
+      e.target.classList.toggle('active', isExploded);
+      e.target.textContent = isExploded ? '組立表示' : '分解表示';
+      structLabels.classList.toggle('visible', isExploded);
+      setPositionTargets();
+    });
+    document.getElementById('btnReset').addEventListener('click', () => {
+      isExploded = false;
+      document.getElementById('btnExploded').classList.remove('active');
+      document.getElementById('btnExploded').textContent = '分解表示';
+      structLabels.classList.remove('visible');
+      setPositionTargets();
+      orbitControls.target.set(0, 2, 0);
+      camera.position.set(4, 6, 12);
+    });
+
+    const presets = {
+      presetBlack: { can: '#1a1a1a', lid: '#1a1a1a' },
+      presetGreen: { can: '#2d5a3a', lid: '#2d5a3a' },
+      presetGold:  { can: '#c4a882', lid: '#c4a882' },
+      presetPink:  { can: '#e8b4b8', lid: '#e8b4b8' },
+    };
+    Object.entries(presets).forEach(([id, c]) => {
+      document.getElementById(id).addEventListener('click', () => {
+        canMat.color.set(c.can); lidMat.color.set(c.lid);
+        document.getElementById('canColor').value = c.can;
+        document.getElementById('lidColor').value = c.lid;
+      });
+    });
+
+    // ============================================================
+    //  Render loop
+    // ============================================================
+    let userInteracting = false;
+    let interactionTimer;
+    orbitControls.addEventListener('start', () => { userInteracting = true; clearTimeout(interactionTimer); });
+    orbitControls.addEventListener('end', () => { interactionTimer = setTimeout(() => { userInteracting = false; }, 2000); });
+
+    const LERP = 0.06;
+
+    function animate() {
+      requestAnimationFrame(animate);
+      orbitControls.update();
+
+      // Smooth explode/collapse — only moves the can parts, never the camera
+      bodyGroup.position.y += (targets.bodyY - bodyGroup.position.y) * LERP;
+      innerLidGroup.position.y += (targets.innerY - innerLidGroup.position.y) * LERP;
+      outerLidGroup.position.y += (targets.outerY - outerLidGroup.position.y) * LERP;
+
+      // Gentle auto-rotation
+      if (!userInteracting && !isExploded) {
+        canGroup.rotation.y += 0.003;
+      }
+
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // ============================================================
+    //  Resize
+    // ============================================================
+    window.addEventListener('resize', () => {
+      const w = window.innerWidth, h = window.innerHeight;
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+    });
+  </script>
+</body>
+</html>
