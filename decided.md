@@ -675,16 +675,26 @@
 
 > 特注缶のデザイン要件・ロックイン構造の詳細はセクション II-C「缶戦略」を参照。
 
-### ロゴ — Mマーク決定（2026-03-30）
+### ロゴ — 正式決定（2026-03-30）
 
-**決定**: Round Valley型のMに抹茶を溜めたデザイン（「やや多め / balanced」waterRatio: 0.37）
+**決定**: B: tight spacing / 点(dot) / 緑
 
-- **Matcha の M**: U字カーブの底に緑の抹茶が溜まっている。茶碗に抹茶が入っているイメージ
-- **Me の M**: 抹茶なし。U字カーブの上に上向きアーチの目を2つ配置し、にっこり笑顔を表現
-- **配色**: 文字は黒（#1A1A1A）、抹茶部分は緑（#3A6B4E）、目は黒
-- **ピンク背景時**: 黒文字バージョンと白文字バージョンの2種を用意
+#### ワードマーク仕様
 - **フォント**: Outfit weight 200
-- **参照ファイル**: [design/logo-m-mark-matcha-smile.html](design/logo-m-mark-matcha-smile.html)
+- **レタースペーシング**: `0.20`（tight）
+- **&（アンパサンド）**: フルサイズ（100%）
+- **Matcha の M**: U字カーブの底に緑の抹茶（waterRatio: 0.37）。茶碗に抹茶が入っているイメージ
+- **Me の M**: 抹茶なし。U字カーブの上に黒い点の目を2つ配置（dotR: 0.03、eyeY: 0.05）
+
+#### 配色
+- **文字**: 黒（#1A1A1A）
+- **抹茶部分**: 緑（#3A6B4E）
+- **目**: 黒（#1A1A1A）
+- **ピンク背景時**: 黒文字バージョンと白文字バージョンの2種を用意
+
+#### 参照ファイル
+- 最終比較: [design/logo-m-mark-comparison.html](design/logo-m-mark-comparison.html)
+- 探索過程: [design/logo-m-mark-matcha-smile.html](design/logo-m-mark-matcha-smile.html)
 
 ---
 
