@@ -144,13 +144,13 @@ function makeDrawFn(waterRatio, hasPool, eyeType) {
 // Wordmark renderer
 // First M: pool only, Second M (in "ME"): pool + eyes
 // =====================================================
-function renderWordmark(canvas, waterRatio, eyeType) {
+function renderWordmark(canvas, waterRatio, eyeType, poolColorOverride) {
   const dpr = window.devicePixelRatio || 2;
   const fs = 42;
   const font = `200 ${fs}px Outfit`;
   const ls = fs * 0.35;
   const mColor = '#1A1A1A';
-  const poolColor = '#3A6B4E';
+  const poolColor = poolColorOverride || '#3A6B4E';
   const chars = ['M','A','T','C','H','A','&','M','E'];
 
   const ctx = canvas.getContext('2d');
@@ -192,7 +192,7 @@ function renderWordmark(canvas, waterRatio, eyeType) {
 }
 
 // Large mark: "Matcha" M with pool
-function renderMarkLarge(canvas, waterRatio, bg, mColor, eyeType) {
+function renderMarkLarge(canvas, waterRatio, bg, mColor, eyeType, poolColorOverride) {
   const dpr = window.devicePixelRatio || 2;
   const sz = 140;
   canvas.width = sz * dpr;
@@ -205,8 +205,9 @@ function renderMarkLarge(canvas, waterRatio, bg, mColor, eyeType) {
   ctx.fillRect(0, 0, sz, sz);
   const ms = 80, p = (sz - ms) / 2;
   const c = mColor || '#1A1A1A';
+  const pc = poolColorOverride || '#3A6B4E';
   const fn = makeDrawFn(waterRatio, true, eyeType || false);
-  fn(ctx, p, p + 4, ms, ms - 8, { mColor: c, poolColor: '#3A6B4E', eyeColor: c });
+  fn(ctx, p, p + 4, ms, ms - 8, { mColor: c, poolColor: pc, eyeColor: c });
 }
 
 // Small mark: "Matcha" M with pool (no eyes)
@@ -246,12 +247,14 @@ function build() {
     card.innerHTML = `
       <h2>${item.name}</h2><span class="tag">${item.tag}</span>
       <p class="desc">${item.desc}</p>
-      <div style="text-align:center;margin-bottom:15px">
-        <div class="large-mark"><canvas id="lg-${item.id}-dot"></canvas></div>
-        <div class="label">Matcha M（抹茶のみ）</div>
+      <div style="display:flex;justify-content:center;gap:30px;margin-bottom:15px">
+        <div style="text-align:center"><div class="large-mark"><canvas id="lg-${item.id}-green"></canvas></div><div class="label">緑</div></div>
+        <div style="text-align:center"><div class="large-mark"><canvas id="lg-${item.id}-black"></canvas></div><div class="label">黒</div></div>
       </div>
-      <div style="margin-bottom:10px"><div class="wordmark-wrap"><canvas id="wm-${item.id}-dot"></canvas></div><div class="label" style="text-align:center">点</div></div>
-      <div style="margin-bottom:15px"><div class="wordmark-wrap"><canvas id="wm-${item.id}-arc"></canvas></div><div class="label" style="text-align:center">にっこり</div></div>
+      <div style="margin-bottom:6px"><div class="wordmark-wrap"><canvas id="wm-${item.id}-dot-g"></canvas></div><div class="label" style="text-align:center">点 / 緑</div></div>
+      <div style="margin-bottom:6px"><div class="wordmark-wrap"><canvas id="wm-${item.id}-dot-b"></canvas></div><div class="label" style="text-align:center">点 / 黒</div></div>
+      <div style="margin-bottom:6px"><div class="wordmark-wrap"><canvas id="wm-${item.id}-arc-g"></canvas></div><div class="label" style="text-align:center">にっこり / 緑</div></div>
+      <div style="margin-bottom:15px"><div class="wordmark-wrap"><canvas id="wm-${item.id}-arc-b"></canvas></div><div class="label" style="text-align:center">にっこり / 黒</div></div>
       <div class="mark-row">
         <div class="mark-cell"><div class="box light"><canvas id="mk-${item.id}-l"></canvas></div><div class="label">light</div></div>
         <div class="mark-cell"><div class="box dark"><canvas id="mk-${item.id}-d"></canvas></div><div class="label">dark</div></div>
@@ -264,9 +267,12 @@ function build() {
   document.fonts.ready.then(() => {
     ITEMS.forEach(item => {
       const wr = item.waterRatio;
-      renderMarkLarge(document.getElementById(`lg-${item.id}-dot`), wr, '#FAFAF8');
-      renderWordmark(document.getElementById(`wm-${item.id}-dot`), wr, 'dot');
-      renderWordmark(document.getElementById(`wm-${item.id}-arc`), wr, 'arc');
+      renderMarkLarge(document.getElementById(`lg-${item.id}-green`), wr, '#FAFAF8');
+      renderMarkLarge(document.getElementById(`lg-${item.id}-black`), wr, '#FAFAF8', null, false, '#1A1A1A');
+      renderWordmark(document.getElementById(`wm-${item.id}-dot-g`), wr, 'dot');
+      renderWordmark(document.getElementById(`wm-${item.id}-dot-b`), wr, 'dot', '#1A1A1A');
+      renderWordmark(document.getElementById(`wm-${item.id}-arc-g`), wr, 'arc');
+      renderWordmark(document.getElementById(`wm-${item.id}-arc-b`), wr, 'arc', '#1A1A1A');
       renderMark(document.getElementById(`mk-${item.id}-l`), wr, '#FAFAF8', '#1A1A1A');
       renderMark(document.getElementById(`mk-${item.id}-d`), wr, '#1B4332', '#F5F0E8');
       renderMark(document.getElementById(`mk-${item.id}-g`), wr, '#8AAE92', '#1A1A1A');
