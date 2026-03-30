@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 320" width="1000" height="320">
+  <!--
+    LOGO H — "Perfect Horizontal"
+
+    コンセプト:
+    APOTHÉKARYの構造を最も忠実に再現。
+    全文字が同じフォント・ウェイト・色。
+    「&」だけがイタリックセリフ体 × 抹茶グリーン。
+    それだけ。他は一切装飾しない。
+
+    APOTHÉKARYの「É」= matcha & me の「&」
+
+    Typography:
+    - 本文: ライトウェイト geometric sans (Futura系)
+    - &: イタリックセリフ (Didot系) × matcha green
+    - 全体: 小文字
+
+    このシンプルさの中で、&の書体・色の差異だけが
+    「あれ？」と目を引く。
+
+    Color:
+    - テキスト: #1C1C1C
+    - &: #4A7C59 (matcha green)
+  -->
+  <rect width="1000" height="320" fill="#FAFAF8"/>
+
+  <!-- matcha -->
+  <text x="80" y="185"
+        font-family="'Futura', 'Century Gothic', 'Avenir Next', 'Helvetica Neue', sans-serif"
+        font-weight="300"
+        font-size="62"
+        letter-spacing="14"
+        fill="#1C1C1C">matcha</text>
+
+  <!-- & — the only different element -->
+  <text x="470" y="187"
+        font-family="'Didot', 'Bodoni MT', 'Baskerville', 'Georgia', serif"
+        font-weight="400"
+        font-style="italic"
+        font-size="56"
+        fill="#4A7C59">&amp;</text>
+
+  <!-- me -->
+  <text x="530" y="185"
+        font-family="'Futura', 'Century Gothic', 'Avenir Next', 'Helvetica Neue', sans-serif"
+        font-weight="300"
+        font-size="62"
+        letter-spacing="14"
+        fill="#1C1C1C">me</text>
+</svg>

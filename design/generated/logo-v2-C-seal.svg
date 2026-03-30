@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#ffffff"/>
+  <!-- Concept C: Circle Seal — text on upper arc, empty interior -->
+  <circle cx="200" cy="200" r="120" fill="none" stroke="#1B4332" stroke-width="0.8"/>
+  <!-- Text along upper arc -->
+  <defs>
+    <path id="upperArc" d="M 80,200 A 120,120 0 0,1 320,200" fill="none"/>
+  </defs>
+  <text fill="#1B4332">
+    <textPath href="#upperArc" startOffset="50%" text-anchor="middle">
+      <tspan font-family="'Futura', 'Century Gothic', 'Avenir', sans-serif"
+             font-weight="200" font-size="16" letter-spacing="5">matcha </tspan>
+      <tspan font-family="'Cormorant Garamond', 'Playfair Display', 'Georgia', serif"
+             font-weight="300" font-style="italic" font-size="18">&amp;</tspan>
+      <tspan font-family="'Futura', 'Century Gothic', 'Avenir', sans-serif"
+             font-weight="200" font-size="16" letter-spacing="5"> me</tspan>
+    </textPath>
+  </text>
+</svg>

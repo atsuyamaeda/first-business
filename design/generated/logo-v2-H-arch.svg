@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 250" width="500" height="250">
+  <rect width="500" height="250" fill="#ffffff"/>
+  <!-- Concept H: Architectural Two-Line -->
+  <!-- MATCHA in ultra-thin caps, extreme letter-spacing -->
+  <text x="250" y="110" text-anchor="middle"
+        font-family="'Futura', 'Century Gothic', 'Avenir', sans-serif"
+        font-weight="200" font-size="32" letter-spacing="18" fill="#1B4332">
+    MATCHA
+  </text>
+  <!-- Hairline rule -->
+  <line x1="130" y1="122" x2="370" y2="122" stroke="#1B4332" stroke-width="0.5"/>
+  <!-- & me — lowercase italic serif, flush right, smaller -->
+  <text x="370" y="152" text-anchor="end" fill="#1B4332">
+    <tspan font-family="'Cormorant Garamond', 'Playfair Display', 'Georgia', serif"
+           font-weight="300" font-style="italic" font-size="20">&amp; </tspan>
+    <tspan font-family="'Cormorant Garamond', 'Playfair Display', 'Georgia', serif"
+           font-weight="300" font-style="italic" font-size="20">me</tspan>
+  </text>
+</svg>

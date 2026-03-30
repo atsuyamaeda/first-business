@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>MATCHA&ME — G7 Deep Curve Refinement</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#EDEDE9;font-family:'Outfit',sans-serif;font-weight:200;color:#1B4332;padding:60px 30px}
+  h1{text-align:center;font-weight:200;font-size:13px;letter-spacing:8px;text-transform:uppercase;margin-bottom:10px;color:#888}
+  .subtitle{text-align:center;font-size:11px;color:#aaa;margin-bottom:50px;letter-spacing:1px}
+  .grid{max-width:1200px;margin:0 auto 60px;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px}
+  .card{background:#fff;padding:40px 30px 30px;text-align:center}
+  .card h2{font-weight:200;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#999;margin-bottom:3px}
+  .card .tag{font-size:9px;color:#bbb;letter-spacing:2px;display:block;margin-bottom:8px}
+  .card .desc{font-size:11px;color:#aaa;line-height:1.7;margin-bottom:20px}
+  .large-mark{margin:0 auto 15px}
+  .large-mark canvas{display:block;margin:0 auto}
+  .wordmark-wrap{margin:0 auto 15px}
+  .wordmark-wrap canvas{display:block;margin:0 auto}
+  .mark-row{display:flex;justify-content:center;gap:10px;padding-top:14px;border-top:1px solid #f0f0f0;flex-wrap:wrap}
+  .mark-cell{text-align:center}
+  .mark-cell .box{width:52px;height:52px;display:flex;align-items:center;justify-content:center;margin-bottom:3px}
+  .mark-cell .box.light{background:#FAFAF8;border:1px solid #f0f0f0}
+  .mark-cell .box.dark{background:#1B4332}
+  .mark-cell .box.green{background:#8AAE92}
+  .mark-cell .box.pink{background:#F2C4C4}
+  .mark-cell .box.cream{background:#F5F0E8}
+  .mark-cell .box.salmon{background:#E8967D}
+  .mark-cell .label{font-size:7px;color:#ccc;letter-spacing:1px;text-transform:uppercase}
+  .divider{max-width:1200px;margin:0 auto 40px;text-align:center;font-size:10px;letter-spacing:6px;text-transform:uppercase;color:#ccc}
+  .divider::before,.divider::after{content:'';display:inline-block;width:60px;height:1px;background:#ddd;vertical-align:middle;margin:0 20px}
+</style>
+</head>
+<body>
+<h1>matcha & me</h1>
+<div class="subtitle">G7 Deep Curve — 12 refinements</div>
+<div class="grid" id="grid"></div>
+
+<script>
+function drawStdM(c, x, y, w, h, s) {
+  c.beginPath();
+  c.moveTo(x,y+h);c.lineTo(x,y);c.lineTo(x+s,y);
+  c.lineTo(x+w/2,y+h*.78);c.lineTo(x+w-s,y);c.lineTo(x+w,y);
+  c.lineTo(x+w,y+h);c.lineTo(x+w-s,y+h);c.lineTo(x+w-s,y+h*.14);
+  c.lineTo(x+w/2,y+h*.92);c.lineTo(x+s,y+h*.14);
+  c.lineTo(x+s,y+h);c.closePath();c.fill();
+}
+
+function make({curveY=0.58, tipY=0.82, gapTop=0.20, widthPct=0.75, k=0.62}={}) {
+  return (c,x,y,w,h) => {
+    const s=w*.068;
+    drawStdM(c,x,y,w,h,s);
+
+    const innerW=w-s*2;
+    const triW=innerW*widthPct;
+    const triLeft=x+s+(innerW-triW)/2;
+    const triRight=triLeft+triW;
+    const triTopY=y+h*gapTop;
+    const triCurveY=y+h*curveY;
+    const triTipY=y+h*tipY;
+    const cx0=x+w/2;
+    const halfTri=triW/2;
+
+    c.beginPath();
+    c.moveTo(triLeft,triTopY);
+    c.bezierCurveTo(triLeft,triTopY+(triCurveY-triTopY)*k,cx0-halfTri*k,triCurveY,cx0,triCurveY);
+    c.bezierCurveTo(cx0+halfTri*k,triCurveY,triRight,triTopY+(triCurveY-triTopY)*k,triRight,triTopY);
+    c.lineTo(cx0,triTipY);
+    c.closePath();c.fill();
+  };
+}
+
+const D={};
+
+// G7 Original（基準）
+D['G7']=make({curveY:.58,tipY:.82,gapTop:.20,widthPct:.75,k:.62});
+
+// カーブ深さの変化
+D['R1']=make({curveY:.52,tipY:.82,gapTop:.20,widthPct:.75,k:.62}); // 少し浅い
+D['R2']=make({curveY:.63,tipY:.82,gapTop:.20,widthPct:.75,k:.62}); // もっと深い
+
+// ティップの長さ
+D['R3']=make({curveY:.58,tipY:.76,gapTop:.20,widthPct:.75,k:.62}); // 短い
+D['R4']=make({curveY:.58,tipY:.88,gapTop:.20,widthPct:.75,k:.62}); // 長い
+
+// 三角の幅
+D['R5']=make({curveY:.58,tipY:.82,gapTop:.20,widthPct:.65,k:.62}); // 狭い
+D['R6']=make({curveY:.58,tipY:.82,gapTop:.20,widthPct:.85,k:.62}); // 広い
+
+// カーブの丸さ
+D['R7']=make({curveY:.58,tipY:.82,gapTop:.20,widthPct:.75,k:.50}); // タイト
+D['R8']=make({curveY:.58,tipY:.82,gapTop:.20,widthPct:.75,k:.72}); // ゆるい
+
+// 三角の位置（上下）
+D['R9']=make({curveY:.58,tipY:.82,gapTop:.16,widthPct:.75,k:.62}); // 高い
+D['R10']=make({curveY:.58,tipY:.82,gapTop:.25,widthPct:.75,k:.62}); // 低い
+
+// ベストミックス候補
+D['R11']=make({curveY:.55,tipY:.84,gapTop:.18,widthPct:.72,k:.58});
+
+const ITEMS=[
+  {id:'G7',name:'G7 / Original',tag:'baseline',desc:'これが基準。curveY 58%, tip 82%, width 75%'},
+  {id:'R1',name:'R1 / Shallower',tag:'curve 52%',desc:'カーブが少し浅い。軽やかに。'},
+  {id:'R2',name:'R2 / Deeper',tag:'curve 63%',desc:'カーブがもっと深い。茶碗感が増す。'},
+  {id:'R3',name:'R3 / Short Tip',tag:'tip 76%',desc:'ティップが短い。三角がコンパクト。'},
+  {id:'R4',name:'R4 / Long Tip',tag:'tip 88%',desc:'ティップが長い。鋭く伸びる。'},
+  {id:'R5',name:'R5 / Narrow',tag:'width 65%',desc:'三角が狭い。繊細。'},
+  {id:'R6',name:'R6 / Wide',tag:'width 85%',desc:'三角が広い。存在感。'},
+  {id:'R7',name:'R7 / Tight Curve',tag:'k=0.50',desc:'カーブがタイトで急。'},
+  {id:'R8',name:'R8 / Loose Curve',tag:'k=0.72',desc:'カーブがゆるく幅広。'},
+  {id:'R9',name:'R9 / High',tag:'gap 16%',desc:'三角が高い位置に。Mの上部に食い込む。'},
+  {id:'R10',name:'R10 / Low',tag:'gap 25%',desc:'三角が低い位置に。Mの中央寄り。'},
+  {id:'R11',name:'R11 / Best Mix',tag:'candidate',desc:'curve 55%, tip 84%, width 72%, k=0.58。バランス候補。'},
+];
+
+// Rendering
+function renderWordmark(canvas,drawFn){
+  const dpr=window.devicePixelRatio||2,fs=36,font=`200 ${fs}px Outfit`,ls=fs*.35,color='#1B4332';
+  const chars=['M','A','T','C','H','A','&','M','E'];
+  const ctx=canvas.getContext('2d');ctx.font=font;
+  const cw=chars.map(ch=>ctx.measureText(ch).width),tw=cw.reduce((a,b)=>a+b,0)+ls*(chars.length-1);
+  const m=ctx.measureText('M'),asc=m.actualBoundingBoxAscent,desc=m.actualBoundingBoxDescent;
+  const px=20,py=12,W=tw+px*2,H=asc+desc+py*2;
+  canvas.width=W*dpr;canvas.height=H*dpr;canvas.style.width=W+'px';canvas.style.height=H+'px';
+  ctx.scale(dpr,dpr);const by=py+asc;
+  ctx.font=font;ctx.fillStyle=color;ctx.textBaseline='alphabetic';
+  let cx=px;chars.forEach((ch,i)=>{if(ch==='M')drawFn(ctx,cx,by-asc,cw[i],asc);else ctx.fillText(ch,cx,by);cx+=cw[i]+ls;});
+}
+function renderMarkLarge(canvas,drawFn,bg,fg){
+  const dpr=window.devicePixelRatio||2,sz=130;
+  canvas.width=sz*dpr;canvas.height=sz*dpr;canvas.style.width=sz+'px';canvas.style.height=sz+'px';
+  const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
+  ctx.fillStyle=bg;ctx.fillRect(0,0,sz,sz);
+  const ms=74,p=(sz-ms)/2;ctx.fillStyle=fg;drawFn(ctx,p,p+4,ms,ms-8);
+}
+function renderMark(canvas,drawFn,bg,fg){
+  const dpr=window.devicePixelRatio||2,sz=52;
+  canvas.width=sz*dpr;canvas.height=sz*dpr;canvas.style.width=sz+'px';canvas.style.height=sz+'px';
+  const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
+  ctx.fillStyle=bg;ctx.fillRect(0,0,sz,sz);
+  const ms=26,p=(sz-ms)/2;ctx.fillStyle=fg;drawFn(ctx,p,p+1,ms,ms-2);
+}
+
+function build(){
+  const grid=document.getElementById('grid');
+  ITEMS.forEach(item=>{
+    const card=document.createElement('div');card.className='card';
+    card.innerHTML=`
+      <h2>${item.name}</h2><span class="tag">${item.tag}</span>
+      <p class="desc">${item.desc}</p>
+      <div class="large-mark"><canvas id="lg-${item.id}"></canvas></div>
+      <div class="wordmark-wrap"><canvas id="wm-${item.id}"></canvas></div>
+      <div class="mark-row">
+        <div class="mark-cell"><div class="box light"><canvas id="mk-${item.id}-l"></canvas></div><div class="label">light</div></div>
+        <div class="mark-cell"><div class="box dark"><canvas id="mk-${item.id}-d"></canvas></div><div class="label">dark</div></div>
+        <div class="mark-cell"><div class="box green"><canvas id="mk-${item.id}-g"></canvas></div><div class="label">sage</div></div>
+        <div class="mark-cell"><div class="box pink"><canvas id="mk-${item.id}-p"></canvas></div><div class="label">pink</div></div>
+        <div class="mark-cell"><div class="box cream"><canvas id="mk-${item.id}-c"></canvas></div><div class="label">cream</div></div>
+        <div class="mark-cell"><div class="box salmon"><canvas id="mk-${item.id}-s"></canvas></div><div class="label">salmon</div></div>
+      </div>`;
+    grid.appendChild(card);
+  });
+  document.fonts.ready.then(()=>{
+    ITEMS.forEach(item=>{
+      const fn=D[item.id];
+      renderMarkLarge(document.getElementById(`lg-${item.id}`),fn,'#FAFAF8','#1B4332');
+      renderWordmark(document.getElementById(`wm-${item.id}`),fn);
+      renderMark(document.getElementById(`mk-${item.id}-l`),fn,'#FAFAF8','#1B4332');
+      renderMark(document.getElementById(`mk-${item.id}-d`),fn,'#1B4332','#F5F0E8');
+      renderMark(document.getElementById(`mk-${item.id}-g`),fn,'#8AAE92','#1B4332');
+      renderMark(document.getElementById(`mk-${item.id}-p`),fn,'#F2C4C4','#1B4332');
+      renderMark(document.getElementById(`mk-${item.id}-c`),fn,'#F5F0E8','#1B4332');
+      renderMark(document.getElementById(`mk-${item.id}-s`),fn,'#E8967D','#1B4332');
+    });
+  });
+}
+build();
+</script>
+</body>
+</html>

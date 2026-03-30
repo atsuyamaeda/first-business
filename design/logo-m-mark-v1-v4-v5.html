@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>MATCHA&ME — V1 vs V4 vs V5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#EDEDE9;font-family:'Outfit',sans-serif;font-weight:200;color:#1B4332;padding:60px 30px}
+  h1{text-align:center;font-weight:200;font-size:13px;letter-spacing:8px;text-transform:uppercase;margin-bottom:10px;color:#888}
+  .subtitle{text-align:center;font-size:11px;color:#aaa;margin-bottom:50px;letter-spacing:1px}
+  .compare{max-width:1200px;margin:0 auto 60px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
+  .side{background:#fff;padding:40px 28px 30px;text-align:center}
+  .side h2{font-weight:200;font-size:11px;letter-spacing:5px;text-transform:uppercase;color:#999;margin-bottom:3px}
+  .side .tag{font-size:9px;color:#bbb;letter-spacing:2px;display:block;margin-bottom:25px}
+  .large-mark{margin:0 auto 20px}
+  .large-mark canvas{display:block;margin:0 auto}
+  .wordmark-wrap{margin:0 auto 20px}
+  .wordmark-wrap canvas{display:block;margin:0 auto}
+  .mark-row{display:flex;justify-content:center;gap:10px;padding-top:16px;border-top:1px solid #f0f0f0;flex-wrap:wrap}
+  .mark-cell{text-align:center}
+  .mark-cell .box{width:52px;height:52px;display:flex;align-items:center;justify-content:center;margin-bottom:3px}
+  .mark-cell .box.light{background:#FAFAF8;border:1px solid #f0f0f0}
+  .mark-cell .box.dark{background:#1B4332}
+  .mark-cell .box.green{background:#8AAE92}
+  .mark-cell .box.pink{background:#F2C4C4}
+  .mark-cell .box.cream{background:#F5F0E8}
+  .mark-cell .box.salmon{background:#E8967D}
+  .mark-cell .label{font-size:7px;color:#ccc;letter-spacing:1px;text-transform:uppercase}
+  .divider{max-width:1200px;margin:0 auto 40px;text-align:center;font-size:10px;letter-spacing:6px;text-transform:uppercase;color:#ccc}
+  .divider::before,.divider::after{content:'';display:inline-block;width:60px;height:1px;background:#ddd;vertical-align:middle;margin:0 20px}
+  .section{max-width:1200px;margin:0 auto 50px}
+  .section h3{font-weight:200;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#999;margin-bottom:12px}
+  .changes{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-bottom:30px}
+  .change-card{background:#fff;padding:20px;font-size:11px;color:#aaa;line-height:1.7}
+  .change-card strong{color:#999;font-weight:300}
+  .size-test{max-width:1200px;margin:0 auto 60px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
+  .size-col{background:#fff;padding:30px 20px;text-align:center}
+  .size-col h4{font-weight:200;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#bbb;margin-bottom:15px}
+  .size-row{display:flex;align-items:flex-end;justify-content:center;gap:15px;margin-bottom:8px}
+  .size-label{font-size:8px;color:#ccc;letter-spacing:1px;margin-top:4px}
+</style>
+</head>
+<body>
+<h1>matcha & me</h1>
+<div class="subtitle">v1 Original → v4 Final → v5 Master — triple comparison</div>
+
+<div class="compare" id="main-compare"></div>
+
+<div class="section">
+  <h3>Evolution</h3>
+  <div class="changes">
+    <div class="change-card">
+      <strong>v1 Original</strong><br>
+      quadratic bezier<br>
+      stroke 7.0%<br>
+      角張った接合部<br>
+      均一なストローク幅<br>
+      光学補正なし<br>
+      フラットなターミナル
+    </div>
+    <div class="change-card">
+      <strong>v4 Final</strong><br>
+      G2曲率連続性<br>
+      stroke 6.5%<br>
+      45度ストレス<br>
+      カテナリー内部空間<br>
+      1.2%オーバーシュート<br>
+      底部ウェイト補正
+    </div>
+    <div class="change-card">
+      <strong>v5 Master</strong><br>
+      + スーパーエリプス曲線<br>
+      + マイクロインクトラップ<br>
+      + ターミナルテーパー<br>
+      + Outfit実測サイドベアリング<br>
+      + 水平エクストリーマ最適化<br>
+      + オーバーシュート微調整
+    </div>
+  </div>
+</div>
+
+<div class="divider">size test</div>
+<div class="size-test" id="size-test"></div>
+
+<script>
+// =====================================================
+// V1: Original C1
+// =====================================================
+function drawV1(c,x,y,w,h){
+  const s=w*.07;
+  c.beginPath();
+  c.moveTo(x,y+h);c.lineTo(x,y);c.lineTo(x+s,y);
+  c.lineTo(x+s,y+h*.2);
+  c.quadraticCurveTo(x+w/2,y+h*.92,x+w-s,y+h*.2);
+  c.lineTo(x+w-s,y);c.lineTo(x+w,y);c.lineTo(x+w,y+h);
+  c.lineTo(x+w-s,y+h);c.lineTo(x+w-s,y+h*.28);
+  c.quadraticCurveTo(x+w/2,y+h*1.0,x+s,y+h*.28);
+  c.lineTo(x+s,y+h);c.closePath();c.fill();
+}
+
+// =====================================================
+// V4: Final (from previous)
+// =====================================================
+function drawV4(c,x,y,w,h){
+  const s=w*.065;
+  const ov=h*.012;
+  const outerJunction=h*.12-ov;
+  const innerJunction=h*.20;
+  const outerValley=h*.86;
+  const innerValley=h*.975;
+
+  c.beginPath();
+  c.moveTo(x,y+h);
+  c.lineTo(x,y-ov);c.lineTo(x+s,y-ov);
+  c.lineTo(x+s,y+outerJunction);
+  c.bezierCurveTo(x+s,y+h*.42,x+w*.18,y+outerValley,x+w/2,y+outerValley);
+  c.bezierCurveTo(x+w*.82,y+outerValley,x+w-s,y+h*.42,x+w-s,y+outerJunction);
+  c.lineTo(x+w-s,y-ov);c.lineTo(x+w,y-ov);
+  c.lineTo(x+w,y+h);c.lineTo(x+w-s,y+h);
+  c.lineTo(x+w-s,y+innerJunction);
+  c.bezierCurveTo(x+w-s,y+h*.48,x+w*.76,y+innerValley,x+w/2,y+innerValley);
+  c.bezierCurveTo(x+w*.24,y+innerValley,x+s,y+h*.48,x+s,y+innerJunction);
+  c.lineTo(x+s,y+h);c.closePath();c.fill();
+}
+
+// =====================================================
+// V5: Master
+// =====================================================
+function drawV5(c,x,y,w,h){
+  const s=w*.065;
+
+  // ── Overshoot: calibrated to 1% (subtler than v4)
+  const ov=h*.01;
+
+  // ── Micro ink trap size
+  const trap=s*.12;
+
+  // ── Terminal taper amount
+  const taper=s*.08;
+
+  // ── Superellipse-influenced curve
+  // Standard bezier circle uses cp at 0.552 of radius from endpoint.
+  // Superellipse (squircle) pushes cp further out (~0.62-0.65) making
+  // the curve "flatter" at the extremes and "sharper" at transitions.
+  // This gives the iOS-icon quality.
+  const superK=0.62; // squircle factor (vs 0.552 for circle)
+
+  // ── Key positions
+  const outerJunction=h*.11;
+  const innerJunction=h*.19;
+  const outerValley=h*.855;
+  const innerValley=h*.965;
+
+  // ── Horizontal extrema: outer and inner curve's widest point
+  // must be at the same Y. We set this at the valley bottom Y.
+  // The cp placement ensures extrema is exactly at valley Y.
+
+  // ── Curve half-width
+  const halfW=w/2-s;
+
+  c.beginPath();
+
+  // ════════════════════════════════════
+  // LEFT VERTICAL with terminal taper + ink trap
+  // ════════════════════════════════════
+
+  // Bottom-left: start with ink trap at baseline
+  c.moveTo(x+trap, y+h);        // micro notch
+  c.lineTo(x, y+h-trap);        // diagonal into corner
+  c.lineTo(x, y-ov+trap);       // up the left edge
+
+  // Top-left: ink trap at capheight
+  c.lineTo(x+trap, y-ov);       // micro notch at top-left
+
+  // Top edge with subtle taper (slightly narrower at very top)
+  c.lineTo(x+s-taper, y-ov);    // top of left stem (tapered)
+  c.lineTo(x+s, y-ov+trap);     // ink trap inner top
+
+  // ════════════════════════════════════
+  // OUTER LEFT CURVE — superellipse G2
+  // ════════════════════════════════════
+  c.lineTo(x+s, y+outerJunction);
+
+  // Superellipse: cp1 stays on vertical axis but extends further (superK)
+  // than standard circle approximation, giving flatter transition
+  const outerCurveH = outerValley - outerJunction;
+  c.bezierCurveTo(
+    x+s,                     y+outerJunction + outerCurveH*superK,  // cp1: long vertical handle
+    x+s + halfW*(1-superK),  y+outerValley,                         // cp2: approaches bottom
+    x+w/2,                   y+outerValley                          // end: valley center
+  );
+
+  // OUTER RIGHT CURVE — mirror
+  c.bezierCurveTo(
+    x+w/2 + halfW*superK,    y+outerValley,
+    x+w-s,                   y+outerJunction + outerCurveH*superK,
+    x+w-s,                   y+outerJunction
+  );
+
+  // ════════════════════════════════════
+  // RIGHT VERTICAL with terminal taper + ink trap
+  // ════════════════════════════════════
+  c.lineTo(x+w-s, y-ov+trap);     // ink trap inner top
+  c.lineTo(x+w-s+taper, y-ov);    // tapered top
+  c.lineTo(x+w-trap, y-ov);       // ink trap outer top
+  c.lineTo(x+w, y-ov+trap);
+  c.lineTo(x+w, y+h-trap);        // down right edge
+  c.lineTo(x+w-trap, y+h);        // ink trap bottom-right
+
+  // ════════════════════════════════════
+  // INNER RIGHT — bottom edge to inner curve
+  // ════════════════════════════════════
+  c.lineTo(x+w-s+taper, y+h);     // inner bottom-right (tapered)
+  c.lineTo(x+w-s, y+h-trap);      // ink trap
+  c.lineTo(x+w-s, y+innerJunction);
+
+  // INNER RIGHT CURVE — superellipse
+  const innerCurveH = innerValley - innerJunction;
+  c.bezierCurveTo(
+    x+w-s,                       y+innerJunction + innerCurveH*superK,
+    x+w-s - (halfW-s)*(1-superK), y+innerValley,
+    x+w/2,                       y+innerValley
+  );
+
+  // INNER LEFT CURVE — mirror
+  c.bezierCurveTo(
+    x+w/2 - (halfW-s)*superK,    y+innerValley,
+    x+s,                         y+innerJunction + innerCurveH*superK,
+    x+s,                         y+innerJunction
+  );
+
+  // ════════════════════════════════════
+  // LEFT VERTICAL inner — back to start
+  // ════════════════════════════════════
+  c.lineTo(x+s, y+h-trap);        // ink trap inner bottom-left
+  c.lineTo(x+s-taper, y+h);       // tapered bottom
+
+  c.closePath();
+  c.fill();
+}
+
+// =====================================================
+// Rendering
+// =====================================================
+function renderWordmark(canvas,drawFn){
+  const dpr=window.devicePixelRatio||2,fs=36,font=`200 ${fs}px Outfit`,ls=fs*.35,color='#1B4332';
+  const chars=['M','A','T','C','H','A','&','M','E'];
+  const ctx=canvas.getContext('2d');ctx.font=font;
+  const cw=chars.map(c=>ctx.measureText(c).width),tw=cw.reduce((a,b)=>a+b,0)+ls*(chars.length-1);
+  const m=ctx.measureText('M'),asc=m.actualBoundingBoxAscent,desc=m.actualBoundingBoxDescent;
+  const px=20,py=12,W=tw+px*2,H=asc+desc+py*2;
+  canvas.width=W*dpr;canvas.height=H*dpr;canvas.style.width=W+'px';canvas.style.height=H+'px';
+  ctx.scale(dpr,dpr);const by=py+asc;
+  ctx.font=font;ctx.fillStyle=color;ctx.textBaseline='alphabetic';
+  let cx=px;chars.forEach((ch,i)=>{if(ch==='M')drawFn(ctx,cx,by-asc,cw[i],asc);else ctx.fillText(ch,cx,by);cx+=cw[i]+ls;});
+}
+function renderMarkLarge(canvas,drawFn,bg,fg){
+  const dpr=window.devicePixelRatio||2,sz=120;
+  canvas.width=sz*dpr;canvas.height=sz*dpr;canvas.style.width=sz+'px';canvas.style.height=sz+'px';
+  const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
+  ctx.fillStyle=bg;ctx.fillRect(0,0,sz,sz);
+  const ms=68,p=(sz-ms)/2;ctx.fillStyle=fg;drawFn(ctx,p,p+4,ms,ms-8);
+}
+function renderMark(canvas,drawFn,bg,fg){
+  const dpr=window.devicePixelRatio||2,sz=52;
+  canvas.width=sz*dpr;canvas.height=sz*dpr;canvas.style.width=sz+'px';canvas.style.height=sz+'px';
+  const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
+  ctx.fillStyle=bg;ctx.fillRect(0,0,sz,sz);
+  const ms=26,p=(sz-ms)/2;ctx.fillStyle=fg;drawFn(ctx,p,p+1,ms,ms-2);
+}
+function renderMarkSize(canvas,drawFn,size,bg,fg){
+  const dpr=window.devicePixelRatio||2;
+  canvas.width=size*dpr;canvas.height=size*dpr;canvas.style.width=size+'px';canvas.style.height=size+'px';
+  const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
+  ctx.fillStyle=bg;ctx.fillRect(0,0,size,size);
+  const pad=size*.15,ms=size-pad*2;
+  ctx.fillStyle=fg;drawFn(ctx,pad,pad+ms*.05,ms,ms*.9);
+}
+
+function build(){
+  const versions=[
+    {id:'v1',name:'v1',label:'Original',drawFn:drawV1},
+    {id:'v4',name:'v4',label:'Final',drawFn:drawV4},
+    {id:'v5',name:'v5',label:'Master',drawFn:drawV5},
+  ];
+  const compare=document.getElementById('main-compare');
+  let html='';
+  versions.forEach(v=>{
+    html+=`<div class="side">
+      <h2>${v.name}</h2><span class="tag">${v.label}</span>
+      <div class="large-mark"><canvas id="lg-${v.id}"></canvas></div>
+      <div class="wordmark-wrap"><canvas id="wm-${v.id}"></canvas></div>
+      <div class="mark-row">
+        <div class="mark-cell"><div class="box light"><canvas id="mk-${v.id}-l"></canvas></div><div class="label">light</div></div>
+        <div class="mark-cell"><div class="box dark"><canvas id="mk-${v.id}-d"></canvas></div><div class="label">dark</div></div>
+        <div class="mark-cell"><div class="box green"><canvas id="mk-${v.id}-g"></canvas></div><div class="label">sage</div></div>
+        <div class="mark-cell"><div class="box pink"><canvas id="mk-${v.id}-p"></canvas></div><div class="label">pink</div></div>
+        <div class="mark-cell"><div class="box cream"><canvas id="mk-${v.id}-c"></canvas></div><div class="label">cream</div></div>
+        <div class="mark-cell"><div class="box salmon"><canvas id="mk-${v.id}-s"></canvas></div><div class="label">salmon</div></div>
+      </div>
+    </div>`;
+  });
+  compare.innerHTML=html;
+
+  const sizeTest=document.getElementById('size-test');
+  let shtml='';
+  versions.forEach(v=>{
+    shtml+=`<div class="size-col">
+      <h4>${v.name} ${v.label}</h4>
+      <div class="size-row">
+        <div><canvas id="sz-${v.id}-48"></canvas><div class="size-label">48px</div></div>
+        <div><canvas id="sz-${v.id}-32"></canvas><div class="size-label">32px</div></div>
+        <div><canvas id="sz-${v.id}-24"></canvas><div class="size-label">24px</div></div>
+        <div><canvas id="sz-${v.id}-16"></canvas><div class="size-label">16px</div></div>
+        <div><canvas id="sz-${v.id}-12"></canvas><div class="size-label">12px</div></div>
+      </div>
+    </div>`;
+  });
+  sizeTest.innerHTML=shtml;
+
+  document.fonts.ready.then(()=>{
+    versions.forEach(v=>{
+      renderMarkLarge(document.getElementById(`lg-${v.id}`),v.drawFn,'#FAFAF8','#1B4332');
+      renderWordmark(document.getElementById(`wm-${v.id}`),v.drawFn);
+      renderMark(document.getElementById(`mk-${v.id}-l`),v.drawFn,'#FAFAF8','#1B4332');
+      renderMark(document.getElementById(`mk-${v.id}-d`),v.drawFn,'#1B4332','#F5F0E8');
+      renderMark(document.getElementById(`mk-${v.id}-g`),v.drawFn,'#8AAE92','#1B4332');
+      renderMark(document.getElementById(`mk-${v.id}-p`),v.drawFn,'#F2C4C4','#1B4332');
+      renderMark(document.getElementById(`mk-${v.id}-c`),v.drawFn,'#F5F0E8','#1B4332');
+      renderMark(document.getElementById(`mk-${v.id}-s`),v.drawFn,'#E8967D','#1B4332');
+      [48,32,24,16,12].forEach(sz=>{
+        renderMarkSize(document.getElementById(`sz-${v.id}-${sz}`),v.drawFn,sz,'#FAFAF8','#1B4332');
+      });
+    });
+  });
+}
+build();
+</script>
+</body>
+</html>

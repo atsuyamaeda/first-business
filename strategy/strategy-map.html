@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>matcha & me - Strategy Options Map</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    background: #0a0a0a;
+    color: #fff;
+    padding: 60px;
+    min-height: 100vh;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .header h1 {
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #4ade80, #22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .header p {
+    font-size: 16px;
+    color: #666;
+    font-weight: 400;
+  }
+
+  .header .stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 24px;
+  }
+
+  .header .stat {
+    text-align: center;
+  }
+
+  .header .stat-number {
+    font-size: 36px;
+    font-weight: 800;
+    color: #fff;
+  }
+
+  .header .stat-label {
+    font-size: 12px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 4px;
+  }
+
+  .treemap {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 16px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .category {
+    border-radius: 16px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+
+  .category::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.08);
+    pointer-events: none;
+  }
+
+  /* Large categories span 2 columns or rows */
+  .cat-product { grid-column: span 2; grid-row: span 2; }
+  .cat-customer { grid-column: span 1; grid-row: span 1; }
+  .cat-channel { grid-column: span 1; grid-row: span 1; }
+  .cat-marketing { grid-column: span 2; grid-row: span 1; }
+  .cat-retention { grid-column: span 1; grid-row: span 1; }
+  .cat-pricing { grid-column: span 1; grid-row: span 1; }
+  .cat-cost { grid-column: span 1; grid-row: span 1; }
+  .cat-funding { grid-column: span 1; grid-row: span 1; }
+  .cat-structure { grid-column: span 1; grid-row: span 1; }
+
+  .cat-product { background: linear-gradient(135deg, #064e3b 0%, #0a2520 100%); }
+  .cat-customer { background: linear-gradient(135deg, #1e3a5f 0%, #0f1f35 100%); }
+  .cat-channel { background: linear-gradient(135deg, #3b1f64 0%, #1a0e30 100%); }
+  .cat-marketing { background: linear-gradient(135deg, #5c2d0e 0%, #2a1506 100%); }
+  .cat-retention { background: linear-gradient(135deg, #4a1942 0%, #200e1e 100%); }
+  .cat-pricing { background: linear-gradient(135deg, #1a3a1a 0%, #0e1f0e 100%); }
+  .cat-cost { background: linear-gradient(135deg, #3d3d0e 0%, #1e1e07 100%); }
+  .cat-funding { background: linear-gradient(135deg, #0e2d3d 0%, #071820 100%); }
+  .cat-structure { background: linear-gradient(135deg, #3d1a1a 0%, #1e0e0e 100%); }
+
+  .cat-number {
+    font-size: 64px;
+    font-weight: 900;
+    opacity: 0.08;
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    line-height: 1;
+  }
+
+  .cat-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .cat-icon {
+    font-size: 24px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.08);
+    flex-shrink: 0;
+  }
+
+  .cat-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .cat-count {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.4);
+    margin-left: auto;
+    background: rgba(255,255,255,0.06);
+    padding: 4px 10px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+
+  .subcategories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  .subcat {
+    background: rgba(255,255,255,0.06);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12px;
+    line-height: 1.4;
+    flex: 1 1 auto;
+    min-width: 120px;
+  }
+
+  .subcat-name {
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 2px;
+  }
+
+  .subcat-count {
+    font-weight: 400;
+    color: rgba(255,255,255,0.35);
+    font-size: 11px;
+  }
+
+  .subcat-items {
+    font-weight: 400;
+    color: rgba(255,255,255,0.5);
+    font-size: 10.5px;
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  .phase-legend {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 40px;
+    padding: 20px;
+  }
+
+  .phase-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #888;
+  }
+
+  .phase-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .phase-dot.p1 { background: #4ade80; }
+  .phase-dot.p2 { background: #fbbf24; }
+  .phase-dot.p3 { background: #f87171; }
+
+  .footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #333;
+  }
+
+  /* Phase bar under each subcategory */
+  .phase-bar {
+    display: flex;
+    gap: 2px;
+    margin-top: 6px;
+    height: 3px;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .phase-bar .p1 { background: #4ade80; }
+  .phase-bar .p2 { background: #fbbf24; }
+  .phase-bar .p3 { background: #f87171; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>matcha & me Strategy Map</h1>
+  <p>抹茶ビジネスで取りうる打ち手の全体マップ</p>
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-number">282</div>
+      <div class="stat-label">Total Options</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">9</div>
+      <div class="stat-label">Categories</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">38</div>
+      <div class="stat-label">Sub-categories</div>
+    </div>
+  </div>
+</div>
+
+<div class="treemap">
+
+  <!-- 1. Product (76 items) - LARGEST -->
+  <div class="category cat-product">
+    <div class="cat-number">76</div>
+    <div class="cat-header">
+      <div class="cat-icon">🍵</div>
+      <div class="cat-title">1. 商品<br><span style="font-weight:400;font-size:13px;opacity:0.5">What to Sell</span></div>
+      <div class="cat-count">76 options</div>
+    </div>
+    <div class="subcategories">
+      <div class="subcat">
+        <div class="subcat-name">コア商品の拡張</div>
+        <div class="subcat-count">9 options</div>
+        <div class="subcat-items">フレーバー / グレード / 産地別 / 季節限定 / 容量 / サンプラー / 用途別 / カフェインレス / オーガニック</div>
+        <div class="phase-bar"><div class="p1" style="flex:2"></div><div class="p2" style="flex:6"></div><div class="p3" style="flex:1"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">別形態の抹茶商品</div>
+        <div class="subcat-count">11 options</div>
+        <div class="subcat-items">スティック / RTD / ラテミックス / カプセル / プロテイン / コラーゲン / サプリ / ティーバッグ / シロップ / ショット</div>
+        <div class="phase-bar"><div class="p2" style="flex:5"></div><div class="p3" style="flex:6"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">抹茶食品</div>
+        <div class="subcat-count">9 options</div>
+        <div class="subcat-items">チョコ / クッキー / グラノーラ / アイス / ソルト / バター / 和菓子セット / カクテルキット / エナジーバー</div>
+        <div class="phase-bar"><div class="p2" style="flex:4"></div><div class="p3" style="flex:5"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">茶器・道具</div>
+        <div class="subcat-count">10 options</div>
+        <div class="subcat-items">茶碗 / 作家もの / 茶筅 / スタンド / マグ / シェーカー / 茶杓 / 空缶 / トラベルキット / 電動茶筅</div>
+        <div class="phase-bar"><div class="p1" style="flex:1"></div><div class="p2" style="flex:8"></div><div class="p3" style="flex:1"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">グッズ</div>
+        <div class="subcat-count">6 options</div>
+        <div class="subcat-items">アパレル / バッグ / ステッカー / ポスター / キャンドル / フレグランス</div>
+        <div class="phase-bar"><div class="p1" style="flex:1"></div><div class="p2" style="flex:2"></div><div class="p3" style="flex:3"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">ビューティー</div>
+        <div class="subcat-count">4 options</div>
+        <div class="subcat-items">フェイスマスク / スクラブ / リップ / バスソルト</div>
+        <div class="phase-bar"><div class="p3" style="flex:4"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">サービス</div>
+        <div class="subcat-count">10 options</div>
+        <div class="subcat-items">WS対面 / WSオンライン / 法人WS / ケータリング / 出張バー / コンサル / 農家ツアー / ギフトサブスク / 診断 / 検定</div>
+        <div class="phase-bar"><div class="p1" style="flex:3"></div><div class="p2" style="flex:5"></div><div class="p3" style="flex:2"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">デジタル</div>
+        <div class="subcat-count">5 options</div>
+        <div class="subcat-items">ブログ / YouTube / レシピ本 / ニュースレター / アプリ</div>
+        <div class="phase-bar"><div class="p1" style="flex:2"></div><div class="p3" style="flex:3"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">ライセンス</div>
+        <div class="subcat-count">4 options</div>
+        <div class="subcat-items">ブランド / 缶デザイン / 診断技術 / OEM供給</div>
+        <div class="phase-bar"><div class="p3" style="flex:4"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">コラボ商品</div>
+        <div class="subcat-count">8 options</div>
+        <div class="subcat-items">アーティスト缶 / 陶芸家茶碗 / アパレル / カフェメニュー / 酒造 / パティシエ / 産地 / D2Cクロス</div>
+        <div class="phase-bar"><div class="p2" style="flex:7"></div><div class="p3" style="flex:1"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Customer (28 items) -->
+  <div class="category cat-customer">
+    <div class="cat-number">28</div>
+    <div class="cat-header">
+      <div class="cat-icon">👤</div>
+      <div class="cat-title">2. 顧客<br><span style="font-weight:400;font-size:13px;opacity:0.5">Who to Sell</span></div>
+      <div class="cat-count">28</div>
+    </div>
+    <div class="subcategories">
+      <div class="subcat">
+        <div class="subcat-name">個人 B2C</div>
+        <div class="subcat-count">13</div>
+        <div class="subcat-items">健康層 / コーヒー代替 / Z世代 / ギフト / 茶道 / 妊婦 / アスリート / シニア / 学生 / 外国人 / 美容 / ヴィーガン / 瞑想</div>
+        <div class="phase-bar"><div class="p1" style="flex:4"></div><div class="p2" style="flex:5"></div><div class="p3" style="flex:4"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">法人 B2B</div>
+        <div class="subcat-count">11</div>
+        <div class="subcat-items">オフィス / ホテル / カフェ卸 / 菓子 / スパ / 航空 / ノベルティ / 婚礼 / ジム / 学校 / 病院</div>
+        <div class="phase-bar"><div class="p2" style="flex:6"></div><div class="p3" style="flex:5"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">B2B2C</div>
+        <div class="subcat-count">4</div>
+        <div class="subcat-items">サブスクボックス卸 / ふるさと納税 / 株主優待 / ポイント交換</div>
+        <div class="phase-bar"><div class="p1" style="flex:1"></div><div class="p2" style="flex:1"></div><div class="p3" style="flex:2"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Channel (36 items) -->
+  <div class="category cat-channel">
+    <div class="cat-number">36</div>
+    <div class="cat-header">
+      <div class="cat-icon">📍</div>
+      <div class="cat-title">3. チャネル<br><span style="font-weight:400;font-size:13px;opacity:0.5">Where to Sell</span></div>
+      <div class="cat-count">36</div>
+    </div>
+    <div class="subcategories">
+      <div class="subcat">
+        <div class="subcat-name">オンライン</div>
+        <div class="subcat-count">13</div>
+        <div class="subcat-items">自社EC / Amazon JP / 楽天 / Yahoo / IG Shop / TikTok / LINE / メルカリ / Creema / Amazon US/EU / 越境EC / Etsy</div>
+        <div class="phase-bar"><div class="p1" style="flex:3"></div><div class="p2" style="flex:8"></div><div class="p3" style="flex:2"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">オフライン</div>
+        <div class="subcat-count">13</div>
+        <div class="subcat-items">ポップアップ / マルシェ / セレクト / 百貨店 / スーパー / コンビニ / 自社店舗 / フードトラック / 自販機 / 空港</div>
+        <div class="phase-bar"><div class="p1" style="flex:2"></div><div class="p2" style="flex:5"></div><div class="p3" style="flex:6"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">地域展開</div>
+        <div class="subcat-count">10</div>
+        <div class="subcat-items">日本 / 米国 / 欧州 / 韓国 / 台湾 / 東南ア / 豪州 / 中東 / 中国 / カナダ</div>
+        <div class="phase-bar"><div class="p1" style="flex:1"></div><div class="p2" style="flex:2"></div><div class="p3" style="flex:7"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Marketing (45 items) - SECOND LARGEST -->
+  <div class="category cat-marketing">
+    <div class="cat-number">45</div>
+    <div class="cat-header">
+      <div class="cat-icon">📣</div>
+      <div class="cat-title">5. 集客<br><span style="font-weight:400;font-size:13px;opacity:0.5">How to Acquire</span></div>
+      <div class="cat-count">45 options</div>
+    </div>
+    <div class="subcategories">
+      <div class="subcat">
+        <div class="subcat-name">デジタル広告</div>
+        <div class="subcat-count">10</div>
+        <div class="subcat-items">Instagram / TikTok / Google検索 / Googleショッピング / YouTube / Pinterest / Facebook / LINE / X / Podcast</div>
+        <div class="phase-bar"><div class="p1" style="flex:5"></div><div class="p2" style="flex:5"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">オーガニック</div>
+        <div class="subcat-count">8</div>
+        <div class="subcat-items">Instagram / TikTok / YouTube / SEO / Pinterest / LINE / Klaviyo / X</div>
+        <div class="phase-bar"><div class="p1" style="flex:6"></div><div class="p2" style="flex:2"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">インフルエンサー / PR</div>
+        <div class="subcat-count">10</div>
+        <div class="subcat-items">マイクロ / ミドル / メガ / ギフティング / アンバサダー / アフィリエイト / メディア / TV / Podcast / 受賞</div>
+        <div class="phase-bar"><div class="p1" style="flex:5"></div><div class="p2" style="flex:4"></div><div class="p3" style="flex:1"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">リアル施策</div>
+        <div class="subcat-count">7</div>
+        <div class="subcat-items">ポップアップ / 試飲会 / 闘茶 / マルシェ / 展示会 / 農家ツアー / コラボカフェ</div>
+        <div class="phase-bar"><div class="p1" style="flex:4"></div><div class="p2" style="flex:3"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">口コミ・紹介</div>
+        <div class="subcat-count">5</div>
+        <div class="subcat-items">リファラル / UGC / レビュー / 紹介キット / ギフト機能</div>
+        <div class="phase-bar"><div class="p1" style="flex:5"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">提携</div>
+        <div class="subcat-count">5</div>
+        <div class="subcat-items">D2C相互 / ヨガ / コワーキング / サロン / インテリア</div>
+        <div class="phase-bar"><div class="p2" style="flex:4"></div><div class="p3" style="flex:1"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Retention (21 items) -->
+  <div class="category cat-retention">
+    <div class="cat-number">21</div>
+    <div class="cat-header">
+      <div class="cat-icon">🔄</div>
+      <div class="cat-title">6. 継続<br><span style="font-weight:400;font-size:13px;opacity:0.5">How to Retain</span></div>
+      <div class="cat-count">21</div>
+    </div>
+    <div class="subcategories">
+      <div class="subcat">
+        <div class="subcat-name">チャーン防止</div>
+        <div class="subcat-count">7</div>
+        <div class="subcat-items">スキップ / 頻度変更 / 量変更 / 一時停止 / 解約ヒアリング / ダウングレード / レシピ</div>
+        <div class="phase-bar"><div class="p1" style="flex:7"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">エンゲージメント</div>
+        <div class="subcat-count">8</div>
+        <div class="subcat-items">ペアリングカード / ストーリー / 限定品 / コミュニティ / ポイント / アプリ / サプライズ / アンケート</div>
+        <div class="phase-bar"><div class="p1" style="flex:4"></div><div class="p2" style="flex:3"></div><div class="p3" style="flex:1"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">アップセル</div>
+        <div class="subcat-count">6</div>
+        <div class="subcat-items">茶碗 / 2缶目 / 限定フレーバー / 茶筅交換 / ギフト / ペアリング追加</div>
+        <div class="phase-bar"><div class="p1" style="flex:1"></div><div class="p2" style="flex:5"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Pricing (20 items) -->
+  <div class="category cat-pricing">
+    <div class="cat-number">20</div>
+    <div class="cat-header">
+      <div class="cat-icon">💰</div>
+      <div class="cat-title">4. 価格<br><span style="font-weight:400;font-size:13px;opacity:0.5">How to Price</span></div>
+      <div class="cat-count">20</div>
+    </div>
+    <div class="subcategories">
+      <div class="subcat">
+        <div class="subcat-name">価格設定</div>
+        <div class="subcat-count">5</div>
+        <div class="subcat-items">値上げ / 値下げ / プレミアム¥10K+ / エントリー¥1,980 / 限定¥20K+</div>
+        <div class="phase-bar"><div class="p2" style="flex:5"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">価格構造</div>
+        <div class="subcat-count">7</div>
+        <div class="subcat-items">サブスク割 / 年間割 / バンドル / 紹介割 / 初回割 / 学割 / 法人割</div>
+        <div class="phase-bar"><div class="p1" style="flex:4"></div><div class="p2" style="flex:3"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">収益モデル</div>
+        <div class="subcat-count">8</div>
+        <div class="subcat-items">サブスク / 単品 / Razor&Blade / フリーミアム / 会員制 / ドロップ / オークション / Pay it Forward</div>
+        <div class="phase-bar"><div class="p1" style="flex:4"></div><div class="p2" style="flex:1"></div><div class="p3" style="flex:3"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Cost (22 items) -->
+  <div class="category cat-cost">
+    <div class="cat-number">22</div>
+    <div class="cat-header">
+      <div class="cat-icon">📉</div>
+      <div class="cat-title">7. コスト<br><span style="font-weight:400;font-size:13px;opacity:0.5">How to Optimize</span></div>
+      <div class="cat-count">22</div>
+    </div>
+    <div class="subcategories">
+      <div class="subcat">
+        <div class="subcat-name">原材料</div>
+        <div class="subcat-count">6</div>
+        <div class="subcat-items">大量仕入 / 産地分散 / 直接仕入 / 固定契約 / 二番茶 / 海外原料</div>
+        <div class="phase-bar"><div class="p1" style="flex:1"></div><div class="p2" style="flex:4"></div><div class="p3" style="flex:1"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">製造</div>
+        <div class="subcat-count">4</div>
+        <div class="subcat-items">OEM見直し / 内製化 / 複数OEM / 自動化</div>
+        <div class="phase-bar"><div class="p1" style="flex:1"></div><div class="p2" style="flex:2"></div><div class="p3" style="flex:1"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">包材</div>
+        <div class="subcat-count">4</div>
+        <div class="subcat-items">缶大量発注 / パウチ / 化粧箱簡素化 / 茶筅調達</div>
+        <div class="phase-bar"><div class="p1" style="flex:2"></div><div class="p2" style="flex:2"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">物流</div>
+        <div class="subcat-count">4</div>
+        <div class="subcat-items">法人契約 / 3PL / 倉庫集約 / まとめ発送</div>
+        <div class="phase-bar"><div class="p1" style="flex:2"></div><div class="p2" style="flex:2"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">オペレーション</div>
+        <div class="subcat-count">4</div>
+        <div class="subcat-items">受注自動化 / FAQ Bot / 外注 / 経理自動化</div>
+        <div class="phase-bar"><div class="p1" style="flex:3"></div><div class="p2" style="flex:1"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. Funding (21 items) -->
+  <div class="category cat-funding">
+    <div class="cat-number">21</div>
+    <div class="cat-header">
+      <div class="cat-icon">🏦</div>
+      <div class="cat-title">8. 資金<br><span style="font-weight:400;font-size:13px;opacity:0.5">How to Fund</span></div>
+      <div class="cat-count">21</div>
+    </div>
+    <div class="subcategories">
+      <div class="subcat">
+        <div class="subcat-name">自己資金</div>
+        <div class="subcat-count">2</div>
+        <div class="subcat-items">ブートストラップ / プリセールス</div>
+        <div class="phase-bar"><div class="p1" style="flex:2"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">CF</div>
+        <div class="subcat-count">4</div>
+        <div class="subcat-items">Makuake / CAMPFIRE / Kickstarter / Indiegogo</div>
+        <div class="phase-bar"><div class="p1" style="flex:2"></div><div class="p2" style="flex:2"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">融資</div>
+        <div class="subcat-count">3</div>
+        <div class="subcat-items">公庫 / 信金 / マイクロ</div>
+        <div class="phase-bar"><div class="p1" style="flex:3"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">補助金</div>
+        <div class="subcat-count">5</div>
+        <div class="subcat-items">持続化 / ものづくり / IT導入 / 自治体 / JETRO</div>
+        <div class="phase-bar"><div class="p1" style="flex:4"></div><div class="p2" style="flex:1"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">エクイティ</div>
+        <div class="subcat-count">4</div>
+        <div class="subcat-items">エンジェル / VC / CVC / アクセラ</div>
+        <div class="phase-bar"><div class="p1" style="flex:2"></div><div class="p2" style="flex:2"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">戦略提携</div>
+        <div class="subcat-count">3</div>
+        <div class="subcat-items">茶業者提携 / 食品大手 / 海外ディストリビューター</div>
+        <div class="phase-bar"><div class="p2" style="flex:2"></div><div class="p3" style="flex:1"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. Structure (13 items) -->
+  <div class="category cat-structure">
+    <div class="cat-number">13</div>
+    <div class="cat-header">
+      <div class="cat-icon">🏗️</div>
+      <div class="cat-title">9. 事業構造<br><span style="font-weight:400;font-size:13px;opacity:0.5">Structure Change</span></div>
+      <div class="cat-count">13</div>
+    </div>
+    <div class="subcategories">
+      <div class="subcat">
+        <div class="subcat-name">垂直統合</div>
+        <div class="subcat-count">4</div>
+        <div class="subcat-items">農園取得 / 製粉工場 / カフェ参入 / 抹茶スタンド</div>
+        <div class="phase-bar"><div class="p2" style="flex:1"></div><div class="p3" style="flex:3"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">水平展開</div>
+        <div class="subcat-count">5</div>
+        <div class="subcat-items">FC / M&A / 卸売分離 / PB供給 / マーケットプレイス</div>
+        <div class="phase-bar"><div class="p3" style="flex:5"></div></div>
+      </div>
+      <div class="subcat">
+        <div class="subcat-name">グローバル</div>
+        <div class="subcat-count">4</div>
+        <div class="subcat-items">海外法人 / JV / プラットフォーム化 / データ事業</div>
+        <div class="phase-bar"><div class="p3" style="flex:4"></div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="phase-legend">
+  <div class="phase-item">
+    <div class="phase-dot p1"></div>
+    Phase 1 — 今すぐ着手（107 options）
+  </div>
+  <div class="phase-item">
+    <div class="phase-dot p2"></div>
+    Phase 2 — 成長期に実行（113 options）
+  </div>
+  <div class="phase-item">
+    <div class="phase-dot p3"></div>
+    Phase 3 — スケール期に検討（62 options）
+  </div>
+</div>
+
+<div class="footer">
+  matcha & me — 282 Strategic Options Map — 2026.03.28
+</div>
+
+</body>
+</html>

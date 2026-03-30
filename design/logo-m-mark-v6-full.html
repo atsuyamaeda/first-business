@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>MATCHA&ME — M Mark Full Exploration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #EDEDE9;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 200;
+    color: #1B4332;
+    padding: 60px 40px;
+  }
+  h1 { text-align:center; font-weight:200; font-size:13px; letter-spacing:8px; text-transform:uppercase; margin-bottom:10px; color:#888; }
+  .subtitle { text-align:center; font-size:11px; color:#aaa; margin-bottom:60px; letter-spacing:1px; }
+  .concept { max-width:900px; margin:0 auto 70px; background:#fff; padding:50px 50px 35px; }
+  .concept-header { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px; }
+  .concept h2 { font-weight:200; font-size:12px; letter-spacing:5px; text-transform:uppercase; color:#999; }
+  .concept .tag { font-size:10px; color:#bbb; letter-spacing:2px; }
+  .concept .desc { font-size:12px; color:#aaa; margin-bottom:35px; line-height:1.8; }
+  .wordmark-canvas-wrap { text-align:center; margin-bottom:35px; padding:25px 0; }
+  .wordmark-canvas-wrap canvas { display:block; margin:0 auto; }
+  .mark-display { display:flex; justify-content:center; gap:24px; padding-top:25px; border-top:1px solid #f0f0f0; }
+  .mark-cell { text-align:center; }
+  .mark-cell .box { width:72px; height:72px; display:flex; align-items:center; justify-content:center; margin-bottom:6px; }
+  .mark-cell .box.light { background:#FAFAF8; border:1px solid #f0f0f0; }
+  .mark-cell .box.dark { background:#1B4332; }
+  .mark-cell .box.green { background:#8AAE92; }
+  .mark-cell .box.pink { background:#F2C4C4; }
+  .mark-cell .label { font-size:8px; color:#ccc; letter-spacing:2px; text-transform:uppercase; }
+  .divider { max-width:900px; margin:0 auto 50px; text-align:center; font-size:10px; letter-spacing:6px; text-transform:uppercase; color:#ccc; }
+  .divider::before,.divider::after { content:''; display:inline-block; width:60px; height:1px; background:#ddd; vertical-align:middle; margin:0 20px; }
+</style>
+</head>
+<body>
+
+<h1>matcha & me</h1>
+<div class="subtitle">M mark — 16 concepts, all directions</div>
+<div id="app"></div>
+
+<script>
+const D = {};
+
+// ─────────────────────────────────────────────
+// 01: Round Valley（基準・前回のC1）
+// ─────────────────────────────────────────────
+D['01'] = (ctx, x, y, w, h) => {
+  const s = w * 0.07;
+  ctx.beginPath();
+  ctx.moveTo(x,y+h); ctx.lineTo(x,y); ctx.lineTo(x+s,y);
+  ctx.lineTo(x+s, y+h*0.2);
+  ctx.quadraticCurveTo(x+w/2, y+h*0.92, x+w-s, y+h*0.2);
+  ctx.lineTo(x+w-s,y); ctx.lineTo(x+w,y); ctx.lineTo(x+w,y+h);
+  ctx.lineTo(x+w-s,y+h); ctx.lineTo(x+w-s, y+h*0.28);
+  ctx.quadraticCurveTo(x+w/2, y+h*1.0, x+s, y+h*0.28);
+  ctx.lineTo(x+s,y+h); ctx.closePath(); ctx.fill();
+};
+
+// ─────────────────────────────────────────────
+// 02: Semicircle（完全半円）
+// ─────────────────────────────────────────────
+D['02'] = (ctx, x, y, w, h) => {
+  const s = w * 0.07;
+  const cx = x + w/2, cy = y + h * 0.18;
+  const ro = (w - s*2) / 2, ri = ro - s * 1.3;
+  ctx.beginPath();
+  ctx.moveTo(x,y+h); ctx.lineTo(x,y); ctx.lineTo(x+s,y); ctx.lineTo(x+s,cy);
+  ctx.arc(cx, cy, ro, Math.PI, 0, false);
+  ctx.lineTo(x+w-s,y); ctx.lineTo(x+w,y); ctx.lineTo(x+w,y+h);
+  ctx.lineTo(x+w-s,y+h); ctx.lineTo(x+w-s,cy);
+  ctx.arc(cx, cy, ri, 0, Math.PI, true);
+  ctx.lineTo(x+s,y+h); ctx.closePath(); ctx.fill();
+};
+
+// ─────────────────────────────────────────────
+// 03: Shallow Round（浅い50%）
+// ─────────────────────────────────────────────
+D['03'] = (ctx, x, y, w, h) => {
+  const s = w * 0.07;
+  ctx.beginPath();
+  ctx.moveTo(x,y+h); ctx.lineTo(x,y); ctx.lineTo(x+s,y);
+  ctx.lineTo(x+s, y+h*0.15);
+  ctx.quadraticCurveTo(x+w/2, y+h*0.58, x+w-s, y+h*0.15);
+  ctx.lineTo(x+w-s,y); ctx.lineTo(x+w,y); ctx.lineTo(x+w,y+h);
+  ctx.lineTo(x+w-s,y+h); ctx.lineTo(x+w-s, y+h*0.23);
+  ctx.quadraticCurveTo(x+w/2, y+h*0.66, x+s, y+h*0.23);
+  ctx.lineTo(x+s,y+h); ctx.closePath(); ctx.fill();
+};
+
+// ─────────────────────────────────────────────
+// 04: Flat Bottom U（底がフラットな角丸U字）
+// ─────────────────────────────────────────────
+D['04'] = (ctx, x, y, w, h) => {
+  const s = w * 0.07, r = w * 0.10;
+  const bY = y + h * 0.70, ibY = bY + s * 1.3;
+  ctx.beginPath();
+  ctx.moveTo(x,y+h); ctx.lineTo(x,y); ctx.lineTo(x+s,y);
+  ctx.lineTo(x+s, bY-r);
+  ctx.quadraticCurveTo(x+s, bY, x+s+r, bY);
+  ctx.lineTo(x+w-s-r, bY);
+  ctx.quadraticCurveTo(x+w-s, bY, x+w-s, bY-r);
+  ctx.lineTo(x+w-s,y); ctx.lineTo(x+w,y); ctx.lineTo(x+w,y+h);
+  ctx.lineTo(x+w-s,y+h); ctx.lineTo(x+w-s, ibY-r);
+  ctx.quadraticCurveTo(x+w-s, ibY, x+w-s-r, ibY);
+  ctx.lineTo(x+s+r, ibY);
+  ctx.quadraticCurveTo(x+s, ibY, x+s, ibY-r);
+  ctx.lineTo(x+s,y+h); ctx.closePath(); ctx.fill();
+};
+
+// ─────────────────────────────────────────────
+// 05: Mono Line（一筆書きストローク）
+// ─────────────────────────────────────────────
+D['05'] = (ctx, x, y, w, h) => {
+  const lw = w * 0.065;
+  ctx.save();
+  ctx.strokeStyle = ctx.fillStyle;
+  ctx.lineWidth = lw;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+  ctx.beginPath();
+  ctx.moveTo(x+lw/2, y+h);
+  ctx.lineTo(x+lw/2, y+lw/2);
+  ctx.lineTo(x+w/2, y+h*0.72);
+  ctx.lineTo(x+w-lw/2, y+lw/2);
+  ctx.lineTo(x+w-lw/2, y+h);
+  ctx.stroke();
+  ctx.restore();
+};
+
+// ─────────────────────────────────────────────
+// 06: Double Line（二重線のM）
+// ─────────────────────────────────────────────
+D['06'] = (ctx, x, y, w, h) => {
+  const lw = w * 0.035, gap = w * 0.04;
+  ctx.save();
+  ctx.strokeStyle = ctx.fillStyle;
+  ctx.lineWidth = lw;
+  ctx.lineCap = 'square';
+  ctx.lineJoin = 'miter';
+  // Outer stroke
+  ctx.beginPath();
+  ctx.moveTo(x+lw, y+h); ctx.lineTo(x+lw, y+lw); ctx.lineTo(x+w/2, y+h*0.70);
+  ctx.lineTo(x+w-lw, y+lw); ctx.lineTo(x+w-lw, y+h);
+  ctx.stroke();
+  // Inner stroke (shifted inward)
+  ctx.beginPath();
+  ctx.moveTo(x+lw+gap+lw, y+h); ctx.lineTo(x+lw+gap+lw, y+gap*2);
+  ctx.lineTo(x+w/2, y+h*0.70+gap*1.5);
+  ctx.lineTo(x+w-lw-gap-lw, y+gap*2); ctx.lineTo(x+w-lw-gap-lw, y+h);
+  ctx.stroke();
+  ctx.restore();
+};
+
+// ─────────────────────────────────────────────
+// 07: Taper（先端が細くなる筆圧）
+// ─────────────────────────────────────────────
+D['07'] = (ctx, x, y, w, h) => {
+  const thick = w * 0.09, thin = w * 0.03;
+  // Left vertical
+  ctx.beginPath(); ctx.moveTo(x,y); ctx.lineTo(x+thin,y); ctx.lineTo(x+thick,y+h); ctx.lineTo(x,y+h); ctx.fill();
+  // Right vertical
+  ctx.beginPath(); ctx.moveTo(x+w,y); ctx.lineTo(x+w-thin,y); ctx.lineTo(x+w-thick,y+h); ctx.lineTo(x+w,y+h); ctx.fill();
+  // Outer left diag
+  ctx.beginPath(); ctx.moveTo(x+thin,y); ctx.lineTo(x+thin*2,y); ctx.lineTo(x+w/2+thick*0.4,y+h*0.82); ctx.lineTo(x+w/2-thick*0.4,y+h*0.82); ctx.fill();
+  // Outer right diag
+  ctx.beginPath(); ctx.moveTo(x+w-thin,y); ctx.lineTo(x+w-thin*2,y); ctx.lineTo(x+w/2-thick*0.4,y+h*0.82); ctx.lineTo(x+w/2+thick*0.4,y+h*0.82); ctx.fill();
+  // Inner left diag
+  ctx.beginPath(); ctx.moveTo(x+thick,y+h); ctx.lineTo(x+thick+thin,y+h); ctx.lineTo(x+w/2+thin*0.5,y+h*0.22); ctx.lineTo(x+w/2-thin*0.5,y+h*0.22); ctx.fill();
+  // Inner right diag
+  ctx.beginPath(); ctx.moveTo(x+w-thick,y+h); ctx.lineTo(x+w-thick-thin,y+h); ctx.lineTo(x+w/2-thin*0.5,y+h*0.22); ctx.lineTo(x+w/2+thin*0.5,y+h*0.22); ctx.fill();
+};
+
+// ─────────────────────────────────────────────
+// 08: Stencil（切り離し）
+// ─────────────────────────────────────────────
+D['08'] = (ctx, x, y, w, h) => {
+  const s = w * 0.065, gap = w * 0.045;
+  ctx.fillRect(x, y, s, h);
+  ctx.fillRect(x+w-s, y, s, h);
+  ctx.beginPath(); ctx.moveTo(x+s+gap,y); ctx.lineTo(x+s+gap+s,y); ctx.lineTo(x+w/2+s/2,y+h*0.70); ctx.lineTo(x+w/2-s/2,y+h*0.70); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(x+w-s-gap,y); ctx.lineTo(x+w-s-gap-s,y); ctx.lineTo(x+w/2-s/2,y+h*0.70); ctx.lineTo(x+w/2+s/2,y+h*0.70); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(x+s+gap,y+h); ctx.lineTo(x+s+gap+s,y+h); ctx.lineTo(x+w/2+s/2,y+h*0.30); ctx.lineTo(x+w/2-s/2,y+h*0.30); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(x+w-s-gap,y+h); ctx.lineTo(x+w-s-gap-s,y+h); ctx.lineTo(x+w/2-s/2,y+h*0.30); ctx.lineTo(x+w/2+s/2,y+h*0.30); ctx.fill();
+};
+
+// ─────────────────────────────────────────────
+// 09: Ink Trap（接合部ノッチ）
+// ─────────────────────────────────────────────
+D['09'] = (ctx, x, y, w, h) => {
+  const s = w * 0.07, n = s * 1.3;
+  ctx.beginPath();
+  ctx.moveTo(x,y+h); ctx.lineTo(x,y); ctx.lineTo(x+s,y);
+  ctx.lineTo(x+s, y+n); ctx.lineTo(x+s+n*0.5, y+n);
+  ctx.lineTo(x+w/2, y+h*0.78);
+  ctx.lineTo(x+w-s-n*0.5, y+n); ctx.lineTo(x+w-s, y+n);
+  ctx.lineTo(x+w-s,y); ctx.lineTo(x+w,y); ctx.lineTo(x+w,y+h);
+  ctx.lineTo(x+w-s,y+h); ctx.lineTo(x+w-s, y+h-n); ctx.lineTo(x+w-s-n*0.5, y+h-n);
+  ctx.lineTo(x+w/2, y+h*0.28);
+  ctx.lineTo(x+s+n*0.5, y+h-n); ctx.lineTo(x+s, y+h-n);
+  ctx.lineTo(x+s,y+h); ctx.closePath(); ctx.fill();
+};
+
+// ─────────────────────────────────────────────
+// 10: Soft / All Curves（全曲線）
+// ─────────────────────────────────────────────
+D['10'] = (ctx, x, y, w, h) => {
+  const s = w * 0.07;
+  ctx.beginPath();
+  ctx.moveTo(x+s/2, y+h);
+  ctx.quadraticCurveTo(x, y+h*0.3, x+s*0.5, y);
+  ctx.quadraticCurveTo(x+s*2, y, x+s*2, y+h*0.1);
+  ctx.quadraticCurveTo(x+w*0.3, y+h*0.65, x+w/2, y+h*0.78);
+  ctx.quadraticCurveTo(x+w*0.7, y+h*0.65, x+w-s*2, y+h*0.1);
+  ctx.quadraticCurveTo(x+w-s*2, y, x+w-s*0.5, y);
+  ctx.quadraticCurveTo(x+w, y+h*0.3, x+w-s/2, y+h);
+  ctx.lineTo(x+w-s*1.5, y+h);
+  ctx.quadraticCurveTo(x+w-s, y+h*0.35, x+w-s*2, y+h*0.18);
+  ctx.quadraticCurveTo(x+w*0.65, y+h*0.7, x+w/2, y+h*0.86);
+  ctx.quadraticCurveTo(x+w*0.35, y+h*0.7, x+s*2, y+h*0.18);
+  ctx.quadraticCurveTo(x+s, y+h*0.35, x+s*1.5, y+h);
+  ctx.closePath(); ctx.fill();
+};
+
+// ─────────────────────────────────────────────
+// 11: Pointed Apex（谷底に三角）
+// ─────────────────────────────────────────────
+D['11'] = (ctx, x, y, w, h) => {
+  const s = w * 0.07;
+  ctx.beginPath();
+  ctx.moveTo(x,y+h); ctx.lineTo(x,y); ctx.lineTo(x+s,y);
+  ctx.lineTo(x+w/2, y+h*0.78); ctx.lineTo(x+w-s,y); ctx.lineTo(x+w,y);
+  ctx.lineTo(x+w,y+h); ctx.lineTo(x+w-s,y+h); ctx.lineTo(x+w-s, y+h*0.14);
+  ctx.lineTo(x+w/2, y+h*0.92); ctx.lineTo(x+s, y+h*0.14);
+  ctx.lineTo(x+s,y+h); ctx.closePath(); ctx.fill();
+  // Triangle
+  ctx.beginPath();
+  ctx.moveTo(x+w*0.37, y+h*0.82); ctx.lineTo(x+w/2, y+h*0.60); ctx.lineTo(x+w*0.63, y+h*0.82);
+  ctx.closePath(); ctx.fill();
+};
+
+// ─────────────────────────────────────────────
+// 12: Torii（鳥居型 — 上に横棒、脚が外に開く）
+// ─────────────────────────────────────────────
+D['12'] = (ctx, x, y, w, h) => {
+  const s = w * 0.065, lean = w * 0.06;
+  // Top horizontal beam
+  ctx.fillRect(x - lean*0.5, y, w + lean, s);
+  // Second beam (thinner)
+  ctx.fillRect(x + s, y + s * 2.2, w - s*2, s * 0.6);
+  // Left leg (splayed)
+  ctx.beginPath();
+  ctx.moveTo(x + s*2, y + s);
+  ctx.lineTo(x + s*3, y + s);
+  ctx.lineTo(x + s*3 + lean*0.3, y + h);
+  ctx.lineTo(x + s*2 - lean*0.3, y + h);
+  ctx.fill();
+  // Right leg (splayed)
+  ctx.beginPath();
+  ctx.moveTo(x + w - s*3, y + s);
+  ctx.lineTo(x + w - s*2, y + s);
+  ctx.lineTo(x + w - s*2 + lean*0.3, y + h);
+  ctx.lineTo(x + w - s*3 - lean*0.3, y + h);
+  ctx.fill();
+  // Center V (connects to beam)
+  ctx.beginPath();
+  ctx.moveTo(x + s*3, y + s);
+  ctx.lineTo(x + w/2 - s*0.3, y + h*0.55);
+  ctx.lineTo(x + w/2 + s*0.3, y + h*0.55);
+  ctx.lineTo(x + w - s*3, y + s);
+  ctx.lineTo(x + w - s*3 - s, y + s);
+  ctx.lineTo(x + w/2 + s*0.3, y + h*0.62);
+  ctx.lineTo(x + w/2 - s*0.3, y + h*0.62);
+  ctx.lineTo(x + s*3 + s, y + s);
+  ctx.closePath(); ctx.fill();
+};
+
+// ─────────────────────────────────────────────
+// 13: Splayed + Round（脚が開く＋内側U字）
+// ─────────────────────────────────────────────
+D['13'] = (ctx, x, y, w, h) => {
+  const s = w * 0.07, lean = w * 0.07;
+  ctx.beginPath();
+  ctx.moveTo(x-lean, y+h); ctx.lineTo(x+s, y); ctx.lineTo(x+s*2, y);
+  ctx.lineTo(x+s*2, y+h*0.18);
+  ctx.quadraticCurveTo(x+w/2, y+h*0.88, x+w-s*2, y+h*0.18);
+  ctx.lineTo(x+w-s*2, y); ctx.lineTo(x+w-s, y);
+  ctx.lineTo(x+w+lean, y+h); ctx.lineTo(x+w+lean-s, y+h);
+  ctx.lineTo(x+w-s*2, y+h*0.10);
+  ctx.lineTo(x+w-s*2, y+h*0.26);
+  ctx.quadraticCurveTo(x+w/2, y+h*0.96, x+s*2, y+h*0.26);
+  ctx.lineTo(x+s*2, y+h*0.10);
+  ctx.lineTo(x-lean+s, y+h);
+  ctx.closePath(); ctx.fill();
+};
+
+// ─────────────────────────────────────────────
+// 14: Crossbar（横棒付き）
+// ─────────────────────────────────────────────
+D['14'] = (ctx, x, y, w, h) => {
+  const s = w * 0.07;
+  ctx.beginPath();
+  ctx.moveTo(x,y+h); ctx.lineTo(x,y); ctx.lineTo(x+s,y);
+  ctx.lineTo(x+w/2, y+h*0.78); ctx.lineTo(x+w-s,y); ctx.lineTo(x+w,y);
+  ctx.lineTo(x+w,y+h); ctx.lineTo(x+w-s,y+h); ctx.lineTo(x+w-s, y+h*0.14);
+  ctx.lineTo(x+w/2, y+h*0.92); ctx.lineTo(x+s, y+h*0.14);
+  ctx.lineTo(x+s,y+h); ctx.closePath(); ctx.fill();
+  ctx.fillRect(x+w*0.18, y+h*0.44, w*0.64, s*0.65);
+};
+
+// ─────────────────────────────────────────────
+// 15: Dot Matrix（ドットで構成）
+// ─────────────────────────────────────────────
+D['15'] = (ctx, x, y, w, h) => {
+  const cols = 7, rows = 9;
+  const dx = w / (cols - 1), dy = h / (rows - 1);
+  const r = Math.min(dx, dy) * 0.28;
+  // M pattern on grid
+  const pattern = [
+    [1,0,0,0,0,0,1],
+    [1,1,0,0,0,1,1],
+    [1,0,1,0,1,0,1],
+    [1,0,1,0,1,0,1],
+    [1,0,0,1,0,0,1],
+    [1,0,0,0,0,0,1],
+    [1,0,0,0,0,0,1],
+    [1,0,0,0,0,0,1],
+    [1,0,0,0,0,0,1],
+  ];
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      if (pattern[row][col]) {
+        ctx.beginPath();
+        ctx.arc(x + col * dx, y + row * dy, r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  }
+};
+
+// ─────────────────────────────────────────────
+// 16: Negative Block（反転ブロック — 四角から切り抜き）
+// ─────────────────────────────────────────────
+D['16'] = (ctx, x, y, w, h) => {
+  const s = w * 0.10;
+  // Fill entire rect
+  ctx.fillRect(x, y, w, h);
+  // Cut out the inner M shape using compositing
+  ctx.save();
+  ctx.globalCompositeOperation = 'destination-out';
+  // Left negative triangle
+  ctx.beginPath();
+  ctx.moveTo(x+s, y);
+  ctx.lineTo(x+w/2-s*0.3, y+h*0.72);
+  ctx.lineTo(x+s, y+h);
+  ctx.closePath(); ctx.fill();
+  // Right negative triangle
+  ctx.beginPath();
+  ctx.moveTo(x+w-s, y);
+  ctx.lineTo(x+w/2+s*0.3, y+h*0.72);
+  ctx.lineTo(x+w-s, y+h);
+  ctx.closePath(); ctx.fill();
+  // Center top triangle (negative space between peaks)
+  ctx.beginPath();
+  ctx.moveTo(x+s, y);
+  ctx.lineTo(x+w-s, y);
+  ctx.lineTo(x+w/2, y+h*0.55);
+  ctx.closePath(); ctx.fill();
+  ctx.restore();
+};
+
+// ─────────────────────────────────────────────
+// CONCEPTS
+// ─────────────────────────────────────────────
+const CONCEPTS = [
+  { id:'01', name:'01 / Round Valley', tag:'chawan', desc:'内側のVがU字カーブ。茶碗のシルエット。前回のベスト。' },
+  { id:'02', name:'02 / Semicircle', tag:'pure arc', desc:'内側が完全な半円。幾何学の純粋さ。ensoとの親和性。' },
+  { id:'03', name:'03 / Shallow Round', tag:'subtle', desc:'浅いU字、50%で止まる。控えめだが確実に違う。' },
+  { id:'04', name:'04 / Flat Bottom U', tag:'architectural', desc:'U字の底がフラット。缶の形状に呼応。建築的。', divider:'structure' },
+  { id:'05', name:'05 / Mono Line', tag:'one stroke', desc:'塗りではなくストロークだけ。一筆書きの禅的ミニマリズム。' },
+  { id:'06', name:'06 / Double Line', tag:'parallel', desc:'二重線。外と内のストロークが平行。繊細で複雑な印象。' },
+  { id:'07', name:'07 / Taper', tag:'calligraphic', desc:'先端が細くなるストローク。筆圧を感じる現代カリグラフィ。', divider:'stroke' },
+  { id:'08', name:'08 / Stencil', tag:'disconnected', desc:'縦線と斜線が切り離されている。工業的。缶の型抜き感。' },
+  { id:'09', name:'09 / Ink Trap', tag:'typographic', desc:'接合部にノッチ。プロのタイプデザイナーの仕事。小サイズで映える。' },
+  { id:'10', name:'10 / Soft M', tag:'organic', desc:'直線ゼロ。全て曲線で構成。植物的な生命感。', divider:'form' },
+  { id:'11', name:'11 / Pointed Apex', tag:'Apothekary', desc:'谷底に上向き三角。Apothekaryの「A」と同じ手法。' },
+  { id:'12', name:'12 / Torii', tag:'cultural', desc:'鳥居の構造をMに。横棒と開いた脚。日本文化の暗示。' },
+  { id:'13', name:'13 / Splay + Round', tag:'hybrid', desc:'脚が外に開く + 内側U字。Round Valleyの進化系。', divider:'hybrid' },
+  { id:'14', name:'14 / Crossbar', tag:'A meets M', desc:'Mに横棒。MATCHAのAとの統一感。アイコンとして強い。' },
+  { id:'15', name:'15 / Dot Matrix', tag:'digital', desc:'ドットで構成されたM。デジタルネイティブ感。ファビコンに最適。' },
+  { id:'16', name:'16 / Negative Block', tag:'inverted', desc:'四角いブロックからMの形を切り抜く。スタンプ・刻印のイメージ。' },
+];
+
+// =====================================================
+// Canvas rendering
+// =====================================================
+function renderWordmark(canvas, drawFn) {
+  const dpr = window.devicePixelRatio || 2;
+  const fontSize = 48, font = `200 ${fontSize}px Outfit`;
+  const letterSpacing = fontSize * 0.35, color = '#1B4332';
+  const chars = ['M','A','T','C','H','A','&','M','E'];
+  const ctx = canvas.getContext('2d');
+  ctx.font = font;
+  const charWidths = chars.map(c => ctx.measureText(c).width);
+  const totalW = charWidths.reduce((a,b)=>a+b,0) + letterSpacing*(chars.length-1);
+  const m = ctx.measureText('M');
+  const ascent = m.actualBoundingBoxAscent, descent = m.actualBoundingBoxDescent;
+  const padX=40, padY=20, cW=totalW+padX*2, cH=ascent+descent+padY*2;
+  canvas.width=cW*dpr; canvas.height=cH*dpr;
+  canvas.style.width=cW+'px'; canvas.style.height=cH+'px';
+  ctx.scale(dpr,dpr);
+  const baseY=padY+ascent;
+  ctx.font=font; ctx.fillStyle=color; ctx.textBaseline='alphabetic';
+  let curX=padX;
+  chars.forEach((ch,i)=>{
+    if(ch==='M') drawFn(ctx, curX, baseY-ascent, charWidths[i], ascent);
+    else ctx.fillText(ch, curX, baseY);
+    curX+=charWidths[i]+letterSpacing;
+  });
+}
+
+function renderMark(canvas, drawFn, bg, fg) {
+  const dpr = window.devicePixelRatio||2, size=72;
+  canvas.width=size*dpr; canvas.height=size*dpr;
+  canvas.style.width=size+'px'; canvas.style.height=size+'px';
+  const ctx=canvas.getContext('2d');
+  ctx.scale(dpr,dpr);
+  ctx.fillStyle=bg; ctx.fillRect(0,0,size,size);
+  const ms=34, pad=(size-ms)/2;
+  ctx.fillStyle=fg;
+  drawFn(ctx, pad, pad+1, ms, ms-2);
+}
+
+function build() {
+  const app=document.getElementById('app');
+  let html='';
+  CONCEPTS.forEach(c=>{
+    if(c.divider) html+=`<div class="divider">${c.divider}</div>`;
+    html+=`
+    <div class="concept">
+      <div class="concept-header"><h2>${c.name}</h2><span class="tag">${c.tag}</span></div>
+      <p class="desc">${c.desc}</p>
+      <div class="wordmark-canvas-wrap"><canvas id="wm-${c.id}"></canvas></div>
+      <div class="mark-display">
+        <div class="mark-cell"><div class="box light"><canvas id="mk-${c.id}-l"></canvas></div><div class="label">light</div></div>
+        <div class="mark-cell"><div class="box dark"><canvas id="mk-${c.id}-d"></canvas></div><div class="label">dark</div></div>
+        <div class="mark-cell"><div class="box green"><canvas id="mk-${c.id}-g"></canvas></div><div class="label">sage</div></div>
+        <div class="mark-cell"><div class="box pink"><canvas id="mk-${c.id}-p"></canvas></div><div class="label">sakura</div></div>
+      </div>
+    </div>`;
+  });
+  app.innerHTML=html;
+  document.fonts.ready.then(()=>{
+    CONCEPTS.forEach(c=>{
+      const fn=D[c.id];
+      renderWordmark(document.getElementById(`wm-${c.id}`), fn);
+      renderMark(document.getElementById(`mk-${c.id}-l`), fn, '#FAFAF8','#1B4332');
+      renderMark(document.getElementById(`mk-${c.id}-d`), fn, '#1B4332','#F5F0E8');
+      renderMark(document.getElementById(`mk-${c.id}-g`), fn, '#8AAE92','#1B4332');
+      renderMark(document.getElementById(`mk-${c.id}-p`), fn, '#F2C4C4','#1B4332');
+    });
+  });
+}
+build();
+</script>
+</body>
+</html>

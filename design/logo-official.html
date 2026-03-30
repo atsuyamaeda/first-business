@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>MATCHA&ME — Official Logo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#EDEDE9;font-family:'Outfit',sans-serif;font-weight:200;color:#1B4332;padding:60px 30px}
+  h1{text-align:center;font-weight:200;font-size:13px;letter-spacing:8px;text-transform:uppercase;margin-bottom:6px;color:#888}
+  .subtitle{text-align:center;font-size:10px;color:#aaa;margin-bottom:50px;letter-spacing:1px}
+  .row{max-width:1200px;margin:0 auto 40px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .panel{padding:50px 30px 36px;text-align:center}
+  .panel.on-light{background:#fff}
+  .panel.on-dark{background:#4A4A4A}
+  .panel h2{font-weight:200;font-size:11px;letter-spacing:4px;text-transform:uppercase;margin-bottom:4px}
+  .panel h2{color:#999}
+  .panel .tag{font-size:9px;letter-spacing:1px;display:block;margin-bottom:20px;color:#bbb}
+  .wordmark-wrap{margin:0 auto 20px}
+  .wordmark-wrap canvas{display:block;margin:0 auto}
+  .large-mark{margin:0 auto 18px}
+  .large-mark canvas{display:block;margin:0 auto}
+  .mark-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;padding-top:16px;border-top:1px solid rgba(128,128,128,0.15)}
+  .mark-cell{text-align:center}
+  .mark-cell .box{width:64px;height:64px;display:flex;align-items:center;justify-content:center;margin-bottom:4px}
+  .mark-cell .box.light{background:#FAFAF8;border:1px solid #f0f0f0}
+  .mark-cell .box.dark{background:#4A4A4A}
+  .mark-cell .box.green{background:#8AAE92}
+  .mark-cell .box.pink{background:#F2C4C4}
+  .mark-cell .label{font-size:8px;letter-spacing:1px;text-transform:uppercase}
+  .mark-cell .label{color:#ccc}
+  .spec{max-width:1200px;margin:0 auto 40px;background:#fff;padding:30px 40px;font-size:11px;color:#888;line-height:2}
+  .spec table{width:100%;border-collapse:collapse}
+  .spec td{padding:4px 8px;border-bottom:1px solid #f0f0f0}
+  .spec td:first-child{color:#aaa;width:200px;font-size:10px;letter-spacing:2px;text-transform:uppercase}
+  .spec td:last-child{color:#555}
+  .spec code{background:#f5f5f0;padding:1px 6px;font-size:10px;color:#333}
+</style>
+</head>
+<body>
+
+<h1>matcha & me</h1>
+<div class="subtitle">Official Logo System</div>
+
+<!-- Wordmark row -->
+<div class="row">
+  <div class="panel on-light">
+    <h2>Standard</h2>
+    <span class="tag">Off-Black on Light</span>
+    <div class="wordmark-wrap"><canvas id="wm-a"></canvas></div>
+    <div class="large-mark"><canvas id="lg-a"></canvas></div>
+    <div class="mark-row">
+      <div class="mark-cell"><div class="box light"><canvas id="mk-a-l"></canvas></div><div class="label">light</div></div>
+      <div class="mark-cell"><div class="box dark"><canvas id="mk-a-d"></canvas></div><div class="label">dark</div></div>
+      <div class="mark-cell"><div class="box green"><canvas id="mk-a-g"></canvas></div><div class="label">sage</div></div>
+      <div class="mark-cell"><div class="box pink"><canvas id="mk-a-p"></canvas></div><div class="label">sakura</div></div>
+    </div>
+  </div>
+  <div class="panel on-light">
+    <h2>Monotone</h2>
+    <span class="tag">Off-Black solid (no green)</span>
+    <div class="wordmark-wrap"><canvas id="wm-b"></canvas></div>
+    <div class="large-mark"><canvas id="lg-b"></canvas></div>
+    <div class="mark-row">
+      <div class="mark-cell"><div class="box light"><canvas id="mk-b-l"></canvas></div><div class="label">light</div></div>
+      <div class="mark-cell"><div class="box dark"><canvas id="mk-b-d"></canvas></div><div class="label">dark</div></div>
+      <div class="mark-cell"><div class="box green"><canvas id="mk-b-g"></canvas></div><div class="label">sage</div></div>
+      <div class="mark-cell"><div class="box pink"><canvas id="mk-b-p"></canvas></div><div class="label">sakura</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Spec -->
+<div class="spec">
+  <table>
+    <tr><td>Font</td><td>Outfit <code>200</code></td></tr>
+    <tr><td>Letter Spacing</td><td><code>0.20</code> (tight)</td></tr>
+    <tr><td>Ampersand</td><td>Full size (100%)</td></tr>
+    <tr><td>Matcha M</td><td>Pool <code>waterRatio: 0.37</code> / color <code>#3A6B4E</code></td></tr>
+    <tr><td>Me M</td><td>Dot eyes <code>dotR: 0.03</code> / <code>eyeY: 0.05</code> / no pool</td></tr>
+    <tr><td>Standard Color</td><td><code>#4A4A4A</code> Off-Black (Charcoal)</td></tr>
+    <tr><td>Monotone</td><td><code>#4A4A4A</code> solid — pool also off-black</td></tr>
+    <tr><td>Pool Color</td><td><code>#3A6B4E</code></td></tr>
+    <tr><td>M Stroke</td><td><code>0.07</code></td></tr>
+  </table>
+</div>
+
+<script>
+// =====================================================
+// Official Logo — Off-Black / Outfit 200
+// =====================================================
+const CFG = {
+  poolColor: '#3A6B4E',
+  fontWeight: 200,
+  letterSpacingRatio: 0.20,
+  strokeRatio: 0.07,
+  eyeY: 0.05,
+  dotR: 0.03,
+  waterRatio: 0.37,
+};
+
+const OFFBLACK = '#4A4A4A';
+
+function drawRoundM(ctx, x, y, w, h, sw) {
+  ctx.beginPath();
+  ctx.moveTo(x, y + h);
+  ctx.lineTo(x, y);
+  ctx.lineTo(x + sw, y);
+  ctx.lineTo(x + sw, y + h * 0.2);
+  ctx.quadraticCurveTo(x + w/2, y + h * 0.92, x + w - sw, y + h * 0.2);
+  ctx.lineTo(x + w - sw, y);
+  ctx.lineTo(x + w, y);
+  ctx.lineTo(x + w, y + h);
+  ctx.lineTo(x + w - sw, y + h);
+  ctx.lineTo(x + w - sw, y + h * 0.28);
+  ctx.quadraticCurveTo(x + w/2, y + h * 1.0, x + sw, y + h * 0.28);
+  ctx.lineTo(x + sw, y + h);
+  ctx.closePath();
+  ctx.fill();
+}
+
+function drawPool(ctx, x, y, w, h, sw, waterRatio, poolColor) {
+  const waterY = h * waterRatio;
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(x - 1, y + waterY, w + 2, h - waterY + 10);
+  ctx.clip();
+  ctx.fillStyle = poolColor;
+  ctx.beginPath();
+  ctx.moveTo(x + sw, y + h * 0.28);
+  ctx.lineTo(x + w - sw, y + h * 0.28);
+  ctx.quadraticCurveTo(x + w/2, y + h * 1.0, x + sw, y + h * 0.28);
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+}
+
+function drawDotEyes(ctx, x, y, w, h, color) {
+  const eyeY = y + h * CFG.eyeY;
+  const r = w * CFG.dotR;
+  const leftX = x + w * 0.33;
+  const rightX = x + w * 0.67;
+  ctx.fillStyle = color;
+  ctx.beginPath(); ctx.arc(leftX, eyeY, r, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.arc(rightX, eyeY, r, 0, Math.PI * 2); ctx.fill();
+}
+
+function drawMatchaM(ctx, x, y, w, h, mColor, poolColor) {
+  const sw = w * CFG.strokeRatio;
+  drawPool(ctx, x, y, w, h, sw, CFG.waterRatio, poolColor);
+  ctx.fillStyle = mColor;
+  drawRoundM(ctx, x, y, w, h, sw);
+}
+
+function drawMeM(ctx, x, y, w, h, mColor) {
+  const sw = w * CFG.strokeRatio;
+  ctx.fillStyle = mColor;
+  drawRoundM(ctx, x, y, w, h, sw);
+  drawDotEyes(ctx, x, y, w, h, mColor);
+}
+
+function renderWordmark(canvas, mColor, poolOverride) {
+  const dpr = window.devicePixelRatio || 2;
+  const fs = 48;
+  const font = `${CFG.fontWeight} ${fs}px Outfit`;
+  const ls = fs * CFG.letterSpacingRatio;
+  const poolColor = poolOverride || CFG.poolColor;
+  const chars = ['M','A','T','C','H','A','&','M','E'];
+
+  const ctx = canvas.getContext('2d');
+  ctx.font = font;
+  const cw = chars.map(ch => ctx.measureText(ch).width);
+  const tw = cw.reduce((a, b) => a + b, 0) + ls * (chars.length - 1);
+  const m = ctx.measureText('M');
+  const asc = m.actualBoundingBoxAscent;
+  const desc = m.actualBoundingBoxDescent;
+  const px = 30, py = 20;
+  const W = tw + px * 2, H = asc + desc + py * 2;
+
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  canvas.style.width = W + 'px';
+  canvas.style.height = H + 'px';
+  ctx.scale(dpr, dpr);
+
+  const by = py + asc;
+  ctx.font = font;
+  ctx.textBaseline = 'alphabetic';
+
+  let cx = px;
+  let mCount = 0;
+  chars.forEach((ch, i) => {
+    if (ch === 'M') {
+      mCount++;
+      const mW = cw[i];
+      const capTop = by - asc;
+      if (mCount === 1) {
+        drawMatchaM(ctx, cx, capTop, mW, asc, mColor, poolColor);
+      } else {
+        drawMeM(ctx, cx, capTop, mW, asc, mColor);
+      }
+    } else {
+      ctx.fillStyle = mColor;
+      ctx.fillText(ch, cx, by);
+    }
+    cx += cw[i] + ls;
+  });
+}
+
+function renderMarkLarge(canvas, bg, mColor, poolOverride) {
+  const dpr = window.devicePixelRatio || 2;
+  const sz = 160;
+  canvas.width = sz * dpr;
+  canvas.height = sz * dpr;
+  canvas.style.width = sz + 'px';
+  canvas.style.height = sz + 'px';
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, sz, sz);
+  const ms = 90, p = (sz - ms) / 2;
+  drawMatchaM(ctx, p, p + 5, ms, ms - 10, mColor, poolOverride || CFG.poolColor);
+}
+
+function renderMark(canvas, bg, mColor, poolOverride) {
+  const dpr = window.devicePixelRatio || 2;
+  const sz = 64;
+  canvas.width = sz * dpr;
+  canvas.height = sz * dpr;
+  canvas.style.width = sz + 'px';
+  canvas.style.height = sz + 'px';
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, sz, sz);
+  const ms = 34, p = (sz - ms) / 2;
+  drawMatchaM(ctx, p, p + 2, ms, ms - 4, mColor, poolOverride || CFG.poolColor);
+}
+
+document.fonts.ready.then(() => {
+  // Standard: Off-Black on light
+  renderWordmark(document.getElementById('wm-a'), OFFBLACK);
+  renderMarkLarge(document.getElementById('lg-a'), '#FAFAF8', OFFBLACK);
+  renderMark(document.getElementById('mk-a-l'), '#FAFAF8', OFFBLACK);
+  renderMark(document.getElementById('mk-a-d'), OFFBLACK, '#F5F0E8');
+  renderMark(document.getElementById('mk-a-g'), '#8AAE92', OFFBLACK);
+  renderMark(document.getElementById('mk-a-p'), '#F2C4C4', OFFBLACK);
+
+  // Monotone: pool color = off-black (solid single color)
+  renderWordmark(document.getElementById('wm-b'), OFFBLACK, OFFBLACK);
+  renderMarkLarge(document.getElementById('lg-b'), '#FAFAF8', OFFBLACK, OFFBLACK);
+  renderMark(document.getElementById('mk-b-l'), '#FAFAF8', OFFBLACK, OFFBLACK);
+  renderMark(document.getElementById('mk-b-d'), OFFBLACK, '#F5F0E8', '#F5F0E8');
+  renderMark(document.getElementById('mk-b-g'), '#8AAE92', OFFBLACK, OFFBLACK);
+  renderMark(document.getElementById('mk-b-p'), '#F2C4C4', OFFBLACK, OFFBLACK);
+});
+</script>
+</body>
+</html>

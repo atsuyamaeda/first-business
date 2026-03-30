@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>MATCHA&ME — M Mark v8 — 30 More</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#EDEDE9;font-family:'Outfit',sans-serif;font-weight:200;color:#1B4332;padding:60px 40px}
+  h1{text-align:center;font-weight:200;font-size:13px;letter-spacing:8px;text-transform:uppercase;margin-bottom:10px;color:#888}
+  .subtitle{text-align:center;font-size:11px;color:#aaa;margin-bottom:60px;letter-spacing:1px}
+  .concept{max-width:900px;margin:0 auto 70px;background:#fff;padding:50px 50px 35px}
+  .concept-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+  .concept h2{font-weight:200;font-size:12px;letter-spacing:5px;text-transform:uppercase;color:#999}
+  .concept .tag{font-size:10px;color:#bbb;letter-spacing:2px}
+  .concept .desc{font-size:12px;color:#aaa;margin-bottom:35px;line-height:1.8}
+  .wordmark-canvas-wrap{text-align:center;margin-bottom:35px;padding:25px 0}
+  .wordmark-canvas-wrap canvas{display:block;margin:0 auto}
+  .mark-display{display:flex;justify-content:center;gap:24px;padding-top:25px;border-top:1px solid #f0f0f0}
+  .mark-cell{text-align:center}
+  .mark-cell .box{width:72px;height:72px;display:flex;align-items:center;justify-content:center;margin-bottom:6px}
+  .mark-cell .box.light{background:#FAFAF8;border:1px solid #f0f0f0}
+  .mark-cell .box.dark{background:#1B4332}
+  .mark-cell .box.green{background:#8AAE92}
+  .mark-cell .box.pink{background:#F2C4C4}
+  .mark-cell .label{font-size:8px;color:#ccc;letter-spacing:2px;text-transform:uppercase}
+  .divider{max-width:900px;margin:0 auto 50px;text-align:center;font-size:10px;letter-spacing:6px;text-transform:uppercase;color:#ccc}
+  .divider::before,.divider::after{content:'';display:inline-block;width:60px;height:1px;background:#ddd;vertical-align:middle;margin:0 20px}
+</style>
+</head>
+<body>
+<h1>matcha & me</h1>
+<div class="subtitle">M mark v8 — 30 more concepts (#37–#66)</div>
+<div id="app"></div>
+<script>
+const D={};
+
+// ── 37: Wedge — 左脚が三角形に太い ──
+D['37']=(c,x,y,w,h)=>{
+  const s=w*.07;
+  // Left leg as wedge (thick at bottom)
+  c.beginPath();c.moveTo(x,y);c.lineTo(x+s,y);c.lineTo(x+s*2.5,y+h);c.lineTo(x,y+h);c.fill();
+  // Right leg normal
+  c.fillRect(x+w-s,y,s,h);
+  // Outer diags
+  c.beginPath();c.moveTo(x+s,y);c.lineTo(x+s*2,y);c.lineTo(x+w/2+s*.4,y+h*.78);c.lineTo(x+w/2-s*.4,y+h*.78);c.fill();
+  c.beginPath();c.moveTo(x+w-s,y);c.lineTo(x+w-s*2,y);c.lineTo(x+w/2-s*.4,y+h*.78);c.lineTo(x+w/2+s*.4,y+h*.78);c.fill();
+  // Inner diags
+  c.beginPath();c.moveTo(x+s*2.5,y+h);c.lineTo(x+s*3.2,y+h);c.lineTo(x+w/2+s*.3,y+h*.25);c.lineTo(x+w/2-s*.3,y+h*.25);c.fill();
+  c.beginPath();c.moveTo(x+w-s,y+h);c.lineTo(x+w-s*2,y+h);c.lineTo(x+w/2-s*.3,y+h*.25);c.lineTo(x+w/2+s*.3,y+h*.25);c.fill();
+};
+
+// ── 38: Horizon Line — 下部に水平線 ──
+D['38']=(c,x,y,w,h)=>{
+  const s=w*.07;
+  c.beginPath();c.moveTo(x,y+h);c.lineTo(x,y);c.lineTo(x+s,y);c.lineTo(x+w/2,y+h*.72);c.lineTo(x+w-s,y);c.lineTo(x+w,y);c.lineTo(x+w,y+h);c.lineTo(x+w-s,y+h);c.lineTo(x+w-s,y+h*.14);c.lineTo(x+w/2,y+h*.86);c.lineTo(x+s,y+h*.14);c.lineTo(x+s,y+h);c.closePath();c.fill();
+  // Horizon line extending beyond M
+  c.fillRect(x-w*.08, y+h*.82, w*1.16, s*.5);
+};
+
+// ── 39: Slab Base — 底面がスラブ ──
+D['39']=(c,x,y,w,h)=>{
+  const s=w*.07, slab=h*.10;
+  // Slab base
+  c.fillRect(x-w*.03, y+h-slab, w*1.06, slab);
+  // M on top (shorter)
+  const mh=h-slab-s*.3;
+  c.beginPath();c.moveTo(x,y+mh+s*.3);c.lineTo(x,y);c.lineTo(x+s,y);c.lineTo(x+w/2,y+mh*.78);c.lineTo(x+w-s,y);c.lineTo(x+w,y);c.lineTo(x+w,y+mh+s*.3);c.lineTo(x+w-s,y+mh+s*.3);c.lineTo(x+w-s,y+mh*.14);c.lineTo(x+w/2,y+mh*.90);c.lineTo(x+s,y+mh*.14);c.lineTo(x+s,y+mh+s*.3);c.closePath();c.fill();
+};
+
+// ── 40: Crown Tips — 山頂に小さな円 ──
+D['40']=(c,x,y,w,h)=>{
+  const s=w*.07,r=w*.04;
+  c.beginPath();c.moveTo(x,y+h);c.lineTo(x,y+r*2);c.lineTo(x+s,y+r*2);c.lineTo(x+w/2,y+h*.78);c.lineTo(x+w-s,y+r*2);c.lineTo(x+w,y+r*2);c.lineTo(x+w,y+h);c.lineTo(x+w-s,y+h);c.lineTo(x+w-s,y+h*.16);c.lineTo(x+w/2,y+h*.90);c.lineTo(x+s,y+h*.16);c.lineTo(x+s,y+h);c.closePath();c.fill();
+  // Circles at peaks
+  c.beginPath();c.arc(x+s/2,y+r,r,0,Math.PI*2);c.fill();
+  c.beginPath();c.arc(x+w-s/2,y+r,r,0,Math.PI*2);c.fill();
+};
+
+// ── 41: Diagonal Cut — 右上を斜めにカット ──
+D['41']=(c,x,y,w,h)=>{
+  const s=w*.07, cut=w*.15;
+  c.beginPath();c.moveTo(x,y+h);c.lineTo(x,y);c.lineTo(x+s,y);c.lineTo(x+w/2,y+h*.78);
+  // Right peak is cut diagonally
+  c.lineTo(x+w-s,y);c.lineTo(x+w-cut,y);c.lineTo(x+w,y+cut);
+  c.lineTo(x+w,y+h);c.lineTo(x+w-s,y+h);c.lineTo(x+w-s,y+h*.14);c.lineTo(x+w/2,y+h*.92);c.lineTo(x+s,y+h*.14);c.lineTo(x+s,y+h);c.closePath();c.fill();
+};
+
+// ── 42: Pinch Waist — 中央がくびれる ──
+D['42']=(c,x,y,w,h)=>{
+  const s=w*.07, pinch=w*.03;
+  c.beginPath();
+  c.moveTo(x,y+h);c.lineTo(x,y);c.lineTo(x+s,y);
+  // Left vertical pinches inward at middle
+  c.lineTo(x+s,y+h*.38);c.lineTo(x+s+pinch,y+h*.5);c.lineTo(x+s,y+h*.62);
+  c.lineTo(x+s,y+h*.14);c.lineTo(x+w/2,y+h*.88);
+  c.lineTo(x+w-s,y+h*.14);c.lineTo(x+w-s,y+h*.62);
+  c.lineTo(x+w-s-pinch,y+h*.5);c.lineTo(x+w-s,y+h*.38);
+  c.lineTo(x+w-s,y);c.lineTo(x+w,y);
+  c.lineTo(x+w,y+h*.38);c.lineTo(x+w-pinch,y+h*.5);c.lineTo(x+w,y+h*.62);
+  c.lineTo(x+w,y+h);c.lineTo(x+w-s,y+h);
+  c.moveTo(x+s,y+h);c.lineTo(x,y+h);
+  c.lineTo(x,y+h*.62);c.lineTo(x+pinch,y+h*.5);c.lineTo(x,y+h*.38);
+  c.closePath();c.fill();
+  // Simpler approach: just draw standard M + pinch marks
+};
+
+// Better 42: restart cleaner
+D['42']=(c,x,y,w,h)=>{
+  const s=w*.07;
+  // Standard M
+  c.beginPath();c.moveTo(x,y+h);c.lineTo(x,y);c.lineTo(x+s,y);c.lineTo(x+w/2,y+h*.78);c.lineTo(x+w-s,y);c.lineTo(x+w,y);c.lineTo(x+w,y+h);c.lineTo(x+w-s,y+h);c.lineTo(x+w-s,y+h*.14);c.lineTo(x+w/2,y+h*.92);c.lineTo(x+s,y+h*.14);c.lineTo(x+s,y+h);c.closePath();c.fill();
+  // Cut out pinch at waist
+  c.save();c.globalCompositeOperation='destination-out';
+  c.beginPath();
+  c.moveTo(x-1,y+h*.46);c.lineTo(x+s+s*.5,y+h*.5);c.lineTo(x-1,y+h*.54);c.fill();
+  c.beginPath();
+  c.moveTo(x+w+1,y+h*.46);c.lineTo(x+w-s-s*.5,y+h*.5);c.lineTo(x+w+1,y+h*.54);c.fill();
+  c.restore();
+};
+
+// ── 43: Rounded Valley + Flat Top combo ──
+D['43']=(c,x,y,w,h)=>{
+  const s=w*.07, flatW=w*.18;
+  c.beginPath();
+  c.moveTo(x,y+h);c.lineTo(x,y);c.lineTo(x+flatW,y);
+  c.lineTo(x+flatW,y+h*.15);
+  c.quadraticCurveTo(x+w/2,y+h*.85,x+w-flatW,y+h*.15);
+  c.lineTo(x+w-flatW,y);c.lineTo(x+w,y);c.lineTo(x+w,y+h);
+  c.lineTo(x+w-s,y+h);c.lineTo(x+w-s,y+h*.06);c.lineTo(x+w-flatW-s*.5,y+h*.06);
+  c.lineTo(x+w-flatW,y+h*.22);
+  c.quadraticCurveTo(x+w/2,y+h*.92,x+flatW,y+h*.22);
+  c.lineTo(x+flatW+s*.5,y+h*.06);c.lineTo(x+s,y+h*.06);
+  c.lineTo(x+s,y+h);c.closePath();c.fill();
+};
+
+// ── 44: Zigzag Inner — 内側がジグザグ ──
+D['44']=(c,x,y,w,h)=>{
+  const s=w*.07, zn=5, zh=h*.7/zn;
+  c.beginPath();c.moveTo(x,y+h);c.lineTo(x,y);c.lineTo(x+s,y);
+  // Left inner zigzag going down
+  for(let i=0;i<zn;i++){
+    const zy=y+h*.15+i*zh;
+    const zx=(i%2===0)?x+s:x+s+w*.08;
+    c.lineTo(zx,zy);
+  }
+  c.lineTo(x+w/2,y+h*.88);
+  // Right inner zigzag going up
+  for(let i=zn-1;i>=0;i--){
+    const zy=y+h*.15+i*zh;
+    const zx=(i%2===0)?x+w-s:x+w-s-w*.08;
+    c.lineTo(zx,zy);
+  }
+  c.lineTo(x+w-s,y);c.lineTo(x+w,y);c.lineTo(x+w,y+h);c.lineTo(x+w-s,y+h);
+  // Right outer diagonal
+  c.lineTo(x+w-s,y+h*.14);c.lineTo(x+w/2,y+h*.78);c.lineTo(x+s,y+h*.14);
+  c.lineTo(x+s,y+h);c.closePath();c.fill();
+};
+
+// ── 45: Enso Circle Inside — 谷に円 ──
+D['45']=(c,x,y,w,h)=>{
+  const s=w*.07;
+  c.beginPath();c.moveTo(x,y+h);c.lineTo(x,y);c.lineTo(x+s,y);c.lineTo(x+w/2,y+h*.78);c.lineTo(x+w-s,y);c.lineTo(x+w,y);c.lineTo(x+w,y+h);c.lineTo(x+w-s,y+h);c.lineTo(x+w-s,y+h*.14);c.lineTo(x+w/2,y+h*.92);c.lineTo(x+s,y+h*.14);c.lineTo(x+s,y+h);c.closePath();c.fill();
+  // Enso circle at valley
+  const cr=w*.11;
+  c.save();c.globalCompositeOperation='destination-out';
+  c.beginPath();c.arc(x+w/2,y+h*.62,cr,0,Math.PI*2);c.fill();
+  c.restore();
+  // Enso ring (thin circle)
+  c.save();c.strokeStyle=c.fillStyle;c.lineWidth=s*.4;
+  c.beginPath();c.arc(x+w/2,y+h*.62,cr,0,Math.PI*2);c.stroke();
+  c.restore();
+};
+
+// ── 46: One Leg Curve — 片脚だけ曲線 ──
+D['46']=(c,x,y,w,h)=>{
+  const s=w*.07;
+  c.beginPath();
+  c.moveTo(x,y+h);
+  // Left leg: curved
+  c.quadraticCurveTo(x,y,x+s*.5,y);
+  c.lineTo(x+s*1.5,y);
+  c.quadraticCurveTo(x+s,y+h*.1,x+s,y+h*.15);
+  c.lineTo(x+w/2,y+h*.78);
+  c.lineTo(x+w-s,y);c.lineTo(x+w,y);c.lineTo(x+w,y+h);
+  c.lineTo(x+w-s,y+h);c.lineTo(x+w-s,y+h*.14);
+  c.lineTo(x+w/2,y+h*.92);
+  c.lineTo(x+s,y+h*.22);
+  c.quadraticCurveTo(x+s,y+h*.85,x+s*1.5,y+h);
+  c.closePath();c.fill();
+};
+
+// ── 47: Reverse Contrast — 横が太く縦が細い ──
+D['47']=(c,x,y,w,h)=>{
+  const sv=w*.04, sd=w*.09; // thin verticals, thick diagonals
+  c.fillRect(x,y,sv,h);
+  c.fillRect(x+w-sv,y,sv,h);
+  c.beginPath();c.moveTo(x+sv,y);c.lineTo(x+sv+sd,y);c.lineTo(x+w/2+sd*.3,y+h*.78);c.lineTo(x+w/2-sd*.3,y+h*.78);c.fill();
+  c.beginPath();c.moveTo(x+w-sv,y);c.lineTo(x+w-sv-sd,y);c.lineTo(x+w/2-sd*.3,y+h*.78);c.lineTo(x+w/2+sd*.3,y+h*.78);c.fill();
+  c.beginPath();c.moveTo(x+sv,y+h);c.lineTo(x+sv+sd,y+h);c.lineTo(x+w/2+sd*.3,y+h*.22);c.lineTo(x+w/2-sd*.3,y+h*.22);c.fill();
+  c.beginPath();c.moveTo(x+w-sv,y+h);c.lineTo(x+w-sv-sd,y+h);c.lineTo(x+w/2-sd*.3,y+h*.22);c.lineTo(x+w/2+sd*.3,y+h*.22);c.fill();
+};
+
+// ── 48: Open Top — 上が開いている（脚だけ）──
+D['48']=(c,x,y,w,h)=>{
+  const s=w*.07, openH=h*.25;
+  // Left vertical (starts below top)
+  c.fillRect(x,y+openH,s,h-openH);
+  // Right vertical
+  c.fillRect(x+w-s,y+openH,s,h-openH);
+  // Diagonals from where verticals start
+  c.beginPath();c.moveTo(x+s,y+openH);c.lineTo(x+s+s*.8,y+openH);c.lineTo(x+w/2+s*.3,y+h*.78);c.lineTo(x+w/2-s*.3,y+h*.78);c.fill();
+  c.beginPath();c.moveTo(x+w-s,y+openH);c.lineTo(x+w-s-s*.8,y+openH);c.lineTo(x+w/2-s*.3,y+h*.78);c.lineTo(x+w/2+s*.3,y+h*.78);c.fill();
+  c.beginPath();c.moveTo(x+s,y+h);c.lineTo(x+s+s*.8,y+h);c.lineTo(x+w/2+s*.3,y+h*.26);c.lineTo(x+w/2-s*.3,y+h*.26);c.fill();
+  c.beginPath();c.moveTo(x+w-s,y+h);c.lineTo(x+w-s-s*.8,y+h);c.lineTo(x+w/2-s*.3,y+h*.26);c.lineTo(x+w/2+s*.3,y+h*.26);c.fill();
+};
+
+// ── 49: Stepped — 段差のある縦線 ──
+D['49']=(c,x,y,w,h)=>{
+  const s=w*.07, step=w*.04;
+  // Left vertical with step
+  c.fillRect(x,y,s,h*.45);
+  c.fillRect(x+step,y+h*.45,s,h*.55);
+  // Right vertical with step (mirror)
+  c.fillRect(x+w-s,y,s,h*.45);
+  c.fillRect(x+w-s-step,y+h*.45,s,h*.55);
+  // Diagonals
+  c.beginPath();c.moveTo(x+s,y);c.lineTo(x+s+s,y);c.lineTo(x+w/2+s*.3,y+h*.78);c.lineTo(x+w/2-s*.3,y+h*.78);c.fill();
+  c.beginPath();c.moveTo(x+w-s,y);c.lineTo(x+w-s-s,y);c.lineTo(x+w/2-s*.3,y+h*.78);c.lineTo(x+w/2+s*.3,y+h*.78);c.fill();
+  c.beginPath();c.moveTo(x+step+s,y+h);c.lineTo(x+step+s+s,y+h);c.lineTo(x+w/2+s*.3,y+h*.25);c.lineTo(x+w/2-s*.3,y+h*.25);c.fill();
+  c.beginPath();c.moveTo(x+w-s-step,y+h);c.lineTo(x+w-s-step-s,y+h);c.lineTo(x+w/2-s*.3,y+h*.25);c.lineTo(x+w/2+s*.3,y+h*.25);c.fill();
+};
+
+// ── 50: Triangle Legs — 脚が三角形 ──
+D['50']=(c,x,y,w,h)=>{
+  const s=w*.07;
+  // Left leg as triangle
+  c.beginPath();c.moveTo(x+s/2,y);c.lineTo(x+s*2,y+h);c.lineTo(x-s*.5,y+h);c.closePath();c.fill();
+  // Right leg as triangle
+  c.beginPath();c.moveTo(x+w-s/2,y);c.lineTo(x+w+s*.5,y+h);c.lineTo(x+w-s*2,y+h);c.closePath();c.fill();
+  // Outer V
+  c.beginPath();c.moveTo(x+s/2,y);c.lineTo(x+s*1.5,y);c.lineTo(x+w/2+s*.3,y+h*.72);c.lineTo(x+w/2-s*.3,y+h*.72);c.fill();
+  c.beginPath();c.moveTo(x+w-s/2,y);c.lineTo(x+w-s*1.5,y);c.lineTo(x+w/2-s*.3,y+h*.72);c.lineTo(x+w/2+s*.3,y+h*.72);c.fill();
+};
+
+// ── 51: Matcha Whisk — 茶筅の穂先パターン ──
+D['51']=(c,x,y,w,h)=>{
+  const s=w*.07, n=5, sw=s*.35;
+  // Main M outline
+  c.fillRect(x,y,s,h);c.fillRect(x+w-s,y,s,h);
+  c.beginPath();c.moveTo(x+s,y);c.lineTo(x+s+s,y);c.lineTo(x+w/2+s*.3,y+h*.78);c.lineTo(x+w/2-s*.3,y+h*.78);c.fill();
+  c.beginPath();c.moveTo(x+w-s,y);c.lineTo(x+w-s-s,y);c.lineTo(x+w/2-s*.3,y+h*.78);c.lineTo(x+w/2+s*.3,y+h*.78);c.fill();
+  // Whisk lines inside (thin parallel curves)
+  c.save();c.strokeStyle=c.fillStyle;c.lineWidth=sw;c.lineCap='round';
+  for(let i=0;i<n;i++){
+    const t=(i+1)/(n+1);
+    const lx=x+s+(w-s*2)*t;
+    c.beginPath();
+    c.moveTo(lx,y+h);
+    c.quadraticCurveTo(lx,y+h*.5,x+w/2,y+h*.25);
+    c.stroke();
+  }
+  c.restore();
+};
+
+// ── 52: Mirrored Bottom — 下にも同じVが反転 ──
+D['52']=(c,x,y,w,h)=>{
+  const s=w*.06;
+  c.fillRect(x,y,s,h);c.fillRect(x+w-s,y,s,h);
+  // Top V pointing down
+  c.beginPath();c.moveTo(x+s,y);c.lineTo(x+s+s,y);c.lineTo(x+w/2+s*.3,y+h*.42);c.lineTo(x+w/2-s*.3,y+h*.42);c.fill();
+  c.beginPath();c.moveTo(x+w-s,y);c.lineTo(x+w-s-s,y);c.lineTo(x+w/2-s*.3,y+h*.42);c.lineTo(x+w/2+s*.3,y+h*.42);c.fill();
+  // Bottom V pointing up (mirror)
+  c.beginPath();c.moveTo(x+s,y+h);c.lineTo(x+s+s,y+h);c.lineTo(x+w/2+s*.3,y+h*.58);c.lineTo(x+w/2-s*.3,y+h*.58);c.fill();
+  c.beginPath();c.moveTo(x+w-s,y+h);c.lineTo(x+w-s-s,y+h);c.lineTo(x+w/2-s*.3,y+h*.58);c.lineTo(x+w/2+s*.3,y+h*.58);c.fill();
+};
+
+// ── 53: Slash — 斜めに一本の線が貫通 ──
+D['53']=(c,x,y,w,h)=>{
+  const s=w*.07;
+  c.beginPath();c.moveTo(x,y+h);c.lineTo(x,y);c.lineTo(x+s,y);c.lineTo(x+w/2,y+h*.78);c.lineTo(x+w-s,y);c.lineTo(x+w,y);c.lineTo(x+w,y+h);c.lineTo(x+w-s,y+h);c.lineTo(x+w-s,y+h*.14);c.lineTo(x+w/2,y+h*.92);c.lineTo(x+s,y+h*.14);c.lineTo(x+s,y+h);c.closePath();c.fill();
+  // Diagonal slash cutting through
+  c.save();c.globalCompositeOperation='destination-out';
+  c.save();c.translate(x+w/2,y+h/2);c.rotate(-Math.PI/6);
+  c.fillRect(-w*.6,-s*.25,w*1.2,s*.5);
+  c.restore();c.restore();
+};
+
+// ── 54: Grid M — グリッドの交点だけ ──
+D['54']=(c,x,y,w,h)=>{
+  const cols=7,rows=9;
+  const dx=w/(cols-1),dy=h/(rows-1);
+  const s=Math.min(dx,dy)*.18;
+  // M on grid with short line segments
+  const pts=[];
+  // Left vertical
+  for(let r=0;r<rows;r++) pts.push([0,r]);
+  // Right vertical
+  for(let r=0;r<rows;r++) pts.push([cols-1,r]);
+  // Left diagonal
+  for(let i=0;i<5;i++) pts.push([1+i, Math.round(i*1.5)]);
+  // Right diagonal
+  for(let i=0;i<5;i++) pts.push([cols-2-i, Math.round(i*1.5)]);
+  // Inner left
+  for(let i=0;i<5;i++) pts.push([1+i, rows-1-Math.round(i*1.5)]);
+  // Inner right
+  for(let i=0;i<5;i++) pts.push([cols-2-i, rows-1-Math.round(i*1.5)]);
+
+  c.save();c.strokeStyle=c.fillStyle;c.lineWidth=s;c.lineCap='round';
+  // Draw as short crosses at each point
+  const seen=new Set();
+  pts.forEach(([col,row])=>{
+    const key=`${col},${row}`;
+    if(seen.has(key))return;seen.add(key);
+    const px=x+col*dx, py=y+row*dy;
+    const cr=s*1.5;
+    c.beginPath();c.moveTo(px-cr,py);c.lineTo(px+cr,py);c.stroke();
+    c.beginPath();c.moveTo(px,py-cr);c.lineTo(px,py+cr);c.stroke();
+  });
+  c.restore();
+};
+
+// ── 55: Outline Only — アウトラインだけ ──
+D['55']=(c,x,y,w,h)=>{
+  const lw=w*.045;
+  c.save();c.strokeStyle=c.fillStyle;c.lineWidth=lw;c.lineJoin='miter';
+  c.beginPath();
+  c.moveTo(x+lw/2,y+h-lw/2);c.lineTo(x+lw/2,y+lw/2);c.lineTo(x+w/2,y+h*.78);c.lineTo(x+w-lw/2,y+lw/2);c.lineTo(x+w-lw/2,y+h-lw/2);
+  c.stroke();
+  // Inner V
+  c.beginPath();
+  c.moveTo(x+lw*2,y+h-lw/2);c.lineTo(x+w/2,y+h*.22);c.lineTo(x+w-lw*2,y+h-lw/2);
+  c.stroke();
+  c.restore();
+};
+
+// ── 56: Rounded + Round Valley combo ──
+D['56']=(c,x,y,w,h)=>{
+  const lw=w*.065;
+  c.save();c.strokeStyle=c.fillStyle;c.lineWidth=lw;c.lineCap='round';c.lineJoin='round';
+  c.beginPath();
+  c.moveTo(x+lw/2,y+h-lw/2);
+  c.lineTo(x+lw/2,y+lw/2);
+  // Rounded inner valley
+  c.lineTo(x+lw/2,y+h*.2);
+  c.quadraticCurveTo(x+w/2,y+h*.85,x+w-lw/2,y+h*.2);
+  c.lineTo(x+w-lw/2,y+lw/2);
+  c.lineTo(x+w-lw/2,y+h-lw/2);
+  c.stroke();
+  c.restore();
+};
+
+// ── 57: Condensed — 横幅が狭い ──
+D['57']=(c,x,y,w,h)=>{
+  const s=w*.08, ow=w*.7, ox=x+(w-ow)/2;
+  c.beginPath();c.moveTo(ox,y+h);c.lineTo(ox,y);c.lineTo(ox+s,y);c.lineTo(ox+ow/2,y+h*.78);c.lineTo(ox+ow-s,y);c.lineTo(ox+ow,y);c.lineTo(ox+ow,y+h);c.lineTo(ox+ow-s,y+h);c.lineTo(ox+ow-s,y+h*.14);c.lineTo(ox+ow/2,y+h*.92);c.lineTo(ox+s,y+h*.14);c.lineTo(ox+s,y+h);c.closePath();c.fill();
+};
+
+// ── 58: Extended — 横幅が広い ──
+D['58']=(c,x,y,w,h)=>{
+  const s=w*.055, ex=w*.12;
+  c.beginPath();c.moveTo(x-ex,y+h);c.lineTo(x-ex,y);c.lineTo(x-ex+s,y);c.lineTo(x+w/2,y+h*.78);c.lineTo(x+w+ex-s,y);c.lineTo(x+w+ex,y);c.lineTo(x+w+ex,y+h);c.lineTo(x+w+ex-s,y+h);c.lineTo(x+w+ex-s,y+h*.14);c.lineTo(x+w/2,y+h*.92);c.lineTo(x-ex+s,y+h*.14);c.lineTo(x-ex+s,y+h);c.closePath();c.fill();
+};
+
+// ── 59: Heart Valley — 谷がハート型 ──
+D['59']=(c,x,y,w,h)=>{
+  const s=w*.07;
+  c.beginPath();c.moveTo(x,y+h);c.lineTo(x,y);c.lineTo(x+s,y);
+  c.lineTo(x+s,y+h*.15);
+  // Heart-shaped valley: two bumps then point
+  c.bezierCurveTo(x+s,y+h*.5, x+w*.3,y+h*.45, x+w/2,y+h*.75);
+  c.bezierCurveTo(x+w*.7,y+h*.45, x+w-s,y+h*.5, x+w-s,y+h*.15);
+  c.lineTo(x+w-s,y);c.lineTo(x+w,y);c.lineTo(x+w,y+h);
+  c.lineTo(x+w-s,y+h);c.lineTo(x+w-s,y+h*.23);
+  c.bezierCurveTo(x+w-s,y+h*.58, x+w*.7,y+h*.53, x+w/2,y+h*.83);
+  c.bezierCurveTo(x+w*.3,y+h*.53, x+s,y+h*.58, x+s,y+h*.23);
+  c.lineTo(x+s,y+h);c.closePath();c.fill();
+};
+
+// ── 60: Bamboo Segments — 竹の節 ──
+D['60']=(c,x,y,w,h)=>{
+  const s=w*.07, segs=4, segH=h/segs, nodeH=s*.4;
+  // Left vertical with bamboo nodes
+  for(let i=0;i<segs;i++){
+    c.fillRect(x,y+i*segH+nodeH/2,s,segH-nodeH);
+    if(i<segs) c.fillRect(x-s*.2,y+i*segH,s*1.4,nodeH); // node
+  }
+  c.fillRect(x-s*.2,y+h-nodeH,s*1.4,nodeH);
+  // Right vertical with bamboo nodes
+  for(let i=0;i<segs;i++){
+    c.fillRect(x+w-s,y+i*segH+nodeH/2,s,segH-nodeH);
+    if(i<segs) c.fillRect(x+w-s-s*.2,y+i*segH,s*1.4,nodeH);
+  }
+  c.fillRect(x+w-s-s*.2,y+h-nodeH,s*1.4,nodeH);
+  // Diagonals (normal)
+  c.beginPath();c.moveTo(x+s,y);c.lineTo(x+s+s,y);c.lineTo(x+w/2+s*.3,y+h*.78);c.lineTo(x+w/2-s*.3,y+h*.78);c.fill();
+  c.beginPath();c.moveTo(x+w-s,y);c.lineTo(x+w-s-s,y);c.lineTo(x+w/2-s*.3,y+h*.78);c.lineTo(x+w/2+s*.3,y+h*.78);c.fill();
+  c.beginPath();c.moveTo(x+s,y+h);c.lineTo(x+s+s,y+h);c.lineTo(x+w/2+s*.3,y+h*.25);c.lineTo(x+w/2-s*.3,y+h*.25);c.fill();
+  c.beginPath();c.moveTo(x+w-s,y+h);c.lineTo(x+w-s-s,y+h);c.lineTo(x+w/2-s*.3,y+h*.25);c.lineTo(x+w/2+s*.3,y+h*.25);c.fill();
+};
+
+// ── 61: Ribbon — リボンのように交差 ──
+D['61']=(c,x,y,w,h)=>{
+  const s=w*.08;
+  // Back layer (lighter)
+  c.save();c.globalAlpha=.3;
+  c.beginPath();c.moveTo(x,y+h);c.lineTo(x+s,y+h);c.lineTo(x+w/2+s/2,y+h*.2);c.lineTo(x+w/2-s/2,y+h*.2);c.fill();
+  c.beginPath();c.moveTo(x+w,y+h);c.lineTo(x+w-s,y+h);c.lineTo(x+w/2-s/2,y+h*.2);c.lineTo(x+w/2+s/2,y+h*.2);c.fill();
+  c.restore();
+  // Front layer (full)
+  c.beginPath();c.moveTo(x,y);c.lineTo(x+s,y);c.lineTo(x+w/2+s/2,y+h*.8);c.lineTo(x+w/2-s/2,y+h*.8);c.fill();
+  c.beginPath();c.moveTo(x+w,y);c.lineTo(x+w-s,y);c.lineTo(x+w/2-s/2,y+h*.8);c.lineTo(x+w/2+s/2,y+h*.8);c.fill();
+  // Verticals
+  c.fillRect(x,y,s,h);c.fillRect(x+w-s,y,s,h);
+};
+
+// ── 62: Split Color — 左右で色が違う(濃淡) ──
+D['62']=(c,x,y,w,h)=>{
+  const s=w*.07;
+  // Left half (full opacity)
+  c.save();c.beginPath();c.rect(x,y,w/2,h);c.clip();
+  c.beginPath();c.moveTo(x,y+h);c.lineTo(x,y);c.lineTo(x+s,y);c.lineTo(x+w/2,y+h*.78);c.lineTo(x+w-s,y);c.lineTo(x+w,y);c.lineTo(x+w,y+h);c.lineTo(x+w-s,y+h);c.lineTo(x+w-s,y+h*.14);c.lineTo(x+w/2,y+h*.92);c.lineTo(x+s,y+h*.14);c.lineTo(x+s,y+h);c.closePath();c.fill();
+  c.restore();
+  // Right half (lighter)
+  c.save();c.globalAlpha=.4;c.beginPath();c.rect(x+w/2,y,w/2,h);c.clip();
+  c.beginPath();c.moveTo(x,y+h);c.lineTo(x,y);c.lineTo(x+s,y);c.lineTo(x+w/2,y+h*.78);c.lineTo(x+w-s,y);c.lineTo(x+w,y);c.lineTo(x+w,y+h);c.lineTo(x+w-s,y+h);c.lineTo(x+w-s,y+h*.14);c.lineTo(x+w/2,y+h*.92);c.lineTo(x+s,y+h*.14);c.lineTo(x+s,y+h);c.closePath();c.fill();
+  c.restore();
+};
+
+// ── 63: Eroded — 侵食されたような不規則な縁 ──
+D['63']=(c,x,y,w,h)=>{
+  const s=w*.07;
+  // Standard M
+  c.beginPath();c.moveTo(x,y+h);c.lineTo(x,y);c.lineTo(x+s,y);c.lineTo(x+w/2,y+h*.78);c.lineTo(x+w-s,y);c.lineTo(x+w,y);c.lineTo(x+w,y+h);c.lineTo(x+w-s,y+h);c.lineTo(x+w-s,y+h*.14);c.lineTo(x+w/2,y+h*.92);c.lineTo(x+s,y+h*.14);c.lineTo(x+s,y+h);c.closePath();c.fill();
+  // Random erosion spots
+  c.save();c.globalCompositeOperation='destination-out';
+  const seed=[.12,.28,.45,.62,.78,.91,.35,.55,.72,.88,.15,.50,.70,.30,.65];
+  seed.forEach((t,i)=>{
+    const ex=x+w*t, ey=y+h*seed[(i+3)%seed.length];
+    const er=w*.02+w*.02*seed[(i+5)%seed.length];
+    c.beginPath();c.arc(ex,ey,er,0,Math.PI*2);c.fill();
+  });
+  c.restore();
+};
+
+// ── 64: Woven — 編み込みパターン ──
+D['64']=(c,x,y,w,h)=>{
+  const s=w*.055, n=6;
+  c.save();c.strokeStyle=c.fillStyle;c.lineWidth=s;c.lineCap='butt';
+  // Left vertical segments (alternating over/under)
+  for(let i=0;i<n;i++){
+    const sy=y+i*(h/n), ey=sy+h/n;
+    c.globalAlpha=(i%2===0)?.9:.35;
+    c.beginPath();c.moveTo(x+s/2,sy);c.lineTo(x+s/2,ey);c.stroke();
+  }
+  // Right vertical segments
+  for(let i=0;i<n;i++){
+    const sy=y+i*(h/n), ey=sy+h/n;
+    c.globalAlpha=(i%2===0)?.9:.35;
+    c.beginPath();c.moveTo(x+w-s/2,sy);c.lineTo(x+w-s/2,ey);c.stroke();
+  }
+  // Diagonals
+  c.globalAlpha=.7;
+  c.beginPath();c.moveTo(x+s,y);c.lineTo(x+w/2,y+h*.78);c.stroke();
+  c.beginPath();c.moveTo(x+w-s,y);c.lineTo(x+w/2,y+h*.78);c.stroke();
+  c.globalAlpha=.5;
+  c.beginPath();c.moveTo(x+s,y+h);c.lineTo(x+w/2,y+h*.22);c.stroke();
+  c.beginPath();c.moveTo(x+w-s,y+h);c.lineTo(x+w/2,y+h*.22);c.stroke();
+  c.restore();
+};
+
+// ── 65: Three Dimensional — 3Dパース ──
+D['65']=(c,x,y,w,h)=>{
+  const s=w*.06, d=w*.06; // depth offset
+  // Back face (lighter)
+  c.save();c.globalAlpha=.25;
+  c.beginPath();c.moveTo(x+d,y+h-d);c.lineTo(x+d,y-d);c.lineTo(x+s+d,y-d);c.lineTo(x+w/2+d,y+h*.78-d);c.lineTo(x+w-s+d,y-d);c.lineTo(x+w+d,y-d);c.lineTo(x+w+d,y+h-d);c.closePath();c.fill();
+  c.restore();
+  // Connecting edges
+  c.save();c.globalAlpha=.15;
+  c.beginPath();c.moveTo(x,y);c.lineTo(x+d,y-d);c.lineTo(x+w+d,y-d);c.lineTo(x+w,y);c.closePath();c.fill();
+  c.beginPath();c.moveTo(x+w,y);c.lineTo(x+w+d,y-d);c.lineTo(x+w+d,y+h-d);c.lineTo(x+w,y+h);c.closePath();c.fill();
+  c.restore();
+  // Front face
+  c.beginPath();c.moveTo(x,y+h);c.lineTo(x,y);c.lineTo(x+s,y);c.lineTo(x+w/2,y+h*.78);c.lineTo(x+w-s,y);c.lineTo(x+w,y);c.lineTo(x+w,y+h);c.lineTo(x+w-s,y+h);c.lineTo(x+w-s,y+h*.14);c.lineTo(x+w/2,y+h*.92);c.lineTo(x+s,y+h*.14);c.lineTo(x+s,y+h);c.closePath();c.fill();
+};
+
+// ── 66: Matcha Powder Scatter — 点描でMを浮かび上がらせる ──
+D['66']=(c,x,y,w,h)=>{
+  const s=w*.07;
+  // Create M shape path (don't fill yet)
+  const path=new Path2D();
+  path.moveTo(x,y+h);path.lineTo(x,y);path.lineTo(x+s,y);path.lineTo(x+w/2,y+h*.78);path.lineTo(x+w-s,y);path.lineTo(x+w,y);path.lineTo(x+w,y+h);path.lineTo(x+w-s,y+h);path.lineTo(x+w-s,y+h*.14);path.lineTo(x+w/2,y+h*.92);path.lineTo(x+s,y+h*.14);path.lineTo(x+s,y+h);path.closePath();
+  // Scatter dots
+  const seed=[];for(let i=0;i<800;i++)seed.push(Math.sin(i*127.1+i*i*.03)*.5+.5);
+  let si=0;
+  const next=()=>seed[si++%seed.length];
+  for(let i=0;i<200;i++){
+    const px=x-s+next()*(w+s*2);
+    const py=y-s+next()*(h+s*2);
+    if(c.isPointInPath(path,px,py)){
+      const r=.5+next()*1.5;
+      c.globalAlpha=.3+next()*.6;
+      c.beginPath();c.arc(px,py,r,0,Math.PI*2);c.fill();
+    }
+  }
+  c.globalAlpha=1;
+};
+
+const CONCEPTS=[
+  {id:'37',name:'37 / Wedge',tag:'asymmetric weight',desc:'左脚だけ太いウェッジ。重心が片側に寄る大胆な非対称。'},
+  {id:'38',name:'38 / Horizon',tag:'grounded',desc:'Mの下部を横切る水平線。大地・水平線。安定と広がり。'},
+  {id:'39',name:'39 / Slab Base',tag:'monumental',desc:'底面にスラブ（台座）。記念碑的な存在感。'},
+  {id:'40',name:'40 / Crown Tips',tag:'regal',desc:'山頂に小さな円。王冠の宝玉。プレミアム感。',divider:'decorative'},
+  {id:'41',name:'41 / Diagonal Cut',tag:'dynamic',desc:'右上の角を斜めにカット。スピード感と現代性。'},
+  {id:'42',name:'42 / Pinch Waist',tag:'hourglass',desc:'縦線の中央がくびれる。砂時計。茶碗のくびれ。'},
+  {id:'43',name:'43 / Flat Top + Round',tag:'best of both',desc:'頂点フラット + 内側U字カーブ。建築的かつ有機的。'},
+  {id:'44',name:'44 / Zigzag Inner',tag:'energy',desc:'内側がジグザグ。茶筅の穂先を攪拌するエネルギー。',divider:'pattern'},
+  {id:'45',name:'45 / Enso Inside',tag:'zen',desc:'谷の中に円（enso）を配置。禅と抹茶の精神性。'},
+  {id:'46',name:'46 / One Leg Curve',tag:'hybrid',desc:'左脚だけ曲線、右は直線。有機と幾何の対話。'},
+  {id:'47',name:'47 / Reverse Contrast',tag:'typographic',desc:'横が太く縦が細い。通常と逆のコントラスト。新鮮。'},
+  {id:'48',name:'48 / Open Top',tag:'breathing',desc:'縦線が上25%で途切れる。上に開く。開放感。',divider:'structure'},
+  {id:'49',name:'49 / Stepped',tag:'modern',desc:'縦線に段差。モダン建築の階段状ファサード。'},
+  {id:'50',name:'50 / Triangle Legs',tag:'geometric',desc:'脚が三角形。ピラミッド的な安定感。'},
+  {id:'51',name:'51 / Matcha Whisk',tag:'chasen',desc:'内側に茶筅の穂先のような平行曲線。機能をデザインに。'},
+  {id:'52',name:'52 / Mirrored V',tag:'symmetry',desc:'上下にVが反転配置。完全なシンメトリー。蝶のよう。',divider:'mirror'},
+  {id:'53',name:'53 / Slash',tag:'disruption',desc:'斜めの線がMを貫通する切り込み。大胆な破壊と創造。'},
+  {id:'54',name:'54 / Grid Cross',tag:'systematic',desc:'グリッドの交点に十字。システマティックな構成。'},
+  {id:'55',name:'55 / Outline Only',tag:'transparent',desc:'塗りなし、アウトラインだけ。透明感。軽やかさ。'},
+  {id:'56',name:'56 / Round Mono',tag:'round + stroke',desc:'ストロークだけでU字谷。Round Valleyのライン版。',divider:'line'},
+  {id:'57',name:'57 / Condensed',tag:'narrow',desc:'横幅70%に圧縮。エレガントで省スペース。'},
+  {id:'58',name:'58 / Extended',tag:'wide',desc:'横幅120%に拡張。堂々として開放的。'},
+  {id:'59',name:'59 / Heart Valley',tag:'love',desc:'内側がハート型の曲線。抹茶への愛。温かみ。'},
+  {id:'60',name:'60 / Bamboo',tag:'japanese',desc:'縦線に竹の節。日本的な自然モチーフ。',divider:'nature'},
+  {id:'61',name:'61 / Ribbon',tag:'woven',desc:'ストロークがリボンのように交差。立体感と動き。'},
+  {id:'62',name:'62 / Split Tone',tag:'duality',desc:'左右で濃淡が違う。matcha & me、二つの存在。'},
+  {id:'63',name:'63 / Eroded',tag:'wabi-sabi',desc:'縁が不規則に侵食。経年変化の美。wabi-sabi。'},
+  {id:'64',name:'64 / Woven',tag:'textile',desc:'編み込み模様。布・テクスタイルの温もり。',divider:'texture'},
+  {id:'65',name:'65 / 3D Perspective',tag:'depth',desc:'パースのついた立体M。奥行きと存在感。'},
+  {id:'66',name:'66 / Powder Scatter',tag:'matcha',desc:'点描でMが浮かぶ。抹茶の粉が集まって形になる。'},
+];
+
+// =====================================================
+function renderWordmark(canvas,drawFn){
+  const dpr=window.devicePixelRatio||2,fs=48,font=`200 ${fs}px Outfit`,ls=fs*.35,color='#1B4332',chars=['M','A','T','C','H','A','&','M','E'];
+  const ctx=canvas.getContext('2d');ctx.font=font;
+  const cw=chars.map(c=>ctx.measureText(c).width),tw=cw.reduce((a,b)=>a+b,0)+ls*(chars.length-1);
+  const m=ctx.measureText('M'),asc=m.actualBoundingBoxAscent,desc=m.actualBoundingBoxDescent;
+  const px=40,py=20,W=tw+px*2,H=asc+desc+py*2;
+  canvas.width=W*dpr;canvas.height=H*dpr;canvas.style.width=W+'px';canvas.style.height=H+'px';
+  ctx.scale(dpr,dpr);const by=py+asc;
+  ctx.font=font;ctx.fillStyle=color;ctx.textBaseline='alphabetic';
+  let cx=px;chars.forEach((ch,i)=>{if(ch==='M')drawFn(ctx,cx,by-asc,cw[i],asc);else ctx.fillText(ch,cx,by);cx+=cw[i]+ls;});
+}
+function renderMark(canvas,drawFn,bg,fg){
+  const dpr=window.devicePixelRatio||2,sz=72;
+  canvas.width=sz*dpr;canvas.height=sz*dpr;canvas.style.width=sz+'px';canvas.style.height=sz+'px';
+  const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);ctx.fillStyle=bg;ctx.fillRect(0,0,sz,sz);
+  const ms=34,p=(sz-ms)/2;ctx.fillStyle=fg;drawFn(ctx,p,p+1,ms,ms-2);
+}
+function build(){
+  const app=document.getElementById('app');let html='';
+  CONCEPTS.forEach(c=>{
+    if(c.divider)html+=`<div class="divider">${c.divider}</div>`;
+    html+=`<div class="concept"><div class="concept-header"><h2>${c.name}</h2><span class="tag">${c.tag}</span></div><p class="desc">${c.desc}</p><div class="wordmark-canvas-wrap"><canvas id="wm-${c.id}"></canvas></div><div class="mark-display"><div class="mark-cell"><div class="box light"><canvas id="mk-${c.id}-l"></canvas></div><div class="label">light</div></div><div class="mark-cell"><div class="box dark"><canvas id="mk-${c.id}-d"></canvas></div><div class="label">dark</div></div><div class="mark-cell"><div class="box green"><canvas id="mk-${c.id}-g"></canvas></div><div class="label">sage</div></div><div class="mark-cell"><div class="box pink"><canvas id="mk-${c.id}-p"></canvas></div><div class="label">sakura</div></div></div></div>`;
+  });
+  app.innerHTML=html;
+  document.fonts.ready.then(()=>{CONCEPTS.forEach(c=>{const fn=D[c.id];renderWordmark(document.getElementById(`wm-${c.id}`),fn);renderMark(document.getElementById(`mk-${c.id}-l`),fn,'#FAFAF8','#1B4332');renderMark(document.getElementById(`mk-${c.id}-d`),fn,'#1B4332','#F5F0E8');renderMark(document.getElementById(`mk-${c.id}-g`),fn,'#8AAE92','#1B4332');renderMark(document.getElementById(`mk-${c.id}-p`),fn,'#F2C4C4','#1B4332');});});
+}
+build();
+</script>
+</body>
+</html>

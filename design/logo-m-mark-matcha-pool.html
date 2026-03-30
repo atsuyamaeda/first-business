@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>MATCHA&ME — Matcha Pool v3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#EDEDE9;font-family:'Outfit',sans-serif;font-weight:200;color:#1B4332;padding:60px 30px}
+  h1{text-align:center;font-weight:200;font-size:13px;letter-spacing:8px;text-transform:uppercase;margin-bottom:10px;color:#888}
+  .subtitle{text-align:center;font-size:11px;color:#aaa;margin-bottom:50px;letter-spacing:1px}
+  .grid{max-width:1200px;margin:0 auto 60px;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px}
+  .card{background:#fff;padding:40px 30px 30px;text-align:center}
+  .card h2{font-weight:200;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#999;margin-bottom:3px}
+  .card .tag{font-size:9px;color:#bbb;letter-spacing:2px;display:block;margin-bottom:8px}
+  .card .desc{font-size:11px;color:#aaa;line-height:1.7;margin-bottom:20px}
+  .large-mark{margin:0 auto 15px}
+  .large-mark canvas{display:block;margin:0 auto}
+  .wordmark-wrap{margin:0 auto 15px}
+  .wordmark-wrap canvas{display:block;margin:0 auto}
+  .mark-row{display:flex;justify-content:center;gap:10px;padding-top:14px;border-top:1px solid #f0f0f0;flex-wrap:wrap}
+  .mark-cell{text-align:center}
+  .mark-cell .box{width:52px;height:52px;display:flex;align-items:center;justify-content:center;margin-bottom:3px}
+  .mark-cell .box.light{background:#FAFAF8;border:1px solid #f0f0f0}
+  .mark-cell .box.dark{background:#1B4332}
+  .mark-cell .box.green{background:#8AAE92}
+  .mark-cell .box.pink{background:#F2C4C4}
+  .mark-cell .box.cream{background:#F5F0E8}
+  .mark-cell .box.salmon{background:#E8967D}
+  .mark-cell .label{font-size:7px;color:#ccc;letter-spacing:1px;text-transform:uppercase}
+</style>
+</head>
+<body>
+<h1>matcha & me</h1>
+<div class="subtitle">V字の底に抹茶が溜まっている</div>
+<div class="grid" id="grid"></div>
+
+<script>
+// M's inner V geometry (constant)
+// Inner diags: (s, h*0.14) → (w/2, h*0.92)
+// At any Y, the V's left edge X = s + (w/2 - s) * (Y - h*0.14) / (h*0.92 - h*0.14)
+// Mirror for right.
+
+function drawStdM(c,x,y,w,h,s){
+  // Outer V tip and inner V tip — both rounded
+  const outerTipY=h*.78, innerTipY=h*.92;
+  const r=w*.12; // round radius at V bottoms
+  c.beginPath();
+  c.moveTo(x,y+h);c.lineTo(x,y);c.lineTo(x+s,y);
+  // Outer V: left diagonal → rounded bottom → right diagonal
+  c.lineTo(x+w/2-r*.8, y+outerTipY-r*.4);
+  c.quadraticCurveTo(x+w/2, y+outerTipY+r*.5, x+w/2+r*.8, y+outerTipY-r*.4);
+  c.lineTo(x+w-s,y);c.lineTo(x+w,y);
+  c.lineTo(x+w,y+h);c.lineTo(x+w-s,y+h);c.lineTo(x+w-s,y+h*.14);
+  // Inner V: right diagonal → rounded bottom → left diagonal
+  c.lineTo(x+w/2+r*.8, y+innerTipY-r*.4);
+  c.quadraticCurveTo(x+w/2, y+innerTipY+r*.5, x+w/2-r*.8, y+innerTipY-r*.4);
+  c.lineTo(x+s,y+h*.14);
+  c.lineTo(x+s,y+h);c.closePath();c.fill();
+}
+
+// fillLevel: where the "water line" is, as a ratio between
+//   the top of the inner V (0.14) and the V tip (0.92).
+//   0 = empty, 1 = full to the top of V.
+//   0.5 = halfway. We want something like 0.55-0.75 for "bottom pool"
+function makePool(fillLevel) {
+  return (c,x,y,w,h,{mColor='#1A1A1A',poolColor='#3A6B4E'}={}) => {
+    const s = w * 0.068;
+
+    // Draw the standard M in black
+    const prevFill = c.fillStyle;
+    c.fillStyle = mColor;
+    drawStdM(c, x, y, w, h, s);
+
+    // Inner V parameters
+    const vTopY = h * 0.14;
+    const vTipY = h * 0.92;
+    const vH = vTipY - vTopY;
+    const vLeftTopX = s;
+    const vRightTopX = w - s;
+    const vCenterX = w / 2;
+
+    // Water line Y position
+    const waterY = vTopY + vH * fillLevel;
+
+    // At waterY, the V edges are at:
+    const t = (waterY - vTopY) / vH; // 0 to 1
+    const leftX = vLeftTopX + (vCenterX - vLeftTopX) * t;
+    const rightX = vRightTopX + (vCenterX - vRightTopX) * t;
+
+    // Fill: matcha green pool — inset from M's edges so the M "bowl" is visible
+    const r = w * 0.12;
+    const inset = s * 0.5; // pull pool inward so M's strokes show as the bowl rim
+
+    // Inset the water line edges
+    const leftXIn = leftX + inset * 0.8;
+    const rightXIn = rightX - inset * 0.8;
+
+    // Pool bottom is above the actual V bottom, leaving the M's rounded base visible
+    const poolTipY = vTipY - inset * 1.2;
+    const poolR = r * 0.7;
+
+    c.fillStyle = poolColor;
+    c.beginPath();
+    c.moveTo(x + leftXIn, y + waterY);
+    c.lineTo(x + rightXIn, y + waterY);
+    c.lineTo(x + vCenterX + poolR*.7, y + poolTipY - poolR*.3);
+    c.quadraticCurveTo(x + vCenterX, y + poolTipY + poolR*.4, x + vCenterX - poolR*.7, y + poolTipY - poolR*.3);
+    c.closePath();
+    c.fill();
+
+    c.fillStyle = prevFill;
+  };
+}
+
+const D = {};
+D['S1'] = makePool(0.50);
+D['S2'] = makePool(0.55);
+D['S3'] = makePool(0.60);
+D['S4'] = makePool(0.65);
+D['S5'] = makePool(0.70);
+D['S6'] = makePool(0.75);
+D['S7'] = makePool(0.80);
+D['S8'] = makePool(0.85);
+D['S9'] = makePool(0.45);
+
+const ITEMS = [
+  {id:'S9', name:'S9 / 45%', tag:'少なめ', desc:'ちょっとだけ溜まっている'},
+  {id:'S1', name:'S1 / 50%', tag:'半分', desc:'V字の下半分が埋まる'},
+  {id:'S2', name:'S2 / 55%', tag:'やや多め', desc:'手書きのイメージに近いかも'},
+  {id:'S3', name:'S3 / 60%', tag:'多め', desc:'しっかり溜まっている'},
+  {id:'S4', name:'S4 / 65%', tag:'たっぷり', desc:'水面が高い'},
+  {id:'S5', name:'S5 / 70%', tag:'かなり多い', desc:'V字の大部分が埋まる'},
+  {id:'S6', name:'S6 / 75%', tag:'満杯近い', desc:'ほぼ満タン'},
+  {id:'S7', name:'S7 / 80%', tag:'あふれそう', desc:'かなり上まで'},
+  {id:'S8', name:'S8 / 85%', tag:'ギリギリ', desc:'こぼれる寸前'},
+];
+
+function renderWordmark(canvas,drawFn){
+  const dpr=window.devicePixelRatio||2,fs=36,font=`200 ${fs}px Outfit`,ls=fs*.35;
+  const mColor='#1A1A1A', poolColor='#3A6B4E';
+  const chars=['M','A','T','C','H','A','&','M','E'];
+  const ctx=canvas.getContext('2d');ctx.font=font;
+  const cw=chars.map(ch=>ctx.measureText(ch).width),tw=cw.reduce((a,b)=>a+b,0)+ls*(chars.length-1);
+  const m=ctx.measureText('M'),asc=m.actualBoundingBoxAscent,desc=m.actualBoundingBoxDescent;
+  const px=20,py=12,W=tw+px*2,H=asc+desc+py*2;
+  canvas.width=W*dpr;canvas.height=H*dpr;canvas.style.width=W+'px';canvas.style.height=H+'px';
+  ctx.scale(dpr,dpr);const by=py+asc;
+  ctx.font=font;ctx.textBaseline='alphabetic';
+  let cx=px;chars.forEach((ch,i)=>{
+    if(ch==='M') drawFn(ctx,cx,by-asc,cw[i],asc,{mColor,poolColor});
+    else { ctx.fillStyle=mColor; ctx.fillText(ch,cx,by); }
+    cx+=cw[i]+ls;
+  });
+}
+function renderMarkLarge(canvas,drawFn,bg){
+  const dpr=window.devicePixelRatio||2,sz=130;
+  canvas.width=sz*dpr;canvas.height=sz*dpr;canvas.style.width=sz+'px';canvas.style.height=sz+'px';
+  const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
+  ctx.fillStyle=bg;ctx.fillRect(0,0,sz,sz);
+  const ms=74,p=(sz-ms)/2;
+  drawFn(ctx,p,p+4,ms,ms-8,{mColor:'#1A1A1A',poolColor:'#3A6B4E'});
+}
+function renderMark(canvas,drawFn,bg){
+  const dpr=window.devicePixelRatio||2,sz=52;
+  canvas.width=sz*dpr;canvas.height=sz*dpr;canvas.style.width=sz+'px';canvas.style.height=sz+'px';
+  const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
+  ctx.fillStyle=bg;ctx.fillRect(0,0,sz,sz);
+  const ms=26,p=(sz-ms)/2;
+  drawFn(ctx,p,p+1,ms,ms-2,{mColor:'#1A1A1A',poolColor:'#3A6B4E'});
+}
+
+function build(){
+  const grid=document.getElementById('grid');
+  ITEMS.forEach(item=>{
+    const card=document.createElement('div');card.className='card';
+    card.innerHTML=`
+      <h2>${item.name}</h2><span class="tag">${item.tag}</span>
+      <p class="desc">${item.desc}</p>
+      <div class="large-mark"><canvas id="lg-${item.id}"></canvas></div>
+      <div class="wordmark-wrap"><canvas id="wm-${item.id}"></canvas></div>
+      <div class="mark-row">
+        <div class="mark-cell"><div class="box light"><canvas id="mk-${item.id}-l"></canvas></div><div class="label">light</div></div>
+        <div class="mark-cell"><div class="box dark"><canvas id="mk-${item.id}-d"></canvas></div><div class="label">dark</div></div>
+        <div class="mark-cell"><div class="box green"><canvas id="mk-${item.id}-g"></canvas></div><div class="label">sage</div></div>
+        <div class="mark-cell"><div class="box pink"><canvas id="mk-${item.id}-p"></canvas></div><div class="label">pink</div></div>
+        <div class="mark-cell"><div class="box cream"><canvas id="mk-${item.id}-c"></canvas></div><div class="label">cream</div></div>
+        <div class="mark-cell"><div class="box salmon"><canvas id="mk-${item.id}-s"></canvas></div><div class="label">salmon</div></div>
+      </div>`;
+    grid.appendChild(card);
+  });
+  document.fonts.ready.then(()=>{
+    ITEMS.forEach(item=>{
+      const fn=D[item.id];
+      renderMarkLarge(document.getElementById(`lg-${item.id}`),fn,'#FAFAF8');
+      renderWordmark(document.getElementById(`wm-${item.id}`),fn);
+      renderMark(document.getElementById(`mk-${item.id}-l`),fn,'#FAFAF8');
+      renderMark(document.getElementById(`mk-${item.id}-d`),fn,'#1B4332');
+      renderMark(document.getElementById(`mk-${item.id}-g`),fn,'#8AAE92');
+      renderMark(document.getElementById(`mk-${item.id}-p`),fn,'#F2C4C4');
+      renderMark(document.getElementById(`mk-${item.id}-c`),fn,'#F5F0E8');
+      renderMark(document.getElementById(`mk-${item.id}-s`),fn,'#E8967D');
+    });
+  });
+}
+build();
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 400" width="1400" height="400">
+  <!--
+    LOGO B
+
+    全文字: クリーンなサンセリフ、緑(#2D6A4F)
+    「&」: ピンクのイタリックセリフ体（優雅だが控えめ）
+    「t」の横棒が右にほんの少しだけ長い — 通常より3px。
+    それだけ。この3pxが「あれ？」と気づかせるディテール。
+  -->
+  <rect width="1400" height="400" fill="white"/>
+
+  <!-- "ma" -->
+  <text x="80" y="248" font-family="'Futura', 'Century Gothic', 'Avenir Next', sans-serif" font-weight="300" font-size="80" letter-spacing="20" fill="#2D6A4F">ma</text>
+
+  <!-- "t" with subtly extended crossbar -->
+  <g transform="translate(275, 0)">
+    <!-- t body (normal) -->
+    <text x="0" y="248" font-family="'Futura', 'Century Gothic', 'Avenir Next', sans-serif" font-weight="300" font-size="80" fill="#2D6A4F">t</text>
+    <!-- Extended crossbar — just 12px longer than normal, same stroke weight -->
+    <line x1="38" y1="208" x2="52" y2="208" stroke="#2D6A4F" stroke-width="2.8" stroke-linecap="round"/>
+  </g>
+
+  <!-- "cha" -->
+  <text x="320" y="248" font-family="'Futura', 'Century Gothic', 'Avenir Next', sans-serif" font-weight="300" font-size="80" letter-spacing="20" fill="#2D6A4F">cha</text>
+
+  <!-- "&" — italic serif, pink -->
+  <text x="640" y="248" font-family="'Georgia', 'Times New Roman', serif" font-weight="400" font-style="italic" font-size="82" fill="#F2C4C4">&amp;</text>
+
+  <!-- "me" -->
+  <text x="720" y="248" font-family="'Futura', 'Century Gothic', 'Avenir Next', sans-serif" font-weight="300" font-size="80" letter-spacing="20" fill="#2D6A4F">me</text>
+</svg>

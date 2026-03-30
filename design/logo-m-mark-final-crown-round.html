@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>MATCHA&ME — Crown Round Refinement</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#EDEDE9;font-family:'Outfit',sans-serif;font-weight:200;color:#1B4332;padding:60px 40px}
+  h1{text-align:center;font-weight:200;font-size:13px;letter-spacing:8px;text-transform:uppercase;margin-bottom:10px;color:#888}
+  .subtitle{text-align:center;font-size:11px;color:#aaa;margin-bottom:60px;letter-spacing:1px}
+  .concept{max-width:900px;margin:0 auto 70px;background:#fff;padding:50px 50px 35px}
+  .concept-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+  .concept h2{font-weight:200;font-size:12px;letter-spacing:5px;text-transform:uppercase;color:#999}
+  .concept .tag{font-size:10px;color:#bbb;letter-spacing:2px}
+  .concept .desc{font-size:12px;color:#aaa;margin-bottom:35px;line-height:1.8}
+  .wordmark-canvas-wrap{text-align:center;margin-bottom:35px;padding:25px 0}
+  .wordmark-canvas-wrap canvas{display:block;margin:0 auto}
+  .mark-display{display:flex;justify-content:center;gap:20px;padding-top:25px;border-top:1px solid #f0f0f0}
+  .mark-cell{text-align:center}
+  .mark-cell .box{width:72px;height:72px;display:flex;align-items:center;justify-content:center;margin-bottom:6px}
+  .mark-cell .box.light{background:#FAFAF8;border:1px solid #f0f0f0}
+  .mark-cell .box.dark{background:#1B4332}
+  .mark-cell .box.green{background:#8AAE92}
+  .mark-cell .box.pink{background:#F2C4C4}
+  .mark-cell .box.cream{background:#F5F0E8}
+  .mark-cell .box.salmon{background:#E8967D}
+  .mark-cell .label{font-size:8px;color:#ccc;letter-spacing:2px;text-transform:uppercase}
+  .divider{max-width:900px;margin:0 auto 50px;text-align:center;font-size:10px;letter-spacing:6px;text-transform:uppercase;color:#ccc}
+  .divider::before,.divider::after{content:'';display:inline-block;width:60px;height:1px;background:#ddd;vertical-align:middle;margin:0 20px}
+  .large-mark{text-align:center;margin:30px 0 40px}
+  .large-mark canvas{display:block;margin:0 auto}
+</style>
+</head>
+<body>
+<h1>matcha & me</h1>
+<div class="subtitle">#100 Crown Round — refinement / 12 variations</div>
+<div id="app"></div>
+<script>
+const D={};
+
+// Crown Round: parameterized
+// notch: V字カットの深さ (0=なし, 1=深い)
+// valley: 谷のカーブ深さ (0=浅い, 1=深い)
+// sw: ストローク幅係数
+// notchW: ノッチの幅 (0=狭い, 1=広い)
+// valleyStart: 谷が始まる高さ
+function makeCrownRound({notch=.04, valley=.92, sw=.07, notchW=.3, valleyStart=.2, valleyInner=1.0, innerStart=.28}={}){
+  return (c,x,y,w,h)=>{
+    const s=w*sw, nd=h*notch, nw=s*notchW;
+    c.beginPath();
+    c.moveTo(x,y+h);
+    c.lineTo(x,y+(notch>0?nd:0));
+    if(notch>0){
+      c.lineTo(x+s/2-nw,y);
+      c.lineTo(x+s/2,y+nd);
+      c.lineTo(x+s/2+nw,y);
+      c.lineTo(x+s,y+nd);
+    }else{
+      c.lineTo(x,y);c.lineTo(x+s,y);
+    }
+    c.lineTo(x+s,y+h*valleyStart);
+    c.quadraticCurveTo(x+w/2,y+h*valley,x+w-s,y+h*valleyStart);
+    c.lineTo(x+w-s,y+(notch>0?nd:0));
+    if(notch>0){
+      c.lineTo(x+w-s/2-nw,y);
+      c.lineTo(x+w-s/2,y+nd);
+      c.lineTo(x+w-s/2+nw,y);
+    }else{
+      c.lineTo(x+w-s,y);
+    }
+    c.lineTo(x+w,y+(notch>0?nd:0));
+    c.lineTo(x+w,y+h);
+    c.lineTo(x+w-s,y+h);
+    c.lineTo(x+w-s,y+h*innerStart);
+    c.quadraticCurveTo(x+w/2,y+h*valleyInner,x+s,y+h*innerStart);
+    c.lineTo(x+s,y+h);
+    c.closePath();
+    c.fill();
+  };
+}
+
+// ── Variations ──
+
+// F1: Original #100（そのまま）
+D['F1']=makeCrownRound({notch:.04,valley:.92,sw:.07,notchW:.3});
+
+// F2: ノッチ深め
+D['F2']=makeCrownRound({notch:.07,valley:.92,sw:.07,notchW:.3});
+
+// F3: ノッチ浅め（ほぼ見えない）
+D['F3']=makeCrownRound({notch:.025,valley:.92,sw:.07,notchW:.25});
+
+// F4: ノッチ幅広
+D['F4']=makeCrownRound({notch:.05,valley:.92,sw:.07,notchW:.5});
+
+// F5: 谷が浅い
+D['F5']=makeCrownRound({notch:.04,valley:.70,sw:.07,notchW:.3,valleyStart:.15,valleyInner:.78,innerStart:.22});
+
+// F6: 谷が深い（ベースライン超え）
+D['F6']=makeCrownRound({notch:.04,valley:1.05,sw:.07,notchW:.3,valleyStart:.25,valleyInner:1.12,innerStart:.33});
+
+// F7: ストローク細め
+D['F7']=makeCrownRound({notch:.04,valley:.92,sw:.055,notchW:.3,valleyStart:.18,innerStart:.26});
+
+// F8: ストローク太め
+D['F8']=makeCrownRound({notch:.04,valley:.92,sw:.09,notchW:.3,valleyStart:.22,innerStart:.30});
+
+// F9: ノッチなし（純粋Round Valley参考）
+D['F9']=makeCrownRound({notch:0,valley:.92,sw:.07});
+
+// F10: ノッチ深め + 谷浅め
+D['F10']=makeCrownRound({notch:.06,valley:.75,sw:.07,notchW:.35,valleyStart:.15,valleyInner:.83,innerStart:.23});
+
+// F11: 細め + ノッチ浅め（最も繊細）
+D['F11']=makeCrownRound({notch:.025,valley:.88,sw:.05,notchW:.25,valleyStart:.18,valleyInner:.96,innerStart:.26});
+
+// F12: 太め + ノッチ深め（最も存在感）
+D['F12']=makeCrownRound({notch:.07,valley:.95,sw:.095,notchW:.4,valleyStart:.22,valleyInner:1.02,innerStart:.30});
+
+const CONCEPTS=[
+{id:'F1',name:'F1 / Original',tag:'baseline',desc:'#100そのまま。notch 4%, valley 92%, stroke 7%。これが基準。'},
+{id:'F2',name:'F2 / Deep Notch',tag:'notch 7%',desc:'ノッチを深くした。山頂のV字がはっきり見える。'},
+{id:'F3',name:'F3 / Subtle Notch',tag:'notch 2.5%',desc:'ノッチを極浅に。よく見ないと気づかないレベル。上品。',divider:'notch depth'},
+{id:'F4',name:'F4 / Wide Notch',tag:'notch width 50%',desc:'ノッチの幅を広く。より開いたV字。呼吸感。'},
+{id:'F5',name:'F5 / Shallow Valley',tag:'valley 70%',desc:'谷が浅い。控えめなカーブ。他の文字との差が縮まる。'},
+{id:'F6',name:'F6 / Deep Valley',tag:'valley 105%',desc:'谷がベースライン超え。大胆で劇的なカーブ。',divider:'valley depth'},
+{id:'F7',name:'F7 / Thin Stroke',tag:'stroke 5.5%',desc:'ストロークを細く。Outfit 100に近い繊細さ。'},
+{id:'F8',name:'F8 / Thick Stroke',tag:'stroke 9%',desc:'ストロークを太く。Outfit 300に近い存在感。',divider:'stroke weight'},
+{id:'F9',name:'F9 / No Notch',tag:'pure round valley',desc:'ノッチなし。純粋なRound Valleyとの比較用。'},
+{id:'F10',name:'F10 / Deep Notch + Shallow',tag:'hybrid A',desc:'ノッチ深め + 谷浅め。上の特徴と下の控えめさ。'},
+{id:'F11',name:'F11 / Ultra Delicate',tag:'最繊細',desc:'細ストローク + 浅ノッチ。最も繊細で上品なバランス。',divider:'combinations'},
+{id:'F12',name:'F12 / Bold Statement',tag:'最存在感',desc:'太ストローク + 深ノッチ。最も存在感のあるバランス。'},
+];
+
+function renderWordmark(canvas,drawFn){const dpr=window.devicePixelRatio||2,fs=48,font=`200 ${fs}px Outfit`,ls=fs*.35,color='#1B4332',chars=['M','A','T','C','H','A','&','M','E'];const ctx=canvas.getContext('2d');ctx.font=font;const cw=chars.map(c=>ctx.measureText(c).width),tw=cw.reduce((a,b)=>a+b,0)+ls*(chars.length-1);const m=ctx.measureText('M'),asc=m.actualBoundingBoxAscent,desc=m.actualBoundingBoxDescent;const px=40,py=20,W=tw+px*2,H=asc+desc+py*2;canvas.width=W*dpr;canvas.height=H*dpr;canvas.style.width=W+'px';canvas.style.height=H+'px';ctx.scale(dpr,dpr);const by=py+asc;ctx.font=font;ctx.fillStyle=color;ctx.textBaseline='alphabetic';let cx=px;chars.forEach((ch,i)=>{if(ch==='M')drawFn(ctx,cx,by-asc,cw[i],asc);else ctx.fillText(ch,cx,by);cx+=cw[i]+ls;});}
+
+function renderMarkLarge(canvas,drawFn,bg,fg){const dpr=window.devicePixelRatio||2,sz=160;canvas.width=sz*dpr;canvas.height=sz*dpr;canvas.style.width=sz+'px';canvas.style.height=sz+'px';const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);ctx.fillStyle=bg;ctx.fillRect(0,0,sz,sz);const ms=90,p=(sz-ms)/2;ctx.fillStyle=fg;drawFn(ctx,p,p+5,ms,ms-10);}
+
+function renderMark(canvas,drawFn,bg,fg){const dpr=window.devicePixelRatio||2,sz=72;canvas.width=sz*dpr;canvas.height=sz*dpr;canvas.style.width=sz+'px';canvas.style.height=sz+'px';const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);ctx.fillStyle=bg;ctx.fillRect(0,0,sz,sz);const ms=34,p=(sz-ms)/2;ctx.fillStyle=fg;drawFn(ctx,p,p+1,ms,ms-2);}
+
+function build(){
+  const app=document.getElementById('app');let html='';
+  CONCEPTS.forEach(c=>{
+    if(c.divider)html+=`<div class="divider">${c.divider}</div>`;
+    html+=`<div class="concept">
+      <div class="concept-header"><h2>${c.name}</h2><span class="tag">${c.tag}</span></div>
+      <p class="desc">${c.desc}</p>
+      <div class="large-mark"><canvas id="lg-${c.id}"></canvas></div>
+      <div class="wordmark-canvas-wrap"><canvas id="wm-${c.id}"></canvas></div>
+      <div class="mark-display">
+        <div class="mark-cell"><div class="box light"><canvas id="mk-${c.id}-l"></canvas></div><div class="label">light</div></div>
+        <div class="mark-cell"><div class="box dark"><canvas id="mk-${c.id}-d"></canvas></div><div class="label">dark</div></div>
+        <div class="mark-cell"><div class="box green"><canvas id="mk-${c.id}-g"></canvas></div><div class="label">sage</div></div>
+        <div class="mark-cell"><div class="box pink"><canvas id="mk-${c.id}-p"></canvas></div><div class="label">sakura</div></div>
+        <div class="mark-cell"><div class="box cream"><canvas id="mk-${c.id}-c"></canvas></div><div class="label">cream</div></div>
+        <div class="mark-cell"><div class="box salmon"><canvas id="mk-${c.id}-s"></canvas></div><div class="label">salmon</div></div>
+      </div>
+    </div>`;
+  });
+  app.innerHTML=html;
+  document.fonts.ready.then(()=>{
+    CONCEPTS.forEach(c=>{
+      const fn=D[c.id];
+      renderMarkLarge(document.getElementById(`lg-${c.id}`)  ,fn,'#FAFAF8','#1B4332');
+      renderWordmark(document.getElementById(`wm-${c.id}`),fn);
+      renderMark(document.getElementById(`mk-${c.id}-l`),fn,'#FAFAF8','#1B4332');
+      renderMark(document.getElementById(`mk-${c.id}-d`),fn,'#1B4332','#F5F0E8');
+      renderMark(document.getElementById(`mk-${c.id}-g`),fn,'#8AAE92','#1B4332');
+      renderMark(document.getElementById(`mk-${c.id}-p`),fn,'#F2C4C4','#1B4332');
+      renderMark(document.getElementById(`mk-${c.id}-c`),fn,'#F5F0E8','#1B4332');
+      renderMark(document.getElementById(`mk-${c.id}-s`),fn,'#E8967D','#1B4332');
+    });
+  });
+}
+build();
+</script>
+</body>
+</html>

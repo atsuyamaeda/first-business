@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" width="500" height="200">
+  <rect width="500" height="200" fill="#ffffff"/>
+  <!-- Concept F: Split Typography — matcha | & me with dividing hairline -->
+  <!-- matcha (left of center) -->
+  <text x="220" y="108" text-anchor="end"
+        font-family="'Futura', 'Century Gothic', 'Avenir', sans-serif"
+        font-weight="200" font-size="26" letter-spacing="8" fill="#1B4332">
+    matcha
+  </text>
+  <!-- Hairline divider -->
+  <line x1="232" y1="80" x2="232" y2="125" stroke="#1B4332" stroke-width="0.5"/>
+  <!-- & me (right of center) -->
+  <text x="244" y="108" text-anchor="start" fill="#1B4332">
+    <tspan font-family="'Cormorant Garamond', 'Playfair Display', 'Georgia', serif"
+           font-weight="300" font-style="italic" font-size="28">&amp;</tspan>
+    <tspan font-family="'Futura', 'Century Gothic', 'Avenir', sans-serif"
+           font-weight="200" font-size="26" letter-spacing="8"> me</tspan>
+  </text>
+</svg>

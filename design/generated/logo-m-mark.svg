@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <style>
+      /* Open Valley M — Outfit 200 inspired, ultra-thin elegant strokes */
+    </style>
+  </defs>
+  <!-- M Mark: Open Valley — the inner V stops at ~40% depth -->
+  <!-- Thin geometric strokes, proportioned like Outfit ExtraLight -->
+  <path d="
+    M 40 160
+    L 40 40
+    L 46.5 40
+    L 100 95
+    L 153.5 40
+    L 160 40
+    L 160 160
+    L 153.5 160
+    L 153.5 50
+    L 100 105
+    L 46.5 50
+    L 46.5 160
+    Z
+  " fill="#1B4332"/>
+</svg>

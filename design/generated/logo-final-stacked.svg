@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" width="480" height="360">
+  <!--
+    matcha & me — Stacked Layout
+    正方形に近いレイアウト（パッケージ、SNS投稿用）
+  -->
+  <rect width="480" height="360" fill="#FAFAF8"/>
+
+  <!-- matcha — 上段 -->
+  <text x="240" y="140"
+        text-anchor="middle"
+        font-family="'Futura', 'Century Gothic', 'Avenir Next', 'Helvetica Neue', sans-serif"
+        font-weight="300"
+        font-size="64"
+        letter-spacing="14"
+        fill="#1A1A1A">matcha</text>
+
+  <!-- 円相 + & — 中央 -->
+  <g transform="translate(198, 200)">
+    <!-- 円相 -->
+    <path d="M 10 -19
+             A 22 22 0 1 1 -10 -19"
+          fill="none"
+          stroke="#3A6B4E"
+          stroke-width="2"
+          stroke-linecap="round"
+          opacity="0.9"/>
+
+    <!-- 筆圧 -->
+    <path d="M -21 5
+             A 22 22 0 0 1 -5 22
+             A 22 22 0 0 1 14 18"
+          fill="none"
+          stroke="#3A6B4E"
+          stroke-width="4"
+          stroke-linecap="round"
+          opacity="0.18"/>
+
+    <!-- 入筆点 -->
+    <circle cx="10" cy="-19" r="1.3" fill="#3A6B4E" opacity="0.45"/>
+
+    <!-- & -->
+    <text x="0" y="5"
+          text-anchor="middle"
+          font-family="'Didot', 'Bodoni MT', 'Baskerville', 'Georgia', serif"
+          font-weight="400"
+          font-style="italic"
+          font-size="28"
+          fill="#1A1A1A">&amp;</text>
+  </g>
+
+  <!-- me — 下段 -->
+  <text x="290" y="218"
+        font-family="'Futura', 'Century Gothic', 'Avenir Next', 'Helvetica Neue', sans-serif"
+        font-weight="300"
+        font-size="36"
+        letter-spacing="10"
+        fill="#1A1A1A">me</text>
+</svg>

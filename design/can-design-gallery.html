@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>matcha & me — Can Design v4 Refined</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Helvetica Neue', 'Segoe UI', sans-serif; background: #f7f6f3; color: #1a1a1a; }
+  header { text-align: center; padding: 72px 20px 48px; background: #2c2c2c; color: #fff; }
+  header h1 { font-size: 1.8rem; font-weight: 200; letter-spacing: 0.5em; margin-bottom: 10px; }
+  header p { font-size: 0.7rem; letter-spacing: 0.3em; opacity: 0.4; text-transform: uppercase; }
+  header .improvements { max-width: 600px; margin: 20px auto 0; text-align: left; font-size: 0.7rem; line-height: 1.8; opacity: 0.35; letter-spacing: 0.05em; }
+  .section { max-width: 1100px; margin: 0 auto; padding: 56px 24px; }
+  .section-header { display: flex; align-items: baseline; gap: 14px; margin-bottom: 6px; }
+  .section-header h2 { font-size: 1rem; font-weight: 300; letter-spacing: 0.15em; color: #333; text-transform: uppercase; }
+  .section-header .tag { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; border: 1px solid #ddd; color: #999; padding: 2px 10px; border-radius: 20px; }
+  .section-desc { font-size: 0.8rem; color: #aaa; margin-bottom: 20px; max-width: 580px; line-height: 1.8; font-weight: 300; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .grid-1 { display: grid; grid-template-columns: 1fr; gap: 14px; max-width: 700px; }
+  .card { background: #fff; border-radius: 6px; overflow: hidden; box-shadow: 0 1px 6px rgba(0,0,0,0.04); transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 6px 24px rgba(0,0,0,0.1); }
+  .card img { width: 100%; display: block; }
+  .card .label { padding: 10px 14px; font-size: 0.65rem; letter-spacing: 0.12em; color: #bbb; text-transform: uppercase; font-weight: 300; }
+  .divider { border: none; border-top: 1px solid #eae7e2; max-width: 1052px; margin: 0 auto; }
+  .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 1000; justify-content: center; align-items: center; cursor: zoom-out; }
+  .lightbox.active { display: flex; }
+  .lightbox img { max-width: 92vw; max-height: 92vh; border-radius: 4px; }
+  @media (max-width: 700px) { .grid-2 { grid-template-columns: 1fr; } header h1 { font-size: 1.3rem; } }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>matcha & me</h1>
+  <p>can design v4 &mdash; refined</p>
+  <div class="improvements">
+    v3 &rarr; v4 improvements: flat shape consistency (1:3 height-to-diameter ratio) &middot; metallic texture realism &middot; precision rim/seam detail &middot; spec-sheet typography alignment &middot; double-lid structure shot &middot; hand-held scale reference
+  </div>
+</header>
+
+<!-- 1: Gunmetal -->
+<div class="section">
+  <div class="section-header">
+    <h2>01 &mdash; Gunmetal Spec Sheet</h2>
+    <span class="tag">Industrial</span>
+  </div>
+  <p class="section-desc">
+    ブラッシュドチタン × 白スペックシート表記。Leica / B&O的な精密さ。<br>
+    Grade / Cultivar / Origin / Region — データそのものがデザイン。
+  </p>
+  <div class="grid-2">
+    <div class="card" onclick="openLB(this)"><img src="generated/can-v4-gunmetal-hero.png"><div class="label">Hero — 3/4 angle</div></div>
+    <div class="card" onclick="openLB(this)"><img src="generated/can-v4-gunmetal-top.png"><div class="label">Top-down</div></div>
+  </div>
+</div>
+<hr class="divider">
+
+<!-- 2: Gradient -->
+<div class="section">
+  <div class="section-header">
+    <h2>02 &mdash; Pastel Gradient</h2>
+    <span class="tag">Pink &rarr; Mint</span>
+  </div>
+  <p class="section-desc">
+    桜ピンク → ミントグリーンの水彩グラデーション × シルバーリム。<br>
+    một matcha / Glossier的な空気感。
+  </p>
+  <div class="grid-2">
+    <div class="card" onclick="openLB(this)"><img src="generated/can-v4-gradient-hero.png"><div class="label">Hero — with chasen</div></div>
+    <div class="card" onclick="openLB(this)"><img src="generated/can-v4-gradient-top.png"><div class="label">Top-down</div></div>
+  </div>
+</div>
+<hr class="divider">
+
+<!-- 3: Blob -->
+<div class="section">
+  <div class="section-header">
+    <h2>03 &mdash; Color Blob</h2>
+    <span class="tag">EKTA-inspired</span>
+  </div>
+  <p class="section-desc">
+    セージグリーン × コーラルの有機的なにじみ。サーマルカメラ的な熱。<br>
+    コンテンポラリーアート。ギャラリーに飾れる缶。
+  </p>
+  <div class="grid-2">
+    <div class="card" onclick="openLB(this)"><img src="generated/can-v4-blob-hero.png"><div class="label">Hero — moody</div></div>
+    <div class="card" onclick="openLB(this)"><img src="generated/can-v4-blob-top.png"><div class="label">Top-down on black</div></div>
+  </div>
+</div>
+<hr class="divider">
+
+<!-- 4: Data -->
+<div class="section">
+  <div class="section-header">
+    <h2>04 &mdash; Data Typography</h2>
+    <span class="tag">Spec-driven</span>
+  </div>
+  <p class="section-desc">
+    ディープマットグリーン × 白のデータタイポグラフィ。真鍮リムのアクセント。<br>
+    「01」コレクション番号。デスクの上のデイリーコンパニオン。
+  </p>
+  <div class="grid-2">
+    <div class="card" onclick="openLB(this)"><img src="generated/can-v4-data-hero.png"><div class="label">Hero — on desk</div></div>
+    <div class="card" onclick="openLB(this)"><img src="generated/can-v4-data-top.png"><div class="label">Top-down</div></div>
+  </div>
+</div>
+<hr class="divider">
+
+<!-- 5: Split -->
+<div class="section">
+  <div class="section-header">
+    <h2>05 &mdash; Two-Tone Split</h2>
+    <span class="tag">Diagonal</span>
+  </div>
+  <p class="section-desc">
+    グリーン × ピンクの対角線スプリット。"matcha" と "& me" が二つの世界に。<br>
+    Marni / COS的なファッションアクセサリー感。
+  </p>
+  <div class="grid-1">
+    <div class="card" onclick="openLB(this)"><img src="generated/can-v4-split-hero.png"><div class="label">Hero — 3/4 angle</div></div>
+  </div>
+</div>
+<hr class="divider">
+
+<!-- 6: Collection -->
+<div class="section">
+  <div class="section-header">
+    <h2>06 &mdash; Collection</h2>
+    <span class="tag">4 Variants</span>
+  </div>
+  <p class="section-desc">
+    4つのバリエーションが揃った時の統一美。<br>
+    同じ形、異なるムード。全部揃えたくなるデザインシステム。
+  </p>
+  <div class="grid-1">
+    <div class="card" onclick="openLB(this)"><img src="generated/can-v4-collection.png"><div class="label">4-can collection</div></div>
+  </div>
+</div>
+<hr class="divider">
+
+<!-- 7: Open / Double Lid -->
+<div class="section">
+  <div class="section-header">
+    <h2>07 &mdash; Double Lid Structure</h2>
+    <span class="tag">Product Feature</span>
+  </div>
+  <p class="section-desc">
+    二重蓋構造の断面図的ショット。外蓋（茶杓マグネット固定）＋内蓋（密封）。<br>
+    「開けたらすぐ飲める」体験のエンジニアリング。
+  </p>
+  <div class="grid-1">
+    <div class="card" onclick="openLB(this)"><img src="generated/can-v4-open.png"><div class="label">Lid open — showing interior</div></div>
+  </div>
+</div>
+<hr class="divider">
+
+<!-- 8: Lifestyle -->
+<div class="section">
+  <div class="section-header">
+    <h2>08 &mdash; Lifestyle</h2>
+    <span class="tag">Morning Ritual</span>
+  </div>
+  <p class="section-desc">
+    キッチンカウンターの日常。缶は毎朝ここにある。<br>
+    Kinfolk / Cereal magazine的な朝の光。
+  </p>
+  <div class="grid-1">
+    <div class="card" onclick="openLB(this)"><img src="generated/can-v4-lifestyle.png"><div class="label">Kitchen morning scene</div></div>
+  </div>
+</div>
+<hr class="divider">
+
+<!-- 9: Gift -->
+<div class="section">
+  <div class="section-header">
+    <h2>09 &mdash; Gift Set</h2>
+    <span class="tag">Unboxing</span>
+  </div>
+  <p class="section-desc">
+    ガンメタル缶 + 茶筅 + 茶杓。チャコールフェルト × ナチュラル竹。<br>
+    Apple × Byredo的な精密さ。"your daily ritual"。
+  </p>
+  <div class="grid-1">
+    <div class="card" onclick="openLB(this)"><img src="generated/can-v4-gift.png"><div class="label">Gift set unboxing</div></div>
+  </div>
+</div>
+<hr class="divider">
+
+<!-- 10: Scale -->
+<div class="section">
+  <div class="section-header">
+    <h2>10 &mdash; Scale Reference</h2>
+    <span class="tag">Hand-held</span>
+  </div>
+  <p class="section-desc">
+    手のひらに収まるサイズ感。11-12cm × 4-5cm。<br>
+    小さく、精密で、プレシャスなオブジェクト。
+  </p>
+  <div class="grid-1">
+    <div class="card" onclick="openLB(this)"><img src="generated/can-v4-scale.png"><div class="label">In-hand size reference</div></div>
+  </div>
+</div>
+
+<div style="height:80px"></div>
+
+<div class="lightbox" id="lb" onclick="closeLB()"><img id="lb-img" src=""></div>
+<script>
+function openLB(c){document.getElementById('lb-img').src=c.querySelector('img').src;document.getElementById('lb').classList.add('active')}
+function closeLB(){document.getElementById('lb').classList.remove('active')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB()})
+</script>
+</body>
+</html>

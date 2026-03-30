@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>MATCHA&ME — M Mark Explorations v5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #EDEDE9;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 200;
+    color: #1B4332;
+    padding: 60px 40px;
+  }
+  h1 {
+    text-align: center;
+    font-weight: 200;
+    font-size: 13px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #888;
+  }
+  .subtitle {
+    text-align: center;
+    font-size: 11px;
+    color: #aaa;
+    margin-bottom: 60px;
+    letter-spacing: 1px;
+  }
+  .concept {
+    max-width: 900px;
+    margin: 0 auto 80px;
+    background: #fff;
+    padding: 60px 50px 40px;
+  }
+  .concept-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+  }
+  .concept h2 {
+    font-weight: 200;
+    font-size: 12px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #999;
+  }
+  .concept .tag {
+    font-size: 10px;
+    color: #bbb;
+    letter-spacing: 2px;
+  }
+  .concept .desc {
+    font-size: 12px;
+    color: #aaa;
+    margin-bottom: 40px;
+    line-height: 1.8;
+  }
+  .wordmark-canvas-wrap {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 30px 0;
+  }
+  .wordmark-canvas-wrap canvas { display: block; margin: 0 auto; }
+  .mark-display {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #f0f0f0;
+  }
+  .mark-cell { text-align: center; }
+  .mark-cell .box {
+    width: 80px; height: 80px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 8px;
+  }
+  .mark-cell .box.light { background: #FAFAF8; border: 1px solid #f0f0f0; }
+  .mark-cell .box.dark { background: #1B4332; }
+  .mark-cell .box.green { background: #8AAE92; }
+  .mark-cell .box.pink { background: #F2C4C4; }
+  .mark-cell .label {
+    font-size: 9px; color: #ccc; letter-spacing: 2px; text-transform: uppercase;
+  }
+  .divider {
+    max-width: 900px; margin: 0 auto 60px;
+    text-align: center; font-size: 10px; letter-spacing: 6px;
+    text-transform: uppercase; color: #ccc;
+  }
+  .divider::before, .divider::after {
+    content: ''; display: inline-block; width: 60px; height: 1px;
+    background: #ddd; vertical-align: middle; margin: 0 20px;
+  }
+</style>
+</head>
+<body>
+
+<h1>matcha & me</h1>
+<div class="subtitle">M mark explorations v5 — new directions</div>
+<div id="app"></div>
+
+<script>
+// =====================================================
+// E1: Rounded Peaks — 山頂が丸い
+// =====================================================
+function drawM_E1(ctx, x, y, w, h) {
+  const sw = w * 0.07;
+  const r = w * 0.08;
+  ctx.beginPath();
+  ctx.moveTo(x, y + h);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.lineTo(x + sw + r, y);
+  ctx.quadraticCurveTo(x + sw, y, x + sw, y + r);
+  ctx.lineTo(x + sw, y + h * 0.14);
+  ctx.lineTo(x + w/2, y + h * 0.78);
+  ctx.lineTo(x + w - sw, y + h * 0.14);
+  ctx.lineTo(x + w - sw, y + r);
+  ctx.quadraticCurveTo(x + w - sw, y, x + w - sw - r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h);
+  ctx.lineTo(x + w - sw, y + h);
+  ctx.lineTo(x + w - sw, y + h * 0.22);
+  ctx.lineTo(x + w/2, y + h * 0.86);
+  ctx.lineTo(x + sw, y + h * 0.22);
+  ctx.lineTo(x + sw, y + h);
+  ctx.closePath();
+  ctx.fill();
+}
+
+// =====================================================
+// E2: Ink Trap — 接合部にインクトラップ（ノッチ）
+// =====================================================
+function drawM_E2(ctx, x, y, w, h) {
+  const sw = w * 0.07;
+  const notch = sw * 1.2;
+  // Main M shape
+  ctx.beginPath();
+  ctx.moveTo(x, y + h);
+  ctx.lineTo(x, y);
+  ctx.lineTo(x + sw, y);
+  // ink trap at top-left joint
+  ctx.lineTo(x + sw, y + notch);
+  ctx.lineTo(x + sw + notch * 0.5, y + notch);
+  // diagonal to center
+  ctx.lineTo(x + w/2, y + h * 0.78);
+  // diagonal from center
+  ctx.lineTo(x + w - sw - notch * 0.5, y + notch);
+  // ink trap at top-right joint
+  ctx.lineTo(x + w - sw, y + notch);
+  ctx.lineTo(x + w - sw, y);
+  ctx.lineTo(x + w, y);
+  ctx.lineTo(x + w, y + h);
+  ctx.lineTo(x + w - sw, y + h);
+  // ink trap at bottom-right
+  ctx.lineTo(x + w - sw, y + h - notch);
+  ctx.lineTo(x + w - sw - notch * 0.5, y + h - notch);
+  ctx.lineTo(x + w/2, y + h * 0.28);
+  ctx.lineTo(x + sw + notch * 0.5, y + h - notch);
+  // ink trap at bottom-left
+  ctx.lineTo(x + sw, y + h - notch);
+  ctx.lineTo(x + sw, y + h);
+  ctx.closePath();
+  ctx.fill();
+}
+
+// =====================================================
+// E3: Taper — ストロークが先に向かって細くなる
+// =====================================================
+function drawM_E3(ctx, x, y, w, h) {
+  const swBase = w * 0.09;  // thick at base
+  const swTip = w * 0.035;  // thin at tip
+  // Left vertical: thick at bottom, thin at top
+  ctx.beginPath();
+  ctx.moveTo(x, y + h);
+  ctx.lineTo(x + swBase, y + h);
+  ctx.lineTo(x + swTip, y);
+  ctx.lineTo(x, y);
+  ctx.fill();
+  // Right vertical: same
+  ctx.beginPath();
+  ctx.moveTo(x + w, y + h);
+  ctx.lineTo(x + w - swBase, y + h);
+  ctx.lineTo(x + w - swTip, y);
+  ctx.lineTo(x + w, y);
+  ctx.fill();
+  // Left diagonal: thin at top, thick at valley
+  ctx.beginPath();
+  ctx.moveTo(x + swTip, y);
+  ctx.lineTo(x + swTip + swTip, y);
+  ctx.lineTo(x + w/2 + swBase * 0.5, y + h * 0.82);
+  ctx.lineTo(x + w/2 - swBase * 0.5, y + h * 0.82);
+  ctx.fill();
+  // Right diagonal
+  ctx.beginPath();
+  ctx.moveTo(x + w - swTip, y);
+  ctx.lineTo(x + w - swTip - swTip, y);
+  ctx.lineTo(x + w/2 - swBase * 0.5, y + h * 0.82);
+  ctx.lineTo(x + w/2 + swBase * 0.5, y + h * 0.82);
+  ctx.fill();
+  // Inner left diagonal: thick at bottom, thin going up
+  ctx.beginPath();
+  ctx.moveTo(x + swBase, y + h);
+  ctx.lineTo(x + swBase + swTip, y + h);
+  ctx.lineTo(x + w/2 + swTip * 0.5, y + h * 0.24);
+  ctx.lineTo(x + w/2 - swTip * 0.5, y + h * 0.24);
+  ctx.fill();
+  // Inner right diagonal
+  ctx.beginPath();
+  ctx.moveTo(x + w - swBase, y + h);
+  ctx.lineTo(x + w - swBase - swTip, y + h);
+  ctx.lineTo(x + w/2 - swTip * 0.5, y + h * 0.24);
+  ctx.lineTo(x + w/2 + swTip * 0.5, y + h * 0.24);
+  ctx.fill();
+}
+
+// =====================================================
+// E4: Stencil — ステンシルカット（パーツが離れている）
+// =====================================================
+function drawM_E4(ctx, x, y, w, h) {
+  const sw = w * 0.07;
+  const gap = h * 0.04;
+  // Left vertical
+  ctx.fillRect(x, y, sw, h);
+  // Right vertical
+  ctx.fillRect(x + w - sw, y, sw, h);
+  // Left outer diagonal (separated from vertical)
+  ctx.beginPath();
+  ctx.moveTo(x + sw + gap, y);
+  ctx.lineTo(x + sw + gap + sw, y);
+  ctx.lineTo(x + w/2 + sw/2, y + h * 0.72);
+  ctx.lineTo(x + w/2 - sw/2, y + h * 0.72);
+  ctx.fill();
+  // Right outer diagonal (separated from vertical)
+  ctx.beginPath();
+  ctx.moveTo(x + w - sw - gap, y);
+  ctx.lineTo(x + w - sw - gap - sw, y);
+  ctx.lineTo(x + w/2 - sw/2, y + h * 0.72);
+  ctx.lineTo(x + w/2 + sw/2, y + h * 0.72);
+  ctx.fill();
+  // Left inner diagonal (separated from vertical)
+  ctx.beginPath();
+  ctx.moveTo(x + sw + gap, y + h);
+  ctx.lineTo(x + sw + gap + sw, y + h);
+  ctx.lineTo(x + w/2 + sw/2, y + h * 0.28);
+  ctx.lineTo(x + w/2 - sw/2, y + h * 0.28);
+  ctx.fill();
+  // Right inner diagonal
+  ctx.beginPath();
+  ctx.moveTo(x + w - sw - gap, y + h);
+  ctx.lineTo(x + w - sw - gap - sw, y + h);
+  ctx.lineTo(x + w/2 - sw/2, y + h * 0.28);
+  ctx.lineTo(x + w/2 + sw/2, y + h * 0.28);
+  ctx.fill();
+}
+
+// =====================================================
+// E5: Offset V — 内側のVが右にずれている
+// =====================================================
+function drawM_E5(ctx, x, y, w, h) {
+  const sw = w * 0.07;
+  const offset = w * 0.08; // V center shifts right
+  const vc = w/2 + offset;
+  ctx.beginPath();
+  ctx.moveTo(x, y + h);
+  ctx.lineTo(x, y);
+  ctx.lineTo(x + sw, y);
+  ctx.lineTo(x + vc, y + h * 0.78);
+  ctx.lineTo(x + w - sw, y);
+  ctx.lineTo(x + w, y);
+  ctx.lineTo(x + w, y + h);
+  ctx.lineTo(x + w - sw, y + h);
+  ctx.lineTo(x + w - sw, y + h * 0.14);
+  ctx.lineTo(x + vc, y + h * 0.86);
+  ctx.lineTo(x + sw, y + h * 0.14);
+  ctx.lineTo(x + sw, y + h);
+  ctx.closePath();
+  ctx.fill();
+}
+
+// =====================================================
+// E6: Soft M — 全体が丸みを帯びた有機的な形
+// =====================================================
+function drawM_E6(ctx, x, y, w, h) {
+  const sw = w * 0.07;
+  // Outer path with curves
+  ctx.beginPath();
+  ctx.moveTo(x + sw/2, y + h);
+  // left side up (slight curve)
+  ctx.quadraticCurveTo(x, y + h * 0.3, x + sw * 0.5, y);
+  // top-left peak (rounded)
+  ctx.quadraticCurveTo(x + sw * 2, y, x + sw * 2, y + h * 0.1);
+  // outer diagonal to valley (curve)
+  ctx.quadraticCurveTo(x + w * 0.3, y + h * 0.65, x + w/2, y + h * 0.78);
+  // outer diagonal up (curve)
+  ctx.quadraticCurveTo(x + w * 0.7, y + h * 0.65, x + w - sw * 2, y + h * 0.1);
+  // top-right peak (rounded)
+  ctx.quadraticCurveTo(x + w - sw * 2, y, x + w - sw * 0.5, y);
+  // right side down
+  ctx.quadraticCurveTo(x + w, y + h * 0.3, x + w - sw/2, y + h);
+  // right leg inner
+  ctx.lineTo(x + w - sw * 1.5, y + h);
+  ctx.quadraticCurveTo(x + w - sw, y + h * 0.35, x + w - sw * 2, y + h * 0.18);
+  // inner diagonal to center
+  ctx.quadraticCurveTo(x + w * 0.65, y + h * 0.7, x + w/2, y + h * 0.86);
+  ctx.quadraticCurveTo(x + w * 0.35, y + h * 0.7, x + sw * 2, y + h * 0.18);
+  // left leg inner
+  ctx.quadraticCurveTo(x + sw, y + h * 0.35, x + sw * 1.5, y + h);
+  ctx.closePath();
+  ctx.fill();
+}
+
+// =====================================================
+// E7: Leaf Negative — 内側のネガティブスペースが葉の形
+// =====================================================
+function drawM_E7(ctx, x, y, w, h) {
+  const sw = w * 0.07;
+  // Standard M outer shape
+  ctx.beginPath();
+  ctx.moveTo(x, y + h);
+  ctx.lineTo(x, y);
+  ctx.lineTo(x + sw, y);
+  ctx.lineTo(x + w/2, y + h * 0.78);
+  ctx.lineTo(x + w - sw, y);
+  ctx.lineTo(x + w, y);
+  ctx.lineTo(x + w, y + h);
+  // Right inner: curve instead of straight
+  ctx.lineTo(x + w - sw, y + h);
+  ctx.lineTo(x + w - sw, y + h * 0.18);
+  // Leaf-shaped negative space: right side curves in
+  ctx.bezierCurveTo(
+    x + w * 0.7, y + h * 0.55,
+    x + w * 0.6, y + h * 0.75,
+    x + w/2, y + h * 0.88
+  );
+  // Left side curves back
+  ctx.bezierCurveTo(
+    x + w * 0.4, y + h * 0.75,
+    x + w * 0.3, y + h * 0.55,
+    x + sw, y + h * 0.18
+  );
+  ctx.lineTo(x + sw, y + h);
+  ctx.closePath();
+  ctx.fill();
+}
+
+// =====================================================
+// E8: Mono Line — 一筆書き風（同じ太さのストローク）
+// =====================================================
+function drawM_E8(ctx, x, y, w, h) {
+  const lw = w * 0.065;
+  ctx.strokeStyle = ctx.fillStyle;
+  ctx.lineWidth = lw;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+  // Single continuous stroke
+  ctx.beginPath();
+  ctx.moveTo(x + lw/2, y + h);
+  ctx.lineTo(x + lw/2, y + lw/2);
+  ctx.lineTo(x + w/2, y + h * 0.72);
+  ctx.lineTo(x + w - lw/2, y + lw/2);
+  ctx.lineTo(x + w - lw/2, y + h);
+  ctx.stroke();
+  // Reset
+  ctx.strokeStyle = 'transparent';
+}
+
+const DRAW_FNS = {
+  E1: drawM_E1, E2: drawM_E2, E3: drawM_E3, E4: drawM_E4,
+  E5: drawM_E5, E6: drawM_E6, E7: drawM_E7, E8: drawM_E8,
+};
+
+const CONCEPTS = [
+  { id: 'E1', name: 'E1 / Rounded Peaks', tag: 'soft geometry',
+    desc: '山頂の角が丸い。硬い幾何学に優しさを足す。Aesop的な温もり。' },
+  { id: 'E2', name: 'E2 / Ink Trap', tag: 'typographic craft',
+    desc: '接合部に三角のノッチ（インクトラップ）。プロのタイプデザイナーの仕事。' },
+  { id: 'E3', name: 'E3 / Taper', tag: 'calligraphic', divider: 'stroke',
+    desc: 'ストロークが先端に向かって細くなる。筆圧を感じさせる現代的カリグラフィ。' },
+  { id: 'E4', name: 'E4 / Stencil', tag: 'disconnected',
+    desc: '縦線と斜線の間に隙間。ステンシルカットの工業的な美。缶の型抜きと呼応。' },
+  { id: 'E5', name: 'E5 / Offset V', tag: 'asymmetric', divider: 'negative space',
+    desc: '内側のV字が右にわずかにずれている。静的な対称を崩す動的な緊張感。' },
+  { id: 'E6', name: 'E6 / Soft M', tag: 'organic',
+    desc: '全体が曲線で構成された有機的なM。直線ゼロ。植物的な生命感。' },
+  { id: 'E7', name: 'E7 / Leaf Negative', tag: 'hidden symbol',
+    desc: '内側のネガティブスペースが茶葉の形。見る人だけが気づく隠されたシンボル。' },
+  { id: 'E8', name: 'E8 / Mono Line', tag: 'one stroke', divider: 'line',
+    desc: '一筆書き。塗りではなくストロークだけで構成。enso（円相）の精神。' },
+];
+
+// =====================================================
+// Canvas rendering
+// =====================================================
+function renderWordmark(canvas, drawFn) {
+  const dpr = window.devicePixelRatio || 2;
+  const fontSize = 48;
+  const font = `200 ${fontSize}px Outfit`;
+  const letterSpacing = fontSize * 0.35;
+  const color = '#1B4332';
+  const chars = ['M','A','T','C','H','A','&','M','E'];
+
+  const ctx = canvas.getContext('2d');
+  ctx.font = font;
+
+  const charWidths = chars.map(c => ctx.measureText(c).width);
+  const totalW = charWidths.reduce((a, b) => a + b, 0) + letterSpacing * (chars.length - 1);
+  const mMetrics = ctx.measureText('M');
+  const ascent = mMetrics.actualBoundingBoxAscent;
+  const descent = mMetrics.actualBoundingBoxDescent;
+
+  const padX = 40, padY = 20;
+  const cW = totalW + padX * 2;
+  const cH = ascent + descent + padY * 2;
+
+  canvas.width = cW * dpr;
+  canvas.height = cH * dpr;
+  canvas.style.width = cW + 'px';
+  canvas.style.height = cH + 'px';
+  ctx.scale(dpr, dpr);
+
+  const baseY = padY + ascent;
+  ctx.font = font;
+  ctx.fillStyle = color;
+  ctx.textBaseline = 'alphabetic';
+
+  let curX = padX;
+  chars.forEach((ch, i) => {
+    if (ch === 'M') {
+      drawFn(ctx, curX, baseY - ascent, charWidths[i], ascent);
+    } else {
+      ctx.fillText(ch, curX, baseY);
+    }
+    curX += charWidths[i] + letterSpacing;
+  });
+}
+
+function renderMark(canvas, drawFn, bgColor, fgColor) {
+  const dpr = window.devicePixelRatio || 2;
+  const size = 80;
+  canvas.width = size * dpr;
+  canvas.height = size * dpr;
+  canvas.style.width = size + 'px';
+  canvas.style.height = size + 'px';
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  ctx.fillStyle = bgColor;
+  ctx.fillRect(0, 0, size, size);
+  const mSize = 38;
+  const pad = (size - mSize) / 2;
+  ctx.fillStyle = fgColor;
+  drawFn(ctx, pad, pad + 2, mSize, mSize - 4);
+}
+
+function build() {
+  const app = document.getElementById('app');
+  let html = '';
+  CONCEPTS.forEach(c => {
+    if (c.divider) html += `<div class="divider">${c.divider}</div>`;
+    html += `
+    <div class="concept">
+      <div class="concept-header">
+        <h2>${c.name}</h2>
+        <span class="tag">${c.tag}</span>
+      </div>
+      <p class="desc">${c.desc}</p>
+      <div class="wordmark-canvas-wrap">
+        <canvas id="wm-${c.id}"></canvas>
+      </div>
+      <div class="mark-display">
+        <div class="mark-cell"><div class="box light"><canvas id="mk-${c.id}-light"></canvas></div><div class="label">light</div></div>
+        <div class="mark-cell"><div class="box dark"><canvas id="mk-${c.id}-dark"></canvas></div><div class="label">dark</div></div>
+        <div class="mark-cell"><div class="box green"><canvas id="mk-${c.id}-green"></canvas></div><div class="label">sage</div></div>
+        <div class="mark-cell"><div class="box pink"><canvas id="mk-${c.id}-pink"></canvas></div><div class="label">sakura</div></div>
+      </div>
+    </div>`;
+  });
+  app.innerHTML = html;
+  document.fonts.ready.then(() => {
+    CONCEPTS.forEach(c => {
+      const fn = DRAW_FNS[c.id];
+      renderWordmark(document.getElementById(`wm-${c.id}`), fn);
+      renderMark(document.getElementById(`mk-${c.id}-light`), fn, '#FAFAF8', '#1B4332');
+      renderMark(document.getElementById(`mk-${c.id}-dark`), fn, '#1B4332', '#F5F0E8');
+      renderMark(document.getElementById(`mk-${c.id}-green`), fn, '#8AAE92', '#1B4332');
+      renderMark(document.getElementById(`mk-${c.id}-pink`), fn, '#F2C4C4', '#1B4332');
+    });
+  });
+}
+
+build();
+</script>
+
+</body>
+</html>

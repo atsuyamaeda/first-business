@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" width="400" height="200">
+  <rect width="400" height="200" fill="#ffffff"/>
+  <!-- Concept J: Ultra-minimal single line — extreme lightness -->
+  <text x="200" y="105" text-anchor="middle"
+        font-family="'Helvetica Neue', 'Helvetica', 'Arial', sans-serif"
+        font-weight="100" font-size="22" letter-spacing="10" fill="#1B4332">
+    matcha &amp; me
+  </text>
+</svg>

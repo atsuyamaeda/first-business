@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" width="400" height="250">
+  <rect width="400" height="250" fill="#ffffff"/>
+  <!-- Concept I: Two-line compact — "matcha &" / "me" with asymmetric sizing -->
+  <!-- matcha & on first line -->
+  <text x="200" y="115" text-anchor="middle" fill="#1B4332">
+    <tspan font-family="'Futura', 'Century Gothic', 'Avenir', sans-serif"
+           font-weight="200" font-size="30" letter-spacing="6">matcha </tspan>
+    <tspan font-family="'Cormorant Garamond', 'Playfair Display', 'Georgia', serif"
+           font-weight="300" font-style="italic" font-size="32">&amp;</tspan>
+  </text>
+  <!-- me on second line, right-aligned with the & above -->
+  <text x="253" y="155" text-anchor="end"
+        font-family="'Futura', 'Century Gothic', 'Avenir', sans-serif"
+        font-weight="200" font-size="30" letter-spacing="6" fill="#1B4332">
+    me
+  </text>
+</svg>

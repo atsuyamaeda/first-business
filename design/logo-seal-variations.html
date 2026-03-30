@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>matcha &amp; me — Circular Seal Logo Variations</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Jost:wght@300&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #f0ede8;
+      padding: 60px 40px;
+      font-family: 'Jost', sans-serif;
+    }
+    h1 {
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 24px;
+      color: #2D5A3D;
+      margin-bottom: 48px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 36px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 32px 20px 20px;
+      text-align: center;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+    }
+    .card svg { width: 280px; height: 280px; display: block; margin: 0 auto; }
+    .card h3 {
+      margin-top: 16px;
+      font-size: 12px;
+      font-weight: 300;
+      color: #888;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+<h1>matcha &amp; me &mdash; logo variations</h1>
+
+<div class="grid">
+
+  <!-- V1: Arc text + Full Circle -->
+  <div class="card">
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <path id="top1" d="M 128,200 A 72,72 0 0,1 272,200" />
+      </defs>
+      <circle cx="200" cy="200" r="90" fill="none" stroke="#2D5A3D" stroke-width="1"/>
+      <text fill="#2D5A3D" font-family="'Cormorant Garamond', serif" font-size="22" font-weight="400" letter-spacing="2">
+        <textPath href="#top1" startOffset="50%" text-anchor="middle">matcha <tspan font-style="italic" font-size="26">&amp;</tspan> me</textPath>
+      </text>
+    </svg>
+    <h3>V1 &mdash; Arc + Full Circle</h3>
+  </div>
+
+  <!-- V2: Split + Dot Separators -->
+  <div class="card">
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <path id="top2" d="M 128,200 A 72,72 0 0,1 272,200" />
+        <path id="bot2" d="M 272,200 A 72,72 0 0,1 128,200" />
+      </defs>
+      <circle cx="200" cy="200" r="90" fill="none" stroke="#2D5A3D" stroke-width="1"/>
+      <text fill="#2D5A3D" font-family="'Cormorant Garamond', serif" font-size="22" font-weight="400" letter-spacing="3">
+        <textPath href="#top2" startOffset="50%" text-anchor="middle">matcha</textPath>
+      </text>
+      <text fill="#2D5A3D" font-family="'Cormorant Garamond', serif" font-size="22" font-weight="400" letter-spacing="2">
+        <textPath href="#bot2" startOffset="50%" text-anchor="middle">em <tspan font-style="italic" font-size="26">&amp;</tspan></textPath>
+      </text>
+      <circle cx="272" cy="200" r="2.5" fill="#2D5A3D"/>
+      <circle cx="128" cy="200" r="2.5" fill="#2D5A3D"/>
+    </svg>
+    <h3>V2 &mdash; Split + Dots</h3>
+  </div>
+
+  <!-- V3: Large Centered & -->
+  <div class="card">
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <path id="top3" d="M 128,200 A 72,72 0 0,1 272,200" />
+        <path id="bot3" d="M 272,200 A 72,72 0 0,1 128,200" />
+      </defs>
+      <circle cx="200" cy="200" r="90" fill="none" stroke="#2D5A3D" stroke-width="1"/>
+      <text fill="#2D5A3D" font-family="'Cormorant Garamond', serif" font-size="22" font-weight="400" letter-spacing="4">
+        <textPath href="#top3" startOffset="50%" text-anchor="middle">matcha</textPath>
+      </text>
+      <text fill="#2D5A3D" font-family="'Cormorant Garamond', serif" font-size="22" font-weight="400" letter-spacing="4">
+        <textPath href="#bot3" startOffset="50%" text-anchor="middle">em</textPath>
+      </text>
+      <text x="200" y="208" fill="#2D5A3D" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="64" text-anchor="middle" dominant-baseline="central">&amp;</text>
+    </svg>
+    <h3>V3 &mdash; Large Centered &amp;</h3>
+  </div>
+
+  <!-- V4: Double Circle + Uppercase -->
+  <div class="card">
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <path id="top4" d="M 134,200 A 66,66 0 0,1 266,200" />
+      </defs>
+      <circle cx="200" cy="200" r="90" fill="none" stroke="#2D5A3D" stroke-width="1"/>
+      <circle cx="200" cy="200" r="82" fill="none" stroke="#2D5A3D" stroke-width="1"/>
+      <text fill="#2D5A3D" font-family="'Cormorant Garamond', serif" font-size="16" font-weight="400" letter-spacing="3.5">
+        <textPath href="#top4" startOffset="50%" text-anchor="middle">MATCHA <tspan font-style="italic" font-size="19">&amp;</tspan> ME</textPath>
+      </text>
+    </svg>
+    <h3>V4 &mdash; Double Circle + Caps</h3>
+  </div>
+
+  <!-- V5: Arc + Tea Leaf -->
+  <div class="card">
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <path id="top5" d="M 128,200 A 72,72 0 0,1 272,200" />
+      </defs>
+      <circle cx="200" cy="200" r="90" fill="none" stroke="#2D5A3D" stroke-width="1"/>
+      <text fill="#2D5A3D" font-family="'Cormorant Garamond', serif" font-size="22" font-weight="400" letter-spacing="2">
+        <textPath href="#top5" startOffset="50%" text-anchor="middle">matcha <tspan font-style="italic" font-size="26">&amp;</tspan> me</textPath>
+      </text>
+      <!-- Tea leaf -->
+      <g transform="translate(191, 238)">
+        <path d="M 9 0 C 4 3 0 10 2 17 C 3 21 6 24 9 24 C 12 24 15 21 16 17 C 18 10 14 3 9 0 Z" fill="#2D5A3D" opacity="0.8"/>
+        <path d="M 9 3 Q 9 12 9 21" stroke="white" stroke-width="0.5" fill="none" opacity="0.4"/>
+        <path d="M 5 10 Q 9 12 13 10" stroke="white" stroke-width="0.4" fill="none" opacity="0.3"/>
+        <path d="M 6 15 Q 9 16 12 15" stroke="white" stroke-width="0.4" fill="none" opacity="0.3"/>
+        <path d="M 9 24 C 11 28 15 29 18 27" stroke="#2D5A3D" stroke-width="0.8" fill="none" opacity="0.7"/>
+      </g>
+    </svg>
+    <h3>V5 &mdash; Arc + Tea Leaf</h3>
+  </div>
+
+  <!-- V6: Jost Sans-Serif + Serif & -->
+  <div class="card">
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <path id="top6" d="M 128,200 A 72,72 0 0,1 272,200" />
+      </defs>
+      <circle cx="200" cy="200" r="90" fill="none" stroke="#2D5A3D" stroke-width="1"/>
+      <text fill="#2D5A3D" font-family="'Jost', sans-serif" font-size="19" font-weight="300" letter-spacing="3">
+        <textPath href="#top6" startOffset="50%" text-anchor="middle">matcha <tspan font-family="'Cormorant Garamond', serif" font-style="italic" font-size="24">&amp;</tspan> me</textPath>
+      </text>
+    </svg>
+    <h3>V6 &mdash; Jost + Serif &amp;</h3>
+  </div>
+
+</div>
+
+</body>
+</html>

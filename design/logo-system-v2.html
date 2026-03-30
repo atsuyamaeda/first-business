@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>matcha & me — Logo System v2</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Helvetica Neue', sans-serif; background: #f5f4f0; color: #1a1a1a; }
+
+  header { text-align: center; padding: 64px 20px 48px; background: #1B4332; color: #fff; }
+  header h1 { font-family: 'Outfit'; font-weight: 200; font-size: 1.5rem; letter-spacing: 0.6em; }
+  header p { font-size: 0.6rem; letter-spacing: 0.2em; opacity: 0.35; margin-top: 10px; line-height: 1.8; }
+
+  .label { max-width: 1100px; margin: 52px auto 10px; padding: 0 28px; font-size: 0.55rem; letter-spacing: 0.25em; text-transform: uppercase; color: #bbb; }
+  .sublabel { max-width: 1100px; margin: 4px auto 16px; padding: 0 28px; font-size: 0.5rem; color: #ccc; line-height: 1.6; }
+  .grid { max-width: 1100px; margin: 0 auto 16px; padding: 0 24px; display: grid; grid-template-columns: 1fr; gap: 14px; }
+  .g2 { grid-template-columns: 1fr 1fr; }
+  .g3 { grid-template-columns: 1fr 1fr 1fr; }
+  .g4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+  .g6 { grid-template-columns: repeat(6, 1fr); }
+  .card { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 5px rgba(0,0,0,0.04); }
+  .area { padding: 56px 24px; display: flex; justify-content: center; align-items: center; }
+  .area-sm { padding: 32px 16px; display: flex; justify-content: center; align-items: center; }
+  .area-lg { padding: 72px 32px; display: flex; justify-content: center; align-items: center; }
+  .nfo { padding: 10px 14px; border-top: 1px solid #f0ede8; font-size: 0.55rem; color: #aaa; letter-spacing: 0.04em; line-height: 1.6; }
+  .nfo strong { color: #555; font-weight: 500; }
+  .hl { box-shadow: 0 2px 20px rgba(27,67,50,0.1); }
+
+  /* ======= THE WORDMARK ENGINE ======= */
+  .wm {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 200;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: baseline;
+  }
+
+  /* Open Valley M — clip the bottom of the inner V */
+  .wm .mv {
+    display: inline-block;
+    position: relative;
+    clip-path: polygon(
+      0% 0%,
+      100% 0%,
+      100% 100%,
+      64% 100%,
+      50% 58%,
+      36% 100%,
+      0% 100%
+    );
+  }
+
+  /* Slightly tighter valley for uppercase — the geometry differs */
+  .wm .mv-up {
+    display: inline-block;
+    position: relative;
+    clip-path: polygon(
+      0% 0%,
+      100% 0%,
+      100% 100%,
+      63% 100%,
+      50% 55%,
+      37% 100%,
+      0% 100%
+    );
+  }
+
+  .divider { max-width: 1100px; margin: 40px auto; padding: 0 28px; border-top: 1px solid #e8e5df; }
+
+  @media (max-width: 700px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } .g6 { grid-template-columns: repeat(3, 1fr); } }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>BOTH M'S ARE THE MARK</h1>
+  <p>matcha の m と me の m — 2つだけ。同じ加工。同じフォント。<br>the two m's in the wordmark = the brand mark. two m's. same font. one modification.</p>
+</header>
+
+<!-- ====================================== -->
+<!-- 0. DESIGN CONCEPT                      -->
+<!-- ====================================== -->
+<div class="label">0. Design Concept</div>
+<div class="sublabel">Outfit 200（ExtraLight）をベース書体に採用。「matcha」のmと「me」のm、2つだけにOpen Valley加工を施す。<br>MのV字の谷を浅くすることで、茶碗を上から見た形（○の中のV）を暗示。独立したマークロゴとしても機能する。</div>
+
+<!-- ====================================== -->
+<!-- 1. BEFORE / AFTER                      -->
+<!-- ====================================== -->
+<div class="label">1. Before &amp; After — 加工前後の比較</div>
+
+<div class="grid g2">
+  <div class="card">
+    <div class="area">
+      <span style="font-family:'Outfit'; font-weight:200; font-size:40px; letter-spacing:10px; color:#1B4332;">matcha & me</span>
+    </div>
+    <div class="nfo"><strong>Before</strong> — 通常のOutfit 200。mは3箇所あるが加工なし</div>
+  </div>
+  <div class="card hl">
+    <div class="area">
+      <span class="wm" style="font-size:40px; letter-spacing:10px; color:#1B4332;">
+        <span class="mv">m</span>atcha &nbsp;<span class="mv">m</span>e
+      </span>
+    </div>
+    <div class="nfo"><strong>After</strong> — 「matcha」のmと「me」のm、2つだけOpen Valley。「a」直前のmは通常のまま</div>
+  </div>
+</div>
+
+<div class="grid g2">
+  <div class="card">
+    <div class="area">
+      <span style="font-family:'Outfit'; font-weight:200; font-size:40px; letter-spacing:12px; color:#1B4332;">MATCHA & ME</span>
+    </div>
+    <div class="nfo"><strong>Before UPPERCASE</strong></div>
+  </div>
+  <div class="card hl">
+    <div class="area">
+      <span class="wm" style="font-size:40px; letter-spacing:12px; color:#1B4332;">
+        <span class="mv-up">M</span>ATCHA &nbsp;<span class="mv-up">M</span>E
+      </span>
+    </div>
+    <div class="nfo"><strong>After UPPERCASE</strong> — 同様に語頭の2つのMだけ加工</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ====================================== -->
+<!-- 2. THE MARK — extracted M              -->
+<!-- ====================================== -->
+<div class="label">2. The Mark — ワードマークから切り出したMアイコン</div>
+<div class="sublabel">単独で使用可能。アプリアイコン、ファビコン、スタンプ、缶の裏面などに。</div>
+
+<div class="grid g6">
+  <div class="card"><div class="area-sm" style="background:#fff;">
+    <span class="wm" style="font-size:64px; color:#1B4332;"><span class="mv-up">M</span></span>
+  </div><div class="nfo"><strong>White</strong></div></div>
+  <div class="card"><div class="area-sm" style="background:#1B4332;">
+    <span class="wm" style="font-size:64px; color:#F5F0E8;"><span class="mv-up">M</span></span>
+  </div><div class="nfo"><strong>Deep Green</strong></div></div>
+  <div class="card"><div class="area-sm" style="background:#8AAE92;">
+    <span class="wm" style="font-size:64px; color:#1B4332;"><span class="mv-up">M</span></span>
+  </div><div class="nfo"><strong>Sage</strong></div></div>
+  <div class="card"><div class="area-sm" style="background:#F2C4C4;">
+    <span class="wm" style="font-size:64px; color:#1B4332;"><span class="mv-up">M</span></span>
+  </div><div class="nfo"><strong>Pink</strong></div></div>
+  <div class="card"><div class="area-sm" style="background:#E8967D;">
+    <span class="wm" style="font-size:64px; color:#1B4332;"><span class="mv-up">M</span></span>
+  </div><div class="nfo"><strong>Salmon</strong></div></div>
+  <div class="card"><div class="area-sm" style="background:#F5F0E8;">
+    <span class="wm" style="font-size:64px; color:#1B4332;"><span class="mv-up">M</span></span>
+  </div><div class="nfo"><strong>Cream</strong></div></div>
+</div>
+
+<!-- Lowercase m mark -->
+<div class="grid g6">
+  <div class="card"><div class="area-sm" style="background:#fff;">
+    <span class="wm" style="font-size:64px; color:#1B4332;"><span class="mv">m</span></span>
+  </div><div class="nfo"><strong>m — White</strong></div></div>
+  <div class="card"><div class="area-sm" style="background:#1B4332;">
+    <span class="wm" style="font-size:64px; color:#F5F0E8;"><span class="mv">m</span></span>
+  </div><div class="nfo"><strong>m — Deep Green</strong></div></div>
+  <div class="card"><div class="area-sm" style="background:#8AAE92;">
+    <span class="wm" style="font-size:64px; color:#1B4332;"><span class="mv">m</span></span>
+  </div><div class="nfo"><strong>m — Sage</strong></div></div>
+  <div class="card"><div class="area-sm" style="background:#F2C4C4;">
+    <span class="wm" style="font-size:64px; color:#1B4332;"><span class="mv">m</span></span>
+  </div><div class="nfo"><strong>m — Pink</strong></div></div>
+  <div class="card"><div class="area-sm" style="background:#E8967D;">
+    <span class="wm" style="font-size:64px; color:#1B4332;"><span class="mv">m</span></span>
+  </div><div class="nfo"><strong>m — Salmon</strong></div></div>
+  <div class="card"><div class="area-sm" style="background:#F5F0E8;">
+    <span class="wm" style="font-size:64px; color:#1B4332;"><span class="mv">m</span></span>
+  </div><div class="nfo"><strong>m — Cream</strong></div></div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ====================================== -->
+<!-- 3. WORDMARK VARIATIONS                 -->
+<!-- ====================================== -->
+<div class="label">3. Wordmark — Lowercase Variations</div>
+<div class="sublabel">レタースペーシング3段階。推奨はls:12px（中央）。</div>
+
+<div class="grid g3">
+  <div class="card hl">
+    <div class="area" style="padding:48px 16px;">
+      <span class="wm" style="font-size:30px; letter-spacing:8px; color:#1B4332;">
+        <span class="mv">m</span>atcha&nbsp;&amp;&nbsp;<span class="mv">m</span>e
+      </span>
+    </div>
+    <div class="nfo"><strong>ls: 8px</strong> — Compact</div>
+  </div>
+  <div class="card hl">
+    <div class="area" style="padding:48px 16px;">
+      <span class="wm" style="font-size:30px; letter-spacing:12px; color:#1B4332;">
+        <span class="mv">m</span>atcha&nbsp;&amp;&nbsp;<span class="mv">m</span>e
+      </span>
+    </div>
+    <div class="nfo"><strong>ls: 12px</strong> — Recommended</div>
+  </div>
+  <div class="card hl">
+    <div class="area" style="padding:48px 16px;">
+      <span class="wm" style="font-size:26px; letter-spacing:18px; color:#1B4332;">
+        <span class="mv">m</span>atcha&nbsp;&amp;&nbsp;<span class="mv">m</span>e
+      </span>
+    </div>
+    <div class="nfo"><strong>ls: 18px</strong> — Airy</div>
+  </div>
+</div>
+
+<div class="label">Wordmark — Uppercase Variations</div>
+
+<div class="grid g3">
+  <div class="card hl">
+    <div class="area" style="padding:48px 16px;">
+      <span class="wm" style="font-size:30px; letter-spacing:10px; color:#1B4332;">
+        <span class="mv-up">M</span>ATCHA&nbsp;&amp;&nbsp;<span class="mv-up">M</span>E
+      </span>
+    </div>
+    <div class="nfo"><strong>ls: 10px</strong> — Compact</div>
+  </div>
+  <div class="card hl">
+    <div class="area" style="padding:48px 16px;">
+      <span class="wm" style="font-size:30px; letter-spacing:14px; color:#1B4332;">
+        <span class="mv-up">M</span>ATCHA&nbsp;&amp;&nbsp;<span class="mv-up">M</span>E
+      </span>
+    </div>
+    <div class="nfo"><strong>ls: 14px</strong> — Recommended</div>
+  </div>
+  <div class="card hl">
+    <div class="area" style="padding:48px 16px;">
+      <span class="wm" style="font-size:26px; letter-spacing:20px; color:#1B4332;">
+        <span class="mv-up">M</span>ATCHA&nbsp;&amp;&nbsp;<span class="mv-up">M</span>E
+      </span>
+    </div>
+    <div class="nfo"><strong>ls: 20px</strong> — Airy</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ====================================== -->
+<!-- 4. ON ALL BRAND BACKGROUNDS            -->
+<!-- ====================================== -->
+<div class="label">4. On Brand Backgrounds — Lowercase</div>
+
+<div class="grid g3">
+  <div class="card"><div class="area" style="background:#1B4332;">
+    <span class="wm" style="font-size:24px; letter-spacing:10px; color:#F5F0E8;"><span class="mv">m</span>atcha&nbsp;&amp;&nbsp;<span class="mv">m</span>e</span>
+  </div><div class="nfo"><strong>Deep Green</strong> — Primary</div></div>
+  <div class="card"><div class="area" style="background:#F5F0E8;">
+    <span class="wm" style="font-size:24px; letter-spacing:10px; color:#1B4332;"><span class="mv">m</span>atcha&nbsp;&amp;&nbsp;<span class="mv">m</span>e</span>
+  </div><div class="nfo"><strong>Cream</strong></div></div>
+  <div class="card"><div class="area" style="background:#fff;">
+    <span class="wm" style="font-size:24px; letter-spacing:10px; color:#1B4332;"><span class="mv">m</span>atcha&nbsp;&amp;&nbsp;<span class="mv">m</span>e</span>
+  </div><div class="nfo"><strong>White</strong></div></div>
+</div>
+
+<div class="grid g3">
+  <div class="card"><div class="area" style="background:#8AAE92;">
+    <span class="wm" style="font-size:24px; letter-spacing:10px; color:#1B4332;"><span class="mv">m</span>atcha&nbsp;&amp;&nbsp;<span class="mv">m</span>e</span>
+  </div><div class="nfo"><strong>Sage</strong></div></div>
+  <div class="card"><div class="area" style="background:#F2C4C4;">
+    <span class="wm" style="font-size:24px; letter-spacing:10px; color:#1B4332;"><span class="mv">m</span>atcha&nbsp;&amp;&nbsp;<span class="mv">m</span>e</span>
+  </div><div class="nfo"><strong>Pink</strong></div></div>
+  <div class="card"><div class="area" style="background:#E8967D;">
+    <span class="wm" style="font-size:24px; letter-spacing:10px; color:#1B4332;"><span class="mv">m</span>atcha&nbsp;&amp;&nbsp;<span class="mv">m</span>e</span>
+  </div><div class="nfo"><strong>Salmon</strong></div></div>
+</div>
+
+<div class="label">On Brand Backgrounds — UPPERCASE</div>
+
+<div class="grid g3">
+  <div class="card"><div class="area" style="background:#1B4332;">
+    <span class="wm" style="font-size:24px; letter-spacing:12px; color:#F5F0E8;"><span class="mv-up">M</span>ATCHA&nbsp;&amp;&nbsp;<span class="mv-up">M</span>E</span>
+  </div><div class="nfo"><strong>Deep Green</strong> — Primary</div></div>
+  <div class="card"><div class="area" style="background:#F5F0E8;">
+    <span class="wm" style="font-size:24px; letter-spacing:12px; color:#1B4332;"><span class="mv-up">M</span>ATCHA&nbsp;&amp;&nbsp;<span class="mv-up">M</span>E</span>
+  </div><div class="nfo"><strong>Cream</strong></div></div>
+  <div class="card"><div class="area" style="background:#fff;">
+    <span class="wm" style="font-size:24px; letter-spacing:12px; color:#1B4332;"><span class="mv-up">M</span>ATCHA&nbsp;&amp;&nbsp;<span class="mv-up">M</span>E</span>
+  </div><div class="nfo"><strong>White</strong></div></div>
+</div>
+
+<div class="grid g3">
+  <div class="card"><div class="area" style="background:#8AAE92;">
+    <span class="wm" style="font-size:24px; letter-spacing:12px; color:#1B4332;"><span class="mv-up">M</span>ATCHA&nbsp;&amp;&nbsp;<span class="mv-up">M</span>E</span>
+  </div><div class="nfo"><strong>Sage</strong></div></div>
+  <div class="card"><div class="area" style="background:#F2C4C4;">
+    <span class="wm" style="font-size:24px; letter-spacing:12px; color:#1B4332;"><span class="mv-up">M</span>ATCHA&nbsp;&amp;&nbsp;<span class="mv-up">M</span>E</span>
+  </div><div class="nfo"><strong>Pink</strong></div></div>
+  <div class="card"><div class="area" style="background:#E8967D;">
+    <span class="wm" style="font-size:24px; letter-spacing:12px; color:#1B4332;"><span class="mv-up">M</span>ATCHA&nbsp;&amp;&nbsp;<span class="mv-up">M</span>E</span>
+  </div><div class="nfo"><strong>Salmon</strong></div></div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ====================================== -->
+<!-- 5. HERO — 推奨ロゴ                     -->
+<!-- ====================================== -->
+<div class="label">5. Hero — 推奨ロゴ（第一候補）</div>
+<div class="sublabel">大文字版・小文字版の推奨レイアウト。Deep Green背景 × Cream文字が最もブランドらしい組み合わせ。</div>
+
+<div class="grid g2">
+  <div class="card hl">
+    <div class="area-lg" style="background:#1B4332;">
+      <span class="wm" style="font-size:36px; letter-spacing:12px; color:#F5F0E8;">
+        <span class="mv">m</span>atcha&nbsp;&amp;&nbsp;<span class="mv">m</span>e
+      </span>
+    </div>
+    <div class="nfo"><strong>Primary — lowercase</strong><br>Outfit 200 / ls:12px / Deep Green bg / Cream text</div>
+  </div>
+  <div class="card hl">
+    <div class="area-lg" style="background:#1B4332;">
+      <span class="wm" style="font-size:36px; letter-spacing:14px; color:#F5F0E8;">
+        <span class="mv-up">M</span>ATCHA&nbsp;&amp;&nbsp;<span class="mv-up">M</span>E
+      </span>
+    </div>
+    <div class="nfo"><strong>Primary — UPPERCASE</strong><br>Outfit 200 / ls:14px / Deep Green bg / Cream text</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ====================================== -->
+<!-- 6. LOCKUP — Mark + Wordmark            -->
+<!-- ====================================== -->
+<div class="label">6. Lockup — マーク + ワードマーク</div>
+<div class="sublabel">Mマークをワードマークの左に配置したロックアップ。ヘッダー、名刺、パッケージ裏面用。</div>
+
+<div class="grid g2">
+  <div class="card hl">
+    <div class="area" style="padding:48px 24px; background:#fff; gap:20px;">
+      <span class="wm" style="font-size:48px; color:#1B4332; margin-right:12px;"><span class="mv-up">M</span></span>
+      <span style="width:1px; height:36px; background:#1B4332; opacity:0.15; display:inline-block;"></span>
+      <span class="wm" style="font-size:22px; letter-spacing:10px; color:#1B4332; margin-left:12px;">
+        <span class="mv">m</span>atcha&nbsp;&amp;&nbsp;<span class="mv">m</span>e
+      </span>
+    </div>
+    <div class="nfo"><strong>Lockup A</strong> — Mark + lowercase wordmark（divider付き）</div>
+  </div>
+  <div class="card hl">
+    <div class="area" style="padding:48px 24px; background:#1B4332; gap:20px;">
+      <span class="wm" style="font-size:48px; color:#F5F0E8; margin-right:12px;"><span class="mv-up">M</span></span>
+      <span style="width:1px; height:36px; background:#F5F0E8; opacity:0.2; display:inline-block;"></span>
+      <span class="wm" style="font-size:22px; letter-spacing:10px; color:#F5F0E8; margin-left:12px;">
+        <span class="mv">m</span>atcha&nbsp;&amp;&nbsp;<span class="mv">m</span>e
+      </span>
+    </div>
+    <div class="nfo"><strong>Lockup A — Reversed</strong></div>
+  </div>
+</div>
+
+<div class="grid g2">
+  <div class="card">
+    <div style="padding:48px 24px; display:flex; flex-direction:column; align-items:center; gap:12px; background:#fff;">
+      <span class="wm" style="font-size:56px; color:#1B4332;"><span class="mv-up">M</span></span>
+      <span class="wm" style="font-size:16px; letter-spacing:10px; color:#1B4332;">
+        <span class="mv">m</span>atcha&nbsp;&amp;&nbsp;<span class="mv">m</span>e
+      </span>
+    </div>
+    <div class="nfo"><strong>Lockup B — Stacked</strong></div>
+  </div>
+  <div class="card">
+    <div style="padding:48px 24px; display:flex; flex-direction:column; align-items:center; gap:12px; background:#1B4332;">
+      <span class="wm" style="font-size:56px; color:#F5F0E8;"><span class="mv-up">M</span></span>
+      <span class="wm" style="font-size:16px; letter-spacing:10px; color:#F5F0E8;">
+        <span class="mv">m</span>atcha&nbsp;&amp;&nbsp;<span class="mv">m</span>e
+      </span>
+    </div>
+    <div class="nfo"><strong>Lockup B — Stacked Reversed</strong></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ====================================== -->
+<!-- 7. SCALE TEST                          -->
+<!-- ====================================== -->
+<div class="label">7. Scale Test</div>
+
+<div class="grid g2">
+  <div class="card">
+    <div style="padding:40px 20px; display:flex; flex-direction:column; align-items:center; gap:24px;">
+      <span class="wm" style="font-size:48px; letter-spacing:14px; color:#1B4332;"><span class="mv">m</span>atcha&nbsp;&amp;&nbsp;<span class="mv">m</span>e</span>
+      <span class="wm" style="font-size:28px; letter-spacing:10px; color:#1B4332;"><span class="mv">m</span>atcha&nbsp;&amp;&nbsp;<span class="mv">m</span>e</span>
+      <span class="wm" style="font-size:16px; letter-spacing:6px; color:#1B4332;"><span class="mv">m</span>atcha&nbsp;&amp;&nbsp;<span class="mv">m</span>e</span>
+      <span class="wm" style="font-size:10px; letter-spacing:3px; color:#1B4332;"><span class="mv">m</span>atcha&nbsp;&amp;&nbsp;<span class="mv">m</span>e</span>
+    </div>
+    <div class="nfo"><strong>lowercase</strong> — 48 / 28 / 16 / 10px</div>
+  </div>
+  <div class="card">
+    <div style="padding:40px 20px; display:flex; flex-direction:column; align-items:center; gap:24px;">
+      <span class="wm" style="font-size:48px; letter-spacing:16px; color:#1B4332;"><span class="mv-up">M</span>ATCHA&nbsp;&amp;&nbsp;<span class="mv-up">M</span>E</span>
+      <span class="wm" style="font-size:28px; letter-spacing:12px; color:#1B4332;"><span class="mv-up">M</span>ATCHA&nbsp;&amp;&nbsp;<span class="mv-up">M</span>E</span>
+      <span class="wm" style="font-size:16px; letter-spacing:7px; color:#1B4332;"><span class="mv-up">M</span>ATCHA&nbsp;&amp;&nbsp;<span class="mv-up">M</span>E</span>
+      <span class="wm" style="font-size:10px; letter-spacing:4px; color:#1B4332;"><span class="mv-up">M</span>ATCHA&nbsp;&amp;&nbsp;<span class="mv-up">M</span>E</span>
+    </div>
+    <div class="nfo"><strong>UPPERCASE</strong> — 48 / 28 / 16 / 10px</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ====================================== -->
+<!-- 8. COLOR PALETTE                       -->
+<!-- ====================================== -->
+<div class="label">8. Brand Color Palette</div>
+
+<div class="grid g6">
+  <div class="card">
+    <div style="height:80px; background:#1B4332;"></div>
+    <div class="nfo"><strong>Deep Green</strong><br>#1B4332</div>
+  </div>
+  <div class="card">
+    <div style="height:80px; background:#8AAE92;"></div>
+    <div class="nfo"><strong>Sage</strong><br>#8AAE92</div>
+  </div>
+  <div class="card">
+    <div style="height:80px; background:#F5F0E8;"></div>
+    <div class="nfo"><strong>Cream</strong><br>#F5F0E8</div>
+  </div>
+  <div class="card">
+    <div style="height:80px; background:#F2C4C4;"></div>
+    <div class="nfo"><strong>Pink</strong><br>#F2C4C4</div>
+  </div>
+  <div class="card">
+    <div style="height:80px; background:#E8967D;"></div>
+    <div class="nfo"><strong>Salmon</strong><br>#E8967D</div>
+  </div>
+  <div class="card">
+    <div style="height:80px; background:#fff; border:1px solid #eee;"></div>
+    <div class="nfo"><strong>White</strong><br>#FFFFFF</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ====================================== -->
+<!-- 9. USAGE RULES                         -->
+<!-- ====================================== -->
+<div class="label">9. Usage Rules</div>
+<div class="sublabel" style="line-height:2.2;">
+  ✓ 加工するMは必ず語頭の2つだけ（matchaのm + meのm）<br>
+  ✓ フォントは常にOutfit ExtraLight (200)<br>
+  ✓ &amp; の前後には半角スペースを入れる<br>
+  ✓ マークロゴ（M単体）は大文字版を使用<br>
+  ✓ 最小使用サイズ: ワードマーク 10px / マーク 16px<br>
+  ✗ 3つ目のm（matchaの末尾付近）は加工しない<br>
+  ✗ フォントウェイトを変更しない（200固定）<br>
+  ✗ Open Valleyの深さを変更しない
+</div>
+
+<div style="height:80px"></div>
+<script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+</body>
+</html>

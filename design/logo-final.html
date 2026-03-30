@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M Mark — Light Weight, High Presence</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Helvetica Neue', sans-serif; background: #f5f4f0; color: #1a1a1a; }
+  header { text-align: center; padding: 48px 20px 36px; background: #1B4332; color: #fff; }
+  header h1 { font-size: 1.2rem; font-weight: 200; letter-spacing: 0.5em; }
+  header p { font-size: 0.55rem; letter-spacing: 0.15em; opacity: 0.3; margin-top: 6px; }
+  .label { max-width: 1100px; margin: 40px auto 12px; padding: 0 24px; font-size: 0.5rem; letter-spacing: 0.2em; text-transform: uppercase; color: #bbb; }
+  .grid { max-width: 1100px; margin: 0 auto 8px; padding: 0 20px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .card { background: #fff; border-radius: 6px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.03); }
+  .mk { padding: 32px 16px; display: flex; justify-content: center; align-items: center; min-height: 140px; }
+  .n { padding: 8px 12px; font-size: 0.48rem; color: #aaa; line-height: 1.5; }
+  .n strong { color: #555; font-weight: 500; display: block; }
+  @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>M MARK</h1>
+  <p>light weight &middot; high presence &middot; through form, not mass</p>
+</header>
+
+<!-- ========== REFERENCE ========== -->
+<div class="label">Reference &mdash; Outfit 200 M as-is</div>
+<div class="grid">
+  <div class="card">
+    <div class="mk">
+      <span style="font-family:'Outfit'; font-weight:200; font-size:88px; color:#1B4332;">M</span>
+    </div>
+    <div class="n"><strong>Outfit 200 M</strong>そのまま。ここから1箇所だけ変える。</div>
+  </div>
+  <div class="card">
+    <div class="mk">
+      <span style="font-family:'Outfit'; font-weight:200; font-size:88px; color:#1B4332;">m</span>
+    </div>
+    <div class="n"><strong>Outfit 200 m</strong>小文字。2つのアーチ。</div>
+  </div>
+  <div class="card">
+    <div class="mk" style="background:#1B4332;">
+      <span style="font-family:'Outfit'; font-weight:200; font-size:88px; color:#F5F0E8;">M</span>
+    </div>
+    <div class="n"><strong>On dark</strong></div>
+  </div>
+  <div class="card">
+    <div class="mk" style="background:#1B4332;">
+      <span style="font-family:'Outfit'; font-weight:200; font-size:88px; color:#F5F0E8;">m</span>
+    </div>
+    <div class="n"><strong>On dark</strong></div>
+  </div>
+</div>
+
+<!-- ========== NEGATIVE SPACE ========== -->
+<div class="label">Negative space &mdash; Mの「中」に意味を持たせる</div>
+<div class="grid">
+
+  <!-- N1: V doesn't touch — gap creates a doorway/torii -->
+  <div class="card">
+    <div class="mk">
+      <svg viewBox="0 0 80 88" width="72" height="79">
+        <path d="M 4,84 L 4,4 L 6,4 L 40,34 L 74,4 L 76,4 L 76,84" fill="none" stroke="#1B4332" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="n"><strong>N1 Shallow V</strong>Vが途中で止まる。三角の空間が「鳥居」のゲートに。</div>
+  </div>
+
+  <!-- N2: V with circle in negative space -->
+  <div class="card">
+    <div class="mk">
+      <svg viewBox="0 0 80 88" width="72" height="79">
+        <path d="M 4,84 L 4,4 L 6,4 L 40,44 L 74,4 L 76,4 L 76,84" fill="none" stroke="#1B4332" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="40" cy="64" r="8" fill="none" stroke="#1B4332" stroke-width="1.2"/>
+      </svg>
+    </div>
+    <div class="n"><strong>N2 Enso Inside</strong>Vの下の空間に小さな円。円相。</div>
+  </div>
+
+  <!-- N3: Leaf shape in negative space -->
+  <div class="card">
+    <div class="mk">
+      <svg viewBox="0 0 80 88" width="72" height="79">
+        <path d="M 4,84 L 4,4 L 6,4 L 40,44 L 74,4 L 76,4 L 76,84" fill="none" stroke="#1B4332" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Tiny leaf in V negative space -->
+        <path d="M 37,58 Q 40,50 43,58 Q 40,65 37,58 Z" fill="#8AAE92" opacity="0.6"/>
+        <line x1="40" y1="52" x2="40" y2="64" stroke="#8AAE92" stroke-width="0.6" opacity="0.6"/>
+      </svg>
+    </div>
+    <div class="n"><strong>N3 Leaf</strong>Vの空間に茶葉。さりげなく。</div>
+  </div>
+
+  <!-- N4: Dot at valley point -->
+  <div class="card">
+    <div class="mk">
+      <svg viewBox="0 0 80 88" width="72" height="79">
+        <path d="M 4,84 L 4,4 L 6,4 L 40,36 L 74,4 L 76,4 L 76,84" fill="none" stroke="#1B4332" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="40" cy="38" r="2.5" fill="#1B4332"/>
+      </svg>
+    </div>
+    <div class="n"><strong>N4 Valley Dot</strong>谷の底に点。句読点のような存在感。</div>
+  </div>
+</div>
+
+<!-- ========== PROPORTIONS ========== -->
+<div class="label">Proportions &mdash; 同じ線の太さ、形で変える</div>
+<div class="grid">
+
+  <!-- P1: Very wide M -->
+  <div class="card">
+    <div class="mk">
+      <svg viewBox="0 0 110 80" width="96" height="70">
+        <path d="M 4,76 L 4,4 L 6,4 L 55,40 L 104,4 L 106,4 L 106,76" fill="none" stroke="#1B4332" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="n"><strong>P1 Wide</strong>横に広い。堂々とした佇まい。</div>
+  </div>
+
+  <!-- P2: Narrow, tall M -->
+  <div class="card">
+    <div class="mk">
+      <svg viewBox="0 0 56 92" width="48" height="79">
+        <path d="M 4,88 L 4,4 L 6,4 L 28,44 L 50,4 L 52,4 L 52,88" fill="none" stroke="#1B4332" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="n"><strong>P2 Narrow Tall</strong>縦長。エレガント。</div>
+  </div>
+
+  <!-- P3: Spread legs -->
+  <div class="card">
+    <div class="mk">
+      <svg viewBox="0 0 100 84" width="86" height="72">
+        <path d="M 2,80 L 14,4 L 50,38 L 86,4 L 98,80" fill="none" stroke="#1B4332" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="n"><strong>P3 Splayed</strong>脚が開く。Aを逆にしたような。動的。</div>
+  </div>
+
+  <!-- P4: Square proportions -->
+  <div class="card">
+    <div class="mk">
+      <svg viewBox="0 0 80 80" width="72" height="72">
+        <path d="M 4,76 L 4,4 L 6,4 L 40,36 L 74,4 L 76,4 L 76,76" fill="none" stroke="#1B4332" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="n"><strong>P4 Square</strong>正方形に収まる。アイコン向き。</div>
+  </div>
+</div>
+
+<!-- ========== SUBTLE DETAILS ========== -->
+<div class="label">Subtle details &mdash; 1つの微差で印象が変わる</div>
+<div class="grid">
+
+  <!-- D1: Rounded bottom on stems -->
+  <div class="card">
+    <div class="mk">
+      <svg viewBox="0 0 80 88" width="72" height="79">
+        <path d="M 4,82 Q 4,84 6,84 Q 8,84 8,82 L 8,4 L 40,38 L 72,4 L 72,82 Q 72,84 74,84 Q 76,84 76,82 L 76,4" fill="none" stroke="#1B4332" stroke-width="2.2" stroke-linecap="round"/>
+        <!-- Just the two stems with rounded feet -->
+        <path d="M 4,84 L 4,4 L 6,4 L 40,36 L 74,4 L 76,4 L 76,84" fill="none" stroke="#1B4332" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="n"><strong>D1 Soft Feet</strong>足先が丸い。Outfit的な柔らかさ。</div>
+  </div>
+
+  <!-- D2: One stem slightly short -->
+  <div class="card">
+    <div class="mk">
+      <svg viewBox="0 0 80 88" width="72" height="79">
+        <path d="M 4,84 L 4,4 L 6,4 L 40,38 L 74,4 L 76,4 L 76,78" fill="none" stroke="#1B4332" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="n"><strong>D2 Short Right</strong>右脚が少し短い。気づくか気づかないか。</div>
+  </div>
+
+  <!-- D3: Angled top cuts -->
+  <div class="card">
+    <div class="mk">
+      <svg viewBox="0 0 80 88" width="72" height="79">
+        <path d="M 4,84 L 4,10 L 8,4 L 40,38 L 72,4 L 76,10 L 76,84" fill="none" stroke="#1B4332" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="n"><strong>D3 Chamfer Top</strong>上端を斜めにカット。ジュエリー的。</div>
+  </div>
+
+  <!-- D4: Crossbar added low -->
+  <div class="card">
+    <div class="mk">
+      <svg viewBox="0 0 80 88" width="72" height="79">
+        <path d="M 4,84 L 4,4 L 6,4 L 40,38 L 74,4 L 76,4 L 76,84" fill="none" stroke="#1B4332" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="4" y1="84" x2="76" y2="84" stroke="#1B4332" stroke-width="1" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="n"><strong>D4 Baseline</strong>ベースラインの薄い横線。文字を「閉じる」。</div>
+  </div>
+</div>
+
+<!-- ========== MONOGRAM / ENCLOSURE ========== -->
+<div class="label">Enclosed &mdash; Mを何かに入れる</div>
+<div class="grid">
+
+  <!-- E1: M in thin circle -->
+  <div class="card">
+    <div class="mk">
+      <svg viewBox="0 0 100 100" width="80" height="80">
+        <circle cx="50" cy="50" r="44" fill="none" stroke="#1B4332" stroke-width="1.2"/>
+        <path d="M 22,72 L 22,28 L 50,50 L 78,28 L 78,72" fill="none" stroke="#1B4332" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="n"><strong>E1 Circle</strong>薄い円で囲む。判子的。</div>
+  </div>
+
+  <!-- E2: M in thin square -->
+  <div class="card">
+    <div class="mk">
+      <svg viewBox="0 0 100 100" width="80" height="80">
+        <rect x="6" y="6" width="88" height="88" fill="none" stroke="#1B4332" stroke-width="1.2" rx="2"/>
+        <path d="M 22,76 L 22,24 L 50,48 L 78,24 L 78,76" fill="none" stroke="#1B4332" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="n"><strong>E2 Square</strong>薄い四角。建築的フレーム。</div>
+  </div>
+
+  <!-- E3: M touching circle edges -->
+  <div class="card">
+    <div class="mk">
+      <svg viewBox="0 0 100 100" width="80" height="80">
+        <circle cx="50" cy="50" r="44" fill="none" stroke="#1B4332" stroke-width="1.2"/>
+        <path d="M 10,82 L 10,18 L 50,52 L 90,18 L 90,82" fill="none" stroke="#1B4332" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="n"><strong>E3 Full Circle</strong>Mが円の端に触れる。一体感。</div>
+  </div>
+
+  <!-- E4: M with thin enso (incomplete circle) -->
+  <div class="card">
+    <div class="mk">
+      <svg viewBox="0 0 100 100" width="80" height="80">
+        <path d="M 86,20 A 44,44 0 1,1 60,8" fill="none" stroke="#1B4332" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M 22,76 L 22,24 L 50,48 L 78,24 L 78,76" fill="none" stroke="#1B4332" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="n"><strong>E4 Enso</strong>不完全な円。円相。閉じない禅。</div>
+  </div>
+</div>
+
+<!-- ========== ON ALL BACKGROUNDS ========== -->
+<div class="label">Top picks on backgrounds</div>
+<div class="grid">
+  <div class="card"><div class="mk" style="background:#1B4332;">
+    <svg viewBox="0 0 80 88" width="64" height="70"><path d="M 4,84 L 4,4 L 6,4 L 40,36 L 74,4 L 76,4 L 76,84" fill="none" stroke="#F5F0E8" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="40" cy="38" r="2.5" fill="#F5F0E8"/></svg>
+  </div><div class="n"><strong>N4 on Deep Green</strong></div></div>
+
+  <div class="card"><div class="mk" style="background:#F2C4C4;">
+    <svg viewBox="0 0 100 100" width="72" height="72"><circle cx="50" cy="50" r="44" fill="none" stroke="#1B4332" stroke-width="1.2"/><path d="M 22,76 L 22,24 L 50,48 L 78,24 L 78,76" fill="none" stroke="#1B4332" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div><div class="n"><strong>E1 on Pink</strong></div></div>
+
+  <div class="card"><div class="mk" style="background:#8AAE92;">
+    <svg viewBox="0 0 110 80" width="88" height="64"><path d="M 4,76 L 4,4 L 6,4 L 55,40 L 104,4 L 106,4 L 106,76" fill="none" stroke="#1B4332" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div><div class="n"><strong>P1 Wide on Sage</strong></div></div>
+
+  <div class="card"><div class="mk" style="background:#E8967D;">
+    <svg viewBox="0 0 100 100" width="72" height="72"><path d="M 86,20 A 44,44 0 1,1 60,8" fill="none" stroke="#1B4332" stroke-width="1.2" stroke-linecap="round"/><path d="M 22,76 L 22,24 L 50,48 L 78,24 L 78,76" fill="none" stroke="#1B4332" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div><div class="n"><strong>E4 Enso on Salmon</strong></div></div>
+</div>
+
+<div style="height:60px"></div>
+</body>
+</html>

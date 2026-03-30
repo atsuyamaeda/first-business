@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <rect width="400" height="300" fill="#ffffff"/>
+  <!-- Concept E: Logo with integrated watercolor blob behind the & -->
+  <!-- Soft pink blob behind & -->
+  <defs>
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="12"/>
+    </filter>
+  </defs>
+  <ellipse cx="200" cy="140" rx="28" ry="24" fill="#F2C4C4" opacity="0.6" filter="url(#blur)"/>
+  <!-- matcha -->
+  <text x="200" y="120" text-anchor="middle"
+        font-family="'Futura', 'Century Gothic', 'Avenir', sans-serif"
+        font-weight="200" font-size="26" letter-spacing="8" fill="#1B4332">
+    matcha
+  </text>
+  <!-- & -->
+  <text x="200" y="162" text-anchor="middle"
+        font-family="'Cormorant Garamond', 'Playfair Display', 'Georgia', serif"
+        font-weight="400" font-style="italic" font-size="34" fill="#1B4332">
+    &amp;
+  </text>
+  <!-- me -->
+  <text x="200" y="200" text-anchor="middle"
+        font-family="'Futura', 'Century Gothic', 'Avenir', sans-serif"
+        font-weight="200" font-size="26" letter-spacing="8" fill="#1B4332">
+    me
+  </text>
+</svg>

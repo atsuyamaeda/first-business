@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>MATCHA&ME — M Mark Concepts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #EDEDE9;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 200;
+    color: #1B4332;
+    padding: 60px 40px;
+  }
+  h1 {
+    text-align: center;
+    font-weight: 200;
+    font-size: 13px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #888;
+  }
+  .subtitle {
+    text-align: center;
+    font-size: 11px;
+    color: #aaa;
+    margin-bottom: 60px;
+    letter-spacing: 1px;
+  }
+  .concept {
+    max-width: 900px;
+    margin: 0 auto 80px;
+    background: #fff;
+    padding: 60px 50px 40px;
+  }
+  .concept-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+  }
+  .concept h2 {
+    font-weight: 200;
+    font-size: 12px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #999;
+  }
+  .concept .tag {
+    font-size: 10px;
+    color: #bbb;
+    letter-spacing: 2px;
+  }
+  .concept .desc {
+    font-size: 12px;
+    color: #aaa;
+    margin-bottom: 40px;
+    line-height: 1.8;
+  }
+  .wordmark-canvas-wrap {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 30px 0;
+  }
+  .wordmark-canvas-wrap canvas {
+    display: block;
+    margin: 0 auto;
+  }
+  .mark-display {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #f0f0f0;
+  }
+  .mark-cell { text-align: center; }
+  .mark-cell .box {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+  .mark-cell .box.light { background: #FAFAF8; border: 1px solid #f0f0f0; }
+  .mark-cell .box.dark { background: #1B4332; }
+  .mark-cell .box.green { background: #8AAE92; }
+  .mark-cell .box.pink { background: #F2C4C4; }
+  .mark-cell .label {
+    font-size: 9px; color: #ccc; letter-spacing: 2px; text-transform: uppercase;
+  }
+  .divider {
+    max-width: 900px; margin: 0 auto 60px;
+    text-align: center; font-size: 10px; letter-spacing: 6px;
+    text-transform: uppercase; color: #ccc;
+  }
+  .divider::before, .divider::after {
+    content: ''; display: inline-block; width: 60px; height: 1px;
+    background: #ddd; vertical-align: middle; margin: 0 20px;
+  }
+</style>
+</head>
+<body>
+
+<h1>matcha & me</h1>
+<div class="subtitle">M mark explorations  /  distinctive letterform as brand icon</div>
+<div id="app"></div>
+
+<script>
+// =====================================================
+// M mark path functions — draw custom M on a Canvas
+// All functions take (ctx, x, y, w, h) where
+//   x,y = top-left of the character cell
+//   w,h = width and height matching the original M glyph
+// =====================================================
+
+function drawM_apex(ctx, x, y, w, h) {
+  const sw = w * 0.07; // stroke width matching Outfit 200
+  ctx.beginPath();
+  // Left vertical
+  ctx.rect(x, y, sw, h);
+  ctx.fill();
+  // Right vertical
+  ctx.rect(x + w - sw, y, sw, h);
+  ctx.fill();
+  // Left outer diagonal
+  ctx.beginPath();
+  ctx.moveTo(x + sw, y);
+  ctx.lineTo(x + sw + sw, y);
+  ctx.lineTo(x + w/2, y + h * 0.78);
+  ctx.lineTo(x + w/2 - sw/2, y + h * 0.78);
+  ctx.fill();
+  // Right outer diagonal
+  ctx.beginPath();
+  ctx.moveTo(x + w - sw - sw, y);
+  ctx.lineTo(x + w - sw, y);
+  ctx.lineTo(x + w/2 + sw/2, y + h * 0.78);
+  ctx.lineTo(x + w/2, y + h * 0.78);
+  ctx.fill();
+  // Left inner diagonal
+  ctx.beginPath();
+  ctx.moveTo(x + sw, y + h);
+  ctx.lineTo(x + sw + sw, y + h);
+  ctx.lineTo(x + w/2 + sw/2, y + h * 0.28);
+  ctx.lineTo(x + w/2 - sw/2, y + h * 0.28);
+  ctx.fill();
+  // Right inner diagonal
+  ctx.beginPath();
+  ctx.moveTo(x + w - sw - sw, y + h);
+  ctx.lineTo(x + w - sw, y + h);
+  ctx.lineTo(x + w/2 + sw/2, y + h * 0.28);
+  ctx.lineTo(x + w/2 - sw/2, y + h * 0.28);
+  ctx.fill();
+  // DISTINCTIVE: triangle at valley bottom
+  ctx.beginPath();
+  ctx.moveTo(x + w * 0.35, y + h * 0.82);
+  ctx.lineTo(x + w/2, y + h * 0.58);
+  ctx.lineTo(x + w * 0.65, y + h * 0.82);
+  ctx.fill();
+}
+
+function drawM_shallow(ctx, x, y, w, h) {
+  const sw = w * 0.07;
+  ctx.beginPath();
+  ctx.moveTo(x, y + h);
+  ctx.lineTo(x, y);
+  ctx.lineTo(x + sw, y);
+  ctx.lineTo(x + w/2, y + h * 0.50);
+  ctx.lineTo(x + w - sw, y);
+  ctx.lineTo(x + w, y);
+  ctx.lineTo(x + w, y + h);
+  ctx.lineTo(x + w - sw, y + h);
+  ctx.lineTo(x + w - sw, y + h * 0.14);
+  ctx.lineTo(x + w/2, y + h * 0.64);
+  ctx.lineTo(x + sw, y + h * 0.14);
+  ctx.lineTo(x + sw, y + h);
+  ctx.closePath();
+  ctx.fill();
+}
+
+function drawM_round(ctx, x, y, w, h) {
+  const sw = w * 0.07;
+  ctx.beginPath();
+  ctx.moveTo(x, y + h);
+  ctx.lineTo(x, y);
+  ctx.lineTo(x + sw, y);
+  ctx.lineTo(x + sw, y + h * 0.2);
+  ctx.quadraticCurveTo(x + w/2, y + h * 0.92, x + w - sw, y + h * 0.2);
+  ctx.lineTo(x + w - sw, y);
+  ctx.lineTo(x + w, y);
+  ctx.lineTo(x + w, y + h);
+  ctx.lineTo(x + w - sw, y + h);
+  ctx.lineTo(x + w - sw, y + h * 0.28);
+  ctx.quadraticCurveTo(x + w/2, y + h * 1.0, x + sw, y + h * 0.28);
+  ctx.lineTo(x + sw, y + h);
+  ctx.closePath();
+  ctx.fill();
+}
+
+function drawM_flat(ctx, x, y, w, h) {
+  const sw = w * 0.07;
+  const flatW = w * 0.22; // width of flat top section
+  ctx.beginPath();
+  ctx.moveTo(x, y + h);
+  ctx.lineTo(x, y);
+  ctx.lineTo(x + flatW, y);
+  ctx.lineTo(x + w/2, y + h * 0.50);
+  ctx.lineTo(x + w - flatW, y);
+  ctx.lineTo(x + w, y);
+  ctx.lineTo(x + w, y + h);
+  ctx.lineTo(x + w - sw, y + h);
+  ctx.lineTo(x + w - sw, y + h * 0.08);
+  ctx.lineTo(x + w - flatW - sw*0.5, y + h * 0.08);
+  ctx.lineTo(x + w/2, y + h * 0.56);
+  ctx.lineTo(x + flatW + sw*0.5, y + h * 0.08);
+  ctx.lineTo(x + sw, y + h * 0.08);
+  ctx.lineTo(x + sw, y + h);
+  ctx.closePath();
+  ctx.fill();
+}
+
+function drawM_splay(ctx, x, y, w, h) {
+  const sw = w * 0.07;
+  const lean = w * 0.08; // how much legs splay outward
+  ctx.beginPath();
+  ctx.moveTo(x - lean, y + h);
+  ctx.lineTo(x + sw, y);
+  ctx.lineTo(x + sw + sw, y);
+  ctx.lineTo(x + w/2, y + h * 0.78);
+  ctx.lineTo(x + w - sw - sw, y);
+  ctx.lineTo(x + w - sw, y);
+  ctx.lineTo(x + w + lean, y + h);
+  ctx.lineTo(x + w + lean - sw, y + h);
+  ctx.lineTo(x + w - sw - sw, y + h * 0.14);
+  ctx.lineTo(x + w/2, y + h * 0.92);
+  ctx.lineTo(x + sw + sw, y + h * 0.14);
+  ctx.lineTo(x - lean + sw, y + h);
+  ctx.closePath();
+  ctx.fill();
+}
+
+function drawM_gap(ctx, x, y, w, h) {
+  const sw = w * 0.07;
+  const gap = h * 0.10; // gap at peaks
+  // Left vertical (starts below top)
+  ctx.fillRect(x, y + gap, sw, h - gap);
+  // Right vertical (starts below top)
+  ctx.fillRect(x + w - sw, y + gap, sw, h - gap);
+  // Left outer diagonal (starts with gap from vertical)
+  ctx.beginPath();
+  ctx.moveTo(x + sw * 1.5, y);
+  ctx.lineTo(x + sw * 2.5, y);
+  ctx.lineTo(x + w/2 + sw/2, y + h * 0.67);
+  ctx.lineTo(x + w/2 - sw/2, y + h * 0.67);
+  ctx.fill();
+  // Right outer diagonal
+  ctx.beginPath();
+  ctx.moveTo(x + w - sw * 2.5, y);
+  ctx.lineTo(x + w - sw * 1.5, y);
+  ctx.lineTo(x + w/2 + sw/2, y + h * 0.67);
+  ctx.lineTo(x + w/2 - sw/2, y + h * 0.67);
+  ctx.fill();
+  // Left inner diagonal
+  ctx.beginPath();
+  ctx.moveTo(x + sw, y + h);
+  ctx.lineTo(x + sw * 2, y + h);
+  ctx.lineTo(x + w/2 + sw/2, y + h * 0.30);
+  ctx.lineTo(x + w/2 - sw/2, y + h * 0.30);
+  ctx.fill();
+  // Right inner diagonal
+  ctx.beginPath();
+  ctx.moveTo(x + w - sw * 2, y + h);
+  ctx.lineTo(x + w - sw, y + h);
+  ctx.lineTo(x + w/2 + sw/2, y + h * 0.30);
+  ctx.lineTo(x + w/2 - sw/2, y + h * 0.30);
+  ctx.fill();
+}
+
+function drawM_cross(ctx, x, y, w, h) {
+  const sw = w * 0.07;
+  // Base M shape
+  ctx.beginPath();
+  ctx.moveTo(x, y + h);
+  ctx.lineTo(x, y);
+  ctx.lineTo(x + sw, y);
+  ctx.lineTo(x + w/2, y + h * 0.78);
+  ctx.lineTo(x + w - sw, y);
+  ctx.lineTo(x + w, y);
+  ctx.lineTo(x + w, y + h);
+  ctx.lineTo(x + w - sw, y + h);
+  ctx.lineTo(x + w - sw, y + h * 0.14);
+  ctx.lineTo(x + w/2, y + h * 0.92);
+  ctx.lineTo(x + sw, y + h * 0.14);
+  ctx.lineTo(x + sw, y + h);
+  ctx.closePath();
+  ctx.fill();
+  // DISTINCTIVE: crossbar
+  ctx.fillRect(x + w * 0.20, y + h * 0.44, w * 0.60, sw * 0.7);
+}
+
+function drawM_extend(ctx, x, y, w, h) {
+  const sw = w * 0.07;
+  const ext = h * 0.14; // how much the peak extends above
+  ctx.beginPath();
+  ctx.moveTo(x, y + h);
+  ctx.lineTo(x, y);
+  ctx.lineTo(x + sw, y);
+  ctx.lineTo(x + sw, y - ext);
+  ctx.lineTo(x + sw * 2, y - ext);
+  ctx.lineTo(x + w/2, y + h * 0.70);
+  ctx.lineTo(x + w - sw, y);
+  ctx.lineTo(x + w, y);
+  ctx.lineTo(x + w, y + h);
+  ctx.lineTo(x + w - sw, y + h);
+  ctx.lineTo(x + w - sw, y + h * 0.14);
+  ctx.lineTo(x + w/2, y + h * 0.84);
+  ctx.lineTo(x + sw * 2, y - ext * 0.5);
+  ctx.lineTo(x + sw * 2, y + h);
+  ctx.closePath();
+  ctx.fill();
+}
+
+const DRAW_FNS = {
+  apex: drawM_apex,
+  shallow: drawM_shallow,
+  round: drawM_round,
+  flat: drawM_flat,
+  splay: drawM_splay,
+  gap: drawM_gap,
+  cross: drawM_cross,
+  extend: drawM_extend,
+};
+
+const CONCEPTS = [
+  { id: 'apex', name: 'A / Pointed Apex', tag: 'Apothekary approach',
+    desc: 'Apothekaryの「A」が横棒の代わりに三角形を持つように、Mの谷（中央下部）に上向きの三角形を配置。' },
+  { id: 'shallow', name: 'B / Shallow Valley', tag: 'subtle distinction',
+    desc: '通常のMは谷がベースラインまで降りるが、このMは40%で止まる。微妙だが強い個性。' },
+  { id: 'round', name: 'C / Round Valley', tag: 'chawan silhouette',
+    desc: '内側のVをU字カーブに変更。茶碗（chawan）のシルエットを暗示。' },
+  { id: 'flat', name: 'D / Flat Top', tag: 'architectural cut', divider: 'architectural',
+    desc: 'Mの2つの山頂を水平にカット。缶の蓋のフラットな表面を想起。' },
+  { id: 'splay', name: 'E / Splayed Legs', tag: 'confident stance',
+    desc: 'Mの左右の脚がわずかに外側に開く。鳥居のような末広がりの構造。' },
+  { id: 'gap', name: 'F / Peak Gap', tag: 'breathing space',
+    desc: 'Mの頂点で斜線と縦線が接合せず隙間がある。「間」の概念。' },
+  { id: 'cross', name: 'G / Crossbar', tag: 'A meets M', divider: 'bold',
+    desc: 'Aの横棒をMに持ち込む。MATCHAのAとMが呼応し合う。' },
+  { id: 'extend', name: 'H / Extended Peak', tag: 'crown',
+    desc: '左の山がキャップハイトを超えて上に突き出す。王冠のような風格。' },
+];
+
+// =====================================================
+// Render wordmark on Canvas: "MATCHA&ME"
+// All characters use Outfit 200 text rendering.
+// Only the M characters are drawn with custom paths.
+// =====================================================
+function renderWordmark(canvas, drawFn) {
+  const dpr = window.devicePixelRatio || 2;
+  const fontSize = 48;
+  const font = `200 ${fontSize}px Outfit`;
+  const letterSpacing = fontSize * 0.35;
+  const color = '#1B4332';
+  const chars = ['M','A','T','C','H','A','&','M','E'];
+
+  const ctx = canvas.getContext('2d');
+  ctx.font = font;
+
+  // Measure each character width
+  const charWidths = chars.map(c => ctx.measureText(c).width);
+  const totalW = charWidths.reduce((a, b) => a + b, 0) + letterSpacing * (chars.length - 1);
+  const mMetrics = ctx.measureText('M');
+  const ascent = mMetrics.actualBoundingBoxAscent;
+  const descent = mMetrics.actualBoundingBoxDescent;
+  const textH = ascent + descent;
+
+  const padX = 40;
+  const padY = 20;
+  const cW = totalW + padX * 2;
+  const cH = textH + padY * 2;
+
+  canvas.width = cW * dpr;
+  canvas.height = cH * dpr;
+  canvas.style.width = cW + 'px';
+  canvas.style.height = cH + 'px';
+  ctx.scale(dpr, dpr);
+
+  // Baseline position
+  const baseY = padY + ascent;
+
+  ctx.font = font;
+  ctx.fillStyle = color;
+  ctx.textBaseline = 'alphabetic';
+
+  let curX = padX;
+  chars.forEach((ch, i) => {
+    if (ch === 'M') {
+      // Draw custom M using the path function
+      // x, y = top-left of glyph cell; w = char width; h = cap height
+      const mW = charWidths[i];
+      const capTop = baseY - ascent;
+      drawFn(ctx, curX, capTop, mW, ascent);
+    } else {
+      ctx.fillText(ch, curX, baseY);
+    }
+    curX += charWidths[i] + letterSpacing;
+  });
+}
+
+// =====================================================
+// Render standalone M mark on small Canvas
+// =====================================================
+function renderMark(canvas, drawFn, bgColor, fgColor) {
+  const dpr = window.devicePixelRatio || 2;
+  const size = 80;
+  canvas.width = size * dpr;
+  canvas.height = size * dpr;
+  canvas.style.width = size + 'px';
+  canvas.style.height = size + 'px';
+
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+
+  // Background
+  ctx.fillStyle = bgColor;
+  ctx.fillRect(0, 0, size, size);
+
+  // Draw M centered
+  const mSize = 38;
+  const pad = (size - mSize) / 2;
+  ctx.fillStyle = fgColor;
+  drawFn(ctx, pad, pad + 2, mSize, mSize - 4);
+}
+
+// =====================================================
+// Build page
+// =====================================================
+function build() {
+  const app = document.getElementById('app');
+  let html = '';
+
+  CONCEPTS.forEach(c => {
+    if (c.divider) html += `<div class="divider">${c.divider}</div>`;
+    html += `
+    <div class="concept">
+      <div class="concept-header">
+        <h2>${c.name}</h2>
+        <span class="tag">${c.tag}</span>
+      </div>
+      <p class="desc">${c.desc}</p>
+      <div class="wordmark-canvas-wrap">
+        <canvas id="wm-${c.id}"></canvas>
+      </div>
+      <div class="mark-display">
+        <div class="mark-cell">
+          <div class="box light"><canvas id="mk-${c.id}-light"></canvas></div>
+          <div class="label">light</div>
+        </div>
+        <div class="mark-cell">
+          <div class="box dark"><canvas id="mk-${c.id}-dark"></canvas></div>
+          <div class="label">dark</div>
+        </div>
+        <div class="mark-cell">
+          <div class="box green"><canvas id="mk-${c.id}-green"></canvas></div>
+          <div class="label">sage</div>
+        </div>
+        <div class="mark-cell">
+          <div class="box pink"><canvas id="mk-${c.id}-pink"></canvas></div>
+          <div class="label">sakura</div>
+        </div>
+      </div>
+    </div>`;
+  });
+
+  app.innerHTML = html;
+
+  // Wait for font to load, then render all canvases
+  document.fonts.ready.then(() => {
+    CONCEPTS.forEach(c => {
+      const fn = DRAW_FNS[c.id];
+      renderWordmark(document.getElementById(`wm-${c.id}`), fn);
+      renderMark(document.getElementById(`mk-${c.id}-light`), fn, '#FAFAF8', '#1B4332');
+      renderMark(document.getElementById(`mk-${c.id}-dark`), fn, '#1B4332', '#F5F0E8');
+      renderMark(document.getElementById(`mk-${c.id}-green`), fn, '#8AAE92', '#1B4332');
+      renderMark(document.getElementById(`mk-${c.id}-pink`), fn, '#F2C4C4', '#1B4332');
+    });
+  });
+}
+
+build();
+</script>
+
+</body>
+</html>

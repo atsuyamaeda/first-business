@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400">
+  <!--
+    LOGO F — "The Ensō Ampersand"
+
+    コンセプト:
+    全文字はミニマルなサンセリフ、均一で静か。
+    「&」を円相（えんそう）で囲む。
+    円相 = 禅の「完全」を象徴する不完全な円。
+    筆で描いたような有機的な円が「&」を包み、
+    「matcha」と「me」の繋がりを禅的に表現。
+
+    この円相＋&が単独アイコンとしても成立する。
+
+    色: テキスト #1A1A1A / 円相 #3A6B4E (抹茶) / & #1A1A1A
+  -->
+  <rect width="1200" height="400" fill="#FAFAF8"/>
+
+  <!-- matcha -->
+  <text x="60" y="232"
+        font-family="'Futura', 'Century Gothic', 'Avenir Next', 'Helvetica Neue', sans-serif"
+        font-weight="300"
+        font-size="68"
+        letter-spacing="16"
+        fill="#1A1A1A">matcha</text>
+
+  <!-- Ensō circle around & -->
+  <g transform="translate(570, 200)">
+    <!-- 円相 — 不完全な円、筆のストローク -->
+    <!-- 上部に少し隙間がある（禅の不完全性） -->
+    <path d="M 8 -8
+             C -18 -2, -30 16, -28 34
+             C -26 52, -12 66, 8 68
+             C 28 70, 46 58, 50 38
+             C 54 18, 44 -2, 28 -10"
+          fill="none"
+          stroke="#3A6B4E"
+          stroke-width="3"
+          stroke-linecap="round"
+          opacity="0.75"/>
+    <!-- 筆圧の変化を表現する太い部分 -->
+    <path d="M -26 20 C -28 30, -24 42, -18 50"
+          fill="none"
+          stroke="#3A6B4E"
+          stroke-width="5"
+          stroke-linecap="round"
+          opacity="0.35"/>
+
+    <!-- & in the center -->
+    <text x="0" y="12"
+          text-anchor="middle"
+          font-family="'Didot', 'Bodoni MT', 'Georgia', serif"
+          font-weight="400"
+          font-style="italic"
+          font-size="52"
+          fill="#1A1A1A">&amp;</text>
+  </g>
+
+  <!-- me -->
+  <text x="660" y="232"
+        font-family="'Futura', 'Century Gothic', 'Avenir Next', 'Helvetica Neue', sans-serif"
+        font-weight="300"
+        font-size="68"
+        letter-spacing="16"
+        fill="#1A1A1A">me</text>
+</svg>

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400">
+  <!--
+    LOGO C — "The Zen Ampersand"
+
+    コンセプト:
+    全文字はクリーンな細身サンセリフ、ダークチャコール。
+    「&」だけが筆のひと筆（一筆書き）で描かれた有機的なストローク。
+    禅の書道のように、力の入れ具合で太さが変わる。
+    この「&」単体でブランドアイコンとして機能する。
+
+    色: テキスト #1A1A1A / & ストローク #3A6B4E (深い抹茶グリーン)
+  -->
+  <rect width="1200" height="400" fill="#FAFAF8"/>
+
+  <!-- matcha -->
+  <text x="60" y="235"
+        font-family="'Futura', 'Century Gothic', 'Avenir Next', 'Helvetica Neue', sans-serif"
+        font-weight="300"
+        font-size="72"
+        letter-spacing="18"
+        fill="#1A1A1A">matcha</text>
+
+  <!-- Custom brush-stroke & -->
+  <g transform="translate(555, 155)">
+    <!-- 筆で描いたような&マーク — 一筆の有機的なストローク -->
+    <path d="M 38 8
+             C 28 8, 12 18, 12 30
+             C 12 42, 22 50, 32 50
+             C 38 50, 44 46, 48 40
+             C 52 34, 50 26, 44 22
+             C 38 18, 28 20, 24 28
+             C 20 36, 22 48, 30 56
+             C 38 64, 50 68, 58 62
+             C 64 58, 66 50, 62 44
+             L 72 76"
+          fill="none"
+          stroke="#3A6B4E"
+          stroke-width="3.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          opacity="0.95"/>
+    <!-- 筆の入り — 始点を少し太く -->
+    <circle cx="38" cy="8" r="2.5" fill="#3A6B4E" opacity="0.7"/>
+  </g>
+
+  <!-- me -->
+  <text x="660" y="235"
+        font-family="'Futura', 'Century Gothic', 'Avenir Next', 'Helvetica Neue', sans-serif"
+        font-weight="300"
+        font-size="72"
+        letter-spacing="18"
+        fill="#1A1A1A">me</text>
+</svg>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>MATCHA&ME — V1 vs V6 vs V7</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#EDEDE9;font-family:'Outfit',sans-serif;font-weight:200;color:#1B4332;padding:60px 30px}
+  h1{text-align:center;font-weight:200;font-size:13px;letter-spacing:8px;text-transform:uppercase;margin-bottom:10px;color:#888}
+  .subtitle{text-align:center;font-size:11px;color:#aaa;margin-bottom:50px;letter-spacing:1px}
+  .compare{max-width:1200px;margin:0 auto 60px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
+  .side{background:#fff;padding:40px 28px 30px;text-align:center}
+  .side h2{font-weight:200;font-size:11px;letter-spacing:5px;text-transform:uppercase;color:#999;margin-bottom:3px}
+  .side .tag{font-size:9px;color:#bbb;letter-spacing:2px;display:block;margin-bottom:25px}
+  .large-mark{margin:0 auto 20px}
+  .large-mark canvas{display:block;margin:0 auto}
+  .wordmark-wrap{margin:0 auto 20px}
+  .wordmark-wrap canvas{display:block;margin:0 auto}
+  .mark-row{display:flex;justify-content:center;gap:10px;padding-top:16px;border-top:1px solid #f0f0f0;flex-wrap:wrap}
+  .mark-cell{text-align:center}
+  .mark-cell .box{width:52px;height:52px;display:flex;align-items:center;justify-content:center;margin-bottom:3px}
+  .mark-cell .box.light{background:#FAFAF8;border:1px solid #f0f0f0}
+  .mark-cell .box.dark{background:#1B4332}
+  .mark-cell .box.green{background:#8AAE92}
+  .mark-cell .box.pink{background:#F2C4C4}
+  .mark-cell .box.cream{background:#F5F0E8}
+  .mark-cell .box.salmon{background:#E8967D}
+  .mark-cell .label{font-size:7px;color:#ccc;letter-spacing:1px;text-transform:uppercase}
+  .divider{max-width:1200px;margin:0 auto 40px;text-align:center;font-size:10px;letter-spacing:6px;text-transform:uppercase;color:#ccc}
+  .divider::before,.divider::after{content:'';display:inline-block;width:60px;height:1px;background:#ddd;vertical-align:middle;margin:0 20px}
+  .review{max-width:1200px;margin:0 auto 50px;background:#fff;padding:40px 50px}
+  .review h3{font-weight:200;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#999;margin-bottom:20px}
+  .review p{font-size:12px;color:#888;line-height:2;margin-bottom:12px}
+  .review em{color:#1B4332;font-style:normal;font-weight:300}
+  .changes{max-width:1200px;margin:0 auto 50px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
+  .change-card{background:#fff;padding:20px;font-size:11px;color:#aaa;line-height:1.7}
+  .change-card strong{color:#999;font-weight:300}
+  .size-test{max-width:1200px;margin:0 auto 60px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
+  .size-col{background:#fff;padding:30px 20px;text-align:center}
+  .size-col h4{font-weight:200;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#bbb;margin-bottom:15px}
+  .size-row{display:flex;align-items:flex-end;justify-content:center;gap:15px;margin-bottom:8px}
+  .size-label{font-size:8px;color:#ccc;letter-spacing:1px;margin-top:4px}
+</style>
+</head>
+<body>
+<h1>matcha & me</h1>
+<div class="subtitle">v1 Original → v6 God → v7 — designed for the person who sees it</div>
+
+<div class="review">
+  <h3>V6 Review — decided.mdに立ち返る</h3>
+  <p><em>解いている問題が間違っている。</em>V2からV6まで、bezierの精度・G2連続性・黄金比を追求してきた。しかしターゲット（25〜50歳、アーバン、おしゃれでありたい人）はbezierハンドルに興味がない。</p>
+  <p><em>「飲んでいたらイケてる」と思われるか。</em>decided.mdの核心は「カルチャーブランド」。ロゴを見た人が感じるべきは技術的完成度ではなく「このブランド、わかってるな」という直感。</p>
+  <p><em>缶の蓋に載る。</em>Mマークの主戦場は缶の蓋。有機的なcolor blobの上に載る。過度に精密なMとオーガニックなblobは視覚的に矛盾する。</p>
+  <p><em>利休の引き算。</em>V3→V6は「足し算」だった。インクトラップ、テーパー、ストレス角度、肩補正…。利休なら全部削る。「要素を足すのではなく、何を削るかで勝負する」。</p>
+  <p><em>温かみが消えた。</em>Round Valleyの本質は「茶碗の温もり」。最適化を重ねるうちに冷たい幾何学になった。朝のリビングで手に取る缶に、冷たさは要らない。</p>
+</div>
+
+<div class="compare" id="main-compare"></div>
+
+<div class="changes">
+  <div class="change-card">
+    <strong>v1 Original</strong><br>
+    quadratic bezier<br>
+    stroke 7.0%<br>
+    素朴で温かい<br>
+    技術的には粗い<br>
+    でも「感じ」は近い
+  </div>
+  <div class="change-card">
+    <strong>v6 God</strong><br>
+    技術的には最高峰<br>
+    stroke 6.2%<br>
+    カウンター起点設計<br>
+    冷たく精密<br>
+    <span style="color:#c44">タイプデザイナーのための作品</span>
+  </div>
+  <div class="change-card">
+    <strong>v7</strong><br>
+    V1の温かみ + V6の知性<br>
+    stroke 6.8%（自信のある太さ）<br>
+    カーブに「手の温度」を残す<br>
+    缶のblob上で映える<br>
+    <span style="color:#4a8">見る人のための作品</span>
+  </div>
+</div>
+
+<div class="divider">size test — 缶の蓋での見え方</div>
+<div class="size-test" id="size-test"></div>
+
+<script>
+// =====================================================
+// V1: Original
+// =====================================================
+function drawV1(c,x,y,w,h){
+  const s=w*.07;
+  c.beginPath();
+  c.moveTo(x,y+h);c.lineTo(x,y);c.lineTo(x+s,y);
+  c.lineTo(x+s,y+h*.2);
+  c.quadraticCurveTo(x+w/2,y+h*.92,x+w-s,y+h*.2);
+  c.lineTo(x+w-s,y);c.lineTo(x+w,y);c.lineTo(x+w,y+h);
+  c.lineTo(x+w-s,y+h);c.lineTo(x+w-s,y+h*.28);
+  c.quadraticCurveTo(x+w/2,y+h*1.0,x+s,y+h*.28);
+  c.lineTo(x+s,y+h);c.closePath();c.fill();
+}
+
+// =====================================================
+// V6: God (technical peak)
+// =====================================================
+function drawV6(c,x,y,w,h){
+  const s=w*.062;
+  const counterDepth=h*.78;
+  const straightRun=h*.15;
+  const k=0.58;
+  const outerTop=straightRun;
+  const outerBottom=straightRun+counterDepth;
+  const outerCurveH=counterDepth;
+  const opticalThin=s*.08;
+  const innerTop=straightRun+s*1.1;
+  const innerBottom=outerBottom+s-opticalThin;
+  const innerCurveH=innerBottom-innerTop;
+  const outerHalf=w/2-s;
+  const innerHalf=outerHalf-s+opticalThin;
+
+  c.beginPath();
+  c.moveTo(x,y+h);c.lineTo(x,y);c.lineTo(x+s,y);
+  c.lineTo(x+s,y+outerTop);
+  c.bezierCurveTo(x+s,y+outerTop+outerCurveH*k,x+w/2-outerHalf*k,y+outerBottom,x+w/2,y+outerBottom);
+  c.bezierCurveTo(x+w/2+outerHalf*k,y+outerBottom,x+w-s,y+outerTop+outerCurveH*k,x+w-s,y+outerTop);
+  c.lineTo(x+w-s,y);c.lineTo(x+w,y);c.lineTo(x+w,y+h);
+  c.lineTo(x+w-s,y+h);c.lineTo(x+w-s,y+innerTop);
+  c.bezierCurveTo(x+w-s,y+innerTop+innerCurveH*k,x+w/2+innerHalf*k,y+innerBottom,x+w/2,y+innerBottom);
+  c.bezierCurveTo(x+w/2-innerHalf*k,y+innerBottom,x+s,y+innerTop+innerCurveH*k,x+s,y+innerTop);
+  c.lineTo(x+s,y+h);c.closePath();c.fill();
+}
+
+// =====================================================
+// V7: For the person who sees it
+//
+// Design brief (from decided.md):
+// - "飲んでいたらイケてる" — cool, not precious
+// - "カルチャーブランド" — confident, modern, approachable
+// - "引き算の美学" — only what's essential
+// - "茶碗の温もり" — the U evokes warmth
+// - "缶がキッチンカウンターの主役" — works small, on organic blobs
+// - "コーヒーのように気軽に" — not intimidating
+//
+// What the viewer should FEEL:
+// 1. "This brand gets it" — modern but not cold
+// 2. "I want this on my counter" — beautiful but not fussy
+// 3. "This is my morning ritual" — warm, personal, inviting
+// =====================================================
+function drawV7(c,x,y,w,h){
+  // ── Stroke: 6.8% — between V1's warmth(7%) and V6's precision(6.2%).
+  // Confident. Not fragile, not heavy. Like Outfit 200 but with
+  // the quiet authority of a brand that knows what it is.
+  const s = w * 0.068;
+
+  // ── The curve starts at 12% — not too high (feels rushed),
+  // not too low (feels stiff). Like someone who stands tall
+  // and then bows with easy grace.
+  const curveStart = h * 0.12;
+
+  // ── Valley depth: 82% — generous. The bowl is deep enough
+  // to say "welcome" but not so deep it feels dramatic.
+  // This is a morning cup, not a ceremony.
+  const valleyDepth = h * 0.82;
+  const outerBottom = curveStart + valleyDepth;
+
+  // ── The curve: cubic bezier with k=0.56
+  // Slightly below the "circle" value of 0.552.
+  // This makes the curve a tiny bit MORE circular than a perfect
+  // circle approximation — which counterintuitively feels more
+  // natural and warm. Like a real bowl made on a wheel.
+  const k = 0.56;
+
+  // ── Inner curve: honest offset. No tricks.
+  // The inner curve follows the outer with consistent stroke width.
+  // No optical corrections, no stress angles.
+  // Just two curves that breathe together, like tea settling in a bowl.
+  const innerStart = curveStart + s * 0.9;
+  const innerBottom = outerBottom + s;
+  const outerCurveH = outerBottom - curveStart;
+  const innerCurveH = innerBottom - innerStart;
+  const outerHalf = w / 2 - s;
+  const innerHalf = outerHalf - s;
+
+  c.beginPath();
+
+  // Left vertical
+  c.moveTo(x, y + h);
+  c.lineTo(x, y);
+  c.lineTo(x + s, y);
+
+  // Outer left curve
+  c.lineTo(x + s, y + curveStart);
+  c.bezierCurveTo(
+    x + s,                       y + curveStart + outerCurveH * k,
+    x + w / 2 - outerHalf * k,  y + outerBottom,
+    x + w / 2,                   y + outerBottom
+  );
+
+  // Outer right curve
+  c.bezierCurveTo(
+    x + w / 2 + outerHalf * k,  y + outerBottom,
+    x + w - s,                   y + curveStart + outerCurveH * k,
+    x + w - s,                   y + curveStart
+  );
+
+  // Right vertical
+  c.lineTo(x + w - s, y);
+  c.lineTo(x + w, y);
+  c.lineTo(x + w, y + h);
+
+  // Inner right curve
+  c.lineTo(x + w - s, y + h);
+  c.lineTo(x + w - s, y + innerStart);
+  c.bezierCurveTo(
+    x + w - s,                   y + innerStart + innerCurveH * k,
+    x + w / 2 + innerHalf * k,  y + innerBottom,
+    x + w / 2,                   y + innerBottom
+  );
+
+  // Inner left curve
+  c.bezierCurveTo(
+    x + w / 2 - innerHalf * k,  y + innerBottom,
+    x + s,                       y + innerStart + innerCurveH * k,
+    x + s,                       y + innerStart
+  );
+
+  // Back to start
+  c.lineTo(x + s, y + h);
+  c.closePath();
+  c.fill();
+}
+
+// =====================================================
+// Rendering
+// =====================================================
+function renderWordmark(canvas,drawFn){
+  const dpr=window.devicePixelRatio||2,fs=36,font=`200 ${fs}px Outfit`,ls=fs*.35,color='#1B4332';
+  const chars=['M','A','T','C','H','A','&','M','E'];
+  const ctx=canvas.getContext('2d');ctx.font=font;
+  const cw=chars.map(ch=>ctx.measureText(ch).width),tw=cw.reduce((a,b)=>a+b,0)+ls*(chars.length-1);
+  const m=ctx.measureText('M'),asc=m.actualBoundingBoxAscent,desc=m.actualBoundingBoxDescent;
+  const px=20,py=12,W=tw+px*2,H=asc+desc+py*2;
+  canvas.width=W*dpr;canvas.height=H*dpr;canvas.style.width=W+'px';canvas.style.height=H+'px';
+  ctx.scale(dpr,dpr);const by=py+asc;
+  ctx.font=font;ctx.fillStyle=color;ctx.textBaseline='alphabetic';
+  let cx=px;chars.forEach((ch,i)=>{if(ch==='M')drawFn(ctx,cx,by-asc,cw[i],asc);else ctx.fillText(ch,cx,by);cx+=cw[i]+ls;});
+}
+function renderMarkLarge(canvas,drawFn,bg,fg){
+  const dpr=window.devicePixelRatio||2,sz=120;
+  canvas.width=sz*dpr;canvas.height=sz*dpr;canvas.style.width=sz+'px';canvas.style.height=sz+'px';
+  const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
+  ctx.fillStyle=bg;ctx.fillRect(0,0,sz,sz);
+  const ms=68,p=(sz-ms)/2;ctx.fillStyle=fg;drawFn(ctx,p,p+4,ms,ms-8);
+}
+function renderMark(canvas,drawFn,bg,fg){
+  const dpr=window.devicePixelRatio||2,sz=52;
+  canvas.width=sz*dpr;canvas.height=sz*dpr;canvas.style.width=sz+'px';canvas.style.height=sz+'px';
+  const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
+  ctx.fillStyle=bg;ctx.fillRect(0,0,sz,sz);
+  const ms=26,p=(sz-ms)/2;ctx.fillStyle=fg;drawFn(ctx,p,p+1,ms,ms-2);
+}
+function renderMarkSize(canvas,drawFn,size,bg,fg){
+  const dpr=window.devicePixelRatio||2;
+  canvas.width=size*dpr;canvas.height=size*dpr;canvas.style.width=size+'px';canvas.style.height=size+'px';
+  const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
+  ctx.fillStyle=bg;ctx.fillRect(0,0,size,size);
+  const pad=size*.15,ms=size-pad*2;
+  ctx.fillStyle=fg;drawFn(ctx,pad,pad+ms*.05,ms,ms*.9);
+}
+
+function build(){
+  const versions=[
+    {id:'v1',name:'v1',label:'Original',drawFn:drawV1},
+    {id:'v6',name:'v6',label:'God',drawFn:drawV6},
+    {id:'v7',name:'v7',label:'For You',drawFn:drawV7},
+  ];
+
+  const compare=document.getElementById('main-compare');
+  let html='';
+  versions.forEach(v=>{
+    html+=`<div class="side">
+      <h2>${v.name}</h2><span class="tag">${v.label}</span>
+      <div class="large-mark"><canvas id="lg-${v.id}"></canvas></div>
+      <div class="wordmark-wrap"><canvas id="wm-${v.id}"></canvas></div>
+      <div class="mark-row">
+        <div class="mark-cell"><div class="box light"><canvas id="mk-${v.id}-l"></canvas></div><div class="label">light</div></div>
+        <div class="mark-cell"><div class="box dark"><canvas id="mk-${v.id}-d"></canvas></div><div class="label">dark</div></div>
+        <div class="mark-cell"><div class="box green"><canvas id="mk-${v.id}-g"></canvas></div><div class="label">sage</div></div>
+        <div class="mark-cell"><div class="box pink"><canvas id="mk-${v.id}-p"></canvas></div><div class="label">pink</div></div>
+        <div class="mark-cell"><div class="box cream"><canvas id="mk-${v.id}-c"></canvas></div><div class="label">cream</div></div>
+        <div class="mark-cell"><div class="box salmon"><canvas id="mk-${v.id}-s"></canvas></div><div class="label">salmon</div></div>
+      </div>
+    </div>`;
+  });
+  compare.innerHTML=html;
+
+  const sizeTest=document.getElementById('size-test');
+  let shtml='';
+  versions.forEach(v=>{
+    shtml+=`<div class="size-col">
+      <h4>${v.name} ${v.label}</h4>
+      <div class="size-row">
+        <div><canvas id="sz-${v.id}-48"></canvas><div class="size-label">48px</div></div>
+        <div><canvas id="sz-${v.id}-32"></canvas><div class="size-label">32px</div></div>
+        <div><canvas id="sz-${v.id}-24"></canvas><div class="size-label">24px</div></div>
+        <div><canvas id="sz-${v.id}-16"></canvas><div class="size-label">16px</div></div>
+        <div><canvas id="sz-${v.id}-12"></canvas><div class="size-label">12px</div></div>
+      </div>
+    </div>`;
+  });
+  sizeTest.innerHTML=shtml;
+
+  document.fonts.ready.then(()=>{
+    versions.forEach(v=>{
+      renderMarkLarge(document.getElementById(`lg-${v.id}`),v.drawFn,'#FAFAF8','#1B4332');
+      renderWordmark(document.getElementById(`wm-${v.id}`),v.drawFn);
+      renderMark(document.getElementById(`mk-${v.id}-l`),v.drawFn,'#FAFAF8','#1B4332');
+      renderMark(document.getElementById(`mk-${v.id}-d`),v.drawFn,'#1B4332','#F5F0E8');
+      renderMark(document.getElementById(`mk-${v.id}-g`),v.drawFn,'#8AAE92','#1B4332');
+      renderMark(document.getElementById(`mk-${v.id}-p`),v.drawFn,'#F2C4C4','#1B4332');
+      renderMark(document.getElementById(`mk-${v.id}-c`),v.drawFn,'#F5F0E8','#1B4332');
+      renderMark(document.getElementById(`mk-${v.id}-s`),v.drawFn,'#E8967D','#1B4332');
+      [48,32,24,16,12].forEach(sz=>{
+        renderMarkSize(document.getElementById(`sz-${v.id}-${sz}`),v.drawFn,sz,'#FAFAF8','#1B4332');
+      });
+    });
+  });
+}
+build();
+</script>
+</body>
+</html>

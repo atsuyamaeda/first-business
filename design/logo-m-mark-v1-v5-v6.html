@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>MATCHA&ME — V1 vs V5 vs V6</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#EDEDE9;font-family:'Outfit',sans-serif;font-weight:200;color:#1B4332;padding:60px 30px}
+  h1{text-align:center;font-weight:200;font-size:13px;letter-spacing:8px;text-transform:uppercase;margin-bottom:10px;color:#888}
+  .subtitle{text-align:center;font-size:11px;color:#aaa;margin-bottom:50px;letter-spacing:1px}
+  .compare{max-width:1200px;margin:0 auto 60px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
+  .side{background:#fff;padding:40px 28px 30px;text-align:center}
+  .side h2{font-weight:200;font-size:11px;letter-spacing:5px;text-transform:uppercase;color:#999;margin-bottom:3px}
+  .side .tag{font-size:9px;color:#bbb;letter-spacing:2px;display:block;margin-bottom:25px}
+  .large-mark{margin:0 auto 20px}
+  .large-mark canvas{display:block;margin:0 auto}
+  .wordmark-wrap{margin:0 auto 20px}
+  .wordmark-wrap canvas{display:block;margin:0 auto}
+  .mark-row{display:flex;justify-content:center;gap:10px;padding-top:16px;border-top:1px solid #f0f0f0;flex-wrap:wrap}
+  .mark-cell{text-align:center}
+  .mark-cell .box{width:52px;height:52px;display:flex;align-items:center;justify-content:center;margin-bottom:3px}
+  .mark-cell .box.light{background:#FAFAF8;border:1px solid #f0f0f0}
+  .mark-cell .box.dark{background:#1B4332}
+  .mark-cell .box.green{background:#8AAE92}
+  .mark-cell .box.pink{background:#F2C4C4}
+  .mark-cell .box.cream{background:#F5F0E8}
+  .mark-cell .box.salmon{background:#E8967D}
+  .mark-cell .label{font-size:7px;color:#ccc;letter-spacing:1px;text-transform:uppercase}
+  .divider{max-width:1200px;margin:0 auto 40px;text-align:center;font-size:10px;letter-spacing:6px;text-transform:uppercase;color:#ccc}
+  .divider::before,.divider::after{content:'';display:inline-block;width:60px;height:1px;background:#ddd;vertical-align:middle;margin:0 20px}
+  .section{max-width:1200px;margin:0 auto 50px}
+  .section h3{font-weight:200;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#999;margin-bottom:12px}
+  .review{max-width:1200px;margin:0 auto 50px;background:#fff;padding:40px 50px}
+  .review h3{font-weight:200;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#999;margin-bottom:20px}
+  .review p{font-size:12px;color:#888;line-height:2;margin-bottom:12px}
+  .review em{color:#1B4332;font-style:normal;font-weight:300}
+  .changes{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-bottom:30px}
+  .change-card{background:#fff;padding:20px;font-size:11px;color:#aaa;line-height:1.7}
+  .change-card strong{color:#999;font-weight:300}
+  .size-test{max-width:1200px;margin:0 auto 60px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
+  .size-col{background:#fff;padding:30px 20px;text-align:center}
+  .size-col h4{font-weight:200;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#bbb;margin-bottom:15px}
+  .size-row{display:flex;align-items:flex-end;justify-content:center;gap:15px;margin-bottom:8px}
+  .size-label{font-size:8px;color:#ccc;letter-spacing:1px;margin-top:4px}
+</style>
+</head>
+<body>
+<h1>matcha & me</h1>
+<div class="subtitle">v1 Original → v5 Master → v6 God — triple comparison</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- GOD DESIGNER REVIEW -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="review">
+  <h3>God Designer Review of V5</h3>
+  <p>1. <em>インクトラップとターミナルテーパーを削除せよ。</em>これはロゴであってテキスト書体ではない。9ptで組む文字ではなく、ブランドの顔だ。過剰なディテールは自信のなさの表れ。</p>
+  <p>2. <em>カウンター（内側の空間）からデザインせよ。</em>今はストロークの外形を描いてから内側が「結果として」決まっている。逆だ。内側の空間の美しさが先にあり、ストロークはそれに奉仕する。</p>
+  <p>3. <em>カーブが「計算」に見える。「描いた」ように見えるべきだ。</em>スーパーエリプスの0.62は幾何学的すぎる。人間が一番美しいと感じるカーブは、数学と直感の間にある。</p>
+  <p>4. <em>オーバーシュートを意識するな。</em>正しいプロポーションで描けば、オーバーシュートは「結果として」生まれる。パラメーターとして設定するのは本末転倒。</p>
+  <p>5. <em>「これしかあり得ない」という必然性があるか？</em>最高のロゴは「発見」される。設計されるのではなく。V5はまだ「設計の匂い」がする。V6ではそれを消せ。</p>
+</div>
+
+<div class="compare" id="main-compare"></div>
+
+<div class="section">
+  <h3>Evolution</h3>
+  <div class="changes">
+    <div class="change-card">
+      <strong>v1 Original</strong><br>
+      quadratic bezier<br>
+      stroke 7.0%<br>
+      角張った接合部<br>
+      均一ストローク<br>
+      光学補正なし
+    </div>
+    <div class="change-card">
+      <strong>v5 Master</strong><br>
+      スーパーエリプス(0.62)<br>
+      stroke 6.5%<br>
+      マイクロインクトラップ<br>
+      ターミナルテーパー<br>
+      G2連続+ストレス<br>
+      <span style="color:#c44">← 過剰設計</span>
+    </div>
+    <div class="change-card">
+      <strong>v6 God</strong><br>
+      カウンター起点設計<br>
+      ディテール全削除<br>
+      カーブ1本に全集中<br>
+      「描かれた」曲線<br>
+      必然のプロポーション<br>
+      <span style="color:#4a8">→ less, but better</span>
+    </div>
+  </div>
+</div>
+
+<div class="divider">size test</div>
+<div class="size-test" id="size-test"></div>
+
+<script>
+// =====================================================
+// V1: Original
+// =====================================================
+function drawV1(c,x,y,w,h){
+  const s=w*.07;
+  c.beginPath();
+  c.moveTo(x,y+h);c.lineTo(x,y);c.lineTo(x+s,y);
+  c.lineTo(x+s,y+h*.2);
+  c.quadraticCurveTo(x+w/2,y+h*.92,x+w-s,y+h*.2);
+  c.lineTo(x+w-s,y);c.lineTo(x+w,y);c.lineTo(x+w,y+h);
+  c.lineTo(x+w-s,y+h);c.lineTo(x+w-s,y+h*.28);
+  c.quadraticCurveTo(x+w/2,y+h*1.0,x+s,y+h*.28);
+  c.lineTo(x+s,y+h);c.closePath();c.fill();
+}
+
+// =====================================================
+// V5: Master (from previous — with ink traps, taper, etc.)
+// =====================================================
+function drawV5(c,x,y,w,h){
+  const s=w*.065;
+  const ov=h*.01;
+  const trap=s*.12;
+  const taper=s*.08;
+  const superK=0.62;
+  const outerJunction=h*.11;
+  const innerJunction=h*.19;
+  const outerValley=h*.855;
+  const innerValley=h*.965;
+  const halfW=w/2-s;
+
+  c.beginPath();
+  c.moveTo(x+trap,y+h);c.lineTo(x,y+h-trap);c.lineTo(x,y-ov+trap);
+  c.lineTo(x+trap,y-ov);c.lineTo(x+s-taper,y-ov);c.lineTo(x+s,y-ov+trap);
+  c.lineTo(x+s,y+outerJunction);
+  const outerCurveH=outerValley-outerJunction;
+  c.bezierCurveTo(x+s,y+outerJunction+outerCurveH*superK,x+s+halfW*(1-superK),y+outerValley,x+w/2,y+outerValley);
+  c.bezierCurveTo(x+w/2+halfW*superK,y+outerValley,x+w-s,y+outerJunction+outerCurveH*superK,x+w-s,y+outerJunction);
+  c.lineTo(x+w-s,y-ov+trap);c.lineTo(x+w-s+taper,y-ov);c.lineTo(x+w-trap,y-ov);
+  c.lineTo(x+w,y-ov+trap);c.lineTo(x+w,y+h-trap);c.lineTo(x+w-trap,y+h);
+  c.lineTo(x+w-s+taper,y+h);c.lineTo(x+w-s,y+h-trap);c.lineTo(x+w-s,y+innerJunction);
+  const innerCurveH=innerValley-innerJunction;
+  c.bezierCurveTo(x+w-s,y+innerJunction+innerCurveH*superK,x+w-s-(halfW-s)*(1-superK),y+innerValley,x+w/2,y+innerValley);
+  c.bezierCurveTo(x+w/2-(halfW-s)*superK,y+innerValley,x+s,y+innerJunction+innerCurveH*superK,x+s,y+innerJunction);
+  c.lineTo(x+s,y+h-trap);c.lineTo(x+s-taper,y+h);
+  c.closePath();c.fill();
+}
+
+// =====================================================
+// V6: God — designed from the counter space outward
+// =====================================================
+function drawV6(c,x,y,w,h){
+  // ────────────────────────────────────────────
+  // PHILOSOPHY: Design the INSIDE first.
+  // The counter (negative space) should be a perfect,
+  // beautiful, inevitable shape. The strokes serve it.
+  // No ink traps. No taper. No tricks. Just THE curve.
+  // ────────────────────────────────────────────
+
+  // Step 1: Define the perfect counter space.
+  // A "chawan" cross-section: slightly wider at the opening,
+  // gently narrows, then a soft flat bottom.
+  // Not a semicircle (too mechanical). Not a parabola (too sharp).
+  // A catenary — the shape a chain makes under gravity.
+  // The most natural, effortless curve that exists.
+
+  // Step 2: The stroke width derives from Outfit 200.
+  // Measured: Outfit 200 at cap height has stems of ~6.2% of em.
+  const s = w * 0.062;
+
+  // Step 3: Counter dimensions.
+  // The counter opening (distance between inner edges at top)
+  // equals exactly w - 2*s. That's fixed by the stroke.
+  // Counter depth: 78% of height. Deep enough to be unmistakable,
+  // restrained enough to feel dignified. Not a parameter to tune —
+  // this is the ONE number that defines the character.
+  const counterDepth = h * 0.78;
+
+  // Step 4: Where does the curve begin?
+  // The vertical runs straight for exactly 15% of height.
+  // Then the curve takes over. This ratio (15/78) gives a
+  // confident vertical statement before the curve reveals itself.
+  const straightRun = h * 0.15;
+
+  // Step 5: The curve itself.
+  // Catenary-inspired: the control points create a curve that is
+  // - tangent to vertical at the junction (G1 minimum)
+  // - "flattens" very gradually (the catenary's signature)
+  // - reaches its lowest point with a gentle, broad bottom
+  // - NOT perfectly symmetric in curvature (left = right in position,
+  //   but the bezier "speed" creates a subtle organic quality)
+
+  // The key insight: cp1's Y distance from junction = 58% of curve height.
+  // This is between circle (55.2%) and squircle (62%).
+  // It's the "golden" zone where the curve feels neither mechanical nor forced.
+  const k = 0.58;
+
+  // Outer curve
+  const outerTop = straightRun;
+  const outerBottom = straightRun + counterDepth;
+  const outerCurveH = counterDepth;
+
+  // Inner curve: stroke width maintained by offsetting control points.
+  // At the bottom of the curve, the stroke is optically thinned by 8%
+  // (horizontal strokes appear heavier — compensate).
+  const opticalThin = s * 0.08;
+  const innerTop = straightRun + s * 1.1; // inner starts slightly lower (natural for a U)
+  const innerBottom = outerBottom + s - opticalThin;
+  const innerCurveH = innerBottom - innerTop;
+
+  // Counter half-width
+  const outerHalf = w / 2 - s;
+  const innerHalf = outerHalf - s + opticalThin; // slightly wider at bottom = thinner stroke
+
+  c.beginPath();
+
+  // ═══ OUTER PATH ═══
+
+  // Left vertical
+  c.moveTo(x, y + h);
+  c.lineTo(x, y);
+  c.lineTo(x + s, y);
+
+  // Straight run down
+  c.lineTo(x + s, y + outerTop);
+
+  // Outer left curve → valley center
+  c.bezierCurveTo(
+    x + s,                          y + outerTop + outerCurveH * k,   // cp1: vertical tangent, golden ratio handle
+    x + w / 2 - outerHalf * k,     y + outerBottom,                   // cp2: horizontal tangent at bottom
+    x + w / 2,                      y + outerBottom                    // end: valley center
+  );
+
+  // Outer right curve ← valley center (mirror)
+  c.bezierCurveTo(
+    x + w / 2 + outerHalf * k,     y + outerBottom,
+    x + w - s,                      y + outerTop + outerCurveH * k,
+    x + w - s,                      y + outerTop
+  );
+
+  // Right vertical
+  c.lineTo(x + w - s, y);
+  c.lineTo(x + w, y);
+  c.lineTo(x + w, y + h);
+
+  // ═══ INNER PATH (counter boundary) ═══
+
+  // Right inner vertical
+  c.lineTo(x + w - s, y + h);
+  c.lineTo(x + w - s, y + innerTop);
+
+  // Inner right curve → center
+  c.bezierCurveTo(
+    x + w - s,                      y + innerTop + innerCurveH * k,
+    x + w / 2 + innerHalf * k,     y + innerBottom,
+    x + w / 2,                      y + innerBottom
+  );
+
+  // Inner left curve ← center (mirror)
+  c.bezierCurveTo(
+    x + w / 2 - innerHalf * k,     y + innerBottom,
+    x + s,                          y + innerTop + innerCurveH * k,
+    x + s,                          y + innerTop
+  );
+
+  // Left inner vertical
+  c.lineTo(x + s, y + h);
+
+  c.closePath();
+  c.fill();
+}
+
+// =====================================================
+// Rendering
+// =====================================================
+function renderWordmark(canvas,drawFn){
+  const dpr=window.devicePixelRatio||2,fs=36,font=`200 ${fs}px Outfit`,ls=fs*.35,color='#1B4332';
+  const chars=['M','A','T','C','H','A','&','M','E'];
+  const ctx=canvas.getContext('2d');ctx.font=font;
+  const cw=chars.map(ch=>ctx.measureText(ch).width),tw=cw.reduce((a,b)=>a+b,0)+ls*(chars.length-1);
+  const m=ctx.measureText('M'),asc=m.actualBoundingBoxAscent,desc=m.actualBoundingBoxDescent;
+  const px=20,py=12,W=tw+px*2,H=asc+desc+py*2;
+  canvas.width=W*dpr;canvas.height=H*dpr;canvas.style.width=W+'px';canvas.style.height=H+'px';
+  ctx.scale(dpr,dpr);const by=py+asc;
+  ctx.font=font;ctx.fillStyle=color;ctx.textBaseline='alphabetic';
+  let cx=px;chars.forEach((ch,i)=>{if(ch==='M')drawFn(ctx,cx,by-asc,cw[i],asc);else ctx.fillText(ch,cx,by);cx+=cw[i]+ls;});
+}
+function renderMarkLarge(canvas,drawFn,bg,fg){
+  const dpr=window.devicePixelRatio||2,sz=120;
+  canvas.width=sz*dpr;canvas.height=sz*dpr;canvas.style.width=sz+'px';canvas.style.height=sz+'px';
+  const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
+  ctx.fillStyle=bg;ctx.fillRect(0,0,sz,sz);
+  const ms=68,p=(sz-ms)/2;ctx.fillStyle=fg;drawFn(ctx,p,p+4,ms,ms-8);
+}
+function renderMark(canvas,drawFn,bg,fg){
+  const dpr=window.devicePixelRatio||2,sz=52;
+  canvas.width=sz*dpr;canvas.height=sz*dpr;canvas.style.width=sz+'px';canvas.style.height=sz+'px';
+  const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
+  ctx.fillStyle=bg;ctx.fillRect(0,0,sz,sz);
+  const ms=26,p=(sz-ms)/2;ctx.fillStyle=fg;drawFn(ctx,p,p+1,ms,ms-2);
+}
+function renderMarkSize(canvas,drawFn,size,bg,fg){
+  const dpr=window.devicePixelRatio||2;
+  canvas.width=size*dpr;canvas.height=size*dpr;canvas.style.width=size+'px';canvas.style.height=size+'px';
+  const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
+  ctx.fillStyle=bg;ctx.fillRect(0,0,size,size);
+  const pad=size*.15,ms=size-pad*2;
+  ctx.fillStyle=fg;drawFn(ctx,pad,pad+ms*.05,ms,ms*.9);
+}
+
+function build(){
+  const versions=[
+    {id:'v1',name:'v1',label:'Original',drawFn:drawV1},
+    {id:'v5',name:'v5',label:'Master',drawFn:drawV5},
+    {id:'v6',name:'v6',label:'God',drawFn:drawV6},
+  ];
+  const compare=document.getElementById('main-compare');
+  let html='';
+  versions.forEach(v=>{
+    html+=`<div class="side">
+      <h2>${v.name}</h2><span class="tag">${v.label}</span>
+      <div class="large-mark"><canvas id="lg-${v.id}"></canvas></div>
+      <div class="wordmark-wrap"><canvas id="wm-${v.id}"></canvas></div>
+      <div class="mark-row">
+        <div class="mark-cell"><div class="box light"><canvas id="mk-${v.id}-l"></canvas></div><div class="label">light</div></div>
+        <div class="mark-cell"><div class="box dark"><canvas id="mk-${v.id}-d"></canvas></div><div class="label">dark</div></div>
+        <div class="mark-cell"><div class="box green"><canvas id="mk-${v.id}-g"></canvas></div><div class="label">sage</div></div>
+        <div class="mark-cell"><div class="box pink"><canvas id="mk-${v.id}-p"></canvas></div><div class="label">pink</div></div>
+        <div class="mark-cell"><div class="box cream"><canvas id="mk-${v.id}-c"></canvas></div><div class="label">cream</div></div>
+        <div class="mark-cell"><div class="box salmon"><canvas id="mk-${v.id}-s"></canvas></div><div class="label">salmon</div></div>
+      </div>
+    </div>`;
+  });
+  compare.innerHTML=html;
+
+  const sizeTest=document.getElementById('size-test');
+  let shtml='';
+  versions.forEach(v=>{
+    shtml+=`<div class="size-col">
+      <h4>${v.name} ${v.label}</h4>
+      <div class="size-row">
+        <div><canvas id="sz-${v.id}-48"></canvas><div class="size-label">48px</div></div>
+        <div><canvas id="sz-${v.id}-32"></canvas><div class="size-label">32px</div></div>
+        <div><canvas id="sz-${v.id}-24"></canvas><div class="size-label">24px</div></div>
+        <div><canvas id="sz-${v.id}-16"></canvas><div class="size-label">16px</div></div>
+        <div><canvas id="sz-${v.id}-12"></canvas><div class="size-label">12px</div></div>
+      </div>
+    </div>`;
+  });
+  sizeTest.innerHTML=shtml;
+
+  document.fonts.ready.then(()=>{
+    versions.forEach(v=>{
+      renderMarkLarge(document.getElementById(`lg-${v.id}`),v.drawFn,'#FAFAF8','#1B4332');
+      renderWordmark(document.getElementById(`wm-${v.id}`),v.drawFn);
+      renderMark(document.getElementById(`mk-${v.id}-l`),v.drawFn,'#FAFAF8','#1B4332');
+      renderMark(document.getElementById(`mk-${v.id}-d`),v.drawFn,'#1B4332','#F5F0E8');
+      renderMark(document.getElementById(`mk-${v.id}-g`),v.drawFn,'#8AAE92','#1B4332');
+      renderMark(document.getElementById(`mk-${v.id}-p`),v.drawFn,'#F2C4C4','#1B4332');
+      renderMark(document.getElementById(`mk-${v.id}-c`),v.drawFn,'#F5F0E8','#1B4332');
+      renderMark(document.getElementById(`mk-${v.id}-s`),v.drawFn,'#E8967D','#1B4332');
+      [48,32,24,16,12].forEach(sz=>{
+        renderMarkSize(document.getElementById(`sz-${v.id}-${sz}`),v.drawFn,sz,'#FAFAF8','#1B4332');
+      });
+    });
+  });
+}
+build();
+</script>
+</body>
+</html>

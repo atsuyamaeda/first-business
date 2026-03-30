@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>MATCHA&ME — M Mark v7 — 20 More</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#EDEDE9; font-family:'Outfit',sans-serif; font-weight:200; color:#1B4332; padding:60px 40px; }
+  h1 { text-align:center; font-weight:200; font-size:13px; letter-spacing:8px; text-transform:uppercase; margin-bottom:10px; color:#888; }
+  .subtitle { text-align:center; font-size:11px; color:#aaa; margin-bottom:60px; letter-spacing:1px; }
+  .concept { max-width:900px; margin:0 auto 70px; background:#fff; padding:50px 50px 35px; }
+  .concept-header { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px; }
+  .concept h2 { font-weight:200; font-size:12px; letter-spacing:5px; text-transform:uppercase; color:#999; }
+  .concept .tag { font-size:10px; color:#bbb; letter-spacing:2px; }
+  .concept .desc { font-size:12px; color:#aaa; margin-bottom:35px; line-height:1.8; }
+  .wordmark-canvas-wrap { text-align:center; margin-bottom:35px; padding:25px 0; }
+  .wordmark-canvas-wrap canvas { display:block; margin:0 auto; }
+  .mark-display { display:flex; justify-content:center; gap:24px; padding-top:25px; border-top:1px solid #f0f0f0; }
+  .mark-cell { text-align:center; }
+  .mark-cell .box { width:72px; height:72px; display:flex; align-items:center; justify-content:center; margin-bottom:6px; }
+  .mark-cell .box.light { background:#FAFAF8; border:1px solid #f0f0f0; }
+  .mark-cell .box.dark { background:#1B4332; }
+  .mark-cell .box.green { background:#8AAE92; }
+  .mark-cell .box.pink { background:#F2C4C4; }
+  .mark-cell .label { font-size:8px; color:#ccc; letter-spacing:2px; text-transform:uppercase; }
+  .divider { max-width:900px; margin:0 auto 50px; text-align:center; font-size:10px; letter-spacing:6px; text-transform:uppercase; color:#ccc; }
+  .divider::before,.divider::after { content:''; display:inline-block; width:60px; height:1px; background:#ddd; vertical-align:middle; margin:0 20px; }
+</style>
+</head>
+<body>
+<h1>matcha & me</h1>
+<div class="subtitle">M mark v7 — 20 more concepts</div>
+<div id="app"></div>
+<script>
+const D = {};
+
+// ── 17: Wave Valley — 内側が波型 ──
+D['17'] = (c,x,y,w,h) => {
+  const s=w*.07;
+  c.beginPath();
+  c.moveTo(x,y+h); c.lineTo(x,y); c.lineTo(x+s,y);
+  c.lineTo(x+s,y+h*.15);
+  c.bezierCurveTo(x+w*.25,y+h*.65, x+w*.35,y+h*.25, x+w/2,y+h*.55);
+  c.bezierCurveTo(x+w*.65,y+h*.85, x+w*.75,y+h*.35, x+w-s,y+h*.15);
+  c.lineTo(x+w-s,y); c.lineTo(x+w,y); c.lineTo(x+w,y+h);
+  c.lineTo(x+w-s,y+h); c.lineTo(x+w-s,y+h*.23);
+  c.bezierCurveTo(x+w*.75,y+h*.43, x+w*.65,y+h*.93, x+w/2,y+h*.63);
+  c.bezierCurveTo(x+w*.35,y+h*.33, x+w*.25,y+h*.73, x+s,y+h*.23);
+  c.lineTo(x+s,y+h); c.closePath(); c.fill();
+};
+
+// ── 18: Diamond Center — 谷底にダイヤ ──
+D['18'] = (c,x,y,w,h) => {
+  const s=w*.07;
+  c.beginPath();
+  c.moveTo(x,y+h); c.lineTo(x,y); c.lineTo(x+s,y);
+  c.lineTo(x+w/2,y+h*.78); c.lineTo(x+w-s,y); c.lineTo(x+w,y);
+  c.lineTo(x+w,y+h); c.lineTo(x+w-s,y+h); c.lineTo(x+w-s,y+h*.14);
+  c.lineTo(x+w/2,y+h*.92); c.lineTo(x+s,y+h*.14);
+  c.lineTo(x+s,y+h); c.closePath(); c.fill();
+  // Diamond
+  const dw=w*.14, dh=h*.16, cx=x+w/2, cy=y+h*.68;
+  c.beginPath();
+  c.moveTo(cx,cy-dh); c.lineTo(cx+dw,cy); c.lineTo(cx,cy+dh); c.lineTo(cx-dw,cy);
+  c.closePath(); c.fill();
+};
+
+// ── 19: Chamfer — 全ての角を45度カット ──
+D['19'] = (c,x,y,w,h) => {
+  const s=w*.07, ch=w*.06;
+  c.beginPath();
+  c.moveTo(x,y+h-ch); c.lineTo(x,y+ch); c.lineTo(x+ch,y);
+  c.lineTo(x+s-ch,y); c.lineTo(x+s,y+ch); c.lineTo(x+s,y+h*.12);
+  c.lineTo(x+w/2,y+h*.78);
+  c.lineTo(x+w-s,y+h*.12); c.lineTo(x+w-s,y+ch); c.lineTo(x+w-s+ch,y);
+  c.lineTo(x+w-ch,y); c.lineTo(x+w,y+ch); c.lineTo(x+w,y+h-ch);
+  c.lineTo(x+w-ch,y+h); c.lineTo(x+w-s+ch,y+h); c.lineTo(x+w-s,y+h-ch);
+  c.lineTo(x+w-s,y+h*.20);
+  c.lineTo(x+w/2,y+h*.88);
+  c.lineTo(x+s,y+h*.20); c.lineTo(x+s,y+h-ch);
+  c.lineTo(x+s-ch,y+h); c.lineTo(x+ch,y+h);
+  c.closePath(); c.fill();
+};
+
+// ── 20: Serif Tips — 先端にだけセリフ ──
+D['20'] = (c,x,y,w,h) => {
+  const s=w*.065, sf=w*.06;
+  // Main M
+  c.beginPath();
+  c.moveTo(x,y+h); c.lineTo(x,y); c.lineTo(x+s,y);
+  c.lineTo(x+w/2,y+h*.78); c.lineTo(x+w-s,y); c.lineTo(x+w,y);
+  c.lineTo(x+w,y+h); c.lineTo(x+w-s,y+h); c.lineTo(x+w-s,y+h*.14);
+  c.lineTo(x+w/2,y+h*.92); c.lineTo(x+s,y+h*.14);
+  c.lineTo(x+s,y+h); c.closePath(); c.fill();
+  // Top serifs (small horizontal flicks)
+  c.fillRect(x-sf*.5, y, sf*1.2, s*.4);
+  c.fillRect(x+w-sf*.7, y, sf*1.2, s*.4);
+  // Bottom serifs
+  c.fillRect(x-sf*.5, y+h-s*.4, sf*1.2, s*.4);
+  c.fillRect(x+w-sf*.7, y+h-s*.4, sf*1.2, s*.4);
+};
+
+// ── 21: Notch Peak — 山頂にV字の切り込み ──
+D['21'] = (c,x,y,w,h) => {
+  const s=w*.07, nw=w*.05, nd=h*.08;
+  c.beginPath();
+  c.moveTo(x,y+h); c.lineTo(x,y);
+  // left peak notch
+  c.lineTo(x+s/2-nw,y); c.lineTo(x+s/2,y+nd); c.lineTo(x+s/2+nw,y);
+  c.lineTo(x+s,y); c.lineTo(x+w/2,y+h*.78);
+  c.lineTo(x+w-s,y);
+  // right peak notch
+  c.lineTo(x+w-s/2-nw,y); c.lineTo(x+w-s/2,y+nd); c.lineTo(x+w-s/2+nw,y);
+  c.lineTo(x+w,y); c.lineTo(x+w,y+h);
+  c.lineTo(x+w-s,y+h); c.lineTo(x+w-s,y+h*.14);
+  c.lineTo(x+w/2,y+h*.92); c.lineTo(x+s,y+h*.14);
+  c.lineTo(x+s,y+h); c.closePath(); c.fill();
+};
+
+// ── 22: Bridge — 二つの山頂をアーチで繋ぐ ──
+D['22'] = (c,x,y,w,h) => {
+  const s=w*.07;
+  // Basic M
+  c.beginPath();
+  c.moveTo(x,y+h); c.lineTo(x,y+h*.12); c.lineTo(x+s,y+h*.12);
+  c.lineTo(x+w/2,y+h*.78); c.lineTo(x+w-s,y+h*.12); c.lineTo(x+w,y+h*.12);
+  c.lineTo(x+w,y+h); c.lineTo(x+w-s,y+h); c.lineTo(x+w-s,y+h*.20);
+  c.lineTo(x+w/2,y+h*.88); c.lineTo(x+s,y+h*.20);
+  c.lineTo(x+s,y+h); c.closePath(); c.fill();
+  // Bridge arch on top
+  c.beginPath();
+  c.moveTo(x,y+h*.12); c.lineTo(x+s,y+h*.12);
+  c.quadraticCurveTo(x+s,y-h*.08, x+w/2,y-h*.08);
+  c.quadraticCurveTo(x+w-s,y-h*.08, x+w-s,y+h*.12);
+  c.lineTo(x+w,y+h*.12);
+  c.quadraticCurveTo(x+w,y-h*.16, x+w/2,y-h*.16);
+  c.quadraticCurveTo(x,y-h*.16, x,y+h*.12);
+  c.closePath(); c.fill();
+};
+
+// ── 23: Three Prong — 中央にも縦線（Ш的）──
+D['23'] = (c,x,y,w,h) => {
+  const s=w*.065;
+  c.fillRect(x, y, s, h);
+  c.fillRect(x+w/2-s/2, y+h*.25, s, h*.75);
+  c.fillRect(x+w-s, y, s, h);
+  // Left diagonal
+  c.beginPath(); c.moveTo(x+s,y); c.lineTo(x+s+s,y); c.lineTo(x+w/2+s/2,y+h*.25+s); c.lineTo(x+w/2-s/2,y+h*.25); c.fill();
+  // Right diagonal
+  c.beginPath(); c.moveTo(x+w-s,y); c.lineTo(x+w-s-s,y); c.lineTo(x+w/2-s/2,y+h*.25+s); c.lineTo(x+w/2+s/2,y+h*.25); c.fill();
+};
+
+// ── 24: Split Vertical — 縦線が二分割 ──
+D['24'] = (c,x,y,w,h) => {
+  const s=w*.07, gap=h*.06;
+  // Left vertical top half
+  c.fillRect(x, y, s, h*.47-gap/2);
+  // Left vertical bottom half
+  c.fillRect(x, y+h*.47+gap/2, s, h*.53-gap/2);
+  // Right vertical top half
+  c.fillRect(x+w-s, y, s, h*.47-gap/2);
+  // Right vertical bottom half
+  c.fillRect(x+w-s, y+h*.47+gap/2, s, h*.53-gap/2);
+  // Outer diagonals
+  c.beginPath(); c.moveTo(x+s,y); c.lineTo(x+s+s*.8,y); c.lineTo(x+w/2+s*.3,y+h*.78); c.lineTo(x+w/2-s*.3,y+h*.78); c.fill();
+  c.beginPath(); c.moveTo(x+w-s,y); c.lineTo(x+w-s-s*.8,y); c.lineTo(x+w/2-s*.3,y+h*.78); c.lineTo(x+w/2+s*.3,y+h*.78); c.fill();
+  // Inner diagonals
+  c.beginPath(); c.moveTo(x+s,y+h); c.lineTo(x+s+s*.8,y+h); c.lineTo(x+w/2+s*.3,y+h*.26); c.lineTo(x+w/2-s*.3,y+h*.26); c.fill();
+  c.beginPath(); c.moveTo(x+w-s,y+h); c.lineTo(x+w-s-s*.8,y+h); c.lineTo(x+w/2-s*.3,y+h*.26); c.lineTo(x+w/2+s*.3,y+h*.26); c.fill();
+};
+
+// ── 25: Overlap Transparency — 交差部分が透ける ──
+D['25'] = (c,x,y,w,h) => {
+  const s=w*.08;
+  c.save(); c.globalAlpha=0.55;
+  // Left vertical
+  c.fillRect(x, y, s, h);
+  // Right vertical
+  c.fillRect(x+w-s, y, s, h);
+  // Left outer diagonal
+  c.beginPath(); c.moveTo(x,y); c.lineTo(x+s,y); c.lineTo(x+w/2+s/2,y+h*.82); c.lineTo(x+w/2-s/2,y+h*.82); c.fill();
+  // Right outer diagonal
+  c.beginPath(); c.moveTo(x+w,y); c.lineTo(x+w-s,y); c.lineTo(x+w/2-s/2,y+h*.82); c.lineTo(x+w/2+s/2,y+h*.82); c.fill();
+  // Left inner diagonal
+  c.beginPath(); c.moveTo(x,y+h); c.lineTo(x+s,y+h); c.lineTo(x+w/2+s/2,y+h*.22); c.lineTo(x+w/2-s/2,y+h*.22); c.fill();
+  // Right inner diagonal
+  c.beginPath(); c.moveTo(x+w,y+h); c.lineTo(x+w-s,y+h); c.lineTo(x+w/2-s/2,y+h*.22); c.lineTo(x+w/2+s/2,y+h*.22); c.fill();
+  c.restore();
+};
+
+// ── 26: Razor Thin — 極細 ──
+D['26'] = (c,x,y,w,h) => {
+  const s=w*.035;
+  c.beginPath();
+  c.moveTo(x,y+h); c.lineTo(x,y); c.lineTo(x+s,y);
+  c.lineTo(x+w/2,y+h*.80); c.lineTo(x+w-s,y);
+  c.lineTo(x+w,y); c.lineTo(x+w,y+h); c.lineTo(x+w-s,y+h);
+  c.lineTo(x+w-s,y+h*.12); c.lineTo(x+w/2,y+h*.92);
+  c.lineTo(x+s,y+h*.12); c.lineTo(x+s,y+h);
+  c.closePath(); c.fill();
+};
+
+// ── 27: Heavy Weight — 極太 ──
+D['27'] = (c,x,y,w,h) => {
+  const s=w*.14;
+  c.beginPath();
+  c.moveTo(x,y+h); c.lineTo(x,y); c.lineTo(x+s,y);
+  c.lineTo(x+w/2,y+h*.62); c.lineTo(x+w-s,y);
+  c.lineTo(x+w,y); c.lineTo(x+w,y+h); c.lineTo(x+w-s,y+h);
+  c.lineTo(x+w-s,y+h*.22); c.lineTo(x+w/2,y+h*.82);
+  c.lineTo(x+s,y+h*.22); c.lineTo(x+s,y+h);
+  c.closePath(); c.fill();
+};
+
+// ── 28: Rounded Everything — 全角丸 ──
+D['28'] = (c,x,y,w,h) => {
+  const lw=w*.065;
+  c.save();
+  c.strokeStyle=c.fillStyle; c.lineWidth=lw;
+  c.lineCap='round'; c.lineJoin='round';
+  c.beginPath();
+  c.moveTo(x+lw/2,y+h-lw/2);
+  c.lineTo(x+lw/2,y+lw/2);
+  c.lineTo(x+w/2,y+h*.72);
+  c.lineTo(x+w-lw/2,y+lw/2);
+  c.lineTo(x+w-lw/2,y+h-lw/2);
+  c.stroke();
+  // Fill the joints to make them look solid round
+  c.beginPath(); c.arc(x+lw/2,y+h-lw/2,lw*.3,0,Math.PI*2); c.fill();
+  c.beginPath(); c.arc(x+w-lw/2,y+h-lw/2,lw*.3,0,Math.PI*2); c.fill();
+  c.restore();
+};
+
+// ── 29: Leaf Inner — 内側のネガがリーフ形状 ──
+D['29'] = (c,x,y,w,h) => {
+  const s=w*.07;
+  c.beginPath();
+  c.moveTo(x,y+h); c.lineTo(x,y); c.lineTo(x+s,y);
+  c.lineTo(x+w/2,y+h*.78); c.lineTo(x+w-s,y); c.lineTo(x+w,y);
+  c.lineTo(x+w,y+h); c.lineTo(x+w-s,y+h); c.lineTo(x+w-s,y+h*.18);
+  c.bezierCurveTo(x+w*.7,y+h*.55, x+w*.6,y+h*.75, x+w/2,y+h*.88);
+  c.bezierCurveTo(x+w*.4,y+h*.75, x+w*.3,y+h*.55, x+s,y+h*.18);
+  c.lineTo(x+s,y+h); c.closePath(); c.fill();
+};
+
+// ── 30: Nested — 小さいMが中にもう一つ ──
+D['30'] = (c,x,y,w,h) => {
+  const s=w*.06;
+  // Outer M
+  c.beginPath();
+  c.moveTo(x,y+h); c.lineTo(x,y); c.lineTo(x+s,y);
+  c.lineTo(x+w/2,y+h*.78); c.lineTo(x+w-s,y); c.lineTo(x+w,y);
+  c.lineTo(x+w,y+h); c.lineTo(x+w-s,y+h); c.lineTo(x+w-s,y+h*.14);
+  c.lineTo(x+w/2,y+h*.92); c.lineTo(x+s,y+h*.14);
+  c.lineTo(x+s,y+h); c.closePath(); c.fill();
+  // Inner small M (cut out)
+  c.save(); c.globalCompositeOperation='destination-out';
+  const ix=x+w*.25, iy=y+h*.35, iw=w*.5, ih=h*.45, is=iw*.08;
+  c.beginPath();
+  c.moveTo(ix,iy+ih); c.lineTo(ix,iy); c.lineTo(ix+is,iy);
+  c.lineTo(ix+iw/2,iy+ih*.78); c.lineTo(ix+iw-is,iy); c.lineTo(ix+iw,iy);
+  c.lineTo(ix+iw,iy+ih); c.lineTo(ix+iw-is,iy+ih); c.lineTo(ix+iw-is,iy+ih*.14);
+  c.lineTo(ix+iw/2,iy+ih*.92); c.lineTo(ix+is,iy+ih*.14);
+  c.lineTo(ix+is,iy+ih); c.closePath(); c.fill();
+  c.restore();
+};
+
+// ── 31: Shadow Offset — ずれた影 ──
+D['31'] = (c,x,y,w,h) => {
+  const s=w*.07, off=w*.04;
+  c.save(); c.globalAlpha=0.2;
+  // Shadow
+  c.beginPath();
+  c.moveTo(x+off,y+h+off); c.lineTo(x+off,y+off); c.lineTo(x+s+off,y+off);
+  c.lineTo(x+w/2+off,y+h*.78+off); c.lineTo(x+w-s+off,y+off); c.lineTo(x+w+off,y+off);
+  c.lineTo(x+w+off,y+h+off); c.lineTo(x+w-s+off,y+h+off); c.lineTo(x+w-s+off,y+h*.14+off);
+  c.lineTo(x+w/2+off,y+h*.92+off); c.lineTo(x+s+off,y+h*.14+off);
+  c.lineTo(x+s+off,y+h+off); c.closePath(); c.fill();
+  c.restore();
+  // Main
+  c.beginPath();
+  c.moveTo(x,y+h); c.lineTo(x,y); c.lineTo(x+s,y);
+  c.lineTo(x+w/2,y+h*.78); c.lineTo(x+w-s,y); c.lineTo(x+w,y);
+  c.lineTo(x+w,y+h); c.lineTo(x+w-s,y+h); c.lineTo(x+w-s,y+h*.14);
+  c.lineTo(x+w/2,y+h*.92); c.lineTo(x+s,y+h*.14);
+  c.lineTo(x+s,y+h); c.closePath(); c.fill();
+};
+
+// ── 32: Half Fill — 左半分だけ塗り ──
+D['32'] = (c,x,y,w,h) => {
+  const s=w*.07;
+  // Full M outline (stroke)
+  c.save(); c.strokeStyle=c.fillStyle; c.lineWidth=s*.5;
+  c.lineJoin='miter';
+  c.beginPath();
+  c.moveTo(x+s*.3,y+h); c.lineTo(x+s*.3,y+s*.3); c.lineTo(x+w/2,y+h*.78);
+  c.lineTo(x+w-s*.3,y+s*.3); c.lineTo(x+w-s*.3,y+h);
+  c.stroke(); c.restore();
+  // Left half fill
+  c.save();
+  c.beginPath(); c.rect(x,y,w/2,h); c.clip();
+  c.beginPath();
+  c.moveTo(x,y+h); c.lineTo(x,y); c.lineTo(x+s,y);
+  c.lineTo(x+w/2,y+h*.78); c.lineTo(x+w-s,y); c.lineTo(x+w,y);
+  c.lineTo(x+w,y+h); c.lineTo(x+w-s,y+h); c.lineTo(x+w-s,y+h*.14);
+  c.lineTo(x+w/2,y+h*.92); c.lineTo(x+s,y+h*.14);
+  c.lineTo(x+s,y+h); c.closePath(); c.fill();
+  c.restore();
+};
+
+// ── 33: Gradient Steps — 段階的に太くなる横線 ──
+D['33'] = (c,x,y,w,h) => {
+  const rows=11, rowH=h/rows;
+  for(let i=0;i<rows;i++){
+    const t=i/(rows-1); // 0 to 1 from top to bottom
+    const ry=y+i*rowH;
+    // At each row, calculate M outline width
+    const outerL = x + 0;
+    const outerR = x + w;
+    // Inner left edge at this row
+    const innerL_top = x + w*.07; // vertical inner edge
+    const innerR_top = x + w - w*.07;
+    // Diagonal positions
+    const diagProgress = t;
+    const outerDiagL = x + w*.07 + (w/2-w*.07)*diagProgress;
+    const outerDiagR = x + w - w*.07 - (w/2-w*.07)*diagProgress;
+    const innerDiagL = x + w*.07 + (w/2-w*.07)*(1-diagProgress);
+    const innerDiagR = x + w - w*.07 - (w/2-w*.07)*(1-diagProgress);
+
+    // Simply draw horizontal bars that form M shape
+    const barH = rowH * 0.65;
+    // Left vertical bar
+    c.fillRect(x, ry, w*.08, barH);
+    // Right vertical bar
+    c.fillRect(x+w-w*.08, ry, w*.08, barH);
+
+    // Diagonal bars (approximate)
+    if(t < 0.82) {
+      const dxL = w*.07 + (w*.43-w*.07)*t/0.82;
+      c.fillRect(x+dxL-w*.03, ry, w*.07, barH);
+      c.fillRect(x+w-dxL-w*.04, ry, w*.07, barH);
+    }
+    if(t > 0.18) {
+      const t2 = (t-0.18)/0.82;
+      const dxL2 = w*.07 + (w*.43-w*.07)*(1-t2);
+      c.fillRect(x+dxL2-w*.03, ry, w*.07, barH);
+      c.fillRect(x+w-dxL2-w*.04, ry, w*.07, barH);
+    }
+  }
+};
+
+// ── 34: Arrow Up — 中央にarrow/chevron ──
+D['34'] = (c,x,y,w,h) => {
+  const s=w*.07;
+  // Standard M
+  c.beginPath();
+  c.moveTo(x,y+h); c.lineTo(x,y); c.lineTo(x+s,y);
+  c.lineTo(x+w/2,y+h*.78); c.lineTo(x+w-s,y); c.lineTo(x+w,y);
+  c.lineTo(x+w,y+h); c.lineTo(x+w-s,y+h); c.lineTo(x+w-s,y+h*.14);
+  c.lineTo(x+w/2,y+h*.92); c.lineTo(x+s,y+h*.14);
+  c.lineTo(x+s,y+h); c.closePath(); c.fill();
+  // Cut out upward arrow/chevron from center
+  c.save(); c.globalCompositeOperation='destination-out';
+  c.beginPath();
+  c.moveTo(x+w*.32,y+h*.70);
+  c.lineTo(x+w/2,y+h*.48);
+  c.lineTo(x+w*.68,y+h*.70);
+  c.lineTo(x+w*.63,y+h*.76);
+  c.lineTo(x+w/2,y+h*.56);
+  c.lineTo(x+w*.37,y+h*.76);
+  c.closePath(); c.fill();
+  c.restore();
+};
+
+// ── 35: Pixel/Block — ピクセルアートのM ──
+D['35'] = (c,x,y,w,h) => {
+  const cols=9, rows=10;
+  const bw=w/cols, bh=h/rows, gap=1;
+  const grid = [
+    [1,0,0,0,0,0,0,0,1],
+    [1,1,0,0,0,0,0,1,1],
+    [1,1,1,0,0,0,1,1,1],
+    [1,0,1,0,0,0,1,0,1],
+    [1,0,1,1,0,1,1,0,1],
+    [1,0,0,1,0,1,0,0,1],
+    [1,0,0,1,1,1,0,0,1],
+    [1,0,0,0,1,0,0,0,1],
+    [1,0,0,0,0,0,0,0,1],
+    [1,0,0,0,0,0,0,0,1],
+  ];
+  for(let r=0;r<rows;r++)
+    for(let co=0;co<cols;co++)
+      if(grid[r][co])
+        c.fillRect(x+co*bw+gap/2, y+r*bh+gap/2, bw-gap, bh-gap);
+};
+
+// ── 36: Continuous Curve — 完全曲線の一筆 ──
+D['36'] = (c,x,y,w,h) => {
+  const lw=w*.06;
+  c.save(); c.strokeStyle=c.fillStyle; c.lineWidth=lw;
+  c.lineCap='round'; c.lineJoin='round';
+  c.beginPath();
+  c.moveTo(x+lw/2,y+h);
+  c.bezierCurveTo(x+lw/2,y+h*.3, x+lw/2,y, x+w*.15,y+lw/2);
+  c.bezierCurveTo(x+w*.3,y+lw/2, x+w*.4,y+h*.5, x+w/2,y+h*.72);
+  c.bezierCurveTo(x+w*.6,y+h*.5, x+w*.7,y+lw/2, x+w*.85,y+lw/2);
+  c.bezierCurveTo(x+w-lw/2,y, x+w-lw/2,y+h*.3, x+w-lw/2,y+h);
+  c.stroke();
+  c.restore();
+};
+
+const CONCEPTS = [
+  { id:'17', name:'17 / Wave Valley', tag:'fluid', desc:'内側が波型のS字カーブ。流れるような動き。茶を点てる手の動き。' },
+  { id:'18', name:'18 / Diamond Center', tag:'jewel', desc:'谷底にダイヤモンド。宝石のようなアクセント。高級感の象徴。' },
+  { id:'19', name:'19 / Chamfer', tag:'precision', desc:'全ての角を45度カット。精密機械のような仕上げ。缶の面取りと呼応。', divider:'detail' },
+  { id:'20', name:'20 / Serif Tips', tag:'neo-classic', desc:'先端にだけ小さなセリフ。モダンとクラシックの融合。' },
+  { id:'21', name:'21 / Notch Peak', tag:'crowned', desc:'山頂にV字の切り込み。王冠のティアラ的ディテール。' },
+  { id:'22', name:'22 / Bridge Arch', tag:'connected', desc:'二つの山をアーチで繋ぐ。橋・門。人と抹茶を繋ぐブランドストーリー。' },
+  { id:'23', name:'23 / Three Prong', tag:'trident', desc:'中央にも縦線が降りる。Ш（シャー）的。三本の茶筅の穂先。', divider:'structure' },
+  { id:'24', name:'24 / Split Vertical', tag:'interrupted', desc:'縦線が中央で分断。呼吸する間。一服の間。' },
+  { id:'25', name:'25 / Overlap', tag:'layered', desc:'ストロークが半透明で重なる。交差部分が濃くなるレイヤー効果。' },
+  { id:'26', name:'26 / Razor Thin', tag:'ultra light', desc:'極細のストローク。Outfit 100相当。息を呑むような繊細さ。' },
+  { id:'27', name:'27 / Heavy', tag:'bold', desc:'極太。存在感の塊。小さいサイズでもアイコンとして視認性最強。', divider:'weight' },
+  { id:'28', name:'28 / Rounded Mono', tag:'friendly', desc:'round capのストロークのみ。角が一切ない。親しみやすさ。' },
+  { id:'29', name:'29 / Leaf Inner', tag:'hidden symbol', desc:'内側のネガティブスペースがbezierで茶葉の形。隠されたシンボル。' },
+  { id:'30', name:'30 / Nested M', tag:'recursive', desc:'大きいMの中に小さいMが切り抜かれている。入れ子。ブランドの深み。', divider:'concept' },
+  { id:'31', name:'31 / Shadow', tag:'depth', desc:'右下にずれた影。立体感と奥行き。エンボス加工の予感。' },
+  { id:'32', name:'32 / Half Fill', tag:'duality', desc:'左半分が塗り、右半分がアウトライン。抹茶&me、二つの存在。' },
+  { id:'33', name:'33 / Scan Lines', tag:'digital', desc:'横線の集積でMを形成。スキャンライン/印刷のハーフトーン的。' },
+  { id:'34', name:'34 / Arrow Cut', tag:'upward', desc:'谷の中央に上向きchevronを切り抜き。上昇・成長のシンボル。' },
+  { id:'35', name:'35 / Pixel Block', tag:'8-bit', desc:'ピクセルアート。レトロモダン。アプリアイコンに映える。', divider:'experimental' },
+  { id:'36', name:'36 / Continuous Curve', tag:'flow', desc:'一本の曲線だけでM。書道の「一筆」。最もミニマルな表現。' },
+];
+
+// =====================================================
+function renderWordmark(canvas, drawFn) {
+  const dpr=window.devicePixelRatio||2;
+  const fontSize=48, font=`200 ${fontSize}px Outfit`;
+  const ls=fontSize*.35, color='#1B4332';
+  const chars=['M','A','T','C','H','A','&','M','E'];
+  const ctx=canvas.getContext('2d'); ctx.font=font;
+  const cw=chars.map(c=>ctx.measureText(c).width);
+  const tw=cw.reduce((a,b)=>a+b,0)+ls*(chars.length-1);
+  const m=ctx.measureText('M');
+  const asc=m.actualBoundingBoxAscent, desc=m.actualBoundingBoxDescent;
+  const px=40,py=20,W=tw+px*2,H=asc+desc+py*2;
+  canvas.width=W*dpr; canvas.height=H*dpr;
+  canvas.style.width=W+'px'; canvas.style.height=H+'px';
+  ctx.scale(dpr,dpr);
+  const by=py+asc;
+  ctx.font=font; ctx.fillStyle=color; ctx.textBaseline='alphabetic';
+  let cx=px;
+  chars.forEach((ch,i)=>{
+    if(ch==='M') drawFn(ctx,cx,by-asc,cw[i],asc);
+    else ctx.fillText(ch,cx,by);
+    cx+=cw[i]+ls;
+  });
+}
+function renderMark(canvas,drawFn,bg,fg) {
+  const dpr=window.devicePixelRatio||2, sz=72;
+  canvas.width=sz*dpr; canvas.height=sz*dpr;
+  canvas.style.width=sz+'px'; canvas.style.height=sz+'px';
+  const ctx=canvas.getContext('2d'); ctx.scale(dpr,dpr);
+  ctx.fillStyle=bg; ctx.fillRect(0,0,sz,sz);
+  const ms=34,p=(sz-ms)/2;
+  ctx.fillStyle=fg;
+  drawFn(ctx,p,p+1,ms,ms-2);
+}
+function build() {
+  const app=document.getElementById('app'); let html='';
+  CONCEPTS.forEach(c=>{
+    if(c.divider) html+=`<div class="divider">${c.divider}</div>`;
+    html+=`<div class="concept">
+      <div class="concept-header"><h2>${c.name}</h2><span class="tag">${c.tag}</span></div>
+      <p class="desc">${c.desc}</p>
+      <div class="wordmark-canvas-wrap"><canvas id="wm-${c.id}"></canvas></div>
+      <div class="mark-display">
+        <div class="mark-cell"><div class="box light"><canvas id="mk-${c.id}-l"></canvas></div><div class="label">light</div></div>
+        <div class="mark-cell"><div class="box dark"><canvas id="mk-${c.id}-d"></canvas></div><div class="label">dark</div></div>
+        <div class="mark-cell"><div class="box green"><canvas id="mk-${c.id}-g"></canvas></div><div class="label">sage</div></div>
+        <div class="mark-cell"><div class="box pink"><canvas id="mk-${c.id}-p"></canvas></div><div class="label">sakura</div></div>
+      </div></div>`;
+  });
+  app.innerHTML=html;
+  document.fonts.ready.then(()=>{
+    CONCEPTS.forEach(c=>{
+      const fn=D[c.id];
+      renderWordmark(document.getElementById(`wm-${c.id}`),fn);
+      renderMark(document.getElementById(`mk-${c.id}-l`),fn,'#FAFAF8','#1B4332');
+      renderMark(document.getElementById(`mk-${c.id}-d`),fn,'#1B4332','#F5F0E8');
+      renderMark(document.getElementById(`mk-${c.id}-g`),fn,'#8AAE92','#1B4332');
+      renderMark(document.getElementById(`mk-${c.id}-p`),fn,'#F2C4C4','#1B4332');
+    });
+  });
+}
+build();
+</script>
+</body>
+</html>

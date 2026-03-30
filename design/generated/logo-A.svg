@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 400" width="1400" height="400">
+  <!--
+    LOGO A
+
+    全文字: クリーンなサンセリフ、緑(#2D6A4F)
+    「&」だけ: ピンク(#F2C4C4)、同じフォント、同じウェイト
+    それだけ。
+
+    「&」がピンクであること自体がブランドマーク。
+    単体で抽出: ピンクの「&」= matcha & me のアイコン。
+    Apothékaryの「É」と同じ構造 — 1文字だけ違う。
+  -->
+  <rect width="1400" height="400" fill="white"/>
+
+  <text x="80" y="248" font-family="'Futura', 'Century Gothic', 'Avenir Next', sans-serif" font-weight="300" font-size="80" letter-spacing="20" fill="#2D6A4F">matcha</text>
+
+  <text x="640" y="248" font-family="'Georgia', 'Times New Roman', serif" font-weight="400" font-style="italic" font-size="82" fill="#F2C4C4">&amp;</text>
+
+  <text x="720" y="248" font-family="'Futura', 'Century Gothic', 'Avenir Next', sans-serif" font-weight="300" font-size="80" letter-spacing="20" fill="#2D6A4F">me</text>
+</svg>

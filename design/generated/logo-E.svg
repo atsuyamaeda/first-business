@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" width="1200" height="500">
+  <!--
+    LOGO E — "Stacked Editorial"
+
+    コンセプト:
+    二段組レイアウト。
+    上段: 「matcha」大きく、ライトウェイト
+    下段: 「& me」小さく、右寄せ
+    「&」はセリフ体イタリック、抹茶グリーン。
+
+    高級ファッション誌のヘッダーのような上品さ。
+    縦のリズムと余白で品格を出す。
+  -->
+  <rect width="1200" height="500" fill="#FAFAF8"/>
+
+  <!-- matcha — 上段、大きく -->
+  <text x="80" y="260"
+        font-family="'Futura', 'Century Gothic', 'Avenir Next', 'Helvetica Neue', sans-serif"
+        font-weight="200"
+        font-size="120"
+        letter-spacing="28"
+        fill="#1C1C1C">matcha</text>
+
+  <!-- & — セリフ体イタリック、抹茶グリーン -->
+  <text x="680" y="340"
+        font-family="'Didot', 'Bodoni MT', 'Baskerville', 'Georgia', serif"
+        font-weight="400"
+        font-style="italic"
+        font-size="52"
+        fill="#4A7C59">&amp;</text>
+
+  <!-- me — 右寄せ、上段より小さく -->
+  <text x="740" y="340"
+        font-family="'Futura', 'Century Gothic', 'Avenir Next', 'Helvetica Neue', sans-serif"
+        font-weight="300"
+        font-size="48"
+        letter-spacing="16"
+        fill="#1C1C1C">me</text>
+
+  <!-- 極細の水平線 — matchaとの間の呼吸 -->
+  <line x1="680" y1="282" x2="840" y2="282"
+        stroke="#1C1C1C" stroke-width="0.5" opacity="0.2"/>
+</svg>

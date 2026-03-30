@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400">
+  <!--
+    LOGO D — "The Leaf T"
+
+    コンセプト:
+    全文字は洗練された細身サンセリフ、オールキャップス。
+    「T」の横棒の右端が、ほんのわずかに上にカーブして
+    茶葉の先端のシルエットになる。
+    気づく人だけが気づく、3mmのディテール。
+
+    色: 全文字 #1C1C1C (ほぼ黒) / 葉のカーブ部分も同色
+    背景: #FAFAF8 (わずかに温かみのある白)
+  -->
+  <rect width="1200" height="400" fill="#FAFAF8"/>
+
+  <!-- MA -->
+  <text x="80" y="248"
+        font-family="'Futura', 'Century Gothic', 'Avenir Next', 'Helvetica Neue', sans-serif"
+        font-weight="300"
+        font-size="76"
+        letter-spacing="22"
+        fill="#1C1C1C">MA</text>
+
+  <!-- Custom T with leaf-tip crossbar -->
+  <g transform="translate(248, 0)">
+    <!-- T の縦棒 -->
+    <line x1="24" y1="195" x2="24" y2="252"
+          stroke="#1C1C1C" stroke-width="2.8" stroke-linecap="butt"/>
+    <!-- T の横棒（左側は通常） -->
+    <line x1="0" y1="195" x2="24" y2="195"
+          stroke="#1C1C1C" stroke-width="2.8" stroke-linecap="butt"/>
+    <!-- T の横棒（右側） — 先端が上にカーブして葉のティップに -->
+    <path d="M 24 195 L 44 195 Q 50 195, 52 191 Q 54 187, 52 184"
+          fill="none" stroke="#1C1C1C" stroke-width="2.8" stroke-linecap="round"/>
+    <!-- 葉脈の暗示 — 極細の線 -->
+    <path d="M 46 195 Q 49 192, 50 189"
+          fill="none" stroke="#1C1C1C" stroke-width="0.8" stroke-linecap="round" opacity="0.4"/>
+  </g>
+
+  <!-- CHA -->
+  <text x="310" y="248"
+        font-family="'Futura', 'Century Gothic', 'Avenir Next', 'Helvetica Neue', sans-serif"
+        font-weight="300"
+        font-size="76"
+        letter-spacing="22"
+        fill="#1C1C1C">CHA</text>
+
+  <!-- & -->
+  <text x="610" y="248"
+        font-family="'Didot', 'Bodoni MT', 'Georgia', serif"
+        font-weight="400"
+        font-style="italic"
+        font-size="72"
+        fill="#1C1C1C"
+        opacity="0.35">&amp;</text>
+
+  <!-- ME -->
+  <text x="680" y="248"
+        font-family="'Futura', 'Century Gothic', 'Avenir Next', 'Helvetica Neue', sans-serif"
+        font-weight="300"
+        font-size="76"
+        letter-spacing="22"
+        fill="#1C1C1C">ME</text>
+</svg>

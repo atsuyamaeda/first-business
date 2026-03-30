@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>matcha & me — Color Blob 12 Variants</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Helvetica Neue', 'Segoe UI', sans-serif; background: #111; color: #fff; }
+  header { text-align: center; padding: 60px 20px 20px; }
+  header h1 { font-size: 1.6rem; font-weight: 200; letter-spacing: 0.5em; margin-bottom: 8px; }
+  header p { font-size: 0.7rem; letter-spacing: 0.2em; opacity: 0.35; }
+  .axis-labels { max-width: 1000px; margin: 30px auto 0; padding: 0 24px; display: grid; grid-template-columns: 120px 1fr 1fr; gap: 14px; }
+  .axis-labels .corner { }
+  .axis-labels .col-label { text-align: center; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.3; padding-bottom: 4px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .matrix { max-width: 1000px; margin: 0 auto; padding: 0 24px 20px; }
+  .section-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.3; margin: 40px 0 14px; padding-left: 4px; }
+  .row { display: grid; grid-template-columns: 120px 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .row-label-cell { display: flex; align-items: center; font-size: 0.65rem; letter-spacing: 0.1em; opacity: 0.4; line-height: 1.4; }
+  .row-label-cell .swatch { width: 14px; height: 14px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.15); margin-right: 8px; flex-shrink: 0; }
+  .cell { position: relative; border-radius: 8px; overflow: hidden; cursor: pointer; transition: transform 0.3s; }
+  .cell:hover { transform: scale(1.03); }
+  .cell img { width: 100%; display: block; }
+  .cell .info { position: absolute; bottom: 0; left: 0; right: 0; padding: 10px 12px; background: linear-gradient(transparent, rgba(0,0,0,0.7)); }
+  .cell .info .name { font-size: 0.65rem; font-weight: 400; letter-spacing: 0.1em; }
+  .cell .info .desc { font-size: 0.55rem; opacity: 0.5; margin-top: 2px; }
+  .color-chips { display: flex; gap: 4px; margin-top: 4px; }
+  .chip { width: 10px; height: 10px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); }
+  .display-section { max-width: 1000px; margin: 0 auto; padding: 0 24px 80px; }
+  .display-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .display-card { border-radius: 8px; overflow: hidden; cursor: pointer; transition: transform 0.3s; }
+  .display-card:hover { transform: scale(1.02); }
+  .display-card img { width: 100%; display: block; }
+  .display-card .label { padding: 10px 14px; font-size: 0.6rem; letter-spacing: 0.12em; color: #555; text-transform: uppercase; }
+  .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 1000; justify-content: center; align-items: center; cursor: zoom-out; }
+  .lightbox.active { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 6px; }
+  @media (max-width: 700px) { .row { grid-template-columns: 1fr; } .row-label-cell { display: none; } .axis-labels { display: none; } }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>color blob variants</h1>
+  <p>6 base colors &times; 2 blob directions = 12 combinations + display shots</p>
+</header>
+
+<div class="matrix">
+
+  <!-- Column headers -->
+  <div class="axis-labels">
+    <div class="corner"></div>
+    <div class="col-label">Blob: Sage Green #8AAE92</div>
+    <div class="col-label">Blob: Deep Green #1B4332</div>
+  </div>
+
+  <!-- PART A: Green base, warm blobs (original 6) -->
+  <div class="section-label">Part A &mdash; Green base &times; warm blob</div>
+
+  <div class="axis-labels" style="margin-top:8px">
+    <div class="corner"></div>
+    <div class="col-label">Blob: Pink #F2C4C4</div>
+    <div class="col-label">Blob: Salmon #E8967D</div>
+  </div>
+
+  <div class="row">
+    <div class="row-label-cell"><div class="swatch" style="background:#8AAE92"></div>Sage Green<br>base</div>
+    <div class="cell" onclick="openLB(this)">
+      <img src="generated/can-blob-green-pink.png">
+      <div class="info"><div class="name">Sage + Pink</div><div class="color-chips"><div class="chip" style="background:#8AAE92"></div><div class="chip" style="background:#F2C4C4"></div></div></div>
+    </div>
+    <div class="cell" onclick="openLB(this)">
+      <img src="generated/can-blob-green-salmon.png">
+      <div class="info"><div class="name">Sage + Salmon</div><div class="color-chips"><div class="chip" style="background:#8AAE92"></div><div class="chip" style="background:#E8967D"></div></div></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="row-label-cell"><div class="swatch" style="background:#1B4332"></div>Deep Green<br>base</div>
+    <div class="cell" onclick="openLB(this)">
+      <img src="generated/can-blob-dark-pink.png">
+      <div class="info"><div class="name">Deep + Pink</div><div class="color-chips"><div class="chip" style="background:#1B4332"></div><div class="chip" style="background:#F2C4C4"></div></div></div>
+    </div>
+    <div class="cell" onclick="openLB(this)">
+      <img src="generated/can-blob-dark-salmon.png">
+      <div class="info"><div class="name">Deep + Salmon</div><div class="color-chips"><div class="chip" style="background:#1B4332"></div><div class="chip" style="background:#E8967D"></div></div></div>
+    </div>
+  </div>
+
+  <!-- White blob column for Part A -->
+  <div class="axis-labels" style="margin-top:20px">
+    <div class="corner"></div>
+    <div class="col-label">Blob: White #F5F0E8</div>
+    <div class="col-label" style="opacity:0"></div>
+  </div>
+
+  <div class="row">
+    <div class="row-label-cell"><div class="swatch" style="background:#8AAE92"></div>Sage Green<br>base</div>
+    <div class="cell" onclick="openLB(this)">
+      <img src="generated/can-blob-green-white.png">
+      <div class="info"><div class="name">Sage + White</div><div class="color-chips"><div class="chip" style="background:#8AAE92"></div><div class="chip" style="background:#F5F0E8"></div></div></div>
+    </div>
+    <div class="cell" onclick="openLB(this)">
+      <img src="generated/can-blob-dark-white.png">
+      <div class="info"><div class="name">Deep + White</div><div class="color-chips"><div class="chip" style="background:#1B4332"></div><div class="chip" style="background:#F5F0E8"></div></div></div>
+    </div>
+  </div>
+
+  <!-- PART B: Warm base, green blobs (inverted 6) -->
+  <div class="section-label" style="margin-top:50px">Part B &mdash; Warm base &times; green blob (inverted)</div>
+
+  <div class="axis-labels" style="margin-top:8px">
+    <div class="corner"></div>
+    <div class="col-label">Blob: Sage Green #8AAE92</div>
+    <div class="col-label">Blob: Deep Green #1B4332</div>
+  </div>
+
+  <div class="row">
+    <div class="row-label-cell"><div class="swatch" style="background:#F2C4C4"></div>Pink<br>base</div>
+    <div class="cell" onclick="openLB(this)">
+      <img src="generated/can-blob-pink-lightgreen.png">
+      <div class="info"><div class="name">Pink + Sage</div><div class="color-chips"><div class="chip" style="background:#F2C4C4"></div><div class="chip" style="background:#8AAE92"></div></div></div>
+    </div>
+    <div class="cell" onclick="openLB(this)">
+      <img src="generated/can-blob-pink-darkgreen.png">
+      <div class="info"><div class="name">Pink + Deep</div><div class="color-chips"><div class="chip" style="background:#F2C4C4"></div><div class="chip" style="background:#1B4332"></div></div></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="row-label-cell"><div class="swatch" style="background:#E8967D"></div>Salmon<br>base</div>
+    <div class="cell" onclick="openLB(this)">
+      <img src="generated/can-blob-salmon-lightgreen.png">
+      <div class="info"><div class="name">Salmon + Sage</div><div class="color-chips"><div class="chip" style="background:#E8967D"></div><div class="chip" style="background:#8AAE92"></div></div></div>
+    </div>
+    <div class="cell" onclick="openLB(this)">
+      <img src="generated/can-blob-salmon-darkgreen.png">
+      <div class="info"><div class="name">Salmon + Deep</div><div class="color-chips"><div class="chip" style="background:#E8967D"></div><div class="chip" style="background:#1B4332"></div></div></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="row-label-cell"><div class="swatch" style="background:#F5F0E8"></div>White<br>base</div>
+    <div class="cell" onclick="openLB(this)">
+      <img src="generated/can-blob-white-lightgreen.png">
+      <div class="info"><div class="name">White + Sage</div><div class="color-chips"><div class="chip" style="background:#F5F0E8"></div><div class="chip" style="background:#8AAE92"></div></div></div>
+    </div>
+    <div class="cell" onclick="openLB(this)">
+      <img src="generated/can-blob-white-darkgreen.png">
+      <div class="info"><div class="name">White + Deep</div><div class="color-chips"><div class="chip" style="background:#F5F0E8"></div><div class="chip" style="background:#1B4332"></div></div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Display Shots -->
+<div class="display-section">
+  <div class="section-label" style="margin-top:40px; margin-bottom:14px;">Display shots &mdash; collection in context</div>
+  <div class="display-grid">
+    <div class="display-card" onclick="openLB(this)"><img src="generated/can-display-shelf.png"><div class="label">Japandi shelf</div></div>
+    <div class="display-card" onclick="openLB(this)"><img src="generated/can-display-marble.png"><div class="label">Marble grid</div></div>
+    <div class="display-card" onclick="openLB(this)"><img src="generated/can-display-lifestyle.png"><div class="label">Kitchen lifestyle</div></div>
+    <div class="display-card" onclick="openLB(this)"><img src="generated/can-display-dark.png"><div class="label">Dark editorial</div></div>
+  </div>
+</div>
+
+<div class="lightbox" id="lb" onclick="closeLB()"><img id="lb-img" src=""></div>
+<script>
+function openLB(c){document.getElementById('lb-img').src=c.querySelector('img').src;document.getElementById('lb').classList.add('active')}
+function closeLB(){document.getElementById('lb').classList.remove('active')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB()})
+</script>
+</body>
+</html>

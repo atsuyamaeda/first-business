@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>matcha & me — Logo Concepts</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@100;200;300&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Helvetica Neue', sans-serif; background: #faf9f7; color: #1a1a1a; }
+  header { text-align: center; padding: 60px 20px 40px; background: #1B4332; color: #fff; }
+  header h1 { font-family: 'Jost', sans-serif; font-size: 1.6rem; font-weight: 200; letter-spacing: 0.5em; margin-bottom: 8px; }
+  header p { font-size: 0.65rem; letter-spacing: 0.2em; opacity: 0.35; }
+  .grid { max-width: 1100px; margin: 40px auto; padding: 0 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .card { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 8px rgba(0,0,0,0.04); transition: transform 0.3s, box-shadow 0.3s; }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 6px 24px rgba(0,0,0,0.1); }
+  .card .preview { padding: 40px 20px; display: flex; justify-content: center; align-items: center; min-height: 220px; border-bottom: 1px solid #f0ede8; }
+  .card .preview img { max-width: 100%; max-height: 180px; }
+  /* Live rendered versions */
+  .card .live { padding: 40px 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 220px; border-bottom: 1px solid #f0ede8; }
+  .card .info { padding: 14px 18px; }
+  .card .info h3 { font-size: 0.8rem; font-weight: 400; letter-spacing: 0.1em; color: #333; }
+  .card .info p { font-size: 0.7rem; color: #999; margin-top: 4px; line-height: 1.5; }
+  /* On dark backgrounds */
+  .dark-preview { background: #1B4332 !important; }
+  .dark-preview * { color: #fff !important; }
+  .pink-preview { background: #F2C4C4 !important; }
+  .sage-preview { background: #8AAE92 !important; }
+
+  /* Typography classes */
+  .sans { font-family: 'Jost', 'Futura', 'Century Gothic', sans-serif; }
+  .serif-i { font-family: 'Cormorant Garamond', 'Georgia', serif; font-style: italic; }
+
+  .section-label { max-width: 1100px; margin: 40px auto 10px; padding: 0 24px; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: #bbb; }
+
+  /* Color test strip */
+  .color-strip { display: flex; gap: 2px; margin-top: 12px; border-radius: 4px; overflow: hidden; height: 30px; }
+  .color-strip div { flex: 1; display: flex; justify-content: center; align-items: center; font-size: 7px; letter-spacing: 1px; }
+
+  @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>logo concepts</h1>
+  <p>10 directions &mdash; SVG vector &mdash; Figma-ready</p>
+</header>
+
+<div class="section-label">Live Typography Renders (with Google Fonts)</div>
+
+<div class="grid">
+  <!-- A: Stacked -->
+  <div class="card">
+    <div class="live">
+      <span class="sans" style="font-weight:200; font-size:24px; letter-spacing:10px; color:#1B4332;">matcha</span>
+      <span class="serif-i" style="font-weight:300; font-size:34px; color:#1B4332; margin: 4px 0;">&amp;</span>
+      <span class="sans" style="font-weight:200; font-size:24px; letter-spacing:10px; color:#1B4332;">me</span>
+    </div>
+    <div class="info">
+      <h3>A — Stacked</h3>
+      <p>Celine的。3行の縦構成。&が視覚的アンカー。</p>
+      <div class="color-strip">
+        <div style="background:#fff; color:#1B4332;">White</div>
+        <div style="background:#1B4332; color:#fff;">Deep</div>
+        <div style="background:#8AAE92; color:#1B4332;">Sage</div>
+        <div style="background:#F2C4C4; color:#1B4332;">Pink</div>
+        <div style="background:#C0C0C0; color:#1B4332;">Silver</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- B: Inline -->
+  <div class="card">
+    <div class="live">
+      <div>
+        <span class="sans" style="font-weight:200; font-size:22px; letter-spacing:6px; color:#1B4332;">matcha </span>
+        <span class="serif-i" style="font-weight:300; font-size:24px; color:#1B4332;">&amp; </span>
+        <span class="sans" style="font-weight:200; font-size:22px; letter-spacing:6px; color:#1B4332;">me</span>
+      </div>
+    </div>
+    <div class="info">
+      <h3>B — Inline</h3>
+      <p>Saint Laurent的。一行でシンプル。&だけイタリックセリフ。</p>
+    </div>
+  </div>
+
+  <!-- C: Seal -->
+  <div class="card">
+    <div class="preview">
+      <img src="generated/logo-v2-C-seal.svg" alt="Seal">
+    </div>
+    <div class="info">
+      <h3>C — Circle Seal</h3>
+      <p>判子 × スイスタイポグラフィ。円の中は空。</p>
+    </div>
+  </div>
+
+  <!-- D: Monogram -->
+  <div class="card">
+    <div class="live">
+      <div style="margin-bottom: 12px;">
+        <span class="sans" style="font-weight:200; font-size:48px; color:#1B4332;">m</span>
+        <span class="serif-i" style="font-weight:300; font-size:48px; color:#1B4332;">&amp;</span>
+        <span class="sans" style="font-weight:200; font-size:48px; color:#1B4332;">m</span>
+      </div>
+      <div>
+        <span class="sans" style="font-weight:200; font-size:10px; letter-spacing:5px; color:#1B4332;">matcha </span>
+        <span class="serif-i" style="font-weight:300; font-size:11px; color:#1B4332;">&amp;</span>
+        <span class="sans" style="font-weight:200; font-size:10px; letter-spacing:5px; color:#1B4332;"> me</span>
+      </div>
+    </div>
+    <div class="info">
+      <h3>D — Monogram m&amp;m</h3>
+      <p>ジュエラーのホールマーク的。アイコン/ファビコンに最適。</p>
+    </div>
+  </div>
+
+  <!-- E: Blob -->
+  <div class="card">
+    <div class="live" style="position: relative;">
+      <div style="position:absolute; width:50px; height:45px; background:#F2C4C4; border-radius:50%; filter:blur(14px); opacity:0.6; top:50%; left:50%; transform:translate(-50%,-40%);"></div>
+      <span class="sans" style="font-weight:200; font-size:22px; letter-spacing:8px; color:#1B4332; position:relative;">matcha</span>
+      <span class="serif-i" style="font-weight:300; font-size:30px; color:#1B4332; margin: 2px 0; position:relative;">&amp;</span>
+      <span class="sans" style="font-weight:200; font-size:22px; letter-spacing:8px; color:#1B4332; position:relative;">me</span>
+    </div>
+    <div class="info">
+      <h3>E — Blob Integration</h3>
+      <p>&の背後にピンクの水彩ブロブ。缶デザインとの統一言語。</p>
+    </div>
+  </div>
+
+  <!-- F: Split -->
+  <div class="card">
+    <div class="live">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <span class="sans" style="font-weight:200; font-size:22px; letter-spacing:6px; color:#1B4332;">matcha</span>
+        <span style="width:1px; height:36px; background:#1B4332; opacity:0.3;"></span>
+        <div>
+          <span class="serif-i" style="font-weight:300; font-size:24px; color:#1B4332;">&amp; </span>
+          <span class="sans" style="font-weight:200; font-size:22px; letter-spacing:6px; color:#1B4332;">me</span>
+        </div>
+      </div>
+    </div>
+    <div class="info">
+      <h3>F — Split</h3>
+      <p>ヘアラインで二分。缶のTwo-Tone Splitデザインと呼応。</p>
+    </div>
+  </div>
+
+  <!-- G: Ampersand -->
+  <div class="card">
+    <div class="live">
+      <span class="serif-i" style="font-weight:300; font-size:100px; color:#1B4332; line-height:1;">&amp;</span>
+      <div style="margin-top:8px;">
+        <span class="sans" style="font-weight:200; font-size:10px; letter-spacing:5px; color:#1B4332;">matcha </span>
+        <span class="serif-i" style="font-weight:300; font-size:11px; color:#1B4332;">&amp;</span>
+        <span class="sans" style="font-weight:200; font-size:10px; letter-spacing:5px; color:#1B4332;"> me</span>
+      </div>
+    </div>
+    <div class="info">
+      <h3>G — The Ampersand</h3>
+      <p>&一文字がブランドマーク。接続、儀式、関係性の象徴。</p>
+    </div>
+  </div>
+
+  <!-- H: Architectural -->
+  <div class="card">
+    <div class="live">
+      <span class="sans" style="font-weight:200; font-size:26px; letter-spacing:14px; color:#1B4332; text-transform:uppercase;">matcha</span>
+      <span style="display:block; width:200px; height:1px; background:#1B4332; opacity:0.3; margin:8px 0;"></span>
+      <span class="serif-i" style="font-weight:300; font-size:18px; color:#1B4332; align-self:flex-end; padding-right:10px;">&amp; me</span>
+    </div>
+    <div class="info">
+      <h3>H — Architectural</h3>
+      <p>Peter Saville的。大文字MATCHAと小さな&amp; meの対比。</p>
+    </div>
+  </div>
+
+  <!-- I: Two-line -->
+  <div class="card">
+    <div class="live">
+      <div style="text-align:right;">
+        <div>
+          <span class="sans" style="font-weight:200; font-size:26px; letter-spacing:5px; color:#1B4332;">matcha </span>
+          <span class="serif-i" style="font-weight:300; font-size:28px; color:#1B4332;">&amp;</span>
+        </div>
+        <div style="margin-top:-2px;">
+          <span class="sans" style="font-weight:200; font-size:26px; letter-spacing:5px; color:#1B4332;">me</span>
+        </div>
+      </div>
+    </div>
+    <div class="info">
+      <h3>I — Two-Line Compact</h3>
+      <p>"matcha &"と"me"の2行。右寄せの親密さ。</p>
+    </div>
+  </div>
+
+  <!-- J: Ultra Minimal -->
+  <div class="card">
+    <div class="live">
+      <span style="font-family:'Helvetica Neue','Helvetica',sans-serif; font-weight:100; font-size:20px; letter-spacing:8px; color:#1B4332;">matcha & me</span>
+    </div>
+    <div class="info">
+      <h3>J — Ultra Minimal</h3>
+      <p>Helvetica Neue Ultralightの一行。究極の引き算。</p>
+    </div>
+  </div>
+</div>
+
+<!-- On different backgrounds -->
+  <!-- K: Copperplate Gothic -->
+  <div class="card" style="grid-column: 1 / -1;">
+    <div class="live" style="min-height:260px;">
+      <span style="font-family:'Copperplate','Copperplate Gothic Light','Copperplate Gothic',serif; font-weight:300; font-size:32px; letter-spacing:16px; color:#1B4332;">MATCHA</span>
+      <span style="font-family:'Copperplate','Copperplate Gothic Light','Copperplate Gothic',serif; font-weight:300; font-size:24px; letter-spacing:10px; color:#1B4332; margin:6px 0;">&amp;</span>
+      <span style="font-family:'Copperplate','Copperplate Gothic Light','Copperplate Gothic',serif; font-weight:300; font-size:32px; letter-spacing:16px; color:#1B4332;">ME</span>
+    </div>
+    <div class="info">
+      <h3>K — Copperplate Gothic</h3>
+      <p>Copperplate Gothic Light。小さなセリフが格式と重厚感を与える。全大文字だが威圧的ではなく、上品な権威。ラグジュアリーホテルやハイエンドステーショナリーの世界。</p>
+      <div class="color-strip">
+        <div style="background:#fff; color:#1B4332;">White</div>
+        <div style="background:#1B4332; color:#fff;">Deep</div>
+        <div style="background:#8AAE92; color:#1B4332;">Sage</div>
+        <div style="background:#F2C4C4; color:#1B4332;">Pink</div>
+        <div style="background:#C0C0C0; color:#1B4332;">Silver</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Copperplate on different backgrounds -->
+<div class="section-label" style="margin-top:60px;">Background test — Copperplate Gothic on can colors</div>
+<div class="grid">
+  <div class="card">
+    <div class="live" style="background:#1B4332;">
+      <span style="font-family:'Copperplate','Copperplate Gothic Light',serif; font-weight:300; font-size:24px; letter-spacing:12px; color:#fff;">MATCHA</span>
+      <span style="font-family:'Copperplate','Copperplate Gothic Light',serif; font-weight:300; font-size:18px; letter-spacing:8px; color:#fff; margin:4px 0;">&amp;</span>
+      <span style="font-family:'Copperplate','Copperplate Gothic Light',serif; font-weight:300; font-size:24px; letter-spacing:12px; color:#fff;">ME</span>
+    </div>
+    <div class="info"><h3>On Deep Green</h3></div>
+  </div>
+  <div class="card">
+    <div class="live" style="background:#8AAE92;">
+      <span style="font-family:'Copperplate','Copperplate Gothic Light',serif; font-weight:300; font-size:24px; letter-spacing:12px; color:#1B4332;">MATCHA</span>
+      <span style="font-family:'Copperplate','Copperplate Gothic Light',serif; font-weight:300; font-size:18px; letter-spacing:8px; color:#1B4332; margin:4px 0;">&amp;</span>
+      <span style="font-family:'Copperplate','Copperplate Gothic Light',serif; font-weight:300; font-size:24px; letter-spacing:12px; color:#1B4332;">ME</span>
+    </div>
+    <div class="info"><h3>On Sage Green</h3></div>
+  </div>
+  <div class="card">
+    <div class="live" style="background:#F2C4C4;">
+      <span style="font-family:'Copperplate','Copperplate Gothic Light',serif; font-weight:300; font-size:24px; letter-spacing:12px; color:#1B4332;">MATCHA</span>
+      <span style="font-family:'Copperplate','Copperplate Gothic Light',serif; font-weight:300; font-size:18px; letter-spacing:8px; color:#1B4332; margin:4px 0;">&amp;</span>
+      <span style="font-family:'Copperplate','Copperplate Gothic Light',serif; font-weight:300; font-size:24px; letter-spacing:12px; color:#1B4332;">ME</span>
+    </div>
+    <div class="info"><h3>On Sakura Pink</h3></div>
+  </div>
+  <div class="card">
+    <div class="live" style="background:linear-gradient(135deg, #d0d0d0, #e8e8e8);">
+      <span style="font-family:'Copperplate','Copperplate Gothic Light',serif; font-weight:300; font-size:24px; letter-spacing:12px; color:#333;">MATCHA</span>
+      <span style="font-family:'Copperplate','Copperplate Gothic Light',serif; font-weight:300; font-size:18px; letter-spacing:8px; color:#333; margin:4px 0;">&amp;</span>
+      <span style="font-family:'Copperplate','Copperplate Gothic Light',serif; font-weight:300; font-size:24px; letter-spacing:12px; color:#333;">ME</span>
+    </div>
+    <div class="info"><h3>On Silver</h3></div>
+  </div>
+</div>
+
+<div class="section-label" style="margin-top:60px;">Background test — Concept A on can colors</div>
+<div class="grid">
+  <div class="card">
+    <div class="live" style="background:#1B4332;">
+      <span class="sans" style="font-weight:200; font-size:20px; letter-spacing:8px; color:#fff;">matcha</span>
+      <span class="serif-i" style="font-weight:300; font-size:28px; color:#fff; margin:2px 0;">&amp;</span>
+      <span class="sans" style="font-weight:200; font-size:20px; letter-spacing:8px; color:#fff;">me</span>
+    </div>
+    <div class="info"><h3>On Deep Green</h3></div>
+  </div>
+  <div class="card">
+    <div class="live" style="background:#8AAE92;">
+      <span class="sans" style="font-weight:200; font-size:20px; letter-spacing:8px; color:#1B4332;">matcha</span>
+      <span class="serif-i" style="font-weight:300; font-size:28px; color:#1B4332; margin:2px 0;">&amp;</span>
+      <span class="sans" style="font-weight:200; font-size:20px; letter-spacing:8px; color:#1B4332;">me</span>
+    </div>
+    <div class="info"><h3>On Sage Green</h3></div>
+  </div>
+  <div class="card">
+    <div class="live" style="background:#F2C4C4;">
+      <span class="sans" style="font-weight:200; font-size:20px; letter-spacing:8px; color:#1B4332;">matcha</span>
+      <span class="serif-i" style="font-weight:300; font-size:28px; color:#1B4332; margin:2px 0;">&amp;</span>
+      <span class="sans" style="font-weight:200; font-size:20px; letter-spacing:8px; color:#1B4332;">me</span>
+    </div>
+    <div class="info"><h3>On Sakura Pink</h3></div>
+  </div>
+  <div class="card">
+    <div class="live" style="background:linear-gradient(135deg, #d0d0d0, #e8e8e8);">
+      <span class="sans" style="font-weight:200; font-size:20px; letter-spacing:8px; color:#333;">matcha</span>
+      <span class="serif-i" style="font-weight:300; font-size:28px; color:#333; margin:2px 0;">&amp;</span>
+      <span class="sans" style="font-weight:200; font-size:20px; letter-spacing:8px; color:#333;">me</span>
+    </div>
+    <div class="info"><h3>On Silver</h3></div>
+  </div>
+</div>
+
+<div style="height:80px"></div>
+</body>
+</html>

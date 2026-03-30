@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>MATCHA&ME — Round Valley Variations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #EDEDE9;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 200;
+    color: #1B4332;
+    padding: 60px 40px;
+  }
+  h1 {
+    text-align: center;
+    font-weight: 200;
+    font-size: 13px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #888;
+  }
+  .subtitle {
+    text-align: center;
+    font-size: 11px;
+    color: #aaa;
+    margin-bottom: 60px;
+    letter-spacing: 1px;
+  }
+  .concept {
+    max-width: 900px;
+    margin: 0 auto 80px;
+    background: #fff;
+    padding: 60px 50px 40px;
+  }
+  .concept-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+  }
+  .concept h2 {
+    font-weight: 200;
+    font-size: 12px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #999;
+  }
+  .concept .tag {
+    font-size: 10px;
+    color: #bbb;
+    letter-spacing: 2px;
+  }
+  .concept .desc {
+    font-size: 12px;
+    color: #aaa;
+    margin-bottom: 40px;
+    line-height: 1.8;
+  }
+  .wordmark-canvas-wrap {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 30px 0;
+  }
+  .wordmark-canvas-wrap canvas { display: block; margin: 0 auto; }
+  .mark-display {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #f0f0f0;
+  }
+  .mark-cell { text-align: center; }
+  .mark-cell .box {
+    width: 80px; height: 80px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 8px;
+  }
+  .mark-cell .box.light { background: #FAFAF8; border: 1px solid #f0f0f0; }
+  .mark-cell .box.dark { background: #1B4332; }
+  .mark-cell .box.green { background: #8AAE92; }
+  .mark-cell .box.pink { background: #F2C4C4; }
+  .mark-cell .label {
+    font-size: 9px; color: #ccc; letter-spacing: 2px; text-transform: uppercase;
+  }
+  .divider {
+    max-width: 900px; margin: 0 auto 60px;
+    text-align: center; font-size: 10px; letter-spacing: 6px;
+    text-transform: uppercase; color: #ccc;
+  }
+  .divider::before, .divider::after {
+    content: ''; display: inline-block; width: 60px; height: 1px;
+    background: #ddd; vertical-align: middle; margin: 0 20px;
+  }
+</style>
+</head>
+<body>
+
+<h1>matcha & me</h1>
+<div class="subtitle">Round Valley — 8 variations of the chawan M</div>
+<div id="app"></div>
+
+<script>
+// =====================================================
+// Round Valley variations
+// All share the core idea: inner V becomes a U curve
+// Exploring: depth, width, symmetry, shape
+// =====================================================
+
+// C1: Original Round — 元のRound Valley（基準）
+function drawM_C1(ctx, x, y, w, h) {
+  const sw = w * 0.07;
+  ctx.beginPath();
+  ctx.moveTo(x, y + h);
+  ctx.lineTo(x, y);
+  ctx.lineTo(x + sw, y);
+  ctx.lineTo(x + sw, y + h * 0.2);
+  ctx.quadraticCurveTo(x + w/2, y + h * 0.92, x + w - sw, y + h * 0.2);
+  ctx.lineTo(x + w - sw, y);
+  ctx.lineTo(x + w, y);
+  ctx.lineTo(x + w, y + h);
+  ctx.lineTo(x + w - sw, y + h);
+  ctx.lineTo(x + w - sw, y + h * 0.28);
+  ctx.quadraticCurveTo(x + w/2, y + h * 1.0, x + sw, y + h * 0.28);
+  ctx.lineTo(x + sw, y + h);
+  ctx.closePath();
+  ctx.fill();
+}
+
+// C2: Shallow Round — 浅いU字（50%で止まる）
+function drawM_C2(ctx, x, y, w, h) {
+  const sw = w * 0.07;
+  ctx.beginPath();
+  ctx.moveTo(x, y + h);
+  ctx.lineTo(x, y);
+  ctx.lineTo(x + sw, y);
+  ctx.lineTo(x + sw, y + h * 0.15);
+  ctx.quadraticCurveTo(x + w/2, y + h * 0.58, x + w - sw, y + h * 0.15);
+  ctx.lineTo(x + w - sw, y);
+  ctx.lineTo(x + w, y);
+  ctx.lineTo(x + w, y + h);
+  ctx.lineTo(x + w - sw, y + h);
+  ctx.lineTo(x + w - sw, y + h * 0.23);
+  ctx.quadraticCurveTo(x + w/2, y + h * 0.66, x + sw, y + h * 0.23);
+  ctx.lineTo(x + sw, y + h);
+  ctx.closePath();
+  ctx.fill();
+}
+
+// C3: Deep Round — 深いU字（ベースライン近くまで）
+function drawM_C3(ctx, x, y, w, h) {
+  const sw = w * 0.07;
+  ctx.beginPath();
+  ctx.moveTo(x, y + h);
+  ctx.lineTo(x, y);
+  ctx.lineTo(x + sw, y);
+  ctx.lineTo(x + sw, y + h * 0.25);
+  ctx.quadraticCurveTo(x + w/2, y + h * 1.08, x + w - sw, y + h * 0.25);
+  ctx.lineTo(x + w - sw, y);
+  ctx.lineTo(x + w, y);
+  ctx.lineTo(x + w, y + h);
+  ctx.lineTo(x + w - sw, y + h);
+  ctx.lineTo(x + w - sw, y + h * 0.33);
+  ctx.quadraticCurveTo(x + w/2, y + h * 1.15, x + sw, y + h * 0.33);
+  ctx.lineTo(x + sw, y + h);
+  ctx.closePath();
+  ctx.fill();
+}
+
+// C4: Narrow Round — 狭いU字（内側が締まる）
+function drawM_C4(ctx, x, y, w, h) {
+  const sw = w * 0.07;
+  const nw = w * 0.15; // narrowing — curves start closer to center
+  ctx.beginPath();
+  ctx.moveTo(x, y + h);
+  ctx.lineTo(x, y);
+  ctx.lineTo(x + sw, y);
+  ctx.lineTo(x + sw, y + h * 0.35);
+  ctx.quadraticCurveTo(x + w/2, y + h * 0.85, x + w - sw, y + h * 0.35);
+  ctx.lineTo(x + w - sw, y);
+  ctx.lineTo(x + w, y);
+  ctx.lineTo(x + w, y + h);
+  ctx.lineTo(x + w - sw, y + h);
+  ctx.lineTo(x + w - sw, y + h * 0.42);
+  ctx.quadraticCurveTo(x + w/2, y + h * 0.92, x + sw, y + h * 0.42);
+  ctx.lineTo(x + sw, y + h);
+  ctx.closePath();
+  ctx.fill();
+}
+
+// C5: Wide Round — 幅広のU字（ゆったり）
+function drawM_C5(ctx, x, y, w, h) {
+  const sw = w * 0.07;
+  ctx.beginPath();
+  ctx.moveTo(x, y + h);
+  ctx.lineTo(x, y);
+  ctx.lineTo(x + sw, y);
+  ctx.lineTo(x + sw, y + h * 0.08);
+  ctx.bezierCurveTo(x + sw, y + h * 0.75, x + w - sw, y + h * 0.75, x + w - sw, y + h * 0.08);
+  ctx.lineTo(x + w - sw, y);
+  ctx.lineTo(x + w, y);
+  ctx.lineTo(x + w, y + h);
+  ctx.lineTo(x + w - sw, y + h);
+  ctx.lineTo(x + w - sw, y + h * 0.16);
+  ctx.bezierCurveTo(x + w - sw, y + h * 0.83, x + sw, y + h * 0.83, x + sw, y + h * 0.16);
+  ctx.lineTo(x + sw, y + h);
+  ctx.closePath();
+  ctx.fill();
+}
+
+// C6: Flat Bottom Round — 底がフラットなU字（角丸の四角）
+function drawM_C6(ctx, x, y, w, h) {
+  const sw = w * 0.07;
+  const r = w * 0.12; // corner radius
+  const bY = y + h * 0.72; // bottom of U
+  ctx.beginPath();
+  ctx.moveTo(x, y + h);
+  ctx.lineTo(x, y);
+  ctx.lineTo(x + sw, y);
+  ctx.lineTo(x + sw, y + h * 0.15);
+  // outer: down, round corner, flat bottom, round corner, up
+  ctx.lineTo(x + sw, bY - r);
+  ctx.quadraticCurveTo(x + sw, bY, x + sw + r, bY);
+  ctx.lineTo(x + w - sw - r, bY);
+  ctx.quadraticCurveTo(x + w - sw, bY, x + w - sw, bY - r);
+  ctx.lineTo(x + w - sw, y + h * 0.15);
+  ctx.lineTo(x + w - sw, y);
+  ctx.lineTo(x + w, y);
+  ctx.lineTo(x + w, y + h);
+  ctx.lineTo(x + w - sw, y + h);
+  ctx.lineTo(x + w - sw, y + h * 0.22);
+  // inner
+  const ibY = bY + sw * 1.2;
+  ctx.lineTo(x + w - sw, ibY - r);
+  ctx.quadraticCurveTo(x + w - sw, ibY, x + w - sw - r, ibY);
+  ctx.lineTo(x + sw + r, ibY);
+  ctx.quadraticCurveTo(x + sw, ibY, x + sw, ibY - r);
+  ctx.lineTo(x + sw, y + h * 0.22);
+  ctx.lineTo(x + sw, y + h);
+  ctx.closePath();
+  ctx.fill();
+}
+
+// C7: Asymmetric Round — 左が直線、右がカーブ
+function drawM_C7(ctx, x, y, w, h) {
+  const sw = w * 0.07;
+  ctx.beginPath();
+  ctx.moveTo(x, y + h);
+  ctx.lineTo(x, y);
+  ctx.lineTo(x + sw, y);
+  // left side: straight diagonal
+  ctx.lineTo(x + w * 0.45, y + h * 0.78);
+  // right side: curves back up
+  ctx.quadraticCurveTo(x + w * 0.65, y + h * 0.88, x + w - sw, y + h * 0.2);
+  ctx.lineTo(x + w - sw, y);
+  ctx.lineTo(x + w, y);
+  ctx.lineTo(x + w, y + h);
+  ctx.lineTo(x + w - sw, y + h);
+  ctx.lineTo(x + w - sw, y + h * 0.28);
+  ctx.quadraticCurveTo(x + w * 0.65, y + h * 0.96, x + w * 0.45, y + h * 0.86);
+  // inner left: straight back
+  ctx.lineTo(x + sw, y + h * 0.14);
+  ctx.lineTo(x + sw, y + h);
+  ctx.closePath();
+  ctx.fill();
+}
+
+// C8: Semicircle — 完全な半円
+function drawM_C8(ctx, x, y, w, h) {
+  const sw = w * 0.07;
+  const cx = x + w / 2;
+  const outerR = (w - sw * 2) / 2;
+  const innerR = outerR - sw * 1.2;
+  const arcCenterY = y + h * 0.15;
+
+  ctx.beginPath();
+  ctx.moveTo(x, y + h);
+  ctx.lineTo(x, y);
+  ctx.lineTo(x + sw, y);
+  ctx.lineTo(x + sw, arcCenterY);
+  ctx.arc(cx, arcCenterY, outerR, Math.PI, 0, false);
+  ctx.lineTo(x + w - sw, y);
+  ctx.lineTo(x + w, y);
+  ctx.lineTo(x + w, y + h);
+  ctx.lineTo(x + w - sw, y + h);
+  ctx.lineTo(x + w - sw, arcCenterY);
+  ctx.arc(cx, arcCenterY, innerR, 0, Math.PI, true);
+  ctx.lineTo(x + sw, y + h);
+  ctx.closePath();
+  ctx.fill();
+}
+
+const DRAW_FNS = {
+  C1: drawM_C1, C2: drawM_C2, C3: drawM_C3, C4: drawM_C4,
+  C5: drawM_C5, C6: drawM_C6, C7: drawM_C7, C8: drawM_C8,
+};
+
+const CONCEPTS = [
+  { id: 'C1', name: 'C1 / Original Round', tag: 'baseline',
+    desc: '元のRound Valley。外側は直線、内側がU字カーブ。これが基準。' },
+  { id: 'C2', name: 'C2 / Shallow Round', tag: 'subtle',
+    desc: 'U字が浅く50%で止まる。変化は控えめだが、小さなサイズでも識別しやすい。' },
+  { id: 'C3', name: 'C3 / Deep Round', tag: 'dramatic',
+    desc: 'U字がベースライン近くまで深く降りる。存在感と大胆さ。' },
+  { id: 'C4', name: 'C4 / Narrow Round', tag: 'tight', divider: 'curve depth',
+    desc: 'U字が内側に締まり、カーブの開始点が高い。繊細で緊張感のある形。' },
+  { id: 'C5', name: 'C5 / Wide Round', tag: 'relaxed',
+    desc: 'ゆったりした幅広のカーブ。bezierで制御した安定感のあるシルエット。' },
+  { id: 'C6', name: 'C6 / Flat Bottom', tag: 'architectural',
+    desc: 'U字の底面がフラット。角丸の四角い谷。缶の形状と呼応する建築的な形。' },
+  { id: 'C7', name: 'C7 / Asymmetric', tag: 'wabi-sabi', divider: 'shape',
+    desc: '左は直線的な斜め、右だけカーブ。完全な対称を崩すことで生まれる有機的な美。' },
+  { id: 'C8', name: 'C8 / Semicircle', tag: 'pure geometry',
+    desc: '内側が完全な半円。最もシンプルで純粋な幾何学形。ensoとの親和性。' },
+];
+
+// =====================================================
+// Canvas rendering (same system as v3)
+// =====================================================
+function renderWordmark(canvas, drawFn) {
+  const dpr = window.devicePixelRatio || 2;
+  const fontSize = 48;
+  const font = `200 ${fontSize}px Outfit`;
+  const letterSpacing = fontSize * 0.35;
+  const color = '#1B4332';
+  const chars = ['M','A','T','C','H','A','&','M','E'];
+
+  const ctx = canvas.getContext('2d');
+  ctx.font = font;
+
+  const charWidths = chars.map(c => ctx.measureText(c).width);
+  const totalW = charWidths.reduce((a, b) => a + b, 0) + letterSpacing * (chars.length - 1);
+  const mMetrics = ctx.measureText('M');
+  const ascent = mMetrics.actualBoundingBoxAscent;
+  const descent = mMetrics.actualBoundingBoxDescent;
+  const textH = ascent + descent;
+
+  const padX = 40, padY = 20;
+  const cW = totalW + padX * 2;
+  const cH = textH + padY * 2;
+
+  canvas.width = cW * dpr;
+  canvas.height = cH * dpr;
+  canvas.style.width = cW + 'px';
+  canvas.style.height = cH + 'px';
+  ctx.scale(dpr, dpr);
+
+  const baseY = padY + ascent;
+  ctx.font = font;
+  ctx.fillStyle = color;
+  ctx.textBaseline = 'alphabetic';
+
+  let curX = padX;
+  chars.forEach((ch, i) => {
+    if (ch === 'M') {
+      const mW = charWidths[i];
+      const capTop = baseY - ascent;
+      drawFn(ctx, curX, capTop, mW, ascent);
+    } else {
+      ctx.fillText(ch, curX, baseY);
+    }
+    curX += charWidths[i] + letterSpacing;
+  });
+}
+
+function renderMark(canvas, drawFn, bgColor, fgColor) {
+  const dpr = window.devicePixelRatio || 2;
+  const size = 80;
+  canvas.width = size * dpr;
+  canvas.height = size * dpr;
+  canvas.style.width = size + 'px';
+  canvas.style.height = size + 'px';
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  ctx.fillStyle = bgColor;
+  ctx.fillRect(0, 0, size, size);
+  const mSize = 38;
+  const pad = (size - mSize) / 2;
+  ctx.fillStyle = fgColor;
+  drawFn(ctx, pad, pad + 2, mSize, mSize - 4);
+}
+
+function build() {
+  const app = document.getElementById('app');
+  let html = '';
+  CONCEPTS.forEach(c => {
+    if (c.divider) html += `<div class="divider">${c.divider}</div>`;
+    html += `
+    <div class="concept">
+      <div class="concept-header">
+        <h2>${c.name}</h2>
+        <span class="tag">${c.tag}</span>
+      </div>
+      <p class="desc">${c.desc}</p>
+      <div class="wordmark-canvas-wrap">
+        <canvas id="wm-${c.id}"></canvas>
+      </div>
+      <div class="mark-display">
+        <div class="mark-cell"><div class="box light"><canvas id="mk-${c.id}-light"></canvas></div><div class="label">light</div></div>
+        <div class="mark-cell"><div class="box dark"><canvas id="mk-${c.id}-dark"></canvas></div><div class="label">dark</div></div>
+        <div class="mark-cell"><div class="box green"><canvas id="mk-${c.id}-green"></canvas></div><div class="label">sage</div></div>
+        <div class="mark-cell"><div class="box pink"><canvas id="mk-${c.id}-pink"></canvas></div><div class="label">sakura</div></div>
+      </div>
+    </div>`;
+  });
+  app.innerHTML = html;
+  document.fonts.ready.then(() => {
+    CONCEPTS.forEach(c => {
+      const fn = DRAW_FNS[c.id];
+      renderWordmark(document.getElementById(`wm-${c.id}`), fn);
+      renderMark(document.getElementById(`mk-${c.id}-light`), fn, '#FAFAF8', '#1B4332');
+      renderMark(document.getElementById(`mk-${c.id}-dark`), fn, '#1B4332', '#F5F0E8');
+      renderMark(document.getElementById(`mk-${c.id}-green`), fn, '#8AAE92', '#1B4332');
+      renderMark(document.getElementById(`mk-${c.id}-pink`), fn, '#F2C4C4', '#1B4332');
+    });
+  });
+}
+
+build();
+</script>
+
+</body>
+</html>

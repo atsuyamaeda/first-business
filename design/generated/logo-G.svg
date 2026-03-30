@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 320" width="1000" height="320">
+  <!--
+    LOGO G — "Ultimate Ensō" (推奨案)
+
+    コンセプト:
+    「&」を禅の円相（えんそう）で囲む。
+    円相 = 一筆で描かれた不完全な円。禅における悟り・完全・無を象徴。
+    抹茶の精神的ルーツ（茶道 × 禅）を1つのマークに凝縮。
+
+    「&」は matcha と me をつなぐ記号 — その接続を
+    禅の円が包み込む。
+
+    この 円相+& は単独でブランドアイコン（favicon、SNSアイコン）として機能。
+
+    Typography:
+    - 本文: ライトウェイト geometric sans-serif (Futura/Century Gothic)
+    - &: イタリックセリフ (Didot/Georgia)
+    - 全体: 小文字で親しみやすさ + 上品さの両立
+
+    Color:
+    - テキスト: #1A1A1A
+    - 円相: #3A6B4E (深い抹茶グリーン)
+    - &: #1A1A1A
+  -->
+  <rect width="1000" height="320" fill="#FAFAF8"/>
+
+  <!-- matcha -->
+  <text x="56" y="188"
+        font-family="'Futura', 'Century Gothic', 'Avenir Next', 'Helvetica Neue', sans-serif"
+        font-weight="300"
+        font-size="64"
+        letter-spacing="14"
+        fill="#1A1A1A">matcha</text>
+
+  <!-- Ensō + & (brand mark) -->
+  <g transform="translate(500, 168)">
+    <!--
+      円相（えんそう）
+      上部に開口部を持つ不完全な円。
+      筆圧の変化: 左下で最も太く、上部の端で最も細い。
+    -->
+
+    <!-- メインの弧 — 1時の位置から反時計回りに11時まで -->
+    <path d="M 16 -28.5
+             A 33 33 0 1 1 -16 -28.5"
+          fill="none"
+          stroke="#3A6B4E"
+          stroke-width="2.8"
+          stroke-linecap="round"
+          opacity="0.85"/>
+
+    <!-- 筆圧の重み — 左下部分を太く（筆が紙に押し付けられる部分） -->
+    <path d="M -28 14
+             A 33 33 0 0 1 -16 28
+             A 33 33 0 0 1 6 33"
+          fill="none"
+          stroke="#3A6B4E"
+          stroke-width="5.5"
+          stroke-linecap="round"
+          opacity="0.2"/>
+
+    <!-- 筆の入り — 始点にわずかな点（墨が最初に紙に触れる瞬間） -->
+    <circle cx="16" cy="-28.5" r="1.8" fill="#3A6B4E" opacity="0.5"/>
+
+    <!-- & -->
+    <text x="0" y="8"
+          text-anchor="middle"
+          font-family="'Didot', 'Bodoni MT', 'Baskerville', 'Georgia', serif"
+          font-weight="400"
+          font-style="italic"
+          font-size="42"
+          fill="#1A1A1A">&amp;</text>
+  </g>
+
+  <!-- me -->
+  <text x="580" y="188"
+        font-family="'Futura', 'Century Gothic', 'Avenir Next', 'Helvetica Neue', sans-serif"
+        font-weight="300"
+        font-size="64"
+        letter-spacing="14"
+        fill="#1A1A1A">me</text>
+</svg>

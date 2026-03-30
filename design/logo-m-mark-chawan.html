@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>MATCHA&ME — Chawan (Tea Bowl) in M</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#EDEDE9;font-family:'Outfit',sans-serif;font-weight:200;color:#1B4332;padding:60px 30px}
+  h1{text-align:center;font-weight:200;font-size:13px;letter-spacing:8px;text-transform:uppercase;margin-bottom:10px;color:#888}
+  .subtitle{text-align:center;font-size:11px;color:#aaa;margin-bottom:50px;letter-spacing:1px}
+  .grid{max-width:1200px;margin:0 auto 60px;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px}
+  .card{background:#fff;padding:40px 30px 30px;text-align:center}
+  .card h2{font-weight:200;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#999;margin-bottom:3px}
+  .card .tag{font-size:9px;color:#bbb;letter-spacing:2px;display:block;margin-bottom:8px}
+  .card .desc{font-size:11px;color:#aaa;line-height:1.7;margin-bottom:20px}
+  .large-mark{margin:0 auto 15px}
+  .large-mark canvas{display:block;margin:0 auto}
+  .wordmark-wrap{margin:0 auto 15px}
+  .wordmark-wrap canvas{display:block;margin:0 auto}
+  .mark-row{display:flex;justify-content:center;gap:10px;padding-top:14px;border-top:1px solid #f0f0f0;flex-wrap:wrap}
+  .mark-cell{text-align:center}
+  .mark-cell .box{width:52px;height:52px;display:flex;align-items:center;justify-content:center;margin-bottom:3px}
+  .mark-cell .box.light{background:#FAFAF8;border:1px solid #f0f0f0}
+  .mark-cell .box.dark{background:#1B4332}
+  .mark-cell .box.green{background:#8AAE92}
+  .mark-cell .box.pink{background:#F2C4C4}
+  .mark-cell .box.cream{background:#F5F0E8}
+  .mark-cell .box.salmon{background:#E8967D}
+  .mark-cell .label{font-size:7px;color:#ccc;letter-spacing:1px;text-transform:uppercase}
+</style>
+</head>
+<body>
+<h1>matcha & me</h1>
+<div class="subtitle">Chawan — 茶碗に抹茶が入っている形</div>
+<div class="grid" id="grid"></div>
+
+<script>
+function drawStdM(c,x,y,w,h,s){
+  c.beginPath();
+  c.moveTo(x,y+h);c.lineTo(x,y);c.lineTo(x+s,y);
+  c.lineTo(x+w/2,y+h*.78);c.lineTo(x+w-s,y);c.lineTo(x+w,y);
+  c.lineTo(x+w,y+h);c.lineTo(x+w-s,y+h);c.lineTo(x+w-s,y+h*.14);
+  c.lineTo(x+w/2,y+h*.92);c.lineTo(x+s,y+h*.14);
+  c.lineTo(x+s,y+h);c.closePath();c.fill();
+}
+
+// Chawan shape:
+//   flatY: 水面の高さ（上辺）
+//   bottomY: 茶碗の底の位置
+//   widthPct: 水面の幅（Mの内側に対する%）
+//   bottomR: 底の丸さ（0=尖る, 1=半円）
+//   bowlNarrow: 底に向かってどれだけ狭まるか
+function makeChawan({flatY=0.38, bottomY=0.82, widthPct=0.80, bottomR=0.5, bowlNarrow=0.4}={}){
+  return (c,x,y,w,h)=>{
+    const s=w*.068;
+    drawStdM(c,x,y,w,h,s);
+
+    const innerW=w-s*2;
+    const topW=innerW*widthPct;
+    const topLeft=x+s+(innerW-topW)/2;
+    const topRight=topLeft+topW;
+    const topY=y+h*flatY;
+    const botY=y+h*bottomY;
+    const cx0=x+w/2;
+
+    // Bottom width (narrower than top)
+    const botW=topW*(1-bowlNarrow);
+    const botLeft=cx0-botW/2;
+    const botRight=cx0+botW/2;
+
+    // Rounded bottom radius
+    const botRadius=botW/2*bottomR;
+
+    c.beginPath();
+    // Flat top (水面)
+    c.moveTo(topLeft,topY);
+    c.lineTo(topRight,topY);
+
+    // Right side going down (slight inward curve)
+    c.bezierCurveTo(
+      topRight,       topY+(botY-topY)*.3,
+      botRight+botW*.1, botY-botRadius*1.5,
+      botRight,       botY-botRadius
+    );
+
+    // Rounded bottom
+    c.bezierCurveTo(
+      botRight,       botY,
+      cx0+botRadius*.3, botY+botRadius*.3,
+      cx0,            botY+botRadius*.3
+    );
+    c.bezierCurveTo(
+      cx0-botRadius*.3, botY+botRadius*.3,
+      botLeft,        botY,
+      botLeft,        botY-botRadius
+    );
+
+    // Left side going up
+    c.bezierCurveTo(
+      botLeft-botW*.1, botY-botRadius*1.5,
+      topLeft,        topY+(botY-topY)*.3,
+      topLeft,        topY
+    );
+
+    c.closePath();c.fill();
+  };
+}
+
+const D={};
+
+// ── サイズ
+D['H1']=makeChawan({flatY:.35, bottomY:.78, widthPct:.75, bottomR:.5, bowlNarrow:.35});
+D['H2']=makeChawan({flatY:.40, bottomY:.80, widthPct:.75, bottomR:.5, bowlNarrow:.35});
+D['H3']=makeChawan({flatY:.45, bottomY:.82, widthPct:.75, bottomR:.5, bowlNarrow:.35});
+
+// ── 幅
+D['H4']=makeChawan({flatY:.38, bottomY:.80, widthPct:.65, bottomR:.5, bowlNarrow:.35});
+D['H5']=makeChawan({flatY:.38, bottomY:.80, widthPct:.85, bottomR:.5, bowlNarrow:.35});
+
+// ── 底の丸さ
+D['H6']=makeChawan({flatY:.38, bottomY:.80, widthPct:.75, bottomR:.3, bowlNarrow:.35});
+D['H7']=makeChawan({flatY:.38, bottomY:.80, widthPct:.75, bottomR:.8, bowlNarrow:.35});
+
+// ── 茶碗のすぼまり
+D['H8']=makeChawan({flatY:.38, bottomY:.80, widthPct:.75, bottomR:.5, bowlNarrow:.20});
+D['H9']=makeChawan({flatY:.38, bottomY:.80, widthPct:.75, bottomR:.5, bowlNarrow:.55});
+
+// ── ベストミックス候補
+D['H10']=makeChawan({flatY:.36, bottomY:.78, widthPct:.78, bottomR:.6, bowlNarrow:.40});
+D['H11']=makeChawan({flatY:.40, bottomY:.82, widthPct:.72, bottomR:.55, bowlNarrow:.45});
+D['H12']=makeChawan({flatY:.38, bottomY:.80, widthPct:.80, bottomR:.7, bowlNarrow:.38});
+
+const ITEMS=[
+  {id:'H1',name:'H1 / High Surface',tag:'水面 35%',desc:'水面が高い。抹茶たっぷり。'},
+  {id:'H2',name:'H2 / Mid Surface',tag:'水面 40%',desc:'水面が中程度。バランス型。'},
+  {id:'H3',name:'H3 / Low Surface',tag:'水面 45%',desc:'水面が低い。茶碗の余白が多い。'},
+  {id:'H4',name:'H4 / Narrow',tag:'幅 65%',desc:'水面が狭い。小ぶりの碗。'},
+  {id:'H5',name:'H5 / Wide',tag:'幅 85%',desc:'水面が広い。大ぶりの碗。'},
+  {id:'H6',name:'H6 / Sharp Bottom',tag:'底の丸さ 30%',desc:'底がやや尖り気味。V字に近い。'},
+  {id:'H7',name:'H7 / Round Bottom',tag:'底の丸さ 80%',desc:'底がしっかり丸い。ぽってり。'},
+  {id:'H8',name:'H8 / Straight Side',tag:'すぼまり 20%',desc:'側面がほぼ垂直。湯呑み的。'},
+  {id:'H9',name:'H9 / Tapered',tag:'すぼまり 55%',desc:'底に向かって大きくすぼまる。茶碗らしい。'},
+  {id:'H10',name:'H10 / Mix A',tag:'candidate',desc:'高水面 + 丸底 + すぼまり強め。'},
+  {id:'H11',name:'H11 / Mix B',tag:'candidate',desc:'低水面 + 狭め + すぼまり強め。繊細。'},
+  {id:'H12',name:'H12 / Mix C',tag:'candidate',desc:'広水面 + 丸底。ゆったり温かい。'},
+];
+
+function renderWordmark(canvas,drawFn){
+  const dpr=window.devicePixelRatio||2,fs=36,font=`200 ${fs}px Outfit`,ls=fs*.35,color='#1B4332';
+  const chars=['M','A','T','C','H','A','&','M','E'];
+  const ctx=canvas.getContext('2d');ctx.font=font;
+  const cw=chars.map(ch=>ctx.measureText(ch).width),tw=cw.reduce((a,b)=>a+b,0)+ls*(chars.length-1);
+  const m=ctx.measureText('M'),asc=m.actualBoundingBoxAscent,desc=m.actualBoundingBoxDescent;
+  const px=20,py=12,W=tw+px*2,H=asc+desc+py*2;
+  canvas.width=W*dpr;canvas.height=H*dpr;canvas.style.width=W+'px';canvas.style.height=H+'px';
+  ctx.scale(dpr,dpr);const by=py+asc;
+  ctx.font=font;ctx.fillStyle=color;ctx.textBaseline='alphabetic';
+  let cx=px;chars.forEach((ch,i)=>{if(ch==='M')drawFn(ctx,cx,by-asc,cw[i],asc);else ctx.fillText(ch,cx,by);cx+=cw[i]+ls;});
+}
+function renderMarkLarge(canvas,drawFn,bg,fg){
+  const dpr=window.devicePixelRatio||2,sz=130;
+  canvas.width=sz*dpr;canvas.height=sz*dpr;canvas.style.width=sz+'px';canvas.style.height=sz+'px';
+  const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
+  ctx.fillStyle=bg;ctx.fillRect(0,0,sz,sz);
+  const ms=74,p=(sz-ms)/2;ctx.fillStyle=fg;drawFn(ctx,p,p+4,ms,ms-8);
+}
+function renderMark(canvas,drawFn,bg,fg){
+  const dpr=window.devicePixelRatio||2,sz=52;
+  canvas.width=sz*dpr;canvas.height=sz*dpr;canvas.style.width=sz+'px';canvas.style.height=sz+'px';
+  const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
+  ctx.fillStyle=bg;ctx.fillRect(0,0,sz,sz);
+  const ms=26,p=(sz-ms)/2;ctx.fillStyle=fg;drawFn(ctx,p,p+1,ms,ms-2);
+}
+
+function build(){
+  const grid=document.getElementById('grid');
+  ITEMS.forEach(item=>{
+    const card=document.createElement('div');card.className='card';
+    card.innerHTML=`
+      <h2>${item.name}</h2><span class="tag">${item.tag}</span>
+      <p class="desc">${item.desc}</p>
+      <div class="large-mark"><canvas id="lg-${item.id}"></canvas></div>
+      <div class="wordmark-wrap"><canvas id="wm-${item.id}"></canvas></div>
+      <div class="mark-row">
+        <div class="mark-cell"><div class="box light"><canvas id="mk-${item.id}-l"></canvas></div><div class="label">light</div></div>
+        <div class="mark-cell"><div class="box dark"><canvas id="mk-${item.id}-d"></canvas></div><div class="label">dark</div></div>
+        <div class="mark-cell"><div class="box green"><canvas id="mk-${item.id}-g"></canvas></div><div class="label">sage</div></div>
+        <div class="mark-cell"><div class="box pink"><canvas id="mk-${item.id}-p"></canvas></div><div class="label">pink</div></div>
+        <div class="mark-cell"><div class="box cream"><canvas id="mk-${item.id}-c"></canvas></div><div class="label">cream</div></div>
+        <div class="mark-cell"><div class="box salmon"><canvas id="mk-${item.id}-s"></canvas></div><div class="label">salmon</div></div>
+      </div>`;
+    grid.appendChild(card);
+  });
+  document.fonts.ready.then(()=>{
+    ITEMS.forEach(item=>{
+      const fn=D[item.id];
+      renderMarkLarge(document.getElementById(`lg-${item.id}`),fn,'#FAFAF8','#1B4332');
+      renderWordmark(document.getElementById(`wm-${item.id}`),fn);
+      renderMark(document.getElementById(`mk-${item.id}-l`),fn,'#FAFAF8','#1B4332');
+      renderMark(document.getElementById(`mk-${item.id}-d`),fn,'#1B4332','#F5F0E8');
+      renderMark(document.getElementById(`mk-${item.id}-g`),fn,'#8AAE92','#1B4332');
+      renderMark(document.getElementById(`mk-${item.id}-p`),fn,'#F2C4C4','#1B4332');
+      renderMark(document.getElementById(`mk-${item.id}-c`),fn,'#F5F0E8','#1B4332');
+      renderMark(document.getElementById(`mk-${item.id}-s`),fn,'#E8967D','#1B4332');
+    });
+  });
+}
+build();
+</script>
+</body>
+</html>
