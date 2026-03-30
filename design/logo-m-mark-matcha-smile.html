@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>MATCHA&ME — Matcha Pool + Smile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#EDEDE9;font-family:'Outfit',sans-serif;font-weight:200;color:#1B4332;padding:60px 30px}
+  h1{text-align:center;font-weight:200;font-size:13px;letter-spacing:8px;text-transform:uppercase;margin-bottom:10px;color:#888}
+  .subtitle{text-align:center;font-size:11px;color:#aaa;margin-bottom:50px;letter-spacing:1px}
+  .grid{max-width:1200px;margin:0 auto 60px;display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:24px}
+  .card{background:#fff;padding:40px 30px 30px;text-align:center}
+  .card h2{font-weight:200;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#999;margin-bottom:3px}
+  .card .tag{font-size:9px;color:#bbb;letter-spacing:2px;display:block;margin-bottom:8px}
+  .card .desc{font-size:11px;color:#aaa;line-height:1.7;margin-bottom:20px}
+  .large-mark{margin:0 auto 15px}
+  .large-mark canvas{display:block;margin:0 auto}
+  .wordmark-wrap{margin:0 auto 15px}
+  .wordmark-wrap canvas{display:block;margin:0 auto}
+  .mark-row{display:flex;justify-content:center;gap:10px;padding-top:14px;border-top:1px solid #f0f0f0;flex-wrap:wrap}
+  .mark-cell{text-align:center}
+  .mark-cell .box{width:52px;height:52px;display:flex;align-items:center;justify-content:center;margin-bottom:3px}
+  .mark-cell .box.light{background:#FAFAF8;border:1px solid #f0f0f0}
+  .mark-cell .box.dark{background:#1B4332}
+  .mark-cell .box.green{background:#8AAE92}
+  .mark-cell .box.pink{background:#F2C4C4}
+  .mark-cell .label{font-size:7px;color:#ccc;letter-spacing:1px;text-transform:uppercase}
+</style>
+</head>
+<body>
+<h1>matcha & me</h1>
+<div class="subtitle">茶碗のような M に抹茶が溜まり、「me」の M が笑顔になる</div>
+<div class="grid" id="grid"></div>
+
+<script>
+// =====================================================
+// Round Valley M (C1 base from v4-round)
+// Inner U curve: from (sw, 0.28h) to (w-sw, 0.28h)
+// with control point at (w/2, 1.0h)
+// =====================================================
+
+function drawRoundM(ctx, x, y, w, h, sw) {
+  ctx.beginPath();
+  ctx.moveTo(x, y + h);
+  ctx.lineTo(x, y);
+  ctx.lineTo(x + sw, y);
+  ctx.lineTo(x + sw, y + h * 0.2);
+  ctx.quadraticCurveTo(x + w/2, y + h * 0.92, x + w - sw, y + h * 0.2);
+  ctx.lineTo(x + w - sw, y);
+  ctx.lineTo(x + w, y);
+  ctx.lineTo(x + w, y + h);
+  ctx.lineTo(x + w - sw, y + h);
+  ctx.lineTo(x + w - sw, y + h * 0.28);
+  ctx.quadraticCurveTo(x + w/2, y + h * 1.0, x + sw, y + h * 0.28);
+  ctx.lineTo(x + sw, y + h);
+  ctx.closePath();
+  ctx.fill();
+}
+
+// Draw pool (matcha) in the inner U curve
+// waterRatio: how high the water is (0.28 = top of inner curve sides, 0.64 = deepest point)
+// Lower waterRatio = more matcha
+function drawPool(ctx, x, y, w, h, sw, waterRatio, poolColor) {
+  const waterY = h * waterRatio;
+  ctx.save();
+  // Clip to region below the water line
+  ctx.beginPath();
+  ctx.rect(x - 1, y + waterY, w + 2, h - waterY + 10);
+  ctx.clip();
+  // Fill the inner U curve area (between the straight top line and the curve)
+  ctx.fillStyle = poolColor;
+  ctx.beginPath();
+  ctx.moveTo(x + sw, y + h * 0.28);
+  ctx.lineTo(x + w - sw, y + h * 0.28);
+  ctx.lineTo(x + w - sw, y + h * 0.28);
+  ctx.quadraticCurveTo(x + w/2, y + h * 1.0, x + sw, y + h * 0.28);
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+}
+
+// Draw two smiling arc eyes (にっこり) for the smiley face
+function drawEyes(ctx, x, y, w, h, eyeColor) {
+  const eyeY = y + h * 0.05;
+  const leftX = x + w * 0.33;
+  const rightX = x + w * 0.67;
+  const arcW = w * 0.07;
+  const arcH = w * 0.07;
+  const lw = Math.max(w * 0.025, 1);
+  ctx.strokeStyle = eyeColor;
+  ctx.lineWidth = lw;
+  ctx.lineCap = 'round';
+  // Left eye — upward arc (弧が上に膨らむ)
+  ctx.beginPath();
+  ctx.moveTo(leftX - arcW, eyeY);
+  ctx.quadraticCurveTo(leftX, eyeY - arcH, leftX + arcW, eyeY);
+  ctx.stroke();
+  // Right eye
+  ctx.beginPath();
+  ctx.moveTo(rightX - arcW, eyeY);
+  ctx.quadraticCurveTo(rightX, eyeY - arcH, rightX + arcW, eyeY);
+  ctx.stroke();
+}
+
+// Combined draw function for a single M
+// hasPool: draw matcha in the U curve
+// hasEyes: draw smiley eyes
+function makeDrawFn(waterRatio, hasPool, hasEyes) {
+  return function(ctx, x, y, w, h, opts) {
+    opts = opts || {};
+    const mColor = opts.mColor || '#1A1A1A';
+    const poolColor = opts.poolColor || '#3A6B4E';
+    const eyeColor = opts.eyeColor || '#1A1A1A';
+    const sw = w * 0.07;
+
+    // 1. Draw green pool first (if enabled)
+    if (hasPool) {
+      drawPool(ctx, x, y, w, h, sw, waterRatio, poolColor);
+    }
+
+    // 2. Draw the M shape on top in black
+    ctx.fillStyle = mColor;
+    drawRoundM(ctx, x, y, w, h, sw);
+
+    // 3. Draw eyes on top (if enabled)
+    if (hasEyes) {
+      drawEyes(ctx, x, y, w, h, eyeColor);
+    }
+  };
+}
+
+// =====================================================
+// Wordmark renderer
+// First M: pool only, Second M (in "ME"): pool + eyes
+// =====================================================
+function renderWordmark(canvas, waterRatio) {
+  const dpr = window.devicePixelRatio || 2;
+  const fs = 42;
+  const font = `200 ${fs}px Outfit`;
+  const ls = fs * 0.35;
+  const mColor = '#1A1A1A';
+  const poolColor = '#3A6B4E';
+  const chars = ['M','A','T','C','H','A','&','M','E'];
+
+  const ctx = canvas.getContext('2d');
+  ctx.font = font;
+  const cw = chars.map(ch => ctx.measureText(ch).width);
+  const tw = cw.reduce((a, b) => a + b, 0) + ls * (chars.length - 1);
+  const m = ctx.measureText('M');
+  const asc = m.actualBoundingBoxAscent;
+  const desc = m.actualBoundingBoxDescent;
+  const px = 30, py = 16;
+  const W = tw + px * 2, H = asc + desc + py * 2;
+
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  canvas.style.width = W + 'px';
+  canvas.style.height = H + 'px';
+  ctx.scale(dpr, dpr);
+
+  const by = py + asc;
+  ctx.font = font;
+  ctx.textBaseline = 'alphabetic';
+
+  let cx = px;
+  let mCount = 0;
+  chars.forEach((ch, i) => {
+    if (ch === 'M') {
+      mCount++;
+      const mW = cw[i];
+      const capTop = by - asc;
+      const isSecondM = (mCount === 2);
+      const fn = makeDrawFn(waterRatio, !isSecondM, isSecondM);
+      fn(ctx, cx, capTop, mW, asc, { mColor, poolColor, eyeColor: mColor });
+    } else {
+      ctx.fillStyle = mColor;
+      ctx.fillText(ch, cx, by);
+    }
+    cx += cw[i] + ls;
+  });
+}
+
+// Large mark: "Matcha" M with pool (no eyes)
+function renderMarkLarge(canvas, waterRatio, bg, mColor) {
+  const dpr = window.devicePixelRatio || 2;
+  const sz = 140;
+  canvas.width = sz * dpr;
+  canvas.height = sz * dpr;
+  canvas.style.width = sz + 'px';
+  canvas.style.height = sz + 'px';
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, sz, sz);
+  const ms = 80, p = (sz - ms) / 2;
+  const c = mColor || '#1A1A1A';
+  const fn = makeDrawFn(waterRatio, true, false);
+  fn(ctx, p, p + 4, ms, ms - 8, { mColor: c, poolColor: '#3A6B4E' });
+}
+
+// Small mark: "Matcha" M with pool (no eyes)
+function renderMark(canvas, waterRatio, bg, mColor) {
+  const dpr = window.devicePixelRatio || 2;
+  const sz = 52;
+  canvas.width = sz * dpr;
+  canvas.height = sz * dpr;
+  canvas.style.width = sz + 'px';
+  canvas.style.height = sz + 'px';
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, sz, sz);
+  const ms = 28, p = (sz - ms) / 2;
+  const c = mColor || '#1A1A1A';
+  const fn = makeDrawFn(waterRatio, true, false);
+  fn(ctx, p, p + 1, ms, ms - 2, { mColor: c, poolColor: '#3A6B4E' });
+}
+
+// =====================================================
+// Variations
+// =====================================================
+const ITEMS = [
+  { id: 'P1', waterRatio: 0.42, name: '控えめ', tag: 'subtle', desc: 'U字の底に少し抹茶が溜まっている。控えめで上品。' },
+  { id: 'P2', waterRatio: 0.37, name: 'やや多め', tag: 'balanced', desc: '抹茶がしっかり見える量。茶碗のイメージに近い。' },
+  { id: 'P3', waterRatio: 0.33, name: '多め', tag: 'rich', desc: 'たっぷり溜まっている。存在感のある緑。' },
+  { id: 'P4', waterRatio: 0.30, name: 'たっぷり', tag: 'full', desc: 'U字の大部分が緑で満たされている。大胆な印象。' },
+  { id: 'P5', waterRatio: 0.28, name: '満杯', tag: 'maximum', desc: 'ほぼ満タン。緑が支配的で力強い。' },
+];
+
+function build() {
+  const grid = document.getElementById('grid');
+  ITEMS.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <h2>${item.name}</h2><span class="tag">${item.tag}</span>
+      <p class="desc">${item.desc}</p>
+      <div class="large-mark"><canvas id="lg-${item.id}"></canvas></div>
+      <div class="wordmark-wrap"><canvas id="wm-${item.id}"></canvas></div>
+      <div class="mark-row">
+        <div class="mark-cell"><div class="box light"><canvas id="mk-${item.id}-l"></canvas></div><div class="label">light</div></div>
+        <div class="mark-cell"><div class="box dark"><canvas id="mk-${item.id}-d"></canvas></div><div class="label">dark</div></div>
+        <div class="mark-cell"><div class="box green"><canvas id="mk-${item.id}-g"></canvas></div><div class="label">sage</div></div>
+        <div class="mark-cell"><div class="box pink"><canvas id="mk-${item.id}-pb"></canvas></div><div class="label">sakura/black</div></div>
+        <div class="mark-cell"><div class="box pink"><canvas id="mk-${item.id}-pw"></canvas></div><div class="label">sakura/white</div></div>
+      </div>`;
+    grid.appendChild(card);
+  });
+  document.fonts.ready.then(() => {
+    ITEMS.forEach(item => {
+      const wr = item.waterRatio;
+      renderMarkLarge(document.getElementById(`lg-${item.id}`), wr, '#FAFAF8');
+      renderWordmark(document.getElementById(`wm-${item.id}`), wr);
+      renderMark(document.getElementById(`mk-${item.id}-l`), wr, '#FAFAF8', '#1A1A1A');
+      renderMark(document.getElementById(`mk-${item.id}-d`), wr, '#1B4332', '#F5F0E8');
+      renderMark(document.getElementById(`mk-${item.id}-g`), wr, '#8AAE92', '#1A1A1A');
+      renderMark(document.getElementById(`mk-${item.id}-pb`), wr, '#F2C4C4', '#1A1A1A');
+      renderMark(document.getElementById(`mk-${item.id}-pw`), wr, '#F2C4C4', '#FFFFFF');
+    });
+  });
+}
+build();
+</script>
+</body>
+</html>
