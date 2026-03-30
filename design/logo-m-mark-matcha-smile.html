@@ -81,33 +81,45 @@ function drawPool(ctx, x, y, w, h, sw, waterRatio, poolColor) {
   ctx.restore();
 }
 
-// Draw two smiling arc eyes (にっこり) for the smiley face
-function drawEyes(ctx, x, y, w, h, eyeColor) {
+// Draw eyes — 'dot' or 'arc'
+function drawEyes(ctx, x, y, w, h, eyeColor, eyeType) {
   const eyeY = y + h * 0.05;
   const leftX = x + w * 0.33;
   const rightX = x + w * 0.67;
-  const arcW = w * 0.07;
-  const arcH = w * 0.07;
-  const lw = Math.max(w * 0.025, 1);
-  ctx.strokeStyle = eyeColor;
-  ctx.lineWidth = lw;
-  ctx.lineCap = 'round';
-  // Left eye — upward arc (弧が上に膨らむ)
-  ctx.beginPath();
-  ctx.moveTo(leftX - arcW, eyeY);
-  ctx.quadraticCurveTo(leftX, eyeY - arcH, leftX + arcW, eyeY);
-  ctx.stroke();
-  // Right eye
-  ctx.beginPath();
-  ctx.moveTo(rightX - arcW, eyeY);
-  ctx.quadraticCurveTo(rightX, eyeY - arcH, rightX + arcW, eyeY);
-  ctx.stroke();
+
+  if (eyeType === 'dot') {
+    const r = w * 0.03;
+    ctx.fillStyle = eyeColor;
+    ctx.beginPath();
+    ctx.arc(leftX, eyeY, r, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(rightX, eyeY, r, 0, Math.PI * 2);
+    ctx.fill();
+  } else {
+    // arc — upward curve (にっこり)
+    const arcW = w * 0.07;
+    const arcH = w * 0.07;
+    const lw = Math.max(w * 0.025, 1);
+    ctx.strokeStyle = eyeColor;
+    ctx.lineWidth = lw;
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    ctx.moveTo(leftX - arcW, eyeY);
+    ctx.quadraticCurveTo(leftX, eyeY - arcH, leftX + arcW, eyeY);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(rightX - arcW, eyeY);
+    ctx.quadraticCurveTo(rightX, eyeY - arcH, rightX + arcW, eyeY);
+    ctx.stroke();
+  }
 }
 
 // Combined draw function for a single M
 // hasPool: draw matcha in the U curve
 // hasEyes: draw smiley eyes
-function makeDrawFn(waterRatio, hasPool, hasEyes) {
+function makeDrawFn(waterRatio, hasPool, eyeType) {
+  // eyeType: false/null = no eyes, 'dot' = dots, 'arc' = にっこり curves
   return function(ctx, x, y, w, h, opts) {
     opts = opts || {};
     const mColor = opts.mColor || '#1A1A1A';
@@ -115,18 +127,15 @@ function makeDrawFn(waterRatio, hasPool, hasEyes) {
     const eyeColor = opts.eyeColor || '#1A1A1A';
     const sw = w * 0.07;
 
-    // 1. Draw green pool first (if enabled)
     if (hasPool) {
       drawPool(ctx, x, y, w, h, sw, waterRatio, poolColor);
     }
 
-    // 2. Draw the M shape on top in black
     ctx.fillStyle = mColor;
     drawRoundM(ctx, x, y, w, h, sw);
 
-    // 3. Draw eyes on top (if enabled)
-    if (hasEyes) {
-      drawEyes(ctx, x, y, w, h, eyeColor);
+    if (eyeType) {
+      drawEyes(ctx, x, y, w, h, eyeColor, eyeType);
     }
   };
 }
@@ -135,7 +144,7 @@ function makeDrawFn(waterRatio, hasPool, hasEyes) {
 // Wordmark renderer
 // First M: pool only, Second M (in "ME"): pool + eyes
 // =====================================================
-function renderWordmark(canvas, waterRatio) {
+function renderWordmark(canvas, waterRatio, eyeType) {
   const dpr = window.devicePixelRatio || 2;
   const fs = 42;
   const font = `200 ${fs}px Outfit`;
@@ -172,7 +181,7 @@ function renderWordmark(canvas, waterRatio) {
       const mW = cw[i];
       const capTop = by - asc;
       const isSecondM = (mCount === 2);
-      const fn = makeDrawFn(waterRatio, !isSecondM, isSecondM);
+      const fn = makeDrawFn(waterRatio, !isSecondM, isSecondM ? eyeType : false);
       fn(ctx, cx, capTop, mW, asc, { mColor, poolColor, eyeColor: mColor });
     } else {
       ctx.fillStyle = mColor;
@@ -182,8 +191,8 @@ function renderWordmark(canvas, waterRatio) {
   });
 }
 
-// Large mark: "Matcha" M with pool (no eyes)
-function renderMarkLarge(canvas, waterRatio, bg, mColor) {
+// Large mark: "Matcha" M with pool
+function renderMarkLarge(canvas, waterRatio, bg, mColor, eyeType) {
   const dpr = window.devicePixelRatio || 2;
   const sz = 140;
   canvas.width = sz * dpr;
@@ -196,8 +205,8 @@ function renderMarkLarge(canvas, waterRatio, bg, mColor) {
   ctx.fillRect(0, 0, sz, sz);
   const ms = 80, p = (sz - ms) / 2;
   const c = mColor || '#1A1A1A';
-  const fn = makeDrawFn(waterRatio, true, false);
-  fn(ctx, p, p + 4, ms, ms - 8, { mColor: c, poolColor: '#3A6B4E' });
+  const fn = makeDrawFn(waterRatio, true, eyeType || false);
+  fn(ctx, p, p + 4, ms, ms - 8, { mColor: c, poolColor: '#3A6B4E', eyeColor: c });
 }
 
 // Small mark: "Matcha" M with pool (no eyes)
@@ -237,8 +246,12 @@ function build() {
     card.innerHTML = `
       <h2>${item.name}</h2><span class="tag">${item.tag}</span>
       <p class="desc">${item.desc}</p>
-      <div class="large-mark"><canvas id="lg-${item.id}"></canvas></div>
-      <div class="wordmark-wrap"><canvas id="wm-${item.id}"></canvas></div>
+      <div style="display:flex;justify-content:center;gap:30px;margin-bottom:15px">
+        <div style="text-align:center"><div class="large-mark"><canvas id="lg-${item.id}-dot"></canvas></div><div class="label">点</div></div>
+        <div style="text-align:center"><div class="large-mark"><canvas id="lg-${item.id}-arc"></canvas></div><div class="label">にっこり</div></div>
+      </div>
+      <div style="margin-bottom:10px"><div class="wordmark-wrap"><canvas id="wm-${item.id}-dot"></canvas></div><div class="label" style="text-align:center">点</div></div>
+      <div style="margin-bottom:15px"><div class="wordmark-wrap"><canvas id="wm-${item.id}-arc"></canvas></div><div class="label" style="text-align:center">にっこり</div></div>
       <div class="mark-row">
         <div class="mark-cell"><div class="box light"><canvas id="mk-${item.id}-l"></canvas></div><div class="label">light</div></div>
         <div class="mark-cell"><div class="box dark"><canvas id="mk-${item.id}-d"></canvas></div><div class="label">dark</div></div>
@@ -251,8 +264,10 @@ function build() {
   document.fonts.ready.then(() => {
     ITEMS.forEach(item => {
       const wr = item.waterRatio;
-      renderMarkLarge(document.getElementById(`lg-${item.id}`), wr, '#FAFAF8');
-      renderWordmark(document.getElementById(`wm-${item.id}`), wr);
+      renderMarkLarge(document.getElementById(`lg-${item.id}-dot`), wr, '#FAFAF8', null, 'dot');
+      renderMarkLarge(document.getElementById(`lg-${item.id}-arc`), wr, '#FAFAF8', null, 'arc');
+      renderWordmark(document.getElementById(`wm-${item.id}-dot`), wr, 'dot');
+      renderWordmark(document.getElementById(`wm-${item.id}-arc`), wr, 'arc');
       renderMark(document.getElementById(`mk-${item.id}-l`), wr, '#FAFAF8', '#1A1A1A');
       renderMark(document.getElementById(`mk-${item.id}-d`), wr, '#1B4332', '#F5F0E8');
       renderMark(document.getElementById(`mk-${item.id}-g`), wr, '#8AAE92', '#1A1A1A');
