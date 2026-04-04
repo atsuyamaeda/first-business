@@ -255,4 +255,119 @@ Blank Street's model works because of **automation + tiny spaces + minimal labor
 
 ---
 
-*Data compiled March 2026 from public sources, real estate listings, and industry reports. All figures are estimates and should be validated with local professionals before making investment decisions.*
+---
+
+## 9. Real-World Cafe Startup Examples
+
+### Blank Street Coffee (NYC, est. 2020)
+- **Started**: Mobile coffee cart at Wythe Diner, Williamsburg, Brooklyn (Aug 2020)
+- **First cart cost**: ~$60,000-$75,000
+- **Store format**: Micro-footprint 200-350 sq ft brick-and-mortar kiosks
+- **Monthly rent per location**: ~$3,500 (vs ~$15,000 for traditional cafe)
+- **Key investment**: Eversys Shotmaster Pro super-automatic espresso machine (~$50,000 per unit; makes 700 espressos/hour)
+- **Staffing**: 1-2 baristas per shift (vs 5-6 for traditional cafe)
+- **Total VC funding raised**: ~$100M (General Catalyst, Tiger Global, Warby Parker co-founder)
+  - 2021 Seed: $7M
+  - 2021 Series A: $25M (total $67M in 2021)
+  - 2023 Series B: $20M
+- **Lesson**: Automation + tiny spaces + minimal labor = dramatically lower overhead per location
+
+### Junbi Matcha (franchise, California-based, expanding)
+- **Franchise initial investment**: $268,750 - $576,250 (total range)
+- **Franchise fee**: $30,000 (2024) / $35,000 (2025+)
+- **Minimum liquid capital required**: $150,000
+- **Ongoing fees**: 6% royalty on gross sales + 1% marketing fee
+- **Lesson**: A matcha-focused cafe franchise considers $270K-$575K as the realistic range for a turnkey operation, which aligns with our Scenario B-C estimates above
+
+### Cha Cha Matcha (NYC, est. 2016)
+- No publicly disclosed investment figures
+- Operates multiple locations in Manhattan (NoLiTa, Flatiron, etc.)
+- Small-format, Instagram-forward design
+- Estimated 400-600 sq ft per location
+- Known for heavy branding investment and premium positioning
+
+### MatchaBar (NYC, est. 2014, now Hustle brand)
+- Originally Brooklyn-based matcha cafe
+- Pivoted from cafe model to bottled RTD matcha beverages
+- Illustrative of the challenge: cafe margins are thin, leading many to pivot to CPG/retail
+
+---
+
+## 10. Brooklyn vs Manhattan: Side-by-Side Comparison
+
+| Factor | Brooklyn (Williamsburg/Bushwick) | Manhattan (LES/East Village) |
+|---|---|---|
+| **Rent (500 sq ft)** | $2,500-$4,000/mo | $4,000-$6,500/mo |
+| **Rent per sq ft (annual)** | $50-$80 | $70-$130 |
+| **Lease deposit (typical)** | 2-3 months' rent | 3-6 months' rent |
+| **Build-out cost per sq ft** | $100-$200 | $150-$300 |
+| **Commercial Rent Tax** | NOT applicable | Likely exempt for small cafe (<$500K annual rent) |
+| **Foot traffic quality** | Destination-driven, local/repeat | High walk-in volume, tourist + local mix |
+| **Target demographic** | Young creative professionals, neighborhood regulars | Diverse: NYU students, office workers, tourists |
+| **Competition density** | Moderate but rising fast | Very high; saturated cafe market |
+| **Instagram/brand cachet** | Strong (Williamsburg especially) | Very strong (LES/EV are "iconic" cafe neighborhoods) |
+| **Total startup cost (500 sq ft)** | **$150,000-$300,000** | **$250,000-$450,000** |
+| **Monthly operating cost** | **$22,000-$35,000** | **$32,000-$48,000** |
+
+### Neighborhood-Specific Rent Data (2025-2026)
+
+**Brooklyn**:
+- Bushwick: $35-55/sq ft/year — most affordable, raw/industrial, growing demand
+- Greenpoint: $45-65/sq ft/year — gentrifying, popular with specialty F&B
+- Williamsburg (average): $74.53/sq ft/year average; **North 6th St peak: $275/sq ft/year**
+- DUMBO: Premium pricing comparable to lower Manhattan
+
+**Manhattan**:
+- Lower East Side: $60-100/sq ft/year — high foot traffic on key streets
+- East Village: $70-110/sq ft/year — strong cafe culture, premium location
+- SoHo: Decade-long rent highs as of H1 2025 — likely too expensive for startup cafe
+- Average Manhattan retail: $109.61/sq ft (all types)
+- Restaurant-specific in high-traffic areas (Midtown, West Village, Tribeca): $150-$400/sq ft/year
+
+---
+
+## 11. NYC Wage Requirements (Updated Jan 2026)
+
+| Role | Rate | Notes |
+|---|---|---|
+| NYC minimum wage | **$17.00/hr** | Effective Jan 1, 2026 |
+| Tipped food service workers | **$11.35/hr** cash wage + $5.65 tip credit | Must reach $17.00 total |
+| Tipped service employees (servers) | **$14.15/hr** cash wage + $2.85 tip credit | Must reach $17.00 total |
+| Realistic barista wage (competitive) | **$18-$22/hr** | To attract and retain quality staff |
+| Shift lead | **$22-$26/hr** | |
+| Manager (salaried) | **$50,000-$65,000/yr** | Must meet exempt salary threshold |
+
+**80/20 Rule**: Employers cannot use tip credits if the employee spends more than 2 hours or 20% of a shift doing non-tipped work.
+
+---
+
+## 12. Key Takeaways for Matcha Cafe Planning
+
+1. **Most realistic budget for a first cafe**: $200,000-$350,000 (Brooklyn, 400-600 sq ft, moderate build-out)
+2. **Monthly burn rate to plan for**: $25,000-$40,000/month
+3. **Break-even timeline**: 18-27 months is realistic based on industry models
+4. **Biggest cost levers**: Rent (location choice) and Labor (automation vs staff)
+5. **Brooklyn advantage**: 30-50% lower rent than comparable Manhattan spaces
+6. **Manhattan advantage**: Higher foot traffic and walk-in revenue potential
+7. **Cart/kiosk as MVP**: $60,000-$100,000 to test market before committing to a lease (Blank Street playbook)
+8. **Automation consideration**: A $40-50K super-automatic machine can eliminate 2-3 staff positions per shift, potentially saving $8,000-$15,000/month in labor
+9. **Second-generation space**: Finding a previously-built-out cafe space can save $50,000-$100,000 on renovation
+10. **Junbi benchmark**: A matcha-specific franchise considers $270K-$575K as the investment range — independent operation should target the lower half of this range
+
+---
+
+*Data compiled March-April 2026 from public sources, real estate listings, franchise disclosure documents, and industry reports. All figures are estimates and should be validated with local professionals before making investment decisions.*
+
+### Sources
+- [Toast: Coffee Shop Startup Costs 2025](https://pos.toasttab.com/blog/on-the-line/how-much-does-it-cost-to-open-a-coffee-shop)
+- [Financial Models Lab: Matcha Tea Store Startup Costs](https://financialmodelslab.com/blogs/startup-costs/matcha-tea-specialty-store)
+- [Financial Models Lab: Coffee Shop Running Costs](https://financialmodelslab.com/blogs/operating-costs/coffee-shop)
+- [Sharpsheets: Junbi Franchise FDD, Profits & Costs](https://sharpsheets.io/blog/junbi-franchise-fdd-profits-costs-fees/)
+- [TechCrunch: How Blank Street is venture backable](https://techcrunch.com/2023/04/19/blank-street-venture-backed-coffee/)
+- [CNBC: Blank Street Coffee low costs and subscriptions](https://www.cnbc.com/2024/01/05/blank-street-coffee-bets-on-subscription-program.html)
+- [Commercial Observer: Brooklyn Retail Rents H1 2025](https://commercialobserver.com/2025/10/rebny-brooklyn-retail-h1-2025/)
+- [NYC DOH: Food Service Establishment Permit](https://nyc-business.nyc.gov/nycbusiness/description/food-service-establishment-permit)
+- [NY DOL: Minimum Wage 2026](https://dol.ny.gov/minimum-wage)
+- [TouchBistro: NYC Restaurant Startup Costs](https://www.touchbistro.com/blog/nyc-restaurant-start-up-costs/)
+- [Retail-OfficeSpace: Brooklyn Retail Space Trends](https://www.retail-officespace.com/brooklyn-retail-space-for-rent-ny/)
+- [Crain's: Manhattan Retail Sector 2025](https://www.crainsnewyork.com/real-estate/manhattan-retail-sector-saw-lower-rents-during-fourth-quarter)
