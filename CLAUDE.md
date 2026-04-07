@@ -11,8 +11,8 @@
 
 > 参考資料: [beverage_startup_funding_ranking.md](research/beverage_startup_funding_ranking.md)
 
-#### 東京都心10区 抹茶カフェ競合DB 運用ルール
-対象10区: 江東・台東・港・目黒・品川・世田谷・杉並・新宿・中野・豊島
+#### 東京都心13区 抹茶カフェ競合DB 運用ルール
+対象13区: 江東・台東・港・目黒・品川・世田谷・杉並・新宿・中野・豊島・中央・渋谷・千代田
 
 - **主DBファイル**: [research/competitors/matcha_cafes.md](research/competitors/matcha_cafes.md) が **唯一の出力**（Claude Code でプレビュー可、区で分けない）。CSVは不要（ユーザーが必要時に手動コピペで作成する）
 - **引継ぎドキュメント**: [research/competitors/STATUS.md](research/competitors/STATUS.md) に現状進捗・アウトプット所在・作業手順を常時最新化。別端末からセッション再開する際は必ず最初にこれを読む。作業の区切りごとに必ず更新
