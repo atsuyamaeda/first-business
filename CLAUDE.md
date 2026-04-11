@@ -9,15 +9,15 @@
 - [ ] 各社のプロダクトライン、ターゲット顧客、販売チャネルの整理
 - [ ] 競合の強み・弱みの分析
 
-> 参考資料: [beverage_startup_funding_ranking.md](research/beverage_startup_funding_ranking.md)
+> 参考資料: [beverage_startup_funding_ranking.md](research/general/beverage_startup_funding_ranking.md)
 
-#### 東京都心13区 抹茶カフェ競合DB 運用ルール
-対象13区: 江東・台東・港・目黒・品川・世田谷・杉並・新宿・中野・豊島・中央・渋谷・千代田
+#### 東京都心15区 抹茶カフェ競合DB 運用ルール
+対象15区: 江東・台東・港・目黒・品川・世田谷・杉並・新宿・中野・豊島・中央・渋谷・千代田・文京・墨田
 
-- **主DBファイル**: [research/competitors/matcha_cafes.md](research/competitors/matcha_cafes.md) が **唯一の出力**（Claude Code でプレビュー可、区で分けない）。CSVは不要（ユーザーが必要時に手動コピペで作成する）
-- **引継ぎドキュメント**: [research/competitors/STATUS.md](research/competitors/STATUS.md) に現状進捗・アウトプット所在・作業手順を常時最新化。別端末からセッション再開する際は必ず最初にこれを読む。作業の区切りごとに必ず更新
+- **主DBファイル**: [research/cafe/competitors/matcha_cafes.md](research/cafe/competitors/matcha_cafes.md) が **唯一の出力**（Claude Code でプレビュー可、区で分けない）。CSVは不要（ユーザーが必要時に手動コピペで作成する）
+- **引継ぎドキュメント**: [research/cafe/competitors/STATUS.md](research/cafe/competitors/STATUS.md) に現状進捗・アウトプット所在・作業手順を常時最新化。別端末からセッション再開する際は必ず最初にこれを読む。作業の区切りごとに必ず更新
 - **出力形式の原則**: データ系の成果物は基本的に Markdown を主にする（Claude Code のプレビュー対応）。CSV/JSON は補助出力として並行で保つ
-- **スキーマ**: 列定義・値規約・包含基準・エリア定義は [research/competitors/schema.md](research/competitors/schema.md) を単一の真実の源とする
+- **スキーマ**: 列定義・値規約・包含基準・エリア定義は [research/cafe/competitors/schema.md](research/cafe/competitors/schema.md) を単一の真実の源とする
 - **包含基準**: (1) 抹茶メニュー3品以上、**または** (2) 抹茶の品種（銘柄・産地）が複数選べる店（品数少なくても本質的な専門店として対象）、**または** (3) スターバックス全店。他チェーン（ドトール・タリーズ等）は(1)(2)を満たさない限り無視
 - **2段階ワークフロー**:
   1. Phase A Step 1: **店名 + GoogleマップURL のみ** を先に完璧に作る（重複排除の識別子としてURL必須）
@@ -55,7 +55,7 @@
 
 ### Step 1: 代表23社のサービス深掘り
 - [ ] 各社の提供サービスを最細粒度でリサーチ
-- [ ] [matcha_company_landscape.md](research/matcha_company_landscape.md)に「提供サービス詳細」列を追加
+- [ ] [matcha_company_landscape.md](research/general/matcha_company_landscape.md)に「提供サービス詳細」列を追加
 
 **選定基準（3軸）**: 差別化度 / 成長シグナル / スタートアップ参考性
 
@@ -73,14 +73,14 @@
 ### Step 2: サービスのグルーピング・ラベリング
 - [ ] 抽出したサービスを分類・ラベリング
 - [ ] 粒度を揃えてカウント・可視化
-- [ ] → [matcha_service_taxonomy.md](research/matcha_service_taxonomy.md)
+- [ ] → [matcha_service_taxonomy.md](research/general/matcha_service_taxonomy.md)
 
 ### Step 3: 需要サイドの補完調査
 - [ ] Reddit/SNSの消費者の声分析
 - [ ] Google Trends（抹茶関連検索トレンド）
 - [ ] Amazonレビュー分析（不満・要望の抽出）
 - [ ] 「消費者が欲しいのに存在しないもの」のリスト化
-- [ ] → [matcha_consumer_demand_gaps.md](research/matcha_consumer_demand_gaps.md)
+- [ ] → [matcha_consumer_demand_gaps.md](research/general/matcha_consumer_demand_gaps.md)
 
 > Step 1-2（供給サイド）+ Step 3（需要サイド）を統合し、Phase 3 の戦略策定のインプットとする
 

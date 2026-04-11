@@ -5,10 +5,8 @@ import sys
 from pathlib import Path
 
 MD_PATH = Path(__file__).parent / 'matcha_cafes.md'
-HEADERS = ['id','店名','ブランド名','住所','区','エリア','GoogleマップURL','公式サイトURL','InstagramURL','IGフォロワー数',
-       'Google評価','Googleレビュー件数','食べログURL','食べログ評価','食べログレビュー件数',
-       '抹茶専門性','業態タグ','最寄駅','抹茶メニューリスト','確度','営業状態','開店日','備考']
-WARDS_13 = {'江東区','台東区','港区','目黒区','品川区','世田谷区','杉並区','新宿区','中野区','豊島区','中央区','渋谷区','千代田区'}
+HEADERS = ['id', '店名', 'ブランド名', 'エリア', '開店日', '食べログ評価', '食べログレビュー件数', 'Google評価', 'Googleレビュー件数', 'IGフォロワー数', 'GoogleマップURL', '食べログURL', 'InstagramURL', '公式サイトURL',  '業態タグ', '最寄駅', '抹茶メニューリスト', '確度', '区', '住所', '営業状態', '備考']
+WARDS_15 = {'江東区','台東区','港区','目黒区','品川区','世田谷区','杉並区','新宿区','中野区','豊島区','中央区','渋谷区','千代田区','文京区','墨田区','NYC','LA','Sydney','Melbourne','London','Hong Kong'}
 KAKUDO_OK = {'確実','要確認','不明','除外候補'}
 
 def main():
@@ -31,7 +29,7 @@ def main():
             key=re.sub(r'\?.*$','',url.split('/data=')[0])
             if key in seen_urls: issues.append((ln,sid,'DUP_MAPS_URL',f'重複URL (id {seen_urls[key]} と)'))
             else: seen_urls[key]=sid
-        if d['区'] and d['区'] not in WARDS_13 and d['確度'] != '除外候補':
+        if d['区'] and d['区'] not in WARDS_15 and d['確度'] != '除外候補':
             issues.append((ln,sid,'OUT_OF_WARDS',f'12区外({d["区"]})なのに除外候補ではない'))
         if d['確度'] and d['確度'] not in KAKUDO_OK:
             issues.append((ln,sid,'BAD_KAKUDO',f'不正な確度値: {d["確度"]}'))
@@ -42,7 +40,7 @@ def main():
         if not d['抹茶メニューリスト']: issues.append((ln,sid,'NO_MENU_LIST','抹茶メニューリスト空欄'))
         if d['食べログURL'] and 'tabelog.com' not in d['食べログURL'] and d['食べログURL'] not in ('不明','食べログ未登録'):
             issues.append((ln,sid,'BAD_TABELOG_URL',d['食べログURL'][:60]))
-        if d['InstagramURL'] and not d['InstagramURL'].startswith('http') and d['InstagramURL'] != '不明':
+        if d['InstagramURL'] and not d['InstagramURL'].startswith('http') and d['InstagramURL'] not in ('不明','IGなし'):
             issues.append((ln,sid,'BAD_IG_URL',f'IG URLでない: {d["InstagramURL"][:40]}'))
         rows.append(d)
 
